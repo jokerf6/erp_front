@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+body {
+  background-color: #001524;
+  color: white;
+}
+@keyframes animy {
+  0% {width: 0;}
+  50% {width: 78%;}
+  100% {width: 78%;}
+}
+
+@keyframes blinking {
+  0% {border-color: transparent;}
+  50% {border-color: orange;}
+  100% {border-color: transparent;}
+}
+.typed-out{
+     width: 0;
+     white-space: nowrap;
+     border-right: 0.2rem solid orange;
+     animation-delay: 2s;
+     animation:  animy 2s forwards infinite  steps(40, end) , blinking 0.5s infinite; 
+}
