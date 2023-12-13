@@ -46,6 +46,8 @@ export default function ForgetInputs(props: {
     const checkEmail = valid("Email", email);
     if (checkEmail !== "valid") {
       notify(checkEmail);
+      setLoading(false);
+
       return;
     }
     const data = {

@@ -72,10 +72,14 @@ export default function LoginInputs(props: { id: any; setId: any }) {
     const checkPassword = valid("password", password);
     if (checkEmail !== "valid") {
       notify(checkEmail);
+      setLoading(false);
+
       return;
     }
     if (checkPassword !== "valid") {
       notify(checkPassword);
+      setLoading(false);
+
       return;
     }
     const data = {

@@ -48,6 +48,8 @@ export default function ChangeInputs(props: { id: string; change?: boolean }) {
   );
 
   async function handel(e: any) {
+    console.log("hi");
+    console.log(change);
     e.preventDefault(); // to prevent page from refreshing after click on submit button
     setLoading(true);
     // get data from form
@@ -58,19 +60,27 @@ export default function ChangeInputs(props: { id: string; change?: boolean }) {
     const checkRePassword = valid("Password", repassword);
     if (checkPassword !== "valid") {
       notify(checkPassword);
+      setLoading(false);
+
       return;
     }
     if (checkRePassword !== "valid") {
       notify(checkRePassword);
+      setLoading(false);
+
       return;
     }
     // check password matches
     if (password !== repassword) {
       notify("passwords not match");
+      setLoading(false);
+
       return;
     }
-    if (!change) {
+    if (!change && change !== undefined) {
       notify("Cannot change your password");
+      setLoading(false);
+
       return;
     }
     console.log("conti");
