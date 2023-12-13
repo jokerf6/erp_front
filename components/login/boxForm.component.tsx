@@ -1,24 +1,25 @@
-import React from "react";
-import Welcome from "./boxLogin/welcome.component";
-import LoginInputs from "./boxLogin/loginInputs.component";
-import ChangeInputs from "../change/changeInputs.component";
-import WelcomeForget from "../change/welcome.component";
-export default function BoxForm(props: { change: boolean }) {
-  const { change } = props;
+import React, { useState } from "react";
+import Login from "../login/login.component";
+import Footer from "../default/footer.component";
+import Change from "../change/change.component";
+export default function BoxForm(props: { pages: number }) {
+  const { pages } = props;
+  const [id, setId] = useState("-1");
+
   return (
     <div className="  w-full flex flex-col gap-4">
-      <img src="/images/logo.png" style={{ width: "110px", height: "70px" }} />
+      <img
+        src="/images/logo.png"
+        className={` ${
+          pages === 1
+            ? "absolute top-0 xl:left-1/2 lg:left-1/2 left-0 ml-5 mt-5"
+            : ""
+        }`}
+        style={{ width: "100px", height: "50px" }}
+      />
+      {pages === 0 ? <Login id={id} setId={setId} /> : <Change id={id} />}
 
-      {!change ? <Welcome /> : <WelcomeForget />}
-
-      {!change ? <LoginInputs /> : <ChangeInputs />}
-
-      <span
-        className="  absolute bottom-10 text-center text-white2"
-        style={{ width: "50vw", left: "50%" }}
-      >
-        Copyright © 2023. All rights reserved.
-      </span>
+      <Footer />
     </div>
   );
 }

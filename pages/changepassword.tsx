@@ -6,9 +6,9 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Change() {
   return (
-    <main className={`flex  min-h-screen flex-row ${inter.className} bg-main`}>
+    <main className={`flex  min-h-screen flex-row ${inter.className} `}>
       <Left />
-      <MainBox change={true} />
+      <MainBox pages={1} />
     </main>
   );
 }

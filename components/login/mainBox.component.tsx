@@ -1,14 +1,14 @@
 import React from "react";
 import BoxForm from "./boxForm.component";
 
-export default function Right(props: { change: boolean }) {
-  const { change } = props;
+export default function Right(props: { pages: number }) {
+  const { pages } = props;
   return (
     <div
-      className="  flex px-40  items-center justify-center"
-      style={{ width: "50vw", height: "100vh" }}
+      className=" xl:w-half lg:w-half w-full  flex xl:px-40 lg:px-30 px-10  items-center justify-center"
+      style={{ height: "100vh" }}
     >
-      <BoxForm change={change} />
+      <BoxForm pages={pages} />
     </div>
   );
 }
