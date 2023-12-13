@@ -1,28 +1,32 @@
-export function valid(type: string, text: string): string {
+export function valid(type: string, text: string): any {
+  if (type === "Email") {
+    return checkEmail(type, text);
+  }
+  if (type === "Password") {
+    return checkPassword(type, text);
+  }
+}
+
+function checkEmail(type: string, text: string) {
+  const reg = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm;
+  const test = reg.test(text);
+  console.log(test);
   if (text.length === 0) {
     return `${type} field cannot be empty`;
   }
 
-  if (type === "Email") {
-    checkEmail(text);
-  }
-  if (type === "Password") {
-    checkPassword(text);
-  }
-
-  return "valid";
-}
-
-function checkEmail(text: string) {
-  const reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
-  if (reg.test(text)) {
+  if (test) {
     return "valid";
   } else {
     return "Not valid Email";
   }
 }
-function checkPassword(text: string) {
-  const reg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/g;
+function checkPassword(type: string, text: string) {
+  const reg = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/;
+  if (text.length === 0) {
+    return `${type} field cannot be empty`;
+  }
+
   if (reg.test(text)) {
     return "valid";
   } else {

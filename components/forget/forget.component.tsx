@@ -44,6 +44,7 @@ export default function ForgetInputs(props: {
     const email = e.target.email.value;
     // validation for email
     const checkEmail = valid("Email", email);
+    console.log(checkEmail);
     if (checkEmail !== "valid") {
       notify(checkEmail);
       setLoading(false);
