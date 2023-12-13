@@ -9,7 +9,7 @@ import { valid } from "@/functions/validations";
 export default function LoginInputs(props: { id: any; setId: any }) {
   const { id, setId } = props;
   const router = useRouter();
-  const notify = (error: string) => toast.error(error);
+  const notify = async (error: string) => toast.error(error);
   const [loading, setLoading] = useState(false);
 
   return (
@@ -68,20 +68,14 @@ export default function LoginInputs(props: { id: any; setId: any }) {
     const email = e.target.email.value;
     const password = e.target.password.value;
     // validation for password and repassword
-    const checkEmail = valid("email", email);
-    const checkPassword = valid("password", password);
+    const checkEmail = valid("Email", email);
+    console.log(checkEmail);
     if (checkEmail !== "valid") {
-      notify(checkEmail);
+      await notify(checkEmail);
       setLoading(false);
-
       return;
     }
-    if (checkPassword !== "valid") {
-      notify(checkPassword);
-      setLoading(false);
 
-      return;
-    }
     const data = {
       workEmail: email,
       password,
@@ -99,6 +93,7 @@ export default function LoginInputs(props: { id: any; setId: any }) {
       .then((json) => onGetResponse(json));
   }
   async function onGetResponse(json: any) {
+    console.log("a7as");
     setLoading(false);
     console.log(json.type);
     if (json.type == "Success") {
