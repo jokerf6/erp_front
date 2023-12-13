@@ -17,7 +17,11 @@ export default function BoxForm(props: { pages: number }) {
         }`}
         style={{ width: "100px", height: "50px" }}
       />
-      {pages === 0 ? <Login id={id} setId={setId} /> : <Change id={id} />}
+      {pages === 0 ? (
+        <Login id={id} setId={setId} />
+      ) : (
+        <Change id={id} change={true} />
+      )}
 
       <Footer />
     </div>
