@@ -10,7 +10,7 @@ import React, { useState } from "react";
 
 export default function Home() {
   const [overlay, setOverlay] = useState(false);
-  const [taskDetails, setTaskDetails] = useState(true);
+  const [taskDetails, setTaskDetails] = useState(false);
   return (
     <div className=" flex flex-col h-screen">
       <HeaderMain />

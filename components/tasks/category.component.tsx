@@ -24,7 +24,7 @@ export default function Category(props: { setOverlay: any }) {
       <hr className=" border border-main" />
       <div
         className=" max-h-auto flex flex-col overflow-y-auto gap-3 mt-3 cat"
-        style={{ maxHeight: "50vh" }}
+        style={{ maxHeight: "60vh" }}
       >
         <Task setOverlay={setOverlay} />
         <Task setOverlay={setOverlay} />
