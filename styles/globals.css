@@ -26,7 +26,7 @@ body {
 
 /* For Webkit browsers like Chrome and Safari */
 .cat::-webkit-scrollbar {
-  width: 12px;
+  width: 0;
 }
 
 .cat::-webkit-scrollbar-thumb {

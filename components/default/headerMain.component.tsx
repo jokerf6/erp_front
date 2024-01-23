@@ -3,50 +3,66 @@ import React, { useState } from "react";
 
 export default function HeaderMain() {
   const [erp, setErp] = useState(true);
+  const [community, setCommunity] = useState(false);
+
   return (
     <>
-      <div className=" w-full  justify-between px-10 bg-main items-center xl:flex lg:flex  hidden">
+      <div className=" w-full justify-between px-10 bg-main items-center xl:flex lg:flex  hidden">
         <div className=" flex gap-8 items-center">
           <img
             src="/images/lightlogo.png"
             style={{ width: "45px", height: "30px" }}
           />
           <div className=" flex xl:gap-4 lg:gap-4 gap-1 text-white xl:text-md lg:text-md text-sm">
-            <span className="py-4 px-4">Dashboard</span>
-            <span className="py-4 px-4 bg-selected text-selectedText">
-              Project management
+            <span className="py-4 px-4 cursor-pointer">Dashboard</span>
+            <span className="py-4 px-4 bg-selected text-selectedText cursor-pointer">
+              Project Management
             </span>
-            <span className="py-4 px-4">HR</span>
+            <span className="py-4 px-4 cursor-pointer">HR</span>
           </div>
         </div>
         <div className=" flex gap-7 items-center ">
           <div className=" flex text-white xl:text-md lg:text-md text-sm py-1 px-1 rounded-2xl items-center bg-main3">
             <button
-              onClick={() => setErp(!erp)}
+              onClick={() => {
+                setErp(true);
+                setCommunity(false);
+              }}
               className={` px-5 w-fit ${erp ? "bg-light" : ""} rounded-xl`}
             >
               ERP
             </button>
             <button
-              onClick={() => setErp(!erp)}
-              className={` px-5 w-fit ${!erp ? "bg-light" : ""} rounded-xl`}
+              onClick={() => {
+                setErp(false);
+                setCommunity(true);
+              }}
+              className={` px-5 w-fit ${
+                community ? "bg-light" : ""
+              } rounded-xl`}
             >
               Community
             </button>
           </div>
           <Icon
             icon={"iconamoon:search-thin"}
-            className=" text-white text-xl"
+            className=" text-white text-xl cursor-pointer box-content p-1"
           />
           <Icon
             icon={"clarity:notification-line"}
-            className=" text-white text-xl"
+            className=" text-white text-xl cursor-pointer box-content p-1"
           />
-          <Icon icon={"carbon:settings"} className=" text-white text-xl" />
-          <Icon icon={"icons8:todo-list"} className=" text-white text-xl" />
+          <Icon
+            icon={"carbon:settings"}
+            className=" text-white text-xl cursor-pointer box-content p-1"
+          />
+          <Icon
+            icon={"icons8:todo-list"}
+            className=" text-white text-xl cursor-pointer box-content p-1"
+          />
           <img
             src="/images/loginPage.jpg"
-            className="rounded-full"
+            className="rounded-full cursor-pointer"
             style={{ width: "40px", height: "35px" }}
           />
         </div>

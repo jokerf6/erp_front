@@ -2,14 +2,24 @@ import { Icon } from "@iconify/react";
 import React from "react";
 import Task from "./task.component";
 
-export default function Category(props: { setOverlay: any }) {
-  const { setOverlay } = props;
+export default function Category(props: {
+  setOverlay: any;
+  isSmallScreen: boolean;
+}) {
+  const { setOverlay, isSmallScreen } = props;
+  // const taskContainerStyles = isSmallScreen ?
+  // {
+
+  // } : {
+
+  // }
+
   return (
     <div
-      className=" flex flex-col w-1/2 px-4 bg-cat rounded-xl"
-      style={{ backgroundColor: "#E9E3D58A" }}
+      className=" flex flex-col p-3 lg:p-6 bg-cat rounded-xl h-full"
+      style={{ backgroundColor: "#E9E3D58A", minWidth: "272px" }}
     >
-      <div className=" flex justify-between py-3">
+      <div className=" flex justify-between pb-3">
         <div className=" flex text-main items-center gap-2">
           <div className=" w-2 h-2 rounded-full bg-main"></div>
           <span className=" text-lg font-semibold">To Do</span>
@@ -23,9 +33,10 @@ export default function Category(props: { setOverlay: any }) {
       </div>
       <hr className=" border border-main" />
       <div
-        className=" max-h-auto flex flex-col overflow-y-auto gap-3 mt-3 cat"
-        style={{ maxHeight: "60vh" }}
+        className="flex overflow-y-auto flex-col gap-3 mt-3 cat bg-red-500"
+        // style={{ maxHeight: "500px" }}
       >
+        <Task setOverlay={setOverlay} />
         <Task setOverlay={setOverlay} />
         <Task setOverlay={setOverlay} />
       </div>
