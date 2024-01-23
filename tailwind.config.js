@@ -14,14 +14,23 @@ module.exports = {
       },
       colors: {
         main: "#251B37",
-        white2:"#F6F6F6",
-        main2:"#FF375E",
-        dark:"#251B37",
-        cgrey:"#F6F6F6",
+        white2: "#F6F6F6",
+        primary2: "#FF375E",
+        dark: "#251B37",
+        cgrey: "#F6F6F6",
+        main3: "#5B4C83",
+        cat: "#E9E3D58A",
+        light: "#B6A6D3",
+        selected: "#322746",
+        text: "#767676",
+        selectedText: "#D7C843",
+        tot: "#D58D49",
+        bot: "#DFA87433",
+        brief: "#787486",
       },
-      width:{
-        half:"50vw"
-      }
+      width: {
+        half: "50vw",
+      },
     },
   },
   plugins: [],

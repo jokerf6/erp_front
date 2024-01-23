@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import MainBox from "../components/login/mainBox.component";
 import Left from "@/components/login/left.component";
 import Footer from "@/components/default/footer.component";
+import { Icon } from "@iconify/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
