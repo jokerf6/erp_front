@@ -27,10 +27,12 @@ module.exports = {
         tot: "#D58D49",
         bot: "#DFA87433",
         brief: "#787486",
+        statusOrange: "#EE681D",
+        statusGreen: "#8BC48A",
       },
       width: {
         half: "50vw",
-      },
+      }
     },
   },
   plugins: [],

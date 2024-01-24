@@ -26,11 +26,12 @@ body {
 
 /* For Webkit browsers like Chrome and Safari */
 .cat::-webkit-scrollbar {
-  width: 0;
+  width: 12px;
 }
 
 .cat::-webkit-scrollbar-thumb {
-  background-color: transparent;
+  background-color: #251B37;
+  border-inline: 1px solid #E9E3D58A;
 }
 .round {
   position: relative;

@@ -7,13 +7,13 @@ export default function Taps() {
       style={{ borderBottom: "6px solid #E9E3D5" }}
     >
       <span
-        className="text-main font-semibold bg-red-500 py-4 relative after:absolute after:w-full after:h-1.5 hover:after:bg-main after:left-0 after:top-full hover:font-bold text-center"
+        className="transition-all cursor-pointer text-main font-bold py-4 text-center relative after:transition-all after:absolute after:w-full after:h-1.5 hover:after:bg-main after:left-0 after:top-full"
         style={{ width: "90px" }}
       >
         My tasks
       </span>
       <span
-        className="text-text font-semibold bg-red-500 py-4 relative after:absolute after:w-full after:h-1.5 hover:after:bg-main after:left-0 after:top-full hover:font-bold text-center"
+        className="transition-all cursor-pointer text-text font-semibold py-4 text-center relative after:transition-all after:absolute after:w-full after:h-1.5 hover:after:bg-main after:left-0 after:top-full"
         style={{ width: "100px" }}
       >
         All projects

@@ -1,0 +1,19 @@
+{
+  "data": [
+    {
+      "title": "to do",
+      "tasksNumber": 4,
+      "accentColor": "#251B37"
+    },
+    {
+      "title": "in progress",
+      "tasksNumber": 3,
+      "accentColor": "#EE681D"
+    },
+    {
+      "title": "done",
+      "tasksNumber": 2,
+      "accentColor": "#8BC48A"
+    }
+  ]
+}
