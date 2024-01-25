@@ -12,6 +12,32 @@ import categoryData from "@/utils/category.json";
 export default function Home() {
   const [overlay, setOverlay] = useState(false);
   const [taskDetails, setTaskDetails] = useState(false);
+  const [categoryFilter, setCategoryFilter] = useState("to do");
+  const [open, setOpen] = React.useState(false);
+
+  const [isSmallWindow, setIsSmallWindow] = React.useState(false);
+  React.useEffect(() => {
+    setIsSmallWindow(window.innerWidth < 1024 ? true : false);
+  }, []);
+
+  const categoryFilterList = categoryData.data.map((category) => {
+    return (
+      <div
+        key={category.title}
+        className="bg-white2 capitalize rounded-sm py-1"
+        style={{ boxShadow: "0 0 5px var(--color-main3)" }}
+        onClick={() => {
+          setCategoryFilter(category.title);
+          setOpen(false);
+        }}
+      >
+        {category.title}
+      </div>
+    );
+  });
+  function handleDropdown() {
+    setOpen(!open);
+  }
 
   const categoryElements = categoryData.data.map((category) => {
     return (
@@ -21,9 +47,13 @@ export default function Home() {
         title={category.title}
         tasksNumber={category.tasksNumber}
         accentColor={category.accentColor}
+        isSmallWindow={isSmallWindow}
       />
     );
   });
+  const categoryElementsFiltered = categoryElements.filter(
+    (element) => element.props.title === categoryFilter
+  );
 
   return (
     <div className=" flex flex-col h-screen">
@@ -32,8 +62,37 @@ export default function Home() {
         <HeaderMain2 />
         <Taps />
       </div>
-      <div className=" w-full flex gap-4 p-6 lg:px-10 lg:py-6  flex-col lg:flex-row flex-wrap">
-        {categoryElements}
+      <div>
+        <div className="flex justify-center mt-10">
+          {isSmallWindow && (
+            <div className="flex flex-col justify-center items-center w-11/12 rounded relative">
+              <button
+                className="bg-main3 text-white2 shadow-sm shadow-main3 font-semibold w-full rounded-t relative py-1"
+                onClick={handleDropdown}
+              >
+                <span className="capitalize">{categoryFilter}</span>
+                <span className="absolute top-1/2 right-2 -translate-y-1">
+                  <Icon
+                    icon={`bxs:${open ? "up-arrow" : "down-arrow"}`}
+                    width={10}
+                  />
+                </span>
+              </button>
+              {open && (
+                <div
+                  className="bg-white border-main3 flex flex-col gap-2 text-center w-full pt-2 absolute top-full z-20"
+                  style={{ borderWidth: "1px" }}
+                >
+                  {categoryFilterList}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+
+        <div className="flex gap-4 p-6 lg:px-10 lg:py-6  flex-col lg:flex-row flex-wrap">
+          {isSmallWindow ? categoryElementsFiltered : categoryElements}
+        </div>
       </div>
       {overlay && (
         <div className=" absolute w-screen h-screen flex items-center justify-center top-0 left-0 bg-black bg-opacity-50">
