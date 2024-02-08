@@ -71,10 +71,10 @@ export default function Category(props: {
         style={{ borderColor: `${accentColor}` }}
       />
       <div className="flex overflow-y-auto flex-col gap-3 py-6 px-3 lg:px-6">
-        <Task setOverlay={setOverlay} />
-        <Task setOverlay={setOverlay} />
-        <Task setOverlay={setOverlay} />
-        <Task setOverlay={setOverlay} />
+        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
+        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
+        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
+        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
       </div>
     </div>
   );

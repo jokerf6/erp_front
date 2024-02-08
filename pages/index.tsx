@@ -9,9 +9,17 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
-    <main className={`flex  min-h-screen flex-row ${inter.className}`}>
+    <main className={`flex min-h-[100dvh] ${inter.className}`}>
       <Left />
-      <MainBox pages={0} />
+      <div className="p-2 lg:p-0 flex flex-col flex-1 justify-center items-center">
+        <img
+          src="/images/logo.png"
+          alt="Logo"
+          className="self-stretch pb-4 lg:p-4 box-content w-[60px] md:w-[100px]"
+        />
+        <MainBox pages={0} />
+        <Footer />
+      </div>
     </main>
   );
 }

@@ -32,7 +32,7 @@ export default function LoginInputs(props: { id: any; setId: any }) {
           placeholder={"Your Password"}
         />
       </div>
-      <div className=" flex gap-2">
+      <div className=" flex gap-2 items-center">
         <input
           type="checkbox"
           className=" bg-gray-400 text-red-500 rounded-2xl"

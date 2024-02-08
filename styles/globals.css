@@ -10,7 +10,7 @@
 }
 
 * {
-  /* To get rid of the blue hightlight when tapping somtheing */
+  /* To get rid of the blue hightlight when tapping something */
   -webkit-tap-highlight-color: transparent;
 }
 

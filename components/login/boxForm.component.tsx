@@ -7,23 +7,12 @@ export default function BoxForm(props: { pages: number }) {
   const [id, setId] = useState("-1");
 
   return (
-    <div className="  w-full flex flex-col gap-4">
-      <img
-        src="/images/logo.png"
-        className={` ${
-          pages === 1
-            ? "absolute top-0 xl:left-1/2 lg:left-1/2 left-0 ml-5 mt-5"
-            : ""
-        }`}
-        style={{ width: "100px", height: "50px" }}
-      />
+    <div className=" flex flex-col gap-5 w-full max-w-[500px]">
       {pages === 0 ? (
         <Login id={id} setId={setId} />
       ) : (
         <Change id={id} change={true} />
       )}
-
-      <Footer />
     </div>
   );
 }

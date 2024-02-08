@@ -5,8 +5,7 @@ export default function Right(props: { pages: number }) {
   const { pages } = props;
   return (
     <div
-      className=" xl:w-half lg:w-half w-full  flex xl:px-40 lg:px-30 px-10  items-center justify-center"
-      style={{ height: "100vh" }}
+      className=" flex items-center justify-center h-full w-full"
     >
       <BoxForm pages={pages} />
     </div>
