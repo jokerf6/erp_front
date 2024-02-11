@@ -18,6 +18,7 @@ export default function Home() {
   const [isSmallWindow, setIsSmallWindow] = React.useState(false);
   React.useEffect(() => {
     setIsSmallWindow(window.innerWidth < 1024 ? true : false);
+    console.log("Small window check")
   }, []);
 
   const categoryFilterList = categoryData.data.map((category) => {

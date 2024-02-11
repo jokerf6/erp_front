@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Login from "../login/login.component";
-import Footer from "../default/footer.component";
-import Change from "../change/change.component";
+import Footer from "../../default/footer.component";
+import Change from "../../change/zoldchange.component";
 export default function BoxForm(props: { pages: number }) {
   const { pages } = props;
   const [id, setId] = useState("-1");

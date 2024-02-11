@@ -1,14 +1,17 @@
-import { Inter } from "next/font/google";
-import MainBox from "../components/login/mainBox.component";
-import Left from "@/components/login/left.component";
+// Layout
+import IndexLayout from "@/layouts"
 
-const inter = Inter({ subsets: ["latin"] });
+// Components
+import WelcomeChange from "@/components/change/welcome.component"
+import ChangePasswordForm from "@/components/change/change.component"
 
-export default function Change() {
+export default function ChangePassword() {
   return (
-    <main className={`flex  min-h-screen flex-row ${inter.className} `}>
-      <Left />
-      <MainBox pages={1} />
-    </main>
-  );
+    <>
+      <WelcomeChange />
+      <ChangePasswordForm />
+    </>
+  )
 }
+
+ChangePassword.PageLayout = IndexLayout
