@@ -4,6 +4,8 @@ import { Icon } from "@iconify/react";
 
 import categoryData from "@/utils/category.json";
 
+import Head from "next/head";
+
 // Components
 import HeaderMain2 from "@/components/default/headerMain2.component";
 import Taps from "@/components/default/taps.component";
@@ -65,6 +67,10 @@ export default function ProjectManagement() {
   
   return (
     <>
+    <Head>
+      <title>ERP | Project Management</title>
+    </Head>
+
     <div className="flex flex-col gap-5">
         <HeaderMain2 />
         <Taps />

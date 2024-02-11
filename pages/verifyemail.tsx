@@ -10,14 +10,20 @@ import VerifyEmailForm from "@/components/verification/verify.component";
 // Layout
 import IndexLayout from "@/layouts";
 
+import Head from "next/head";
+
 export default function VerifyEmail() {
   const { email } = useContext(IndexContext);
   return (
     <>
+      <Head>
+        <title>ERP | Verfiy Email</title>
+      </Head>
+
       <WelcomeOTP email={email} />
       <VerifyEmailForm />
     </>
   );
 }
 
-VerifyEmail.PageLayout = IndexLayout
+VerifyEmail.PageLayout = IndexLayout;
