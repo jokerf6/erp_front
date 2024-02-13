@@ -39,6 +39,21 @@ body {
   background-color: #251B37;
   border-inline: 1px solid #E9E3D58A;
 }
+/* Scrollbar PM Files */
+.files-contents::-webkit-scrollbar{
+  width: 10px;
+}
+.files-contents::-webkit-scrollbar-thumb{
+  border-radius: 12px;
+  background-color: #251B3778;
+}
+.files-contents::-webkit-scrollbar-track{
+  background-color: transparent;
+}
+.files-contents::-webkit-scrollbar-thumb:hover{
+  background-color: #555;
+}
+/* End PM Scrollbar  */
 .round {
   position: relative;
 }

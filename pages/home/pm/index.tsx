@@ -14,7 +14,9 @@ import TaskStatus from "@/components/default/taskStatus.component";
 import Category from "@/components/tasks/category.component";
 import TaskChecked from "@/components/tasks/Slider/taskStatus.component";
 import TitleTask from "@/components/tasks/Slider/titleTask.component";
-
+import File from '@/components/PM/Files'
+import Comments from '@/components/PM/Comments'
+import Teammates from '@/components/PM/Teammates'
 
 // Layout
 import HomeLayout from '@/layouts/home'
@@ -72,11 +74,40 @@ export default function MyTasks() {
 
   return (
     <>
-    <Head>
-      <title>ERP | Project Management</title>
-    </Head>
-
-    <div className="flex flex-col gap-5">
+      <Head>
+        <title>ERP | Project Management</title>
+      </Head>
+      <div className="flex flex-col gap-5">
+        {/* Start Side bar  */}
+        <div className="bg-[#FAFAFA] absolute right-0 w-2/6 h-fit z-20 p-[20px] flex flex-col gap-5">
+          <div className="first-part  flex flex-col gap-4">
+            <h3 className="self-end">Created At 12 jan 2023 10:12 AM</h3>
+            <div className="flex justify-between items-center">
+              <h1 className="font-bold text-[#251B37] text-[1.5rem]">Create Text Cases - Project Name </h1>
+              <p className="text-[#D58D49] bg-[rgba(223,168,116,0.2)] rounded-lg px-4 py-1">Low </p>
+            </div>
+            <h2 className="text-[#FF375E] font-bold">To be Done in 12 jan 2023</h2>
+            <p className="text-[#787486]">Create test cases for old APIs in tasks module in pages 1,2,3 and 4  </p>
+            <div className="task-container grid grid-cols-3">
+              <div className="flex gap-2">
+                <input type="radio" className=""/>
+                <label htmlFor="">To Do</label>
+              </div>
+              <div className="flex gap-4">
+                <input type="radio" className=""/>
+                <label htmlFor="">in Progress</label>
+              </div>
+              <div className="flex gap-4">
+                <input type="radio" className=""/>
+                <label htmlFor="">Done</label>
+              </div>
+            </div>
+          </div>
+          <File />
+          <Comments />
+          <Teammates />
+        </div>
+        {/* End Side bar */}
         <HeaderMain2 />
         <Taps />
       </div>
