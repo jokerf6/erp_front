@@ -43,25 +43,19 @@ export default function Task(props: { setOverlay: any; isSmallWindow: any }) {
           })}
         </div>
         <div className="flex gap-5 mr-3">
-          <div
-            className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center"
-            style={{ maxWidth: "112px" }}
-          >
+          <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center max-w-[75px] sm:max-w-[112px]">
             <Icon icon={"ant-design:comment-outlined"} className=" text-xl" />
-            <span className="text-xs lg:text-sm flex gap-1 capitalize">
-              <span>150</span> comments
+            <span className="text-xs lg:text-sm flex gap-1 capitalize flex-wrap justify-center">
+              <span>15</span> <span className="hidden sm:block">comments</span>
             </span>
           </div>
-          <div
-            className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center"
-            style={{ maxWidth: "70px" }}
-          >
+          <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center max-w-[75px] sm:max-w-[80px]">
             <Icon
               icon={"solar:folder-with-files-linear"}
               className=" text-xl"
             />
-            <span className="text-xs lg:text-sm flex gap-1 capitalize">
-              <span>14</span> files
+            <span className="text-xs lg:text-sm flex gap-1 capitalize flex-wrap justify-center">
+              <span>14</span> <span className="hidden sm:block">files</span>
             </span>
           </div>
         </div>

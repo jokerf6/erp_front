@@ -5,6 +5,7 @@ import { Icon } from "@iconify/react";
 import categoryData from "@/utils/category.json";
 
 import Head from "next/head";
+import { useRouter } from 'next/router'
 
 // Components
 import HeaderMain2 from "@/components/default/headerMain2.component";
@@ -18,7 +19,12 @@ import TitleTask from "@/components/tasks/Slider/titleTask.component";
 // Layout
 import HomeLayout from '@/layouts/home'
 
-export default function ProjectManagement() {
+export default function MyTasks() {
+  const router = useRouter()
+  const path = router.pathname.split("/")
+  console.log(path[path.length - 1])
+
+
   const [overlay, setOverlay] = useState(false);
   const [taskDetails, setTaskDetails] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState("to do");
@@ -27,7 +33,6 @@ export default function ProjectManagement() {
   const [isSmallWindow, setIsSmallWindow] = React.useState(false);
   React.useEffect(() => {
     setIsSmallWindow(window.innerWidth < 1024 ? true : false);
-    console.log("Small window check")
   }, []);
 
   const categoryFilterList = categoryData.data.map((category) => {
@@ -64,7 +69,7 @@ export default function ProjectManagement() {
   const categoryElementsFiltered = categoryElements.filter(
     (element) => element.props.title === categoryFilter
   );
-  
+
   return (
     <>
     <Head>
@@ -148,4 +153,4 @@ export default function ProjectManagement() {
   )
 }
 
-ProjectManagement.PageLayout = HomeLayout
+MyTasks.PageLayout = HomeLayout

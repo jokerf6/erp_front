@@ -15,81 +15,34 @@ export default function VerifyEmailForm() {
   const notify = (error: string) => toast.error(error);
   const { id, setChange, loading, setLoading } = useContext(IndexContext);
 
+  const codeInputs = new Array(5).fill("").map((digit, index) => {
+    return (
+      <input
+        key={index}
+        type="text"
+        name={`input${index + 1}`}
+        id={`input${index + 1}`}
+        maxLength={1}
+        className=" bg-cgrey w-12 h-12 md:w-14 md:h-14 text-center  rounded-md  text-main placeholder-input focus:outline-none"
+        style={{ border: "1px solid #251B37" }}
+        placeholder={"0"}
+        onChange={(e) => {
+          const field = e.target.value.length;
+          if (field > 0) {
+            document.getElementById(`input${index + 2}`)?.focus();
+          }
+        }}
+      />
+    );
+  });
+
   return (
     <form
       onSubmit={handle}
-      className=" w-full flex flex-col gap-5 xl:items-strt lg:items-start items-center mt-14"
+      className="w-fit flex flex-col gap-14 mx-auto items-center mt-14"
     >
-      <div className=" flex gap-2 flex-row ">
-        <input
-          type="text"
-          name="input1"
-          maxLength={1}
-          autoFocus
-          className=" bg-cgrey p-2  w-14 text-center h-14 rounded-md  text-main placeholder-input focus:outline-none"
-          style={{ border: "1px solid #251B37" }}
-          placeholder={"0"}
-          onChange={(e) => {
-            const field = e.target.value.length;
-            if (field > 0) {
-              document.getElementById("text2")?.focus();
-            }
-          }}
-        />
-        <input
-          id="text2"
-          type="text"
-          name="input2"
-          maxLength={1}
-          className=" bg-cgrey p-2  w-14 text-center h-14 rounded-md  text-main placeholder-input focus:outline-none"
-          style={{ border: "1px solid #251B37" }}
-          placeholder={"0"}
-          onChange={(e) => {
-            const field = e.target.value.length;
-            if (field > 0) {
-              document.getElementById("text3")?.focus();
-            }
-          }}
-        />
-        <input
-          type="text"
-          id="text3"
-          name="input3"
-          maxLength={1}
-          className=" bg-cgrey p-2  w-14 text-center h-14 rounded-md  text-main placeholder-input focus:outline-none"
-          style={{ border: "1px solid #251B37" }}
-          placeholder={"0"}
-          onChange={(e) => {
-            const field = e.target.value.length;
-            if (field > 0) {
-              document.getElementById("text4")?.focus();
-            }
-          }}
-        />
-        <input
-          id="text4"
-          name="input4"
-          type="text"
-          maxLength={1}
-          className=" bg-cgrey p-2  w-14 text-center h-14 rounded-md  text-main placeholder-input focus:outline-none"
-          style={{ border: "1px solid #251B37" }}
-          placeholder={"0"}
-          onChange={(e) => {
-            const field = e.target.value.length;
-            if (field > 0) {
-              document.getElementById("text5")?.focus();
-            }
-          }}
-        />
-        <input
-          id="text5"
-          name="input5"
-          type="text"
-          maxLength={1}
-          className=" bg-cgrey p-2  w-14 text-center h-14 rounded-md  text-main placeholder-input focus:outline-none"
-          style={{ border: "1px solid #251B37" }}
-          placeholder={"0"}
-        />
+      <div className="flex gap-2 ">
+        {codeInputs}
       </div>
       {!loading ? (
         <button
