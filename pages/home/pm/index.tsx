@@ -90,16 +90,16 @@ export default function MyTasks() {
             <p className="text-[#787486]">Create test cases for old APIs in tasks module in pages 1,2,3 and 4  </p>
             <div className="task-container grid grid-cols-3">
               <div className="flex gap-2">
-                <input type="radio" className="" name = "status" />
-                <label htmlFor="">To Do</label>
+                <input type="radio" className="" name = "status" id="todo"/>
+                <label htmlFor="todo">To Do</label>
               </div>
               <div className="flex gap-4">
-                <input type="radio" className="" name = "status" />
-                <label htmlFor="">in Progress</label>
+                <input type="radio" className="" name = "status" id="inProgress" />
+                <label htmlFor="inProgress">in Progress</label>
               </div>
               <div className="flex gap-4">
-                <input type="radio" className="" name = "status" />
-                <label htmlFor="">Done</label>
+                <input type="radio" className="" name = "status" id="done"/>
+                <label htmlFor="done">Done</label>
               </div>
             </div>
           </div>
