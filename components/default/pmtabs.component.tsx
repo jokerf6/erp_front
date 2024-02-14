@@ -2,10 +2,8 @@ import React from "react";
 
 import Link from "next/link";
 
-export default function Taps(props: { pmCurrentTab: string }) {
-  const { pmCurrentTab } = props;
-
-  const tabs = ["my tasks", "all projects", "archived projects"];
+export default function PMTabs(props: { tabs: Array<string>,  pmCurrentTab: string }) {
+  const { tabs, pmCurrentTab } = props;
 
   const tabElements = tabs.map((tab) => {
     const tabRemovedSpaces = tab.replace(/ /g, "");
