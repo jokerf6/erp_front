@@ -22,10 +22,14 @@ export default function Header() {
   const [blockScroll, allowScroll] = useScrollBlock();
   const activeHomeTabStyle = "bg-selected text-selectedText font-bold";
 
+  const [erp, setErp] = useState(true);
+  const [community, setCommunity] = useState(false);
+
   useEffect(() => {
     setOpen(isSmallWindow ? false : true);
   }, [isSmallWindow]);
 
+  // Block/Allow Scrolling when Opening/Closing Menu
   useEffect(() => {
     if (open && isSmallWindow) {
       blockScroll();
@@ -41,7 +45,7 @@ export default function Header() {
           <Image
             src={"/images/lightlogo.png"}
             alt={"ERP-Logo"}
-            width={45}
+            width={60}
             height={30}
           />
         </Link>
@@ -102,20 +106,37 @@ export default function Header() {
             <>
               <hr />
               <div className="header--right small flex flex-col gap-2 overflow-y-scroll">
-                {/* TODO: Decide on "Search" Positon */}
-                {/* <div className="bg-white2 text-main flex gap-4 p-2 items-center rounded-sm">
-                  <Icon icon="teenyicons:search-outline" className="text-2xl" />
-                  <input
-                    type="text"
-                    name="search"
-                    id="search"
-                    placeholder="Search..."
-                    className="flex-1 outline-none bg-white2"
-                  />
-                </div> */}
-                {/* TODO: ERP - Community */}
-                <div className="bg-white2 text-main flex gap-2 p-2 items-center rounded-sm">
-                  ERP | Community
+                <div className=" flex text-white py-2 gap-2">
+                  <button
+                    onClick={() => {
+                      setErp(true);
+                      setCommunity(false);
+                    }}
+                    className={`flex items-center justify-center gap-2 text-xl flex-1 rounded-xl px-4 py-1 ${
+                      erp ? "bg-light" : ""
+                    }`}
+                  >
+                    <Icon
+                      icon={"icon-park-outline:system"}
+                      className="text-2xl"
+                    />
+                    ERP
+                  </button>
+                  <button
+                    onClick={() => {
+                      setErp(false);
+                      setCommunity(true);
+                    }}
+                    className={`flex items-center justify-center gap-2 text-xl flex-1 rounded-xl px-4 py-1 ${
+                      community ? "bg-light" : ""
+                    }`}
+                  >
+                    <Icon
+                      icon={"fluent:people-community-48-regular"}
+                      className=" text-2xl"
+                    />
+                    Community
+                  </button>
                 </div>
                 <div className="bg-white2 text-main flex gap-2 p-2 items-center rounded-sm">
                   <Icon icon="mi:notification" className="text-2xl" />
@@ -135,19 +156,56 @@ export default function Header() {
         </nav>
       </div>
       <div className="header--right flex items-center gap-4 text-white">
-        <Icon icon="teenyicons:search-outline" className="text-2xl" />
+        {!isSmallWindow && (
+          <div className=" flex text-white xl:text-md lg:text-md text-sm  py-1 px-1 rounded-3xl items-center bg-main3">
+            <button
+              onClick={() => {
+                setErp(true);
+                setCommunity(false);
+              }}
+              className={` px-5 w-fit ${erp ? "bg-light" : ""} rounded-xl`}
+            >
+              ERP
+            </button>
+            <button
+              onClick={() => {
+                setErp(false);
+                setCommunity(true);
+              }}
+              className={` px-5 w-fit ${
+                community ? "bg-light" : ""
+              } rounded-xl`}
+            >
+              Community
+            </button>
+          </div>
+        )}
+
+        <Icon
+          icon="teenyicons:search-outline"
+          className="text-2xl cursor-pointer box-content p-1"
+        />
         {!isSmallWindow && (
           <>
-            <Icon icon="mi:notification" className="text-2xl" />
-            <Icon icon="solar:settings-linear" className="text-2xl" />
-            <Icon icon={"icons8:todo-list"} className=" text-2xl " />
+            <Icon
+              icon="mi:notification"
+              className="text-2xl cursor-pointer box-content p-1"
+            />
+            <Icon
+              icon="solar:settings-linear"
+              className="text-2xl cursor-pointer box-content p-1"
+            />
+            <Icon
+              icon={"icons8:todo-list"}
+              className=" text-2xl cursor-pointer box-content p-1"
+            />
           </>
         )}
         <Image
           src="/images/Kerolos Fayez.jpg"
           alt="user--profile-image"
           width={40}
-          height={35}
+          height={40}
           className="rounded-full cursor-pointer"
         />
       </div>
