@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import { Icon } from "@iconify/react";
 
@@ -15,16 +15,15 @@ import EditTask from "@/components/editTask/editTask.component";
 // Layout
 import PMLayout from "@/layouts/pm";
 
+// Context
+import { HomeContext } from "@/layouts/home";
+
 export default function MyTasks() {
+  const { isSmallWindow } = useContext(HomeContext);
   const [overlay, setOverlay] = useState(false);
   const [taskDetails, setTaskDetails] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState("to do");
   const [open, setOpen] = React.useState(false);
-
-  const [isSmallWindow, setIsSmallWindow] = React.useState(false);
-  React.useEffect(() => {
-    setIsSmallWindow(window.innerWidth < 1024 ? true : false);
-  }, []);
 
   const categoryFilterList = categoryData.data.map((category) => {
     return (
@@ -68,7 +67,7 @@ export default function MyTasks() {
       </Head>
 
       {/* <EditTask /> */}
-      
+
       <div>
         <div className="flex justify-center mt-10">
           {isSmallWindow && (

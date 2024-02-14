@@ -1,7 +1,7 @@
 import React from "react";
 
 import Image from "next/image";
-import Footer from "@/components/default/footer.component";
+import IndexFooter from "@/components/default/indexfooter.component";
 
 export default function Right(props: { children: React.ReactNode }) {
   const { children } = props;
@@ -19,7 +19,7 @@ export default function Right(props: { children: React.ReactNode }) {
           {children}
         </div>
       </div>
-      <Footer />
+      <IndexFooter />
     </div>
   );
 }

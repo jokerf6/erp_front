@@ -1,19 +1,49 @@
-import React from "react";
+import React, { createContext, useState, useEffect } from "react";
 
 // Components
-import NavBar from "@/components/default/navbar.component";
+import Header from "@/components/default/header.component";
 import Footer from "@/components/default/footer.component";
+
+// Context
+const HomeContext = createContext({} as any);
+export { HomeContext };
 
 export default function HomeLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+
+  // Dynamic Window Width & Small Window Check
+  const [windowWidth, setWindowWidth] = useState(Number);
+  const [isSmallWindow, setIsSmallWindow] = useState(Boolean);
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth);
+
+    function windowTrackerWidth() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", windowTrackerWidth);
+
+    return function () {
+      window.removeEventListener("resize", windowTrackerWidth);
+    };
+  }, []);
+
+  useEffect(()=>{
+    setIsSmallWindow(windowWidth < 1024 ? true : false)
+  },[windowWidth])
+
+
+
   return (
-    <main className="flex flex-col min-h-screen">
-      <NavBar />
-      <div className="flex-1 relative">{children}</div>
-      <Footer />
-    </main>
+    <HomeContext.Provider value={{ windowWidth, isSmallWindow }}>
+      <main className="flex flex-col min-h-screen">
+        <Header />
+        <div className="flex-1 relative">{children}</div>
+        <Footer />
+      </main>
+    </HomeContext.Provider>
   );
 }
