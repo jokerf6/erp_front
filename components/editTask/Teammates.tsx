@@ -1,7 +1,6 @@
 import React from 'react'
-import { Icon } from "@iconify/react";
-import { BiExport } from "react-icons/bi";
-export default function Comments(){
+
+export default function Teammates() {
     return(
         <div className="file-content flex flex-col gap-4">
             <div className="part-one flex justify-between">
