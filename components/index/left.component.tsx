@@ -7,10 +7,10 @@ export default function Left() {
     >
       <img
         src="/images/loginPage.png"
-        className="-z-10 absolute top-0 left-0 w-full h-full object-cover"
+        className="-z-[1] absolute top-0 left-0 w-full h-full object-cover"
       />
       <div
-        className="-z-10 absolute top-0 left-0 bg-black bg-opacity-10 w-full h-full"
+        className="-z-[1] absolute top-0 left-0 bg-black bg-opacity-10 w-full h-full"
       ></div>
 
       <h1
