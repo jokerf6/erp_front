@@ -11,7 +11,7 @@ import Category from "@/components/tasks/category.component";
 import TaskChecked from "@/components/tasks/Slider/taskStatus.component";
 import TitleTask from "@/components/tasks/Slider/titleTask.component";
 import EditTask from "@/components/editTask/editTask.component";
-
+import Inputs from '@/components/editTask/Inputs'
 // Layout
 import PMLayout from "@/layouts/pm";
 
@@ -66,9 +66,8 @@ export default function MyTasks() {
       <Head>
         <title>ERP | Project Management</title>
       </Head>
-
       {/* <EditTask /> */}
-      
+      <Inputs />
       <div>
         <div className="flex justify-center mt-10">
           {isSmallWindow && (
