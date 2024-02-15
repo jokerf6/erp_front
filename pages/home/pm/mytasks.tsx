@@ -17,23 +17,24 @@ import PMLayout from "@/layouts/pm";
 
 // Context
 import { HomeContext } from "@/layouts/home";
+import ErpComm from "@/components/default/erpComm.component";
 
 export default function MyTasks() {
   const { isSmallWindow } = useContext(HomeContext);
   const [overlay, setOverlay] = useState(false);
   const [taskDetails, setTaskDetails] = useState(false);
   const [categoryFilter, setCategoryFilter] = useState("to do");
-  const [open, setOpen] = React.useState(false);
+  const [isOpen, setIsOpen] = React.useState(false);
 
   const categoryFilterList = categoryData.data.map((category) => {
     return (
       <div
         key={category.title}
         className="bg-white2 capitalize rounded-sm py-1"
-        style={{ boxShadow: "0 0 5px var(--color-main3)" }}
+        style={{ boxShadow: "0 0 2px var(--color-main3)" }}
         onClick={() => {
           setCategoryFilter(category.title);
-          setOpen(false);
+          setIsOpen(false);
         }}
       >
         {category.title}
@@ -41,7 +42,7 @@ export default function MyTasks() {
     );
   });
   function handleDropdown() {
-    setOpen(!open);
+    setIsOpen(!isOpen);
   }
 
   const categoryElements = categoryData.data.map((category) => {
@@ -79,14 +80,14 @@ export default function MyTasks() {
                 <span className="capitalize">{categoryFilter}</span>
                 <span className="absolute top-1/2 right-2 -translate-y-1">
                   <Icon
-                    icon={`bxs:${open ? "up-arrow" : "down-arrow"}`}
+                    icon={`bxs:${isOpen ? "up-arrow" : "down-arrow"}`}
                     width={10}
                   />
                 </span>
               </button>
-              {open && (
+              {isOpen && (
                 <div
-                  className="bg-white border-main3 flex flex-col gap-2 text-center w-full pt-2 absolute top-full z-20"
+                  className="bg-white border-main3 flex flex-col gap-2 text-center w-full py-2 px-1 absolute top-full z-[2] rounded-sm"
                   style={{ borderWidth: "1px" }}
                 >
                   {categoryFilterList}

@@ -11,32 +11,32 @@ import useScrollBlock from "@/functions/useScrollBlock";
 
 // Context
 import { HomeContext } from "@/layouts/home";
+import ErpComm from "./erpComm.component";
 
 export default function Header() {
-  const { windowWidth, isSmallWindow } = useContext(HomeContext);
+  const { isSmallWindow, blockScroll, allowScroll } = useContext(HomeContext);
+
   const router = useRouter();
   const path = router.pathname.split("/");
   const homeCurrentTab = path[2];
 
-  const [open, setOpen] = useState(false);
-  const [blockScroll, allowScroll] = useScrollBlock();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   const activeHomeTabStyle = "bg-selected text-selectedText font-bold";
 
-  const [erp, setErp] = useState(true);
-  const [community, setCommunity] = useState(false);
-
+  // Makes sure The Menu is always open in Big Screens
   useEffect(() => {
-    setOpen(isSmallWindow ? false : true);
+    setIsMenuOpen(isSmallWindow ? false : true);
   }, [isSmallWindow]);
 
   // Block/Allow Scrolling when Opening/Closing Menu
   useEffect(() => {
-    if (open && isSmallWindow) {
+    if (isMenuOpen && isSmallWindow) {
       blockScroll();
     } else {
       allowScroll();
     }
-  }, [open]);
+  }, [isMenuOpen]);
 
   return (
     <header className="bg-main flex px-5 py-3 lg:py-0 relative justify-between">
@@ -53,13 +53,13 @@ export default function Header() {
           <Icon
             icon="mingcute:menu-line"
             className="text-white text-2xl"
-            onClick={() => setOpen((prev) => !prev)}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
           />
         )}
         <nav
           className={`bg-[rgba(37,27,55,0.95)] ${
-            open ? "absolute" : "hidden"
-          } z-[11] top-full left-0 w-full flex flex-col p-2 gap-2 lg:p-0 lg:static lg:h-fit`}
+            isMenuOpen ? "absolute" : "hidden"
+          } z-[3] top-full left-0 w-full flex flex-col p-2 gap-2 lg:p-0 lg:static lg:h-fit`}
           style={{ height: isSmallWindow ? "calc(100vh - 51.2px)" : "" }}
         >
           <ul className="flex flex-col gap-3 lg:flex-row">
@@ -106,38 +106,7 @@ export default function Header() {
             <>
               <hr />
               <div className="header--right small flex flex-col gap-2 overflow-y-scroll">
-                <div className=" flex text-white py-2 gap-2">
-                  <button
-                    onClick={() => {
-                      setErp(true);
-                      setCommunity(false);
-                    }}
-                    className={`flex items-center justify-center gap-2 text-xl flex-1 rounded-xl px-4 py-1 ${
-                      erp ? "bg-light" : ""
-                    }`}
-                  >
-                    <Icon
-                      icon={"icon-park-outline:system"}
-                      className="text-2xl"
-                    />
-                    ERP
-                  </button>
-                  <button
-                    onClick={() => {
-                      setErp(false);
-                      setCommunity(true);
-                    }}
-                    className={`flex items-center justify-center gap-2 text-xl flex-1 rounded-xl px-4 py-1 ${
-                      community ? "bg-light" : ""
-                    }`}
-                  >
-                    <Icon
-                      icon={"fluent:people-community-48-regular"}
-                      className=" text-2xl"
-                    />
-                    Community
-                  </button>
-                </div>
+                <ErpComm />
                 <div className="bg-white2 text-main flex gap-2 p-2 items-center rounded-sm">
                   <Icon icon="mi:notification" className="text-2xl" />
                   <span>Notifications</span>
@@ -156,31 +125,7 @@ export default function Header() {
         </nav>
       </div>
       <div className="header--right flex items-center gap-4 text-white">
-        {!isSmallWindow && (
-          <div className=" flex text-white xl:text-md lg:text-md text-sm  py-1 px-1 rounded-3xl items-center bg-main3">
-            <button
-              onClick={() => {
-                setErp(true);
-                setCommunity(false);
-              }}
-              className={` px-5 w-fit ${erp ? "bg-light" : ""} rounded-xl`}
-            >
-              ERP
-            </button>
-            <button
-              onClick={() => {
-                setErp(false);
-                setCommunity(true);
-              }}
-              className={` px-5 w-fit ${
-                community ? "bg-light" : ""
-              } rounded-xl`}
-            >
-              Community
-            </button>
-          </div>
-        )}
-
+        {!isSmallWindow && <ErpComm />}
         <Icon
           icon="teenyicons:search-outline"
           className="text-2xl cursor-pointer box-content p-1"

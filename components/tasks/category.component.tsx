@@ -35,7 +35,7 @@ export default function Category(props: {
       }}
     >
       <div
-        className={`transition-all flex justify-between py-4 z-10 px-3 lg:px-6 ${
+        className={`transition-all flex justify-between py-4 z-[1] px-3 lg:px-6 ${
           isCategoryTopVisible
             ? "rounded-t-xl"
             : "sticky w-full top-0 shadow shadow-main rounded-b-lg"
