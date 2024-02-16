@@ -24,6 +24,7 @@ export default function MyTasks() {
   const [categories, setCategories] = React.useState(categoriesData.data);
   const [categoryFilter, setCategoryFilter] = useState(categories[0].title);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [editTask , setEditTask] = React.useState(false);
   // TODO: To be removed ?
   const [overlay, setOverlay] = useState(false);
   // TODO: To be removed ?
@@ -58,6 +59,7 @@ export default function MyTasks() {
         title={category.title}
         category={category}
         setPassInput={setPassInput}
+        setEditTask ={setEditTask}
       />
     );
   });
@@ -67,10 +69,11 @@ export default function MyTasks() {
 
   return (
     <>
+    {(passinput || editTask) && <div className=" absolute top-0 left-0 bg-black opacity-80 w-full h-full z-20"></div>}
       <Head>
         <title>ERP | Project Management</title>
       </Head>
-      {/* <EditTask /> */}
+      {editTask && <EditTask close={setEditTask}/>}
       {passinput && <Inputs close={setPassInput} />}
       <div>
         <div className="flex justify-center mt-10">

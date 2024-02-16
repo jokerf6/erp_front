@@ -4,12 +4,15 @@ import React from "react";
 import Files from "./Files";
 import Comments from "./Comments";
 import Teammates from "./Teammates";
-
-export default function EditTask() {
+import {Icon} from "@iconify/react"
+export default function EditTask(props:{close:any;}) {
   return (
     <div className="bg-[#FAFAFA] border-2 border-black absolute top-0 right-0 w-2/6 h-fit z-20 p-[20px] flex flex-col gap-5">
       <div className="first-part  flex flex-col gap-4">
-        <h3 className="self-end">Created At 12 jan 2023 10:12 AM</h3>
+        <div className="flex justify-between">
+        <h3 className="">Created At 12 jan 2023 10:12 AM</h3>
+        <Icon icon="gg:close-r" className='text-[1.5rem] cursor-pointer' onClick={()=>props.close(false)}/>
+        </div>
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-[#251B37] text-[1.5rem]">
             Create Text Cases - Project Name{" "}
