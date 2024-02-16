@@ -31,24 +31,33 @@ export default function HomeLayout({
     return function () {
       window.removeEventListener("resize", windowTrackerWidth);
     };
-  }, []);
+  }, [windowWidth]);
 
   // Update isSmallWindow
-  useEffect(()=>{
-    setIsSmallWindow(windowWidth < 1024 ? true : false)
-  },[windowWidth])
+  useEffect(() => {
+    setIsSmallWindow(windowWidth < 1024 ? true : false);
+  }, [windowWidth]);
 
-// Block/Allow Scrolling when Opening/Closing Menu
-useEffect(() => {
-  if (isOpen) {
-    blockScroll();
-  } else {
-    allowScroll();
-  }
-}, [isOpen]);
+  // Block/Allow Scrolling when Opening/Closing Menu
+  useEffect(() => {
+    if (isOpen) {
+      blockScroll();
+    } else {
+      allowScroll();
+    }
+  }, [isOpen]);
 
   return (
-    <HomeContext.Provider value={{ windowWidth, isSmallWindow, allowScroll, blockScroll, isOpen, setIsOpen }}>
+    <HomeContext.Provider
+      value={{
+        windowWidth,
+        isSmallWindow,
+        allowScroll,
+        blockScroll,
+        isOpen,
+        setIsOpen,
+      }}
+    >
       <main className="flex flex-col min-h-screen">
         <Header />
         <div className="flex-1 relative">{children}</div>

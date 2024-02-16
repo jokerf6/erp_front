@@ -22,7 +22,7 @@ export default function Task(props: { setOverlay: any; isSmallWindow: any }) {
 
       <div className="flex flex-col gap-2">
         <h1 className=" text-2xl text-main font-bold">Create test cases</h1>
-        <Images images={["d", "s"]} setOverlay={setOverlay} />
+        <Images images={["d", "a", "e", "b", "f"]} setOverlay={setOverlay} />
         <p className=" text-brief text-sm">
           Brainstorming brings team members' diverse experience into play.{" "}
         </p>
@@ -46,7 +46,7 @@ export default function Task(props: { setOverlay: any; isSmallWindow: any }) {
           <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center max-w-[75px] sm:max-w-[112px]">
             <Icon icon={"ant-design:comment-outlined"} className=" text-xl" />
             <span className="text-xs lg:text-sm flex gap-1 capitalize flex-wrap justify-center">
-              <span>15</span> <span className="hidden sm:block">comments</span>
+              <span>15</span> <span className="hidden xxs:block">comments</span>
             </span>
           </div>
           <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center max-w-[75px] sm:max-w-[80px]">
@@ -55,7 +55,7 @@ export default function Task(props: { setOverlay: any; isSmallWindow: any }) {
               className=" text-xl"
             />
             <span className="text-xs lg:text-sm flex gap-1 capitalize flex-wrap justify-center">
-              <span>14</span> <span className="hidden sm:block">files</span>
+              <span>14</span> <span className="hidden xxs:block">files</span>
             </span>
           </div>
         </div>

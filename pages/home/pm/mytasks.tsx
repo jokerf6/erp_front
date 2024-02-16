@@ -17,19 +17,21 @@ import PMLayout from "@/layouts/pm";
 
 // Context
 import { HomeContext } from "@/layouts/home";
-import ErpComm from "@/components/default/erpComm.component";
 
 export default function MyTasks() {
-  const { isSmallWindow } = useContext(HomeContext);
+  const { isSmallWindow, windowWidth } = useContext(HomeContext);
   const [overlay, setOverlay] = useState(false);
   const [taskDetails, setTaskDetails] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState("to do");
+  const [categoryFilter, setCategoryFilter] = useState(
+    categoryData.data[0].title
+  );
   const [isOpen, setIsOpen] = React.useState(false);
 
   const categoryFilterList = categoryData.data.map((category) => {
     return (
       <div
         key={category.title}
+        id={category.title}
         className="bg-white2 capitalize rounded-sm py-1"
         style={{ boxShadow: "0 0 2px var(--color-main3)" }}
         onClick={() => {
@@ -45,10 +47,11 @@ export default function MyTasks() {
     setIsOpen(!isOpen);
   }
 
-  const categoryElements = categoryData.data.map((category) => {
+  const categoryElements = categoryData.data.map((category, index) => {
+    const title = category.title;
     return (
       <Category
-        key={category.title}
+        key={index}
         setOverlay={setOverlay}
         title={category.title}
         tasksNumber={category.tasksNumber}

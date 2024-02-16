@@ -11,62 +11,51 @@ export default function Category(props: {
 }) {
   const { setOverlay, title, tasksNumber, accentColor, isSmallWindow } = props;
 
-  const categoryTop = React.useRef(null);
+  const categoryLine = React.useRef(null);
   const [isCategoryTopVisible, setIsCategoryTopVisible] = React.useState(true);
   React.useEffect(() => {
-    const observer = new IntersectionObserver(
+    const catgeoryLineobserver = new IntersectionObserver(
       (entries) => {
+        console.log(entries);
         const entry = entries[0];
         setIsCategoryTopVisible(entry.isIntersecting);
       },
       { rootMargin: "-25px 0px 0px 0px" }
     );
-    if (categoryTop.current) {
-      observer.observe(categoryTop.current);
+    if (categoryLine.current) {
+      catgeoryLineobserver.observe(categoryLine.current);
     }
   }, []);
-  const stickyCategoryTopStyle = isCategoryTopVisible ? "" : "text-main";
+  const stickyCategoryTopStyle = isCategoryTopVisible
+    ? "rounded-t-xl bg-[#e9e3d58a]"
+    : "sticky w-full top-0 shadow-[0_0_3px_0_rgba(0,0,0,0.5)] bg-[#e9e3d5]";
 
   return (
-    <div
-      className=" flex flex-col bg-cat rounded-xl h-fit flex-1"
-      style={{
-        minWidth: `${isSmallWindow ? "272px" : "400px"}`,
-      }}
-    >
+    <div className=" flex flex-col bg-[#e9e3d58a] rounded-xl h-fit flex-1 lg:min-w-[400px]">
       <div
-        className={`transition-all flex justify-between py-4 z-[1] px-3 lg:px-6 ${
-          isCategoryTopVisible
-            ? "rounded-t-xl"
-            : "sticky w-full top-0 shadow shadow-main rounded-b-lg"
-        }`}
-        style={{ backgroundColor: "#E9E3D5" }}
+        className={`transition-all  flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
       >
         <div className=" flex text-main items-center gap-2 cursor-default">
           <div
-            className={` w-2 h-2 rounded-full `}
+            className={` w-2 h-2 rounded-full`}
             style={{ backgroundColor: `${accentColor}` }}
           ></div>
-          <span
-            className={`text-lg font-semibold capitalize ${stickyCategoryTopStyle}`}
-          >
-            {title}
-          </span>
+          <span className={`text-lg font-semibold capitalize`}>{title}</span>
           <div
-            className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-cat ${stickyCategoryTopStyle}`}
+            className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-[#E0E0E0] text-[#625F6D] font-medium `}
           >
             {tasksNumber}
           </div>
         </div>
         <div
-          className={`w-6 h-6 rounded-lg bg-cat flex items-center justify-center ${stickyCategoryTopStyle} cursor-pointer`}
+          className={`w-6 h-6 rounded-lg bg-cat flex items-center justify-center cursor-pointer`}
           style={{ backgroundColor: "rgba(37, 27, 55, 0.2)" }}
         >
           <Icon icon={"lets-icons:add-round"} />
         </div>
       </div>
       <hr
-        ref={categoryTop}
+        ref={categoryLine}
         className={`border `}
         style={{ borderColor: `${accentColor}` }}
       />

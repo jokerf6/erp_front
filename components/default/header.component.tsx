@@ -6,9 +6,6 @@ import { useRouter } from "next/router";
 
 import { Icon } from "@iconify/react";
 
-// Functions
-import useScrollBlock from "@/functions/useScrollBlock";
-
 // Context
 import { HomeContext } from "@/layouts/home";
 import ErpComm from "./erpComm.component";
@@ -57,10 +54,9 @@ export default function Header() {
           />
         )}
         <nav
-          className={`bg-[rgba(37,27,55,0.95)] ${
+          className={`bg-[rgba(37,27,55,0.95)] h-[100vh] ${
             isMenuOpen ? "absolute" : "hidden"
           } z-[3] top-full left-0 w-full flex flex-col p-2 gap-2 lg:p-0 lg:static lg:h-fit`}
-          style={{ height: isSmallWindow ? "calc(100vh - 51.2px)" : "" }}
         >
           <ul className="flex flex-col gap-3 lg:flex-row">
             <Link href={"/home/dashboard"}>
@@ -105,7 +101,7 @@ export default function Header() {
           {isSmallWindow && (
             <>
               <hr />
-              <div className="header--right small flex flex-col gap-2 overflow-y-scroll">
+              <div className="header--right small flex flex-col gap-2 overflow-y-auto">
                 <ErpComm />
                 <div className="bg-white2 text-main flex gap-2 p-2 items-center rounded-sm">
                   <Icon icon="mi:notification" className="text-2xl" />
