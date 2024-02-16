@@ -5,8 +5,8 @@ import { Icon } from "@iconify/react";
 // Components
 import Images from "./images";
 
-export default function Task(props: { taskID: any; task: any; categoryID: any }) {
-  const { taskID, task, categoryID } = props;
+export default function Task(props: { taskID: any; task: any; categoryID: any; setEditTask:any }) {
+  const { taskID, task, categoryID, setEditTask } = props;
   const taskMembers: any[] = task.members;
   const defaultImage = "/images/default pic.svg";
 
@@ -19,6 +19,7 @@ export default function Task(props: { taskID: any; task: any; categoryID: any })
         <Icon
           icon={"tabler:dots"}
           className=" text-main text-2xl cursor-pointer"
+          onClick={()=>props.setEditTask(true)}
         />
       </div>
 

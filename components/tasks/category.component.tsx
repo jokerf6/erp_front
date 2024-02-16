@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 // Components
 import Task from "./task.component";
 
-export default function Category(props: {title: any; category: any; setPassInput: any;} ) {
+export default function Category(props: { title: any; category: any; setPassInput: any; setEditTask:any; }) {
   const { category } = props;
   const categoryID = category.id
   const tasksData: any[] = category.tasks
@@ -45,13 +45,13 @@ export default function Category(props: {title: any; category: any; setPassInput
             {category.tasks.length}
           </div>
         </div>
-        <div
+        {category.title === "to do" && <div
           className={`w-6 h-6 rounded-lg bg-cat flex items-center justify-center cursor-pointer`}
           style={{ backgroundColor: "rgba(37, 27, 55, 0.2)" }}
-          onClick={()=> props.setPassInput(true)}
+          onClick={() => props.setPassInput(true)}
         >
           <Icon icon={"lets-icons:add-round"} />
-        </div>
+        </div>}
       </div>
       <hr
         ref={categoryLine}
@@ -66,6 +66,7 @@ export default function Category(props: {title: any; category: any; setPassInput
               taskID={task.id}
               task={task}
               categoryID={categoryID}
+              setEditTask={props.setEditTask}
             />
           );
         })}

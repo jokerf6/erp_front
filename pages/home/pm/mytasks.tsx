@@ -32,6 +32,7 @@ export default function MyTasks() {
   const [categories, setCategories] = React.useState(categoriesData.data);
   const [categoryFilter, setCategoryFilter] = useState(categories[0].title);
   const [isCategoryFilterOpen, setIsCategoryFilterOpen] = React.useState(false);
+  const [editTask , setEditTask] = React.useState(false);
   const [passinput, setPassInput] = useState(false);
 
   const [imageSliderOverlay, setImageSliderOverlay] = useState(false);
@@ -81,6 +82,7 @@ export default function MyTasks() {
         title={category.title}
         category={category}
         setPassInput={setPassInput}
+        setEditTask ={setEditTask}
       />
     );
   });
@@ -90,10 +92,11 @@ export default function MyTasks() {
 
   return (
     <MyTasksContext.Provider value={{ handleImageSliderOverlay, categories }}>
+    {(passinput || editTask) && <div className=" absolute top-0 left-0 bg-black opacity-80 w-full h-full z-20"></div>}
       <Head>
         <title>ERP | Project Management</title>
       </Head>
-      {/* <EditTask /> */}
+      {editTask && <EditTask close={setEditTask}/>}
       {passinput && <Inputs close={setPassInput} />}
       <div>
         <div className="flex justify-center mt-10">
