@@ -1,19 +1,21 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import Modal from "../default/modal.component";
 
-export default function Images(props: { images: string[]; setOverlay: any }) {
-  const { images, setOverlay } = props;
+export default function Images(props: { images: string[]; id: any }) {
+  const { images, id } = props;
 
   const imageContainerRef = useRef<any>();
   const imageRefs = useRef<any>([]);
   const [lastVisibleImageIndex, setLastVisibleImageIndex] = useState(0);
   const [count, setCount] = useState(0);
 
+  // Update More Images Overlay
   useEffect(() => {
     setCount(0);
     setLastVisibleImageIndex(0);
 
-    images.map((_, index) => {
+    images.map((image, index) => {
       if (
         imageRefs.current[index].offsetTop ===
         imageContainerRef.current.offsetTop
@@ -23,7 +25,6 @@ export default function Images(props: { images: string[]; setOverlay: any }) {
         setCount((prev: number) => prev + 1);
       }
     });
-    console.log("images Effect");
   }, [imageContainerRef.current?.offsetWidth, images]);
 
   return (
@@ -35,12 +36,12 @@ export default function Images(props: { images: string[]; setOverlay: any }) {
         {images.map((image, index) => {
           return (
             <div
-              key={image}
+              key={`${id}-${index}`}
               ref={(element) => (imageRefs.current[index] = element)}
               className="relative flex-1 basis-[100px] xxs:basis-[130px] xs:basis-[150px] h-full"
             >
               <Image
-                src="/images/loginPage.jpg"
+                src={image}
                 className="w-full h-full rounded-md object-cover"
                 width={0}
                 height={0}
@@ -48,7 +49,10 @@ export default function Images(props: { images: string[]; setOverlay: any }) {
                 alt="image"
               />
               {lastVisibleImageIndex == index && count && (
-                <div className="bg-black/70 absolute top-0 left-0 w-full h-full flex justify-center items-center rounded-md cursor-pointer">
+                <div
+                  className="bg-black/70 absolute top-0 left-0 w-full h-full flex justify-center items-center rounded-md cursor-pointer"
+                  // onClick={() => setIsOpen(true)}
+                >
                   <span className="text-white2 text-2xl font-medium">
                     +{count}
                   </span>
@@ -58,6 +62,13 @@ export default function Images(props: { images: string[]; setOverlay: any }) {
           );
         })}
       </div>
+      {/* {isOpen && (
+        <Modal>
+          <button className="bg-red-500" onClick={(e) => {setIsOpen(false); }}>Close Modal</button>
+          <div>Images Slider</div>
+          <div>All Images Container</div>
+        </Modal>
+      )} */}
     </>
   );
 }

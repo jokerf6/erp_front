@@ -2,7 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { Icon } from "@iconify/react";
 
-import categoryData from "@/utils/category.json";
+import categoriesData from "@/utils/category.json";
 
 import Head from "next/head";
 
@@ -11,7 +11,7 @@ import Category from "@/components/tasks/category.component";
 import TaskChecked from "@/components/tasks/Slider/taskStatus.component";
 import TitleTask from "@/components/tasks/Slider/titleTask.component";
 import EditTask from "@/components/editTask/editTask.component";
-import Inputs from '@/components/editTask/Inputs'
+import Inputs from "@/components/editTask/Inputs";
 // Layout
 import PMLayout from "@/layouts/pm";
 
@@ -20,14 +20,18 @@ import { HomeContext } from "@/layouts/home";
 
 export default function MyTasks() {
   const { isSmallWindow, windowWidth } = useContext(HomeContext);
-  const [overlay, setOverlay] = useState(false);
-  const [taskDetails, setTaskDetails] = useState(false);
-  const [categoryFilter, setCategoryFilter] = useState(
-    categoryData.data[0].title
-  );
+
+  const [categories, setCategories] = React.useState(categoriesData.data);
+  const [categoryFilter, setCategoryFilter] = useState(categories[0].title);
   const [isOpen, setIsOpen] = React.useState(false);
-  const [passinput, setPassInput] = React.useState(false);
-  const categoryFilterList = categoryData.data.map((category) => {
+  // TODO: To be removed ?
+  const [overlay, setOverlay] = useState(false);
+  // TODO: To be removed ?
+  const [taskDetails, setTaskDetails] = useState(false);
+
+  const [passinput, setPassInput] = useState(false);
+
+  const categoryFilterList = categories.map((category) => {
     return (
       <div
         key={category.title}
@@ -47,17 +51,13 @@ export default function MyTasks() {
     setIsOpen(!isOpen);
   }
 
-  const categoryElements = categoryData.data.map((category, index) => {
-    const title = category.title;
+  const categoryElements = categories.map((category) => {
     return (
       <Category
-        key={index}
-        setOverlay={setOverlay}
+        key={category.id}
         title={category.title}
-        tasksNumber={category.tasksNumber}
-        accentColor={category.accentColor}
-        isSmallWindow={isSmallWindow}
-        setPassInput = {setPassInput}
+        category={category}
+        setPassInput={setPassInput}
       />
     );
   });
@@ -71,7 +71,7 @@ export default function MyTasks() {
         <title>ERP | Project Management</title>
       </Head>
       {/* <EditTask /> */}
-      {passinput && <Inputs  close = {setPassInput}/> }
+      {passinput && <Inputs close={setPassInput} />}
       <div>
         <div className="flex justify-center mt-10">
           {isSmallWindow && (
@@ -81,7 +81,7 @@ export default function MyTasks() {
                 onClick={handleDropdown}
               >
                 <span className="capitalize">{categoryFilter}</span>
-                <span className="absolute top-1/2 right-2 -translate-y-1">
+                <span className="absolute top-1/2 right-4 -translate-y-1">
                   <Icon
                     icon={`bxs:${isOpen ? "up-arrow" : "down-arrow"}`}
                     width={10}
@@ -104,7 +104,7 @@ export default function MyTasks() {
           {isSmallWindow ? categoryElementsFiltered : categoryElements}
         </div>
       </div>
-      {overlay && (
+      {/* {overlay && (
         <div className=" absolute w-screen h-screen flex items-center justify-center top-0 left-0 bg-black bg-opacity-50">
           <div className=" bg-white p-4 w-1/2">
             <div className=" w-full flex justify-between items-center">
@@ -140,7 +140,7 @@ export default function MyTasks() {
           <TitleTask />
           <TaskChecked />
         </div>
-      )}
+      )} */}
     </>
   );
 }

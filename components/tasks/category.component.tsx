@@ -1,23 +1,19 @@
-import { Icon } from "@iconify/react";
 import React from "react";
+
+import { Icon } from "@iconify/react";
+
+// Components
 import Task from "./task.component";
 
-export default function Category(props: {
-  setOverlay: any;
-  title: string;
-  tasksNumber: number;
-  accentColor: string;
-  isSmallWindow: boolean;
-  setPassInput: any;
-}) {
-  const { setOverlay, title, tasksNumber, accentColor, isSmallWindow } = props;
+export default function Category(props: {title: any; category: any; setPassInput: any;} ) {
+  const { category } = props;
+  const tasksData: any[] = category.tasks
 
   const categoryLine = React.useRef(null);
   const [isCategoryTopVisible, setIsCategoryTopVisible] = React.useState(true);
   React.useEffect(() => {
     const catgeoryLineobserver = new IntersectionObserver(
       (entries) => {
-        console.log(entries);
         const entry = entries[0];
         setIsCategoryTopVisible(entry.isIntersecting);
       },
@@ -32,20 +28,20 @@ export default function Category(props: {
     : "sticky w-full top-0 shadow-[0_0_3px_0_rgba(0,0,0,0.5)] bg-[#e9e3d5]";
 
   return (
-    <div className=" flex flex-col bg-[#e9e3d58a] rounded-xl h-fit flex-1 lg:min-w-[400px]">
+    <div className=" flex flex-col bg-[#e9e3d58a] rounded-xl min-h-full flex-1 lg:min-w-[400px]">
       <div
         className={`transition-all  flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
       >
         <div className=" flex text-main items-center gap-2 cursor-default">
           <div
             className={` w-2 h-2 rounded-full`}
-            style={{ backgroundColor: `${accentColor}` }}
+            style={{ backgroundColor: `${category.accentColor}` }}
           ></div>
-          <span className={`text-lg font-semibold capitalize`}>{title}</span>
+          <span className={`text-lg font-semibold capitalize`}>{category.title}</span>
           <div
             className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-[#E0E0E0] text-[#625F6D] font-medium `}
           >
-            {tasksNumber}
+            {category.tasks.length}
           </div>
         </div>
         <div
@@ -59,13 +55,18 @@ export default function Category(props: {
       <hr
         ref={categoryLine}
         className={`border `}
-        style={{ borderColor: `${accentColor}` }}
+        style={{ borderColor: `${category.accentColor}` }}
       />
-      <div className="flex overflow-y-auto flex-col gap-3 py-6 px-3 lg:px-6">
-        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
-        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
-        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
-        <Task setOverlay={setOverlay} isSmallWindow={isSmallWindow} />
+      <div className="flex flex-col gap-3 py-6 px-3 lg:px-6">
+        {tasksData.map((task) => {
+          return (
+            <Task
+              key={task.id}
+              id={task.id}
+              task={task}
+            />
+          );
+        })}
       </div>
     </div>
   );

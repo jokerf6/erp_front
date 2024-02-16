@@ -6,12 +6,15 @@ import { useRouter } from "next/router";
 
 import { Icon } from "@iconify/react";
 
+import useScrollBlock from "@/functions/useScrollBlock";
+
 // Context
 import { HomeContext } from "@/layouts/home";
 import ErpComm from "./erpComm.component";
 
 export default function Header() {
-  const { isSmallWindow, blockScroll, allowScroll } = useContext(HomeContext);
+  const { isSmallWindow } = useContext(HomeContext);
+  const [blockScroll, allowScroll] = useScrollBlock();
 
   const router = useRouter();
   const path = router.pathname.split("/");
