@@ -5,8 +5,8 @@ import { Icon } from "@iconify/react";
 // Components
 import Images from "./images";
 
-export default function Task(props: { id: any; task: any }) {
-  const { id, task } = props;
+export default function Task(props: { taskID: any; task: any; categoryID: any }) {
+  const { taskID, task, categoryID } = props;
   const taskMembers: any[] = task.members;
   const defaultImage = "/images/default pic.svg";
 
@@ -24,9 +24,9 @@ export default function Task(props: { id: any; task: any }) {
 
       <div className="flex flex-col gap-2">
         <h1 className=" text-2xl text-main font-bold">{task.name}</h1>
-        {task.images && <Images images={task.images} id={id} />}
+        {task.images && <Images images={task.images} taskID={taskID} categoryID={categoryID} />}
         {!task.images && task.files !== 0 && (
-          <Images images={[`${defaultImage}`]} id={id} />
+          <Images images={[`${defaultImage}`]} taskID={taskID} categoryID={categoryID} />
         )}
         <p className=" text-brief text-sm">
           Brainstorming brings team members' diverse experience into play.

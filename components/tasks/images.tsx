@@ -1,9 +1,17 @@
-import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
-import Modal from "../default/modal.component";
+import { useContext, useEffect, useRef, useState } from "react";
 
-export default function Images(props: { images: string[]; id: any }) {
-  const { images, id } = props;
+import Image from "next/image";
+
+// Context
+import { MyTasksContext } from "@/pages/home/pm/mytasks";
+
+export default function Images(props: {
+  images: string[];
+  taskID: any;
+  categoryID: any;
+}) {
+  const { images, taskID, categoryID } = props;
+  const { handleImageSliderOverlay } = useContext(MyTasksContext);
 
   const imageContainerRef = useRef<any>();
   const imageRefs = useRef<any>([]);
@@ -15,7 +23,7 @@ export default function Images(props: { images: string[]; id: any }) {
     setCount(0);
     setLastVisibleImageIndex(0);
 
-    images.map((image, index) => {
+    images.map((_, index) => {
       if (
         imageRefs.current[index].offsetTop ===
         imageContainerRef.current.offsetTop
@@ -36,23 +44,21 @@ export default function Images(props: { images: string[]; id: any }) {
         {images.map((image, index) => {
           return (
             <div
-              key={`${id}-${index}`}
+              key={`${taskID}-${index}`}
               ref={(element) => (imageRefs.current[index] = element)}
-              className="relative flex-1 basis-[100px] xxs:basis-[130px] xs:basis-[150px] h-full"
+              className="relative flex-1 basis-[100px] xxs:basis-[130px] xs:basis-[150px] h-full cursor-pointer"
+              onClick={() => handleImageSliderOverlay(categoryID, taskID, index)}
             >
               <Image
                 src={image}
-                className="w-full h-full rounded-md object-cover"
+                alt="image"
                 width={0}
                 height={0}
                 sizes="100vw"
-                alt="image"
+                className="w-full h-full rounded-md object-cover"
               />
               {lastVisibleImageIndex == index && count && (
-                <div
-                  className="bg-black/70 absolute top-0 left-0 w-full h-full flex justify-center items-center rounded-md cursor-pointer"
-                  // onClick={() => setIsOpen(true)}
-                >
+                <div className="bg-black/70 absolute top-0 left-0 w-full h-full flex justify-center items-center rounded-md cursor-pointer">
                   <span className="text-white2 text-2xl font-medium">
                     +{count}
                   </span>
@@ -62,13 +68,6 @@ export default function Images(props: { images: string[]; id: any }) {
           );
         })}
       </div>
-      {/* {isOpen && (
-        <Modal>
-          <button className="bg-red-500" onClick={(e) => {setIsOpen(false); }}>Close Modal</button>
-          <div>Images Slider</div>
-          <div>All Images Container</div>
-        </Modal>
-      )} */}
     </>
   );
 }

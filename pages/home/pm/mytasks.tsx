@@ -1,10 +1,11 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, createContext } from "react";
 
 import { Icon } from "@iconify/react";
 
 import categoriesData from "@/utils/category.json";
 
 import Head from "next/head";
+import Image from "next/image";
 
 // Components
 import Category from "@/components/tasks/category.component";
@@ -12,24 +13,46 @@ import TaskChecked from "@/components/tasks/Slider/taskStatus.component";
 import TitleTask from "@/components/tasks/Slider/titleTask.component";
 import EditTask from "@/components/editTask/editTask.component";
 import Inputs from "@/components/editTask/Inputs";
+import ImageSlider from "@/components/tasks/imageSlider.component";
+
+// Hook
+import useScrollBlockHook from "@/hooks/useScrollBlock";
+
 // Layout
 import PMLayout from "@/layouts/pm";
 
 // Context
 import { HomeContext } from "@/layouts/home";
+const MyTasksContext = createContext({} as any);
+export { MyTasksContext };
 
 export default function MyTasks() {
-  const { isSmallWindow, windowWidth } = useContext(HomeContext);
+  const { isSmallWindow } = useContext(HomeContext);
 
   const [categories, setCategories] = React.useState(categoriesData.data);
   const [categoryFilter, setCategoryFilter] = useState(categories[0].title);
-  const [isOpen, setIsOpen] = React.useState(false);
-  // TODO: To be removed ?
-  const [overlay, setOverlay] = useState(false);
-  // TODO: To be removed ?
-  const [taskDetails, setTaskDetails] = useState(false);
-
+  const [isCategoryFilterOpen, setIsCategoryFilterOpen] = React.useState(false);
   const [passinput, setPassInput] = useState(false);
+
+  const [imageSliderOverlay, setImageSliderOverlay] = useState(false);
+  const [imageSlider, setImageSlider] = useState([] as any);
+  const [selectedSliderImage, setSelectedSliderImage] = useState(Number);
+
+  useScrollBlockHook(imageSliderOverlay);
+
+  function handleImageSliderOverlay(
+    categoryID: any,
+    taskID: any,
+    imageID: any
+  ) {
+    categories[categoryID - 1].tasks.map((task) => {
+      if (task.id === taskID) {
+        setImageSlider(task.images);
+        setSelectedSliderImage(imageID);
+      }
+    });
+    setImageSliderOverlay(true);
+  }
 
   const categoryFilterList = categories.map((category) => {
     return (
@@ -40,7 +63,7 @@ export default function MyTasks() {
         style={{ boxShadow: "0 0 2px var(--color-main3)" }}
         onClick={() => {
           setCategoryFilter(category.title);
-          setIsOpen(false);
+          setIsCategoryFilterOpen(false);
         }}
       >
         {category.title}
@@ -48,7 +71,7 @@ export default function MyTasks() {
     );
   });
   function handleDropdown() {
-    setIsOpen(!isOpen);
+    setIsCategoryFilterOpen(!isCategoryFilterOpen);
   }
 
   const categoryElements = categories.map((category) => {
@@ -66,7 +89,7 @@ export default function MyTasks() {
   );
 
   return (
-    <>
+    <MyTasksContext.Provider value={{ handleImageSliderOverlay, categories }}>
       <Head>
         <title>ERP | Project Management</title>
       </Head>
@@ -83,12 +106,12 @@ export default function MyTasks() {
                 <span className="capitalize">{categoryFilter}</span>
                 <span className="absolute top-1/2 right-4 -translate-y-1">
                   <Icon
-                    icon={`bxs:${isOpen ? "up-arrow" : "down-arrow"}`}
+                    icon={`bxs:${isCategoryFilterOpen ? "up-arrow" : "down-arrow"}`}
                     width={10}
                   />
                 </span>
               </button>
-              {isOpen && (
+              {isCategoryFilterOpen && (
                 <div
                   className="bg-white border-main3 flex flex-col gap-2 text-center w-full py-2 px-1 absolute top-full z-[2] rounded-sm"
                   style={{ borderWidth: "1px" }}
@@ -104,44 +127,15 @@ export default function MyTasks() {
           {isSmallWindow ? categoryElementsFiltered : categoryElements}
         </div>
       </div>
-      {/* {overlay && (
-        <div className=" absolute w-screen h-screen flex items-center justify-center top-0 left-0 bg-black bg-opacity-50">
-          <div className=" bg-white p-4 w-1/2">
-            <div className=" w-full flex justify-between items-center">
-              <span className=" text-main">Task Images</span>{" "}
-              <span
-                className=" text-red-500 cursor-pointer"
-                onClick={() => setOverlay(false)}
-              >
-                x
-              </span>
-            </div>
-            <div className=" flex gap-2 items-center">
-              <Icon
-                icon={"ep:arrow-left-bold"}
-                className=" text-2xl cursor-pointer"
-              />
-
-              <img
-                src="/images/loginPage.png"
-                className=" w-full"
-                style={{ height: "50vh" }}
-              />
-              <Icon
-                icon={"ep:arrow-right-bold"}
-                className=" text-2xl cursor-pointer"
-              />
-            </div>
-          </div>
-        </div>
+      {imageSliderOverlay && (
+        <ImageSlider
+          setImageSliderOverlay={setImageSliderOverlay}
+          imageSlider={imageSlider}
+          selectedSliderImage={selectedSliderImage}
+          setSelectedSliderImage={setSelectedSliderImage}
+        />
       )}
-      {taskDetails && (
-        <div className=" absolute w-screen h-screen flex items-center justify-center top-0 left-0 bg-black bg-opacity-50">
-          <TitleTask />
-          <TaskChecked />
-        </div>
-      )} */}
-    </>
+    </MyTasksContext.Provider>
   );
 }
 

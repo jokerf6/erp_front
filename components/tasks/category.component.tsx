@@ -7,6 +7,7 @@ import Task from "./task.component";
 
 export default function Category(props: {title: any; category: any; setPassInput: any;} ) {
   const { category } = props;
+  const categoryID = category.id
   const tasksData: any[] = category.tasks
 
   const categoryLine = React.useRef(null);
@@ -62,8 +63,9 @@ export default function Category(props: {title: any; category: any; setPassInput
           return (
             <Task
               key={task.id}
-              id={task.id}
+              taskID={task.id}
               task={task}
+              categoryID={categoryID}
             />
           );
         })}
