@@ -26,7 +26,7 @@ export default function MyTasks() {
     categoryData.data[0].title
   );
   const [isOpen, setIsOpen] = React.useState(false);
-
+  const [passinput, setPassInput] = React.useState(false);
   const categoryFilterList = categoryData.data.map((category) => {
     return (
       <div
@@ -57,6 +57,7 @@ export default function MyTasks() {
         tasksNumber={category.tasksNumber}
         accentColor={category.accentColor}
         isSmallWindow={isSmallWindow}
+        setPassInput = {setPassInput}
       />
     );
   });
@@ -70,7 +71,7 @@ export default function MyTasks() {
         <title>ERP | Project Management</title>
       </Head>
       {/* <EditTask /> */}
-      <Inputs />
+      {passinput && <Inputs  close = {setPassInput}/> }
       <div>
         <div className="flex justify-center mt-10">
           {isSmallWindow && (

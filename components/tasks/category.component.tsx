@@ -8,6 +8,7 @@ export default function Category(props: {
   tasksNumber: number;
   accentColor: string;
   isSmallWindow: boolean;
+  setPassInput: any;
 }) {
   const { setOverlay, title, tasksNumber, accentColor, isSmallWindow } = props;
 
@@ -50,6 +51,7 @@ export default function Category(props: {
         <div
           className={`w-6 h-6 rounded-lg bg-cat flex items-center justify-center cursor-pointer`}
           style={{ backgroundColor: "rgba(37, 27, 55, 0.2)" }}
+          onClick={()=> props.setPassInput(true)}
         >
           <Icon icon={"lets-icons:add-round"} />
         </div>
