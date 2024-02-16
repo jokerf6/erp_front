@@ -9,11 +9,11 @@ import Image from "next/image";
 
 // Components
 import Category from "@/components/tasks/category.component";
-import TaskChecked from "@/components/tasks/Slider/taskStatus.component";
-import TitleTask from "@/components/tasks/Slider/titleTask.component";
-import EditTask from "@/components/editTask/editTask.component";
-import Inputs from "@/components/editTask/Inputs";
+import EditTask from "@/components/tasks/editTask/editTask.component";
+import AddTask from "@/components/tasks/addTask.component";
 import ImageSlider from "@/components/tasks/imageSlider.component";
+import TitleTask from "@/components/tasks/Slider/titleTask.component";
+import TaskChecked from "@/components/tasks/Slider/taskStatus.component";
 
 // Hook
 import useScrollBlockHook from "@/hooks/useScrollBlock";
@@ -32,14 +32,16 @@ export default function MyTasks() {
   const [categories, setCategories] = React.useState(categoriesData.data);
   const [categoryFilter, setCategoryFilter] = useState(categories[0].title);
   const [isCategoryFilterOpen, setIsCategoryFilterOpen] = React.useState(false);
-  const [editTask , setEditTask] = React.useState(false);
-  const [passinput, setPassInput] = useState(false);
 
+  const [editTaskOverlay, setEditTaskOverlay] = React.useState(false);
+  const [addTaskOverlay, setAddTaskOverlay] = useState(false);
   const [imageSliderOverlay, setImageSliderOverlay] = useState(false);
+  useScrollBlockHook(editTaskOverlay);
+  useScrollBlockHook(addTaskOverlay);
+  useScrollBlockHook(imageSliderOverlay);
+
   const [imageSlider, setImageSlider] = useState([] as any);
   const [selectedSliderImage, setSelectedSliderImage] = useState(Number);
-
-  useScrollBlockHook(imageSliderOverlay);
 
   function handleImageSliderOverlay(
     categoryID: any,
@@ -81,8 +83,6 @@ export default function MyTasks() {
         key={category.id}
         title={category.title}
         category={category}
-        setPassInput={setPassInput}
-        setEditTask ={setEditTask}
       />
     );
   });
@@ -91,13 +91,12 @@ export default function MyTasks() {
   );
 
   return (
-    <MyTasksContext.Provider value={{ handleImageSliderOverlay, categories }}>
-    {(passinput || editTask) && <div className=" absolute top-0 left-0 bg-black opacity-80 w-full h-full z-20"></div>}
+    <MyTasksContext.Provider value={{ handleImageSliderOverlay, categories, setAddTaskOverlay, setEditTaskOverlay }}>
+      {/* {(passinput || editTaskOverlay) && <div className=" absolute top-0 left-0 bg-black opacity-80 w-full h-full z-20"></div>} */}
       <Head>
         <title>ERP | Project Management</title>
       </Head>
-      {editTask && <EditTask close={setEditTask}/>}
-      {passinput && <Inputs close={setPassInput} />}
+
       <div>
         <div className="flex justify-center mt-10">
           {isSmallWindow && (
@@ -109,7 +108,9 @@ export default function MyTasks() {
                 <span className="capitalize">{categoryFilter}</span>
                 <span className="absolute top-1/2 right-4 -translate-y-1">
                   <Icon
-                    icon={`bxs:${isCategoryFilterOpen ? "up-arrow" : "down-arrow"}`}
+                    icon={`bxs:${
+                      isCategoryFilterOpen ? "up-arrow" : "down-arrow"
+                    }`}
                     width={10}
                   />
                 </span>
@@ -130,6 +131,7 @@ export default function MyTasks() {
           {isSmallWindow ? categoryElementsFiltered : categoryElements}
         </div>
       </div>
+
       {imageSliderOverlay && (
         <ImageSlider
           setImageSliderOverlay={setImageSliderOverlay}
@@ -138,6 +140,10 @@ export default function MyTasks() {
           setSelectedSliderImage={setSelectedSliderImage}
         />
       )}
+
+      {editTaskOverlay && <EditTask close={setEditTaskOverlay} />}
+
+      {addTaskOverlay && <AddTask close={setAddTaskOverlay} />}
     </MyTasksContext.Provider>
   );
 }

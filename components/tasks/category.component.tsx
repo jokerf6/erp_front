@@ -1,14 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Icon } from "@iconify/react";
 
 // Components
 import Task from "./task.component";
 
-export default function Category(props: { title: any; category: any; setPassInput: any; setEditTask:any; }) {
+// Context
+import { MyTasksContext } from "@/pages/home/pm/mytasks";
+
+export default function Category(props: { title: any; category: any }) {
+  const { setAddTaskOverlay } = useContext(MyTasksContext);
   const { category } = props;
-  const categoryID = category.id
-  const tasksData: any[] = category.tasks
+  const categoryID = category.id;
+  const tasksData: any[] = category.tasks;
 
   const categoryLine = React.useRef(null);
   const [isCategoryTopVisible, setIsCategoryTopVisible] = React.useState(true);
@@ -38,20 +42,24 @@ export default function Category(props: { title: any; category: any; setPassInpu
             className={` w-2 h-2 rounded-full`}
             style={{ backgroundColor: `${category.accentColor}` }}
           ></div>
-          <span className={`text-lg font-semibold capitalize`}>{category.title}</span>
+          <span className={`text-lg font-semibold capitalize`}>
+            {category.title}
+          </span>
           <div
             className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-[#E0E0E0] text-[#625F6D] font-medium `}
           >
             {category.tasks.length}
           </div>
         </div>
-        {category.title === "to do" && <div
-          className={`w-6 h-6 rounded-lg bg-cat flex items-center justify-center cursor-pointer`}
-          style={{ backgroundColor: "rgba(37, 27, 55, 0.2)" }}
-          onClick={() => props.setPassInput(true)}
-        >
-          <Icon icon={"lets-icons:add-round"} />
-        </div>}
+        {category.title === "to do" && (
+          <div
+            className={`w-6 h-6 rounded-lg bg-cat flex items-center justify-center cursor-pointer`}
+            style={{ backgroundColor: "rgba(37, 27, 55, 0.2)" }}
+            onClick={() => setAddTaskOverlay(true)}
+          >
+            <Icon icon={"lets-icons:add-round"} />
+          </div>
+        )}
       </div>
       <hr
         ref={categoryLine}
@@ -66,7 +74,6 @@ export default function Category(props: { title: any; category: any; setPassInpu
               taskID={task.id}
               task={task}
               categoryID={categoryID}
-              setEditTask={props.setEditTask}
             />
           );
         })}

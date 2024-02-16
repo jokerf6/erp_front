@@ -1,6 +1,8 @@
 import React, { useRef } from 'react'
 import { Icon } from "@iconify/react";
-export default function Inputs(props:{
+import Modal from '../default/modal.component';
+
+export default function AddTask(props:{
     close:any
 }) {
     // Data of Project Name That Should be Diplayed
@@ -19,12 +21,13 @@ export default function Inputs(props:{
         fileInputRef.current?.click()
     }
     return (
-        <div className=" absolute right-0 w-2/6 h-fit z-20 top-0 flex flex-col">
+        <Modal>
+        <div className="absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[100] flex flex-col justify-center">
                 <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]">
                     <h1 className='font-bold text-[#251B37]  text-[1.5rem] '>Add new task</h1>
                     <Icon icon="gg:close-r" className='text-[1.5rem] cursor-pointer' onClick={()=>props.close(false)}/>
                 </div>
-            <form className='inputs-contanier bg-[#FAFAFA]   p-[20px]'>
+            <form className='inputs-contanier bg-[#FAFAFA] flex flex-col flex-1 p-[20px]'>
                 <div className="inputs-content flex flex-col gap-5 ">
                     <div className="input-1 flex flex-col gap-1">
                         <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="taskName">Task Name <span className='text-[0.8rem] text-[red]'> (Required)</span></label>
@@ -67,6 +70,7 @@ export default function Inputs(props:{
             </div>
             </form>
         </div>
+        </Modal>
     )
 }
 

@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import { Icon } from "@iconify/react";
 
 // Components
 import Images from "./images";
 
-export default function Task(props: { taskID: any; task: any; categoryID: any; setEditTask:any }) {
-  const { taskID, task, categoryID, setEditTask } = props;
+// Context
+import { MyTasksContext } from "@/pages/home/pm/mytasks";
+
+export default function Task(props: {
+  taskID: any;
+  task: any;
+  categoryID: any;
+}) {
+  const { setEditTaskOverlay } = useContext(MyTasksContext);
+  const { taskID, task, categoryID } = props;
   const taskMembers: any[] = task.members;
   const defaultImage = "/images/default pic.svg";
 
@@ -19,15 +27,25 @@ export default function Task(props: { taskID: any; task: any; categoryID: any; s
         <Icon
           icon={"tabler:dots"}
           className=" text-main text-2xl cursor-pointer"
-          onClick={()=>props.setEditTask(true)}
+          onClick={() => setEditTaskOverlay(true)}
         />
       </div>
 
       <div className="flex flex-col gap-2">
         <h1 className=" text-2xl text-main font-bold">{task.name}</h1>
-        {task.images && <Images images={task.images} taskID={taskID} categoryID={categoryID} />}
+        {task.images && (
+          <Images
+            images={task.images}
+            taskID={taskID}
+            categoryID={categoryID}
+          />
+        )}
         {!task.images && task.files !== 0 && (
-          <Images images={[`${defaultImage}`]} taskID={taskID} categoryID={categoryID} />
+          <Images
+            images={[`${defaultImage}`]}
+            taskID={taskID}
+            categoryID={categoryID}
+          />
         )}
         <p className=" text-brief text-sm">
           Brainstorming brings team members' diverse experience into play.
@@ -66,7 +84,9 @@ export default function Task(props: { taskID: any; task: any; categoryID: any; s
             />
             <span className="text-xs lg:text-sm flex gap-1 capitalize flex-wrap justify-center">
               <span>{task.files}</span>{" "}
-              <span className="hidden xxs:block">{task.files === 1 ? "file" : "files"}</span>
+              <span className="hidden xxs:block">
+                {task.files === 1 ? "file" : "files"}
+              </span>
             </span>
           </div>
         </div>
