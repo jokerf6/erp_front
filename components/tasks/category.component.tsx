@@ -33,7 +33,7 @@ export default function Category(props: { title: any; category: any }) {
     : "sticky w-full top-0 shadow-[0_0_3px_0_rgba(0,0,0,0.5)] bg-[#e9e3d5]";
 
   return (
-    <div className=" flex flex-col bg-[#e9e3d58a] rounded-xl min-h-full flex-1 lg:min-w-[400px]">
+    <div className=" flex flex-col bg-[#e9e3d58a] rounded-xl  h-fit flex-1 lg:min-w-[400px]">
       <div
         className={`transition-all  flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
       >

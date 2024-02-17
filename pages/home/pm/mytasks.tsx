@@ -23,6 +23,7 @@ import PMLayout from "@/layouts/pm";
 
 // Context
 import { HomeContext } from "@/layouts/home";
+import AddComment from "@/components/tasks/editTask/addComment";
 const MyTasksContext = createContext({} as any);
 export { MyTasksContext };
 
@@ -34,6 +35,8 @@ export default function MyTasks() {
   const [isCategoryFilterOpen, setIsCategoryFilterOpen] = React.useState(false);
 
   const [editTaskOverlay, setEditTaskOverlay] = React.useState(false);
+  const [addComment, setAddComment] = React.useState(false);
+
   const [addTaskOverlay, setAddTaskOverlay] = useState(false);
   const [imageSliderOverlay, setImageSliderOverlay] = useState(false);
   useScrollBlockHook(editTaskOverlay);
@@ -143,7 +146,14 @@ export default function MyTasks() {
         />
       )}
 
-      {editTaskOverlay && <EditTask setEditTaskOverlay={setEditTaskOverlay} />}
+      {addComment && <AddComment setAddComment={setAddComment} />}
+      {editTaskOverlay && (
+        <EditTask
+          setEditTaskOverlay={setEditTaskOverlay}
+          setAddComment={setAddComment}
+          addComment={addComment}
+        />
+      )}
 
       {addTaskOverlay && <AddTask setAddTaskOverlay={setAddTaskOverlay} />}
     </MyTasksContext.Provider>

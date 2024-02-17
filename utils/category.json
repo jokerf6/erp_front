@@ -21,7 +21,25 @@
             {
               "name": "person 3",
               "image": "/images/man.png"
+              
+            },
+            {
+              "name": "person 3",
+              "image": "/images/man.png"
+              
+            },
+            {
+              "name": "person 3",
+              "image": "/images/man.png"
+              
+            },
+            
+            {
+              "name": "person 3",
+              "image": "/images/man.png"
+              
             }
+            
           ],
           "comments": 9,
           "files": 2,

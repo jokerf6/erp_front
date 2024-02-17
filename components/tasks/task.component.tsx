@@ -42,7 +42,10 @@ export default function Task(props: {
           />
         )}
         {!task.images && task.files !== 0 && (
-          <div className="w-full h-32 cursor-pointer" onClick={()=> console.log("Open Files")}>
+          <div
+            className="w-full h-32 cursor-pointer"
+            onClick={() => console.log("Open Files")}
+          >
             <Image
               src={defaultImage}
               alt="Contain Files - Image"
@@ -60,7 +63,7 @@ export default function Task(props: {
 
       <div className=" w-full  flex justify-between items-center mt-5">
         <div className=" flex">
-          {taskMembers.map((member, index) => {
+          {taskMembers.slice(0, 3).map((member, index) => {
             return (
               <img
                 key={index}

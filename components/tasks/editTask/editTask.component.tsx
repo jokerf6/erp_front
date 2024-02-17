@@ -7,12 +7,23 @@ import Teammates from "./Teammates";
 import Modal from "@/components/default/modal.component";
 
 import { Icon } from "@iconify/react";
+import AddComment from "./addComment";
 
-export default function EditTask(props: { setEditTaskOverlay: any }) {
-  const { setEditTaskOverlay } = props;
+export default function EditTask(props: {
+  setEditTaskOverlay: any;
+  setAddComment: any;
+  addComment: boolean;
+}) {
+  const { setEditTaskOverlay, setAddComment, addComment } = props;
   return (
     <Modal setOverlay={setEditTaskOverlay}>
-      <div onClick={(e)=> e.stopPropagation()} className="bg-[#FAFAFA] absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[100] p-[20px] flex flex-col gap-5 justify-center">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className=" bg-[#FAFAFA] absolute top-0 right-0  overflow-y-hidden min-h-screen max-w-[600px] md:w-[50vw] z-[100] p-[20px] flex flex-col gap-5 justify-center"
+      >
+        {addComment && (
+          <div className=" bg-black w-screen h-screen absolute -top-[10px] left-0 z-[100] opacity-70"></div>
+        )}
         <div className="first-part  flex flex-col gap-4">
           <div className="flex justify-between">
             <h3 className="">Created At 12 jan 2023 10:12 AM</h3>
@@ -52,7 +63,7 @@ export default function EditTask(props: { setEditTaskOverlay: any }) {
           </div>
         </div>
         <Files />
-        <Comments />
+        <Comments setAddComment={setAddComment} />
         <Teammates />
       </div>
     </Modal>
