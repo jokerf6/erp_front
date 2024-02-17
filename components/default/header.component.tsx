@@ -14,8 +14,6 @@ import ErpComm from "./erpComm.component";
 
 export default function Header() {
   const { isSmallWindow } = useContext(HomeContext);
-  const [blockScroll, allowScroll] = useScrollBlock();
-
   const router = useRouter();
   const path = router.pathname.split("/");
   const homeCurrentTab = path[2];
@@ -26,10 +24,11 @@ export default function Header() {
 
   // Makes sure The Menu is always open in Big Screens
   useEffect(() => {
-    setIsMenuOpen(isSmallWindow ? false : true);
+    setIsMenuOpen(window.innerWidth < 1024 ? false : true);
   }, [isSmallWindow]);
 
   // Block/Allow Scrolling when Opening/Closing Menu
+  const [blockScroll, allowScroll] = useScrollBlock();
   useEffect(() => {
     if (isMenuOpen && isSmallWindow) {
       blockScroll();
@@ -52,7 +51,7 @@ export default function Header() {
         {isSmallWindow && (
           <Icon
             icon="mingcute:menu-line"
-            className="text-white text-2xl"
+            className="text-white text-2xl lg:hidden"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
         )}
@@ -102,7 +101,7 @@ export default function Header() {
             </Link>
           </ul>
           {isSmallWindow && (
-            <>
+            <div className="lg:hidden">
               <hr />
               <div className="header--right small flex flex-col gap-2 overflow-y-auto">
                 <ErpComm />
@@ -119,18 +118,18 @@ export default function Header() {
                   <span>To Do List</span>
                 </div>
               </div>
-            </>
+            </div>
           )}
         </nav>
       </div>
       <div className="header--right flex items-center gap-4 text-white">
-        {!isSmallWindow && <ErpComm />}
+        {!isSmallWindow && <div className="hidden lg:block"><ErpComm /></div>}
         <Icon
           icon="teenyicons:search-outline"
           className="text-2xl cursor-pointer box-content p-1"
         />
         {!isSmallWindow && (
-          <>
+          <div className="hidden lg:flex gap-3">
             <Icon
               icon="mi:notification"
               className="text-2xl cursor-pointer box-content p-1"
@@ -143,7 +142,7 @@ export default function Header() {
               icon={"icons8:todo-list"}
               className=" text-2xl cursor-pointer box-content p-1"
             />
-          </>
+          </div>
         )}
         <Image
           src="/images/Kerolos Fayez.jpg"

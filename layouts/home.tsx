@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useRef } from "react";
 
 // Components
 import Header from "@/components/default/header.component";
@@ -32,7 +32,7 @@ export default function HomeLayout({
 
   // Update isSmallWindow
   useEffect(() => {
-    setIsSmallWindow(windowWidth < 1024 ? true : false);
+    setIsSmallWindow(window.innerWidth < 1024 ? true : false);
   }, [windowWidth]);
 
   return (
