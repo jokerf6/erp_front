@@ -23,7 +23,7 @@ export default function AddTask(props:{
     }
     return (
         <Modal setOverlay={setAddTaskOverlay}>
-        <div className="absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[100] flex flex-col justify-center">
+        <div onClick={(e)=> e.stopPropagation()} className="absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[100] flex flex-col justify-center">
                 <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]">
                     <h1 className='font-bold text-[#251B37]  text-[1.5rem] '>Add new task</h1>
                     <Icon icon="gg:close-r" className='text-[1.5rem] cursor-pointer' onClick={()=>setAddTaskOverlay(false)}/>

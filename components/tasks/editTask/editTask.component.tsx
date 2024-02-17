@@ -12,7 +12,7 @@ export default function EditTask(props: { setEditTaskOverlay: any }) {
   const { setEditTaskOverlay } = props;
   return (
     <Modal setOverlay={setEditTaskOverlay}>
-      <div className="bg-[#FAFAFA] absolute top-0 right-0 min-h-screen max-w-[600px] xl:w-[50vw] z-[100] p-[20px] flex flex-col gap-5 justify-center">
+      <div onClick={(e)=> e.stopPropagation()} className="bg-[#FAFAFA] absolute top-0 right-0 min-h-screen max-w-[600px] xl:w-[50vw] z-[100] p-[20px] flex flex-col gap-5 justify-center">
         <div className="first-part  flex flex-col gap-4">
           <div className="flex justify-between">
             <h3 className="">Created At 12 jan 2023 10:12 AM</h3>
