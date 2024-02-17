@@ -8,9 +8,10 @@ import Modal from "@/components/default/modal.component";
 
 import { Icon } from "@iconify/react";
 
-export default function EditTask(props: { close: any }) {
+export default function EditTask(props: { setEditTaskOverlay: any }) {
+  const { setEditTaskOverlay } = props;
   return (
-    <Modal>
+    <Modal setOverlay={setEditTaskOverlay}>
       <div className="bg-[#FAFAFA] absolute top-0 right-0 min-h-screen max-w-[600px] xl:w-[50vw] z-[100] p-[20px] flex flex-col gap-5 justify-center">
         <div className="first-part  flex flex-col gap-4">
           <div className="flex justify-between">
@@ -18,7 +19,7 @@ export default function EditTask(props: { close: any }) {
             <Icon
               icon="gg:close-r"
               className="text-[1.5rem] cursor-pointer"
-              onClick={() => props.close(false)}
+              onClick={() => setEditTaskOverlay(false)}
             />
           </div>
           <div className="flex justify-between items-center">

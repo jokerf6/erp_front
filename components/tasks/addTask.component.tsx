@@ -3,8 +3,9 @@ import { Icon } from "@iconify/react";
 import Modal from '../default/modal.component';
 
 export default function AddTask(props:{
-    close:any
+    setAddTaskOverlay:any
 }) {
+    const {setAddTaskOverlay} = props
     // Data of Project Name That Should be Diplayed
     const myPrjects = ["choose project name",1,2,3,4,5,6];
     const myProjectsArray = myPrjects.map((data)=>{
@@ -21,11 +22,11 @@ export default function AddTask(props:{
         fileInputRef.current?.click()
     }
     return (
-        <Modal>
+        <Modal setOverlay={setAddTaskOverlay}>
         <div className="absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[100] flex flex-col justify-center">
                 <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]">
                     <h1 className='font-bold text-[#251B37]  text-[1.5rem] '>Add new task</h1>
-                    <Icon icon="gg:close-r" className='text-[1.5rem] cursor-pointer' onClick={()=>props.close(false)}/>
+                    <Icon icon="gg:close-r" className='text-[1.5rem] cursor-pointer' onClick={()=>setAddTaskOverlay(false)}/>
                 </div>
             <form className='inputs-contanier bg-[#FAFAFA] flex flex-col flex-1 p-[20px]'>
                 <div className="inputs-content flex flex-col gap-5 ">

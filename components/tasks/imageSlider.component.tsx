@@ -32,7 +32,7 @@ export default function ImageSlider(props: {
     });
   }
   return (
-    <Modal>
+    <Modal setOverlay={setImageSliderOverlay}>
       <div className="relative flex flex-col bg-[#E9E3D5] pt-8 px-2 rounded-sm mx-2 w-full xs:max-w-[500px] md:max-w-[700px] select-none">
         <button
           className="p-1 absolute top-0 right-0 z-[100]"

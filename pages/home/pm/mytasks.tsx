@@ -79,11 +79,7 @@ export default function MyTasks() {
 
   const categoryElements = categories.map((category) => {
     return (
-      <Category
-        key={category.id}
-        title={category.title}
-        category={category}
-      />
+      <Category key={category.id} title={category.title} category={category} />
     );
   });
   const categoryElementsFiltered = categoryElements.filter(
@@ -91,8 +87,14 @@ export default function MyTasks() {
   );
 
   return (
-    <MyTasksContext.Provider value={{ handleImageSliderOverlay, categories, setAddTaskOverlay, setEditTaskOverlay }}>
-      {/* {(passinput || editTaskOverlay) && <div className=" absolute top-0 left-0 bg-black opacity-80 w-full h-full z-20"></div>} */}
+    <MyTasksContext.Provider
+      value={{
+        handleImageSliderOverlay,
+        categories,
+        setAddTaskOverlay,
+        setEditTaskOverlay,
+      }}
+    >
       <Head>
         <title>ERP | Project Management</title>
       </Head>
@@ -141,9 +143,9 @@ export default function MyTasks() {
         />
       )}
 
-      {editTaskOverlay && <EditTask close={setEditTaskOverlay} />}
+      {editTaskOverlay && <EditTask setEditTaskOverlay={setEditTaskOverlay} />}
 
-      {addTaskOverlay && <AddTask close={setAddTaskOverlay} />}
+      {addTaskOverlay && <AddTask setAddTaskOverlay={setAddTaskOverlay} />}
     </MyTasksContext.Provider>
   );
 }
