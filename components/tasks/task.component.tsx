@@ -7,6 +7,7 @@ import Images from "./images";
 
 // Context
 import { MyTasksContext } from "@/pages/home/pm/mytasks";
+import Image from "next/image";
 
 export default function Task(props: {
   taskID: any;
@@ -41,11 +42,16 @@ export default function Task(props: {
           />
         )}
         {!task.images && task.files !== 0 && (
-          <Images
-            images={[`${defaultImage}`]}
-            taskID={taskID}
-            categoryID={categoryID}
-          />
+          <div className="w-full h-32 cursor-pointer" onClick={()=> console.log("Open Files")}>
+            <Image
+              src={defaultImage}
+              alt="Contain Files - Image"
+              width={0}
+              height={0}
+              sizes="100vw"
+              className="w-full h-full"
+            />
+          </div>
         )}
         <p className=" text-brief text-sm">
           Brainstorming brings team members' diverse experience into play.
