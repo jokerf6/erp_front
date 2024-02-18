@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // Components
 import Files from "./Files";
@@ -8,12 +8,15 @@ import Modal from "@/components/default/modal.component";
 
 import { Icon } from "@iconify/react";
 import AddComment from "./addComment";
+import CheckBox from "@/components/default/checkBox";
+import { statusList } from "@/static/statusList";
 
 export default function EditTask(props: {
   setEditTaskOverlay: any;
   setAddComment: any;
   addComment: boolean;
 }) {
+  const [status, setStatus] = useState<number>(0);
   const { setEditTaskOverlay, setAddComment, addComment } = props;
   return (
     <Modal setOverlay={setEditTaskOverlay}>
@@ -47,19 +50,18 @@ export default function EditTask(props: {
           <p className="text-[#787486]">
             Create test cases for old APIs in tasks module in pages 1,2,3 and 4
           </p>
-          <div className="task-container grid grid-cols-3">
-            <div className="flex gap-2">
-              <input type="radio" className="" name="status" id="todo" />
-              <label htmlFor="todo">To Do</label>
-            </div>
-            <div className="flex gap-4">
-              <input type="radio" className="" name="status" id="inProgress" />
-              <label htmlFor="inProgress">in Progress</label>
-            </div>
-            <div className="flex gap-4">
-              <input type="radio" className="" name="status" id="done" />
-              <label htmlFor="done">Done</label>
-            </div>
+          <div className="flex justify-between items-center">
+            {statusList.map((item: string, idx: number) => {
+              return (
+                <CheckBox
+                  key={idx}
+                  active={idx === status}
+                  text={item}
+                  setStatus={setStatus}
+                  id={idx}
+                />
+              );
+            })}
           </div>
         </div>
         <Files />

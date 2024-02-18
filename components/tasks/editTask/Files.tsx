@@ -17,7 +17,7 @@ export default function Files() {
           </p>
         </div>
         <button
-          className="rounded-[5px]   w-fit    flex justify-between items-center"
+          className="rounded-[5px] outline-none   w-fit    flex justify-between items-center"
           onClick={ClickInputFile}
         >
           <input
