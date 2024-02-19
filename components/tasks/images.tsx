@@ -18,6 +18,8 @@ export default function Images(props: {
   const [lastVisibleImageIndex, setLastVisibleImageIndex] = useState(0);
   const [count, setCount] = useState(0);
 
+  const [render, setRender] = useState(new Array(images.length).fill(false));
+
   // Update More Images Overlay
   useEffect(() => {
     setCount(0);
@@ -29,11 +31,16 @@ export default function Images(props: {
         imageContainerRef.current.offsetTop
       ) {
         setLastVisibleImageIndex(index);
+        setRender((prevArray) =>
+          prevArray.map((item, itemIndex) => {
+            return index === itemIndex ? true : item;
+          })
+        );
       } else {
         setCount((prev: number) => prev + 1);
       }
     });
-  }, [imageContainerRef.current?.offsetWidth, images]);
+  }, [imageContainerRef.current?.offsetWidth]);
 
   return (
     <>
@@ -46,17 +53,22 @@ export default function Images(props: {
             <div
               key={`${taskID}-${index}`}
               ref={(element) => (imageRefs.current[index] = element)}
+              id={`${index}`}
               className="relative flex-1 basis-[100px] xxs:basis-[130px] xs:basis-[150px] h-full cursor-pointer"
-              onClick={() => handleImageSliderOverlay(categoryID, taskID, index)}
+              onClick={() =>
+                handleImageSliderOverlay(categoryID, taskID, index)
+              }
             >
-              <Image
-                src={image}
-                alt="image"
-                width={0}
-                height={0}
-                sizes="100vw"
-                className="w-full h-full rounded-md object-cover"
-              />
+              {render[index] ? (
+                <Image
+                  src={image}
+                  alt="image"
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  className="w-full h-full rounded-md object-cover"
+                />
+              ) : null}
               {lastVisibleImageIndex == index && count && (
                 <div className="bg-black/70 absolute top-0 left-0 w-full h-full flex justify-center items-center rounded-md cursor-pointer">
                   <span className="text-white2 text-2xl font-medium">
