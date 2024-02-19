@@ -11,7 +11,28 @@ export default function AddTask(props:{
     const myProjectsArray = myPrjects.map((data)=>{
         return <option value = {data}> {data} </option> 
     })
+
+    // State to Get All Data 
+    const [formData, setFormData] = React.useState({
+        taskName:'',
+        projectName:'',
+        assigned:"",
+        dueDate:'',
+        priority:'',
+        description:''
+    })
     
+    // Function that hangle form Changes
+    function hangleChange(e:any){
+        setFormData(prevDate => ({...prevDate, [e.target.name]: e.target.value}))
+    }
+
+    // Function to Hndle Submition
+    function handeSubmit(e:any){
+        e.preventDefault();
+        console.log(formData)
+    }
+
     // Data of Priority That Should be Diplayed
     const myPriority = ["Low", "Medium", "High","Mohma Fsh5555"];
     const mypriorityArray = myPriority.map((data)=> <option value ={data}> {data}</option>)
@@ -28,42 +49,35 @@ export default function AddTask(props:{
                     <h1 className='font-bold text-[#251B37]  text-[1.5rem] '>Add new task</h1>
                     <Icon icon="gg:close-r" className='text-[1.5rem] cursor-pointer' onClick={()=>setAddTaskOverlay(false)}/>
                 </div>
-            <form className='inputs-contanier bg-[#FAFAFA] flex flex-col flex-1 p-[20px]'>
+            <form onSubmit={handeSubmit} className='inputs-contanier bg-[#FAFAFA] flex flex-col flex-1 p-[20px]'>
                 <div className="inputs-content flex flex-col gap-5 ">
                     <div className="input-1 flex flex-col gap-1">
                         <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="taskName">Task Name <span className='text-[0.8rem] text-[red]'> (Required)</span></label>
-                        <input name='taskName' required type="text" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="taskName" placeholder='Enter task name' />
+                        <input onChange={hangleChange} value={formData.taskName} name='taskName' required type="text" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="taskName" placeholder='Enter task name' />
                     </div>
                     <div className="input-2 flex flex-col gap-1">
                         <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="projectName"> Project Name <span className='text-[0.8rem] text-[red]'> (Required)</span></label>
-                        <select  required name="projectName" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="projectName" placeholder='choose project name'>
+                        <select onChange={hangleChange} value={formData.projectName}  required name="projectName" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="projectName" placeholder='choose project name'>
                             {myProjectsArray}
                         </select>
                     </div>
                     <div className="input-3 flex flex-col gap-1">
                         <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="assigned">Assigned to<span className='text-[0.8rem] text-[red]'> (Required)</span> </label>
-                        <input required type="text" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="assigned" placeholder='Enter The Name of Teammates' />
+                        <input onChange={hangleChange} value={formData.assigned} required name='assigned' type="text" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="assigned" placeholder='Enter The Name of Teammates' />
                     </div>
                     <div className="input-4 flex flex-col gap-1">
                         <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="dueDate">Due Date <span className='text-[0.8rem] text-[red]'> (Required)</span></label>
-                        <input required type="date" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[5px] h-[40px]' id="dueDate" placeholder='Set due Date' />
-                    </div>
-                    <div className="input-5 flex flex-col gap-1">
-                        <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="file">Files <span className='text-[0.8rem] text-[green] '>(Optional)</span></label>
-                        <button className='rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px] flex justify-between items-center' onClick={ClickInputFile}>
-                        <input required ref={fileInputRef} style= {{visibility:"hidden"}} type="file" className='  ' id="file" placeholder='Upload files' />
-                        <Icon icon="subway:pin"  className='-rotate-45 mr-[5px]'/>
-                        </button>
+                        <input onChange={hangleChange} value={formData.dueDate} required name='dueDate' type="date" className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[5px] h-[40px]' id="dueDate" placeholder='Set due Date' />
                     </div>
                     <div className="input-6 flex flex-col gap-1">
                         <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="priority">Priority <span className='text-[0.8rem] text-[red]'> (Required)</span></label>
-                        <select required name='priority' className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="priority" placeholder='choose task priority' >
+                        <select onChange={hangleChange} value={formData.priority} required name='priority' className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]' id="priority" placeholder='choose task priority' >
                             {mypriorityArray}
                         </select>
                     </div>
                     <div className="input-7 flex flex-col gap-1">
                         <label className='text-[#251B37] text-[1rem] font-medium' htmlFor="description">Description <span className='text-[0.8rem] text-[green] '>(Optional)</span></label>
-                        <textarea  className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px] max-h-[100px] min-h-[100px]' id="description" placeholder='Write task details' />
+                        <textarea onChange={hangleChange} value={formData.description} name='description' className=' rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px] max-h-[100px] min-h-[100px]' id="description" placeholder='Write task details' />
                     </div>
                 </div>
             <div className="bg-[#FFFFFF] flex justify-center items-center mt-[20px] w-full">
