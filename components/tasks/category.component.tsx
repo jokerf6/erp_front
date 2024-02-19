@@ -8,9 +8,14 @@ import Task from "./task.component";
 // Context
 import { MyTasksContext } from "@/pages/home/pm/mytasks";
 
-export default function Category(props: { title: any; category: any }) {
+export default function Category(props: {
+  title: any;
+  category: any;
+  categories: any;
+  setCategories: any;
+}) {
   const { setAddTaskOverlay } = useContext(MyTasksContext);
-  const { category } = props;
+  const { category, categories, setCategories } = props;
   const categoryID = category.id;
   const tasksData: any[] = category.tasks;
 
@@ -75,6 +80,8 @@ export default function Category(props: { title: any; category: any }) {
               taskID={task.id}
               task={task}
               categoryID={categoryID}
+              categories={categories}
+              setCategories={setCategories}
             />
           );
         })}

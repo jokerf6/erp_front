@@ -17,9 +17,11 @@ export default function Task(props: {
   taskID: any;
   task: any;
   categoryID: string;
+  categories: any;
+  setCategories: any;
 }) {
   const { setEditTaskOverlay } = useContext(MyTasksContext);
-  const { taskID, task, categoryID } = props;
+  const { taskID, task, categoryID, categories, setCategories } = props;
   const TaskMembers = [
     "/images/Kerolos Fayez.jpg",
     "/images/Kerolos Fayez.jpg",
@@ -28,30 +30,8 @@ export default function Task(props: {
   const divRef = useRef<HTMLDivElement>(null);
   const { isDragging, handleDragStart, handleDragEnd, handleDrag } =
     useDragAndDrop();
-  useEffect(() => {
-    getStartPositionAndEndPosition();
-  }, [taskID]); //
 
   const { TaskSHeight, UpdateTaskSHeight } = TasksHeightStore();
-  const getStartPositionAndEndPosition = () => {
-    if (divRef.current) {
-      const { top, bottom, left, right } =
-        divRef.current.getBoundingClientRect();
-      const task = {
-        id: taskID,
-        top,
-        left,
-        right,
-        bottom,
-      };
-      const isDuplicate = TaskSHeight.some((t) => t.id === taskID);
-
-      if (!isDuplicate) {
-        // If the task is not a duplicate, update TaskSHeight
-        UpdateTaskSHeight(task);
-      }
-    }
-  };
 
   return (
     <div
@@ -59,7 +39,7 @@ export default function Task(props: {
       ref={divRef}
       draggable="true"
       onDragStart={handleDragStart}
-      onDragEnd={handleDragEnd}
+      onDragEnd={(e) => handleDragEnd(e, categories, setCategories)}
       onDrag={(e: any) => handleDrag(e, taskID, divRef)}
       className={` card ${
         isDragging ? `dragging card  ` : ""

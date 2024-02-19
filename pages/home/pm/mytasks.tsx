@@ -82,7 +82,13 @@ export default function MyTasks() {
 
   const categoryElements = categories.map((category) => {
     return (
-      <Category key={category.id} title={category.title} category={category} />
+      <Category
+        key={category.id}
+        title={category.title}
+        category={category}
+        categories={categories}
+        setCategories={setCategories}
+      />
     );
   });
   const categoryElementsFiltered = categoryElements.filter(

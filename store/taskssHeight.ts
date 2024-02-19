@@ -10,15 +10,15 @@ interface StoreState {
     bottom: number;
   }>;
   UpdateTaskSHeight: (e: any) => void;
+  EmptyTaskSHeight: () => void;
 }
 
 const TasksHeightStore = create<StoreState>((set) => ({
   TaskSHeight: [],
+  EmptyTaskSHeight: () => set({ TaskSHeight: [] }), // Set TaskSHeight to an empty array
   UpdateTaskSHeight: (task) =>
     set((state) => ({
-      TaskSHeight: state.TaskSHeight.includes(task)
-        ? state.TaskSHeight
-        : [...state.TaskSHeight, task],
+      TaskSHeight: [...state.TaskSHeight, task],
     })),
 }));
 

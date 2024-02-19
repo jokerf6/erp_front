@@ -112,6 +112,7 @@ export default function LoginForm() {
       if (json["data"]["user"]["first"]) setId(json["data"]["user"]["id"]);
       else {
         localStorage.setItem("user", json["data"]["user"]);
+        localStorage.setItem("AccessToken", json["data"]["accessToken"]);
         router.push("/home");
       }
     } else {
