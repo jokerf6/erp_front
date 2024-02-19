@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { Icon } from "@iconify/react";
 
@@ -8,23 +8,68 @@ import Images from "./images";
 // Context
 import { MyTasksContext } from "@/pages/home/pm/mytasks";
 import Image from "next/image";
+import useMousePosition from "@/hooks/DragAndDrop";
+import useDragAndDrop from "@/hooks/DragAndDrop";
+import { on } from "events";
+import TasksHeightStore from "@/store/taskssHeight";
 
 export default function Task(props: {
   taskID: any;
   task: any;
-  categoryID: any;
+  categoryID: string;
 }) {
   const { setEditTaskOverlay } = useContext(MyTasksContext);
   const { taskID, task, categoryID } = props;
-  const taskMembers: any[] = task.members;
+  const TaskMembers = [
+    "/images/Kerolos Fayez.jpg",
+    "/images/Kerolos Fayez.jpg",
+  ];
   const defaultImage = "/images/default pic.svg";
+  const divRef = useRef<HTMLDivElement>(null);
+  const { isDragging, handleDragStart, handleDragEnd, handleDrag } =
+    useDragAndDrop();
+  useEffect(() => {
+    getStartPositionAndEndPosition();
+  }, [taskID]); //
+
+  const { TaskSHeight, UpdateTaskSHeight } = TasksHeightStore();
+  const getStartPositionAndEndPosition = () => {
+    if (divRef.current) {
+      const { top, bottom, left, right } =
+        divRef.current.getBoundingClientRect();
+      const task = {
+        id: taskID,
+        top,
+        left,
+        right,
+        bottom,
+      };
+      const isDuplicate = TaskSHeight.some((t) => t.id === taskID);
+
+      if (!isDuplicate) {
+        // If the task is not a duplicate, update TaskSHeight
+        UpdateTaskSHeight(task);
+      }
+    }
+  };
 
   return (
-    <div className=" flex flex-col w-full bg-white px-4 py-4 rounded-xl gap-3">
+    <div
+      id={taskID}
+      ref={divRef}
+      draggable="true"
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      onDrag={(e: any) => handleDrag(e, taskID, divRef)}
+      className={` card ${
+        isDragging ? `dragging card  ` : ""
+      } flex flex-col w-full bg-white px-4 py-4 rounded-xl gap-3`}
+    >
       <div className=" w-full justify-between items-center flex">
         <div className="text-tot bg-bot px-5 py-1 rounded h-fit capitalize">
           {task.status}
         </div>
+        {/* <h1>{mousePosition.x}</h1> */}
         <Icon
           icon={"tabler:dots"}
           className=" text-main text-2xl cursor-pointer"
@@ -63,12 +108,12 @@ export default function Task(props: {
 
       <div className=" w-full  flex justify-between items-center mt-5">
         <div className=" flex">
-          {taskMembers.slice(0, 3).map((member, index) => {
+          {task.members.slice(0, 3).map((member: any, index: number) => {
             return (
               <img
                 key={index}
                 src={member.image}
-                alt={member.name}
+                alt={member}
                 className={`${
                   index !== 0 ? "-ml-2" : ""
                 } w-6 h-6 rounded-full border border-white`}

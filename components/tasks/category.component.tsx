@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 
 import { Icon } from "@iconify/react";
 
@@ -17,7 +17,7 @@ export default function Category(props: { title: any; category: any }) {
   const categoryLine = React.useRef(null);
   const [isCategoryTopVisible, setIsCategoryTopVisible] = React.useState(true);
   React.useEffect(() => {
-    const catgeoryLineobserver = new IntersectionObserver(
+    const categoryLineObserver = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
         setIsCategoryTopVisible(entry.isIntersecting);
@@ -25,9 +25,10 @@ export default function Category(props: { title: any; category: any }) {
       { rootMargin: "-25px 0px 0px 0px" }
     );
     if (categoryLine.current) {
-      catgeoryLineobserver.observe(categoryLine.current);
+      categoryLineObserver.observe(categoryLine.current);
     }
   }, []);
+
   const stickyCategoryTopStyle = isCategoryTopVisible
     ? "rounded-t-xl bg-[#e9e3d58a]"
     : "sticky w-full top-0 shadow-[0_0_3px_0_rgba(0,0,0,0.5)] bg-[#e9e3d5]";
@@ -67,10 +68,10 @@ export default function Category(props: { title: any; category: any }) {
         style={{ borderColor: `${category.accentColor}` }}
       />
       <div className="flex flex-col gap-3 py-6 px-3 lg:px-6">
-        {tasksData.map((task) => {
+        {tasksData.map((task, index: number) => {
           return (
             <Task
-              key={task.id}
+              key={index}
               taskID={task.id}
               task={task}
               categoryID={categoryID}
