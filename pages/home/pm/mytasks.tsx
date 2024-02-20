@@ -80,9 +80,10 @@ export default function MyTasks() {
     setIsCategoryFilterOpen(!isCategoryFilterOpen);
   }
 
-  const categoryElements = categories.map((category) => {
+  const categoryElements = categories.map((category, idx: number) => {
     return (
       <Category
+        id={`cat${idx}`}
         key={category.id}
         title={category.title}
         category={category}

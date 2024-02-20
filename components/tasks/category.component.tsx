@@ -9,13 +9,14 @@ import Task from "./task.component";
 import { MyTasksContext } from "@/pages/home/pm/mytasks";
 
 export default function Category(props: {
+  id: string;
   title: any;
   category: any;
   categories: any;
   setCategories: any;
 }) {
   const { setAddTaskOverlay } = useContext(MyTasksContext);
-  const { category, categories, setCategories } = props;
+  const { category, categories, setCategories, id } = props;
   const categoryID = category.id;
   const tasksData: any[] = category.tasks;
 
@@ -41,6 +42,7 @@ export default function Category(props: {
   return (
     <div className=" flex flex-col bg-[#e9e3d58a] rounded-xl  h-fit flex-1 lg:min-w-[400px]">
       <div
+        id={id}
         className={`transition-all  flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
       >
         <div className=" flex text-main items-center gap-2 cursor-default">

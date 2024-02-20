@@ -109,6 +109,15 @@ export const Tasks = [
     images: ["/images/photo 1.jpg"],
   },
   {
+    id: "-1-1",
+    name: "",
+    status: "",
+    members: [],
+    comments: 0,
+    files: 0,
+    images: [],
+  },
+  {
     id: "2-1",
     name: "Task 1",
     status: "low",
@@ -182,6 +191,16 @@ export const Tasks = [
       "/images/photo 2.jpg",
     ],
   },
+
+  {
+    id: "-1-2",
+    name: "",
+    status: "",
+    members: [],
+    comments: 0,
+    files: 0,
+    images: [],
+  },
   {
     id: "3-1",
     name: "Task 1",
@@ -235,5 +254,15 @@ export const Tasks = [
       "/images/photo 3.jpg",
       "/images/loginPage.jpg",
     ],
+  },
+
+  {
+    id: "-1-3",
+    name: "",
+    status: "",
+    members: [],
+    comments: 0,
+    files: 0,
+    images: [],
   },
 ];

@@ -20,10 +20,7 @@ function useDragAndDrop() {
   const handleDragEnd = (e: any, categories: any, setCategories: any) => {
     setIsDragging(false);
     const { top, bottom, left, right } = e.target.getBoundingClientRect();
-    console.log("hi");
-    // console.log(top, bottom, left, right);
-    // console.log(e.clientX);
-    // console.log(e.clientY);
+
     if (
       currentId !== "" &&
       e.clientX >= left &&
@@ -32,9 +29,7 @@ function useDragAndDrop() {
       e.clientY <= bottom
     ) {
       document.getElementById(currentId)!.style.marginTop = "0px";
-      console.log("111111111111111111111111111");
     } else {
-      console.log("2222222222222222222222222");
       // get Categories
       const currentCategory = categories.filter(
         (item: any) =>
@@ -66,18 +61,14 @@ function useDragAndDrop() {
         currentCategory.tasks.splice(indexToPop, 1);
 
         targetCategory.tasks.splice(indexToInsertBefore, 0, insertedTask[0]);
-        // console.log(indexToPop);
-        // console.log(indexToInsertBefore);
+
         const cat = [...categories];
         const indexOfCurrentCategory = categories.indexOf(currentCategory.id);
         const indexOfTargetCategory = categories.indexOf(targetCategory.id);
         cat[indexOfCurrentCategory] = currentCategory;
         cat[indexOfTargetCategory] = targetCategory;
         setCategories([...cat]);
-        // console.log(targetTask);
-        // console.log(insertedTask);
-        // console.log(currentCategory);
-        // console.log(targetCategory);
+
         for (let i = 0; i < Tasks.length; i++) {
           if (window) {
             document.getElementById(Tasks[i].id)!.style.marginTop = "0px";
@@ -102,6 +93,7 @@ function useDragAndDrop() {
         const { top, bottom, left, right } = document
           .getElementById(Tasks[i].id)!
           .getBoundingClientRect();
+        // console.log(top, left, bottom, right, Tasks[i].id);
         const Task = {
           id: Tasks[i].id,
           top,
@@ -118,16 +110,12 @@ function useDragAndDrop() {
         ) {
           //
           if (window) {
-            if (currentId !== taskId) {
-              if (currentId !== "") {
-                document.getElementById(currentId)!.style.marginTop = "0px";
-              }
-              if (taskId !== Tasks[i].id) {
-                setCurrentId(Tasks[i].id);
+            console.log(currentId, taskId, Tasks[i].id);
+            if (taskId !== Tasks[i].id) {
+              setCurrentId(Tasks[i].id);
 
-                document.getElementById(Tasks[i].id)!.style.marginTop =
-                  e.target.clientHeight + "px";
-              }
+              document.getElementById(Tasks[i].id)!.style.marginTop =
+                e.target.clientHeight + "px";
             }
           }
         }
