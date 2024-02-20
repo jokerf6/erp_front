@@ -3,16 +3,21 @@ import { Icon } from "@iconify/react";
 import Modal from "../default/modal.component";
 import { PriorityData } from "@/static/parioty";
 import DropDown from "../default/dropDown.component";
-import { Projects_Link } from "@/static/links";
-
+import { Projects_Link, Tasks_Links} from "@/static/links";
+import Input from '@/components/tasks/Slider/input.component'
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function AddTask(props: { setAddTaskOverlay: any }) {
   const { setAddTaskOverlay } = props;
   const [ProjectsData, setProjectsData] = useState([]);
+  const [projectId, setProjectId] = React.useState("")
+  const [priorityName, setPriorityName] = React.useState("");
   useEffect(() => {
     getTask();
   }, []);
   return (
     <Modal setOverlay={setAddTaskOverlay}>
+      <ToastContainer />
       <div
         onClick={(e) => e.stopPropagation()}
         className="absolute top-0 right-0 min-h-screen w-screen max-w-[600px] md:w-[50vw] z-[100] flex flex-col justify-center"
@@ -27,31 +32,19 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
             onClick={() => setAddTaskOverlay(false)}
           />
         </div>
-        <form className="inputs-contanier bg-[#FAFAFA] flex flex-col flex-1 p-[20px]">
+        <form onSubmit={postTask} className="inputs-contanier bg-[#FAFAFA] flex flex-col flex-1 p-[20px]">
           <div className="inputs-content flex flex-col gap-5 ">
-            <div className="input-1 flex flex-col gap-1">
-              <label
-                className="text-[#251B37] text-[1rem] font-medium"
-                htmlFor="taskName"
-              >
-                Task Name{" "}
-                <span className="text-[0.8rem] text-[red]"> (Required)</span>
-              </label>
-              <input
-                name="taskName"
-                required
-                type="text"
-                className=" rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]"
-                id="taskName"
-                placeholder="Enter task name"
-              />
-            </div>
-
+            <Input
+              type="text"
+              name="taskAsm"
+              title ="Task Name"
+            />
             <DropDown
               data={ProjectsData}
               title="Project Name"
               name="project"
               default="Please Select Your Project"
+              setoption={setProjectId}
             />
 
             <div className="input-3 flex flex-col gap-1">
@@ -74,28 +67,17 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
                 placeholder="Enter The Name of Teammates"
               />
             </div>
-            <div className="input-4 flex flex-col gap-1">
-              <label
-                className="text-[#251B37] text-[1rem] font-medium"
-                htmlFor="dueDate"
-              >
-                Due Date{" "}
-                <span className="text-[0.8rem] text-[red]"> (Required)</span>
-              </label>
-              <input
-                required
-                name="dueDate"
-                type="date"
-                className=" rounded-[5px]  border-[#251B37] border-[1px] indent-[5px] h-[40px]"
-                id="dueDate"
-                placeholder="Set due Date"
-              />
-            </div>
+            <Input
+              type="datetime-local"
+              name="dueDate"
+              title="Due Date"
+            />
             <DropDown
               data={PriorityData}
               title="Priority"
               name="priority"
               default="Please task priority"
+              setoption={setPriorityName}
             />
             <div className="input-7 flex flex-col gap-1">
               <label
@@ -114,7 +96,7 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
             </div>
           </div>
           <div className="bg-[#FFFFFF] flex justify-center items-center mt-[20px] w-full">
-            <button className="bg-gradient-to-r from-[#5A28B3] to-[#E2778C] text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]">
+            <button type="submit" className="bg-gradient-to-r from-[#5A28B3] to-[#E2778C] text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]">
               Add
             </button>
           </div>
@@ -122,7 +104,23 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
       </div>
     </Modal>
   );
+  // Fuction That Convert Time to Time fahd 3awzo
+  function convertTime(originalDateTimeString:any){
+    var originalDate = new Date(originalDateTimeString);
 
+// Adjust the date by subtracting 1 day
+originalDate.setDate(originalDate.getDate() - 1);
+
+// Set the time to 00:45:33.753
+originalDate.setHours(0);
+originalDate.setMinutes(45);
+originalDate.setSeconds(33);
+originalDate.setMilliseconds(753);
+
+// Convert the adjusted date to ISO string format with UTC timezone indicator
+var adjustedDateTimeString = originalDate.toISOString();
+return adjustedDateTimeString
+  }
   // Fetch data using GET method and headers
   async function getTask() {
     const headers = new Headers();
@@ -141,5 +139,42 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
         setProjectsData(data.data);
         // console.log("Data:", data); // Process the data
       });
+  }
+
+  // Fetch Data using Post method
+  async function postTask(e: any) {
+    e.preventDefault();
+    console.log(e.target.taskName);
+    const data = {
+      "name": e.target.taskAsm.value,
+      "projectId": projectId,
+      "AssigneesId": [
+      ],
+      "dueData": convertTime(e.target.dueDate.value),
+      "description": e.target.description.value,
+      "priority": priorityName
+    }
+    console.log(data);
+    if(priorityName === "" || projectId ===""){
+      const notify = async (error: string) => toast.error(error);
+      return notify("Fe Error Ya Cos omk");
+    }
+    await fetch(Tasks_Links, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("AccessToken")}`
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => {
+      return response.json();
+    })
+    .then(data => {
+      console.log('Success:', data);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
   }
 }

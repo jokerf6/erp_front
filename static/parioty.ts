@@ -1,7 +1,7 @@
 export const PriorityData = [
-  { id: "1", name: "Task Priority" },
-  { id: "2", name: "Low" },
-  { id: "3", name: "Medium" },
-  { id: "4", name: "High" },
+  { id: "", name: "Task Priority" },
+  { id: "Low", name: "Low" },
+  { id: "Medium", name: "Medium" },
+  { id: "High", name: "High" },
 ];
 export const ProjectsData = ["1", "2"];

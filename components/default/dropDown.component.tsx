@@ -5,6 +5,7 @@ export default function DropDown(props: {
   title: string;
   default: string;
   name: string;
+  setoption:any;
 }) {
   return (
     <div className="input-6 flex flex-col gap-1">
@@ -16,14 +17,13 @@ export default function DropDown(props: {
         <span className="text-[0.8rem] text-[red]"> (Required)</span>
       </label>
       <select
-        aria-placeholder="hi"
         required
         name={props.name}
         className=" outline-none rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]"
         placeholder="choose task priority"
       >
-        {props.data.map((item: any) => {
-          return <option className=" outline-none">{item.name}</option>;
+        {props.data && props.data.map((item: any) => {
+          return <option onClick={props.setoption(item.id)} className=" outline-none">{item.name}</option>;
         })}
       </select>
     </div>
