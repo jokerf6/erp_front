@@ -23,7 +23,8 @@ export default function DropDown(props: {
         placeholder="choose task priority"
       >
         {props.data && props.data.map((item: any) => {
-          return <option onClick={props.setoption(item.id)} className=" outline-none">{item.name}</option>;
+          console.log(item)
+          return <option onClick={()=> props.setoption(item.id)} className=" outline-none">{item.name}</option>;
         })}
       </select>
     </div>
