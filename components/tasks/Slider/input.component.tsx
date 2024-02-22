@@ -5,7 +5,7 @@ export default function Input(props:{type:string, name:string, title?:string;}) 
         <div className="input-1 flex flex-col gap-1">
             <label
                 className="text-[#251B37] text-[1rem] font-medium"
-                htmlFor="taskName"
+                htmlFor={props.title}
             >
                 {props.title}{" "}
                 <span className="text-[0.8rem] text-[red]"> (Required)</span>
@@ -15,7 +15,7 @@ export default function Input(props:{type:string, name:string, title?:string;}) 
                 required
                 type={props.type}
                 className=" rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]"
-                id="taskName"
+                id={props.title}
                 placeholder="Enter task name"
             />
         </div>

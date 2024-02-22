@@ -5,13 +5,15 @@ export default function DropDown(props: {
   title: string;
   default: string;
   name: string;
-  setoption:any;
+  click:any;
 }) {
+  // Function to get value of option
+  const[value,setValue]= React.useState('')
   return (
     <div className="input-6 flex flex-col gap-1">
       <label
         className="text-[#251B37] text-[1rem] font-medium"
-        htmlFor="priority"
+        htmlFor={props.title}
       >
         {props.title}
         <span className="text-[0.8rem] text-[red]"> (Required)</span>
@@ -21,10 +23,12 @@ export default function DropDown(props: {
         name={props.name}
         className=" outline-none rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]"
         placeholder="choose task priority"
-      >
-        {props.data && props.data.map((item: any) => {
-          console.log(item)
-          return <option onClick={()=> props.setoption(item.id)} className=" outline-none">{item.name}</option>;
+        onChange={(event)=>{setValue(event.target.value)}}
+        defaultValue={props.click(value)}
+        >
+          <option value="free">{props.name ==="priority" ? "Task Priority" : "Choose The Project"}</option>
+        {props.data.map((item:any)=>{
+          return <option key={item.id}  value={item.id}> {item.name} </option>
         })}
       </select>
     </div>

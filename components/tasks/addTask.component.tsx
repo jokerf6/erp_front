@@ -9,9 +9,9 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export default function AddTask(props: { setAddTaskOverlay: any }) {
   const { setAddTaskOverlay } = props;
-  const [ProjectsData, setProjectsData] = useState([]);
-  const [projectId, setProjectId] = React.useState("")
-  const [priorityName, setPriorityName] = React.useState("");
+  const [ProjectsData, setProjectsData] = useState( []);
+  const [projectId, setProjectId] = React.useState("eID")
+  const [priorityName, setPriorityName] = React.useState("eName");
   useEffect(() => {
     getTask();
   }, []);
@@ -32,7 +32,7 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
             onClick={() => setAddTaskOverlay(false)}
           />
         </div>
-        <form onSubmit={postTask} className="inputs-contanier bg-[#FAFAFA] flex flex-col flex-1 p-[20px]">
+        <form onSubmit={postTask} className="inputs-container bg-[#FAFAFA] flex flex-col flex-1 p-[20px]">
           <div className="inputs-content flex flex-col gap-5 ">
             <Input
               type="text"
@@ -44,7 +44,7 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
               title="Project Name"
               name="project"
               default="Please Select Your Project"
-              setoption={setProjectId}
+              click={setProjectId}
             />
 
             <div className="input-3 flex flex-col gap-1">
@@ -77,7 +77,7 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
               title="Priority"
               name="priority"
               default="Please task priority"
-              setoption={setPriorityName}
+              click={setPriorityName}
             />
             <div className="input-7 flex flex-col gap-1">
               <label
@@ -104,18 +104,18 @@ export default function AddTask(props: { setAddTaskOverlay: any }) {
       </div>
     </Modal>
   );
-  // Fuction That Convert Time to Time fahd 3awzo
+  // Function That Convert Time to Time fahd 3awzo
   function convertTime(originalDateTimeString:any){
     var originalDate = new Date(originalDateTimeString);
 
 // Adjust the date by subtracting 1 day
-originalDate.setDate(originalDate.getDate() - 1);
+originalDate.setDate(originalDate.getDate());
 
 // Set the time to 00:45:33.753
-originalDate.setHours(0);
-originalDate.setMinutes(45);
-originalDate.setSeconds(33);
-originalDate.setMilliseconds(753);
+// originalDate.setHours(0);
+// originalDate.setMinutes(45);
+// originalDate.setSeconds(33);
+// originalDate.setMilliseconds(753);
 
 // Convert the adjusted date to ISO string format with UTC timezone indicator
 var adjustedDateTimeString = originalDate.toISOString();
@@ -144,7 +144,7 @@ return adjustedDateTimeString
   // Fetch Data using Post method
   async function postTask(e: any) {
     e.preventDefault();
-    console.log(e.target.taskName);
+    console.log(priorityName ,"<== priority is ")
     const data = {
       "name": e.target.taskAsm.value,
       "projectId": projectId,
