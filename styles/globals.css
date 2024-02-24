@@ -46,17 +46,17 @@ body {
   border-inline: 1px solid #e9e3d58a;
 }
 /* Scrollbar PM Files */
-.files-contents::-webkit-scrollbar {
+.files-contents::-webkit-scrollbar, .taskAllProject::-webkit-scrollbar {
   width: 10px;
 }
-.files-contents::-webkit-scrollbar-thumb {
+.files-contents::-webkit-scrollbar-thumb, .taskAllProject::-webkit-scrollbar-thumb {
   border-radius: 12px;
   background-color: #251b3778;
 }
-.files-contents::-webkit-scrollbar-track {
+.files-contents::-webkit-scrollbar-track,.taskAllProject::-webkit-scrollbar-track {
   background-color: transparent;
 }
-.files-contents::-webkit-scrollbar-thumb:hover {
+.files-contents::-webkit-scrollbar-thumb:hover, .taskAllProject::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
 /* End PM Scrollbar  */

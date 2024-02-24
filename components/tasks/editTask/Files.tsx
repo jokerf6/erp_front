@@ -17,7 +17,7 @@ export default function Files() {
           </p>
         </div>
         <button
-          className="rounded-[5px] outline-none   w-fit    flex justify-between items-center"
+          className="rounded-[5px] outline-none w-fit flex justify-between items-center"
           onClick={ClickInputFile}
         >
           <input
@@ -33,8 +33,6 @@ export default function Files() {
             placeholder="Upload files"
           />
           <BiExport className="text-[#FF375E] w-[40px] h-[21px] cursor-pointer" />
-
-          {/* <Icon icon="subway:pin" className="-rotate-45 mr-[5px]" /> */}
         </button>
       </div>
       <div className="files-contents flex flex-col gap-4 border-2 border-[#E7E7E7] rounded-[12px] p-5 overflow-auto max-h-[120px] scroll-m-2 bg-[#FFFFFF]">

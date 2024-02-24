@@ -6,7 +6,8 @@ export default function Card(props:{
     id:number,
     files:number,
     photo:string[],
-    progress:number
+    progress:number,
+    closeBig:any
 }) {
 
     const myImages = props.photo.map((img: any, index: number) => {
@@ -15,15 +16,16 @@ export default function Card(props:{
             key={index}
             src={img}
             alt='Photo'
-            className={`${index === 0 ? "" : "-ml-2"} w-[30px] h-[30px] rounded-full`} />
+            className={`${index === 0 ? "" : "-ml-2"} w-[20px] h-[20px] rounded-full`} />
     })
     const [open, setOpen] = React.useState(false)
     // Function to Open Three Dots
     function handleOpen(){
         setOpen(prevState => !prevState)
+        props.closeBig(false);
     }
     return (
-        <div className='Card bg-white rounded-lg p-3 flex flex-col gap-4'style={{boxShadow:"0px 0px 19.5px rgba(37, 27, 55, 0.19)"}}>
+        <div onClick={()=> {props.closeBig((prevState:any) => !prevState)}} className='cursor-pointer Card bg-white rounded-lg p-3 flex flex-col gap-4'style={{boxShadow:"0px 0px 19.5px rgba(37, 27, 55, 0.19)"}}>
             <div className="flex justify-between items-center mb-10 relative">
                 <h2 className='font-bold'>{props.name}</h2>
                 <button onClick={handleOpen}>
@@ -48,7 +50,7 @@ export default function Card(props:{
                 <div className="flex ">
                     {myImages}
                 </div>
-                <div className="flex justify-between items-center gap-4">
+                <div className="flex justify-between items-center gap-2">
                     <Icon icon={"solar:folder-with-files-linear"} className=" text-2xl text-[#787486]" />
                     <span className='text-[#787486]'>{props.files} Files</span>
                 </div>
