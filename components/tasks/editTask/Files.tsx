@@ -12,9 +12,7 @@ export default function Files() {
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
           <p className="text-[#0D062D] font-bold">Files</p>
-          <p className="bg-[#F2EBFE] text-[#251B37] rounded-full flex justify-center items-center w-[20px] h-[20px]">
-            4
-          </p>
+          <p className="bg-[#F2EBFE] text-[#251B37] rounded-full flex justify-center items-center w-[20px] h-[20px]">{files.length}</p>
         </div>
         <button
           className="rounded-[5px] outline-none w-fit flex justify-between items-center"

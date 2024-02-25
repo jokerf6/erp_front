@@ -5,16 +5,15 @@ export default function Card(props:{
     name:string,
     id:number,
     files:number,
-    photo:string[],
+    photo:object[],
     progress:number,
-    closeBig:any
+    closeBig:any,
+    getData:any
 }) {
-
     const myImages = props.photo.map((img: any, index: number) => {
-        console.log(img[index])
         return <img
-            key={index}
-            src={img}
+            key={img.id}
+            src={img.image}
             alt='Photo'
             className={`${index === 0 ? "" : "-ml-2"} w-[20px] h-[20px] rounded-full`} />
     })
@@ -22,10 +21,15 @@ export default function Card(props:{
     // Function to Open Three Dots
     function handleOpen(){
         setOpen(prevState => !prevState)
-        props.closeBig(false);
+        props.closeBig((prevState:any)=> !prevState)
+    }
+    // Function to get project name and progress
+    function handleData(){
+        {props.closeBig((prevState:any) => !prevState)}
+        props.getData(props.progress,props.name )
     }
     return (
-        <div onClick={()=> {props.closeBig((prevState:any) => !prevState)}} className='cursor-pointer Card bg-white rounded-lg p-3 flex flex-col gap-4'style={{boxShadow:"0px 0px 19.5px rgba(37, 27, 55, 0.19)"}}>
+        <div onClick={handleData} className='cursor-pointer Card bg-white rounded-lg p-3 flex flex-col gap-4'style={{boxShadow:"0px 0px 19.5px rgba(37, 27, 55, 0.19)"}}>
             <div className="flex justify-between items-center mb-10 relative">
                 <h2 className='font-bold'>{props.name}</h2>
                 <button onClick={handleOpen}>

@@ -21,7 +21,7 @@ export default function TasksAllProject() {
             images:["/images/Kerolos Fayez.jpg", "/images/Matthew Adel.jpg", "/images/Sheta.png"]
         },
         {
-            id:1,
+            id:3,
             priority:"Medium",
             condition:"Done",
             title:"project Three",
@@ -65,9 +65,9 @@ export default function TasksAllProject() {
             <div className="part-one flex justify-between items-center">
                 <div className="flex gap-3">
                     <h1 className='text-[#0D062D] font-bold'>Tasks</h1>
-                    <p className='bg-[#F2EBFE] rounded-full w-5 h-5 flex justify-center items-center'>4</p>
+                    <p className='bg-[#F2EBFE] rounded-full w-5 h-5 flex justify-center items-center'>{myData.length}</p>
                 </div>
-                <p className='font-bold'>See All</p>
+                <button className='font-bold'>See All</button>
             </div>
             <div className="taskAllProject overflow-auto h-[300px] bg-white  border-2 border-[#E7E7E7] rounded-2xl">
             {myData}
