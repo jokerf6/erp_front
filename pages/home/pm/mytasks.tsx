@@ -55,7 +55,11 @@ export default function MyTasks() {
     });
     setImageSliderOverlay(true);
   }
-
+  // Function to get task data
+  const [taskData,setTaskData] =React.useState({});
+  function getDate(priority:string,taskName:string,comments:number,files:number,image:any){
+    setTaskData({priority,taskName,comments,files,image})
+  }
   const categoryFilterList = categories.map((category) => {
     return (
       <div
@@ -155,6 +159,8 @@ export default function MyTasks() {
           setEditTaskOverlay={setEditTaskOverlay}
           setAddComment={setAddComment}
           addComment={addComment}
+          getData = {setTaskData}
+          // *******************************************************************************************************************************
         />
       )}
 

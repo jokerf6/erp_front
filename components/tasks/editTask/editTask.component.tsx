@@ -11,6 +11,7 @@ export default function EditTask(props: {
   setEditTaskOverlay: any;
   setAddComment: any;
   addComment: boolean;
+  getData: any
 }) {
 
   const { setEditTaskOverlay, setAddComment, addComment } = props;
