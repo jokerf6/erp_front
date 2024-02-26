@@ -5,15 +5,11 @@ import { Icon } from "@iconify/react";
 import categoriesData from "@/utils/category.json";
 
 import Head from "next/head";
-import Image from "next/image";
-
 // Components
 import Category from "@/components/tasks/category.component";
 import EditTask from "@/components/tasks/editTask/editTask.component";
 import AddTask from "@/components/tasks/addTask.component";
 import ImageSlider from "@/components/tasks/imageSlider.component";
-import TitleTask from "@/components/tasks/Slider/titleTask.component";
-import TaskChecked from "@/components/tasks/Slider/taskStatus.component";
 
 // Hook
 import useScrollBlockHook from "@/hooks/useScrollBlock";
