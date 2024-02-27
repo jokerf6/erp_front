@@ -24,37 +24,34 @@ export default function LoginForm() {
   const { setId, loading, setLoading } = useContext(IndexContext);
 
   return (
-    <form className=" w-full flex flex-col gap-5" onSubmit={handle}>
+    <form className="w-full flex flex-col gap-5" onSubmit={handle}>
       <div className=" flex gap-2 flex-col">
-        <span className=" text-main">Email</span>
+        <span className="text-primary-purple">Email</span>
         <input
           name="email"
-          className="bg-transparent w-full text-main rounded-md focus:outline-none p-2 px-4"
-          style={{ border: "1px solid #251B37" }}
+          className="bg-transparent w-full text-primary-purple rounded-md focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Your Email"}
         />
       </div>
       <div className=" flex gap-2 flex-col">
-        <span className=" text-main">Password</span>
+        <span className="text-primary-purple">Password</span>
         <input
           name="password"
-          className="bg-transparent w-full rounded-md  text-main focus:outline-none p-2 px-4"
-          style={{ border: "1px solid #251B37" }}
+          className="bg-transparent w-full rounded-md text-primary-purple focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Your Password"}
         />
       </div>
       <div className=" flex gap-2 items-center">
         <input
           type="checkbox"
-          className=" bg-gray-400 text-red-500 rounded-2xl"
-          style={{ width: "20px", height: "20px" }}
+          className=" bg-lite-white text-red-500 rounded-2xl w-[20px] h-[20px]"
         />
-        <span className=" text-main">Remember me</span>
+        <span className="text-primary-purple">Remember me</span>
       </div>
       {!loading ? (
         <button
           type="submit"
-          className=" w-full bg-primary  bg-main font-b py-4 rounded-md text-white font-bold cursor-pointer hover:shadow-lg"
+          className="w-full bg-primary-purple text-primary-white font-b py-4 rounded-md  font-bold cursor-pointer hover:shadow-lg"
         >
           LOGIN
         </button>
@@ -64,7 +61,7 @@ export default function LoginForm() {
       <div className=" w-full flex items-center justify-center">
         <Link
           href={"/forgetpassword"}
-          className="cursor-pointer underline text-main2 mt-8 w-fit text-center"
+          className="text-primary-purple cursor-pointer underline text-main2 mt-8 w-fit text-center"
         >
           Forget Password ?
         </Link>

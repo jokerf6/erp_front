@@ -23,20 +23,18 @@ export default function ChangePasswordForm() {
   return (
     <form className=" w-full flex flex-col gap-5" onSubmit={handle}>
       <div className=" flex gap-2 flex-col">
-        <span className=" text-main">New password</span>
+        <span className=" text-primary-purple">New password</span>
         <input
           name="change_password"
-          className="bg-transparent w-full rounded-md  text-main placeholder-input focus:outline-none p-2 px-4"
-          style={{ border: "1px solid #251B37" }}
+          className="bg-transparent w-full rounded-md  text-primary-purple placeholder-input focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Enter your new password"}
         />
       </div>
       <div className=" flex gap-2 flex-col">
-        <span className=" text-main">Confirm new password</span>
+        <span className=" text-primary-purple">Confirm new password</span>
         <input
           name="re_change_password"
-          className="bg-transparent w-full rounded-md  text-main placeholder-input focus:outline-none p-2 px-4"
-          style={{ border: "1px solid #251B37" }}
+          className="bg-transparent w-full rounded-md  text-primary-purple placeholder-input focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Re-enter your new password"}
         />
       </div>
@@ -44,7 +42,7 @@ export default function ChangePasswordForm() {
       {!loading ? (
         <button
           type="submit"
-          className=" w-full bg-primary  bg-main font-b py-4 rounded-md mt-10 text-white font-bold cursor-pointer hover:shadow-lg"
+          className=" w-full bg-primary-purple font-b py-4 rounded-md mt-10 text-white font-bold cursor-pointer hover:shadow-lg"
         >
           Save Changes
         </button>

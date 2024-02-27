@@ -23,8 +23,7 @@ export default function VerifyEmailForm() {
         name={`input${index + 1}`}
         id={`input${index + 1}`}
         maxLength={1}
-        className=" bg-cgrey w-12 h-12 md:w-14 md:h-14 text-center  rounded-md  text-main placeholder-input focus:outline-none"
-        style={{ border: "1px solid #251B37" }}
+        className="bg-lite-white w-12 h-12 md:w-14 md:h-14 text-center  rounded-md  text-primary-purple placeholder-input focus:outline-none border-[1px] border-primary-purple"
         placeholder={"0"}
         onChange={(e) => {
           const field = e.target.value.length;

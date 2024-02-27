@@ -37,20 +37,24 @@ export default function Category(props: {
   }, []);
 
   const stickyCategoryTopStyle = isCategoryTopVisible
-    ? "rounded-t-xl bg-[#e9e3d58a]"
-    : "sticky w-full top-0 shadow-[0_0_3px_0_rgba(0,0,0,0.5)] bg-[#e9e3d5]";
+    ? "rounded-t-xl bg-lite-purple-54"
+    : "sticky w-full top-0 shadow-[0_0_3px_0_rgba(0,0,0,0.5)] bg-lite-purple";
+
+  const dotLineStyle =
+    category.title === "to do"
+      ? "bg-mytasks-dotline-todo"
+      : category.title === "in progress"
+      ? "bg-mytasks-dotline-inprogress"
+      : "bg-mytasks-dotline-done";
 
   return (
-    <div className=" flex flex-col bg-[#e9e3d58a] rounded-xl  h-fit flex-1 lg:min-w-[400px]">
+    <div className=" flex flex-col bg-lite-purple-54 rounded-xl  h-fit flex-1 lg:min-w-[400px]">
       <div
         id={id}
         className={`transition-all  flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
       >
-        <div className=" flex text-main items-center gap-2 cursor-default">
-          <div
-            className={` w-2 h-2 rounded-full`}
-            style={{ backgroundColor: `${category.accentColor}` }}
-          ></div>
+        <div className=" flex text-mytasks-primary-text items-center gap-2 cursor-default">
+          <div className={` w-2 h-2 rounded-full ${dotLineStyle}`}></div>
           <span className={`text-lg font-semibold capitalize`}>
             {category.title}
           </span>
@@ -70,11 +74,7 @@ export default function Category(props: {
           </div>
         )}
       </div>
-      <hr
-        ref={categoryLine}
-        className={`border `}
-        style={{ borderColor: `${category.accentColor}` }}
-      />
+      <div ref={categoryLine} className={`h-[2px] ${dotLineStyle}`}></div>
       <div className="flex flex-col gap-3 py-6 px-3 lg:px-6">
         {tasksData.map((task, index: number) => {
           return (
@@ -85,7 +85,7 @@ export default function Category(props: {
               categoryID={categoryID}
               categories={categories}
               setCategories={setCategories}
-              getData = {props.getData}
+              getData={props.getData}
             />
           );
         })}

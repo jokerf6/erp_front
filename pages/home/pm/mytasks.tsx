@@ -56,17 +56,28 @@ export default function MyTasks() {
     setImageSliderOverlay(true);
   }
   // Function to get task data
-  const [taskData,setTaskData] =React.useState({priority:"",taskName:"",comments:0,files:0,image:[]});
-  function getDate(priority:string,taskName:string,comments:number,files:number,image:any){
-    setTaskData({priority,taskName,comments,files,image})
+  const [taskData, setTaskData] = React.useState({
+    priority: "",
+    taskName: "",
+    comments: 0,
+    files: 0,
+    image: [],
+  });
+  function getDate(
+    priority: string,
+    taskName: string,
+    comments: number,
+    files: number,
+    image: any
+  ) {
+    setTaskData({ priority, taskName, comments, files, image });
   }
   const categoryFilterList = categories.map((category) => {
     return (
       <div
         key={category.title}
         id={category.title}
-        className="bg-white2 capitalize rounded-sm py-1"
-        style={{ boxShadow: "0 0 2px var(--color-main3)" }}
+        className="bg-lite-white capitalize rounded-sm py-1 shadow-[0px_0px_2px_0px] shadow-secondary-purple"
         onClick={() => {
           setCategoryFilter(category.title);
           setIsCategoryFilterOpen(false);
@@ -89,14 +100,14 @@ export default function MyTasks() {
         category={category}
         categories={categories}
         setCategories={setCategories}
-        getData = {getDate}
+        getData={getDate}
       />
     );
   });
   const categoryElementsFiltered = categoryElements.filter(
     (element) => element.props.title === categoryFilter
   );
-  console.log(taskData)
+  console.log(taskData);
   return (
     <MyTasksContext.Provider
       value={{
@@ -115,7 +126,7 @@ export default function MyTasks() {
           {isSmallWindow && (
             <div className="flex flex-col justify-center items-center w-11/12 rounded relative">
               <button
-                className="bg-main3 text-white2 shadow-sm shadow-main3 font-semibold w-full rounded-t relative py-1"
+                className="bg-secondary-purple text-lite-white shadow-sm shadow-secondary-purple font-semibold w-full rounded-t relative py-1"
                 onClick={handleDropdown}
               >
                 <span className="capitalize">{categoryFilter}</span>
@@ -129,10 +140,7 @@ export default function MyTasks() {
                 </span>
               </button>
               {isCategoryFilterOpen && (
-                <div
-                  className="bg-white border-main3 flex flex-col gap-2 text-center w-full py-2 px-1 absolute top-full z-[2] rounded-sm"
-                  style={{ borderWidth: "1px" }}
-                >
+                <div className="bg-primary-white border-secondary-purple flex flex-col gap-2 text-center w-full py-2 px-1 absolute top-full z-[2] rounded-sm border-[1px]">
                   {categoryFilterList}
                 </div>
               )}
@@ -160,11 +168,11 @@ export default function MyTasks() {
           setEditTaskOverlay={setEditTaskOverlay}
           setAddComment={setAddComment}
           addComment={addComment}
-          taskName = {taskData.taskName}
-          taskPriority  = {taskData.priority}
-          taskComments = {taskData.comments}
-          taskFiles = {taskData.files}
-          taskImages = {taskData.image}
+          taskName={taskData.taskName}
+          taskPriority={taskData.priority}
+          taskComments={taskData.comments}
+          taskFiles={taskData.files}
+          taskImages={taskData.image}
           // *******************************************************************************************************************************
         />
       )}

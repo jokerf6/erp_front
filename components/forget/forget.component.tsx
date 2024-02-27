@@ -16,18 +16,17 @@ export default function ForgetForm(props: { setId: any; setEmail: any }) {
   return (
     <form onSubmit={handle} className=" w-full flex flex-col gap-5">
       <div className=" flex gap-2 flex-col">
-        <span className=" text-main">Email</span>
+        <span className=" text-primary-purple">Email</span>
         <input
           name="email"
-          className="bg-transparent w-full rounded-md  text-main placeholder-input focus:outline-none p-2 px-4"
-          style={{ border: "1px solid #251B37" }}
+          className="bg-transparent w-full rounded-md text-primary-purple placeholder-input focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Your Email"}
         />
       </div>
       {!loading ? (
         <button
           type="submit"
-          className=" w-full bg-primary  bg-main font-b py-4 rounded-md mt-10 text-white font-bold cursor-pointer hover:shadow-lg"
+          className=" w-full bg-primary-purple font-b py-4 rounded-md mt-10 text-white font-bold cursor-pointer hover:shadow-lg"
         >
           Continue
         </button>

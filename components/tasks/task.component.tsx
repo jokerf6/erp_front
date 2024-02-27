@@ -19,7 +19,7 @@ export default function Task(props: {
   categoryID: string;
   categories: any;
   setCategories: any;
-  getData: any
+  getData: any;
 }) {
   const { setEditTaskOverlay } = useContext(MyTasksContext);
   const { taskID, task, categoryID, categories, setCategories } = props;
@@ -36,12 +36,28 @@ export default function Task(props: {
 
   // Function that collect data from each task
   function handleData() {
-    props.getData(task.status, task.name, task.comments, task.files, task.members)
-    setEditTaskOverlay(true)
+    props.getData(
+      task.status,
+      task.name,
+      task.comments,
+      task.files,
+      task.members
+    );
+    setEditTaskOverlay(true);
   }
 
+  // Task Priority Style
+  const taskPriorityColors = task.status === "low" 
+  ? "bg-priority-low-bg-20 text-priority-low-text"
+  : task.status === "medium"
+    ? "bg-priority-low-bg-20 text-priority-low-text" // TODO: Colors for Medium Priority?
+    : task.status === "high"
+      ? "bg-priority-high-bg-10 text-priority-high-text"
+      : "bg-priority-completed-bg-20 text-priority-completed-text"
+  // Task Priority Style
+
   return (
-    <div onClick={handleData} className="cursor-pointer">
+    <div>
       {taskID[0] === "-" ? (
         <div
           id={taskID}
@@ -56,22 +72,24 @@ export default function Task(props: {
           onDragStart={handleDragStart}
           onDragEnd={(e) => handleDragEnd(e, categories, setCategories)}
           onDrag={(e: any) => handleDrag(e, taskID, divRef)}
-          className={`  card ${isDragging ? `dragging card  ` : ""
-            } flex flex-col w-full bg-white px-4 py-4 rounded-xl gap-3`}
+          className={`card ${
+            isDragging ? `dragging card  ` : ""
+          } flex flex-col w-full bg-primary-white px-4 py-4 rounded-xl gap-3`}
         >
           <div className=" w-full justify-between items-center flex">
-            <div className="text-tot bg-bot px-5 py-1 rounded h-fit capitalize">
+            <div className={`${taskPriorityColors} px-5 py-1 rounded h-fit capitalize`}>
               {task.status}
             </div>
             {/* <h1>{mousePosition.x}</h1> */}
             <Icon
               icon={"tabler:dots"}
-              className=" text-main text-2xl cursor-pointer"
+              className=" text-primary-darkblue text-2xl cursor-pointer"
+              onClick={handleData}
             />
           </div>
 
           <div className="flex flex-col gap-2">
-            <h1 className=" text-2xl text-main font-bold">{task.name}</h1>
+            <h1 className=" text-2xl text-primary-darkblue font-bold">{task.name}</h1>
             {task.images && (
               <Images
                 images={task.images}
@@ -94,7 +112,7 @@ export default function Task(props: {
                 />
               </div>
             )}
-            <p className=" text-brief text-sm">
+            <p className=" text-primary-p text-sm">
               Brainstorming brings team members' diverse experience into play.
             </p>
           </div>
@@ -107,14 +125,15 @@ export default function Task(props: {
                     key={index}
                     src={member.image}
                     alt={member}
-                    className={`${index !== 0 ? "-ml-2" : ""
-                      } w-6 h-6 rounded-full border border-white`}
+                    className={`${
+                      index !== 0 ? "-ml-2" : ""
+                    } w-6 h-6 rounded-full border border-white`}
                   />
                 );
               })}
             </div>
             <div className="flex gap-5 mr-3">
-              <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center max-w-[75px] sm:max-w-[112px]">
+              <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-primary-p flex-wrap justify-center max-w-[75px] sm:max-w-[112px]">
                 <Icon
                   icon={"ant-design:comment-outlined"}
                   className=" text-xl"
@@ -122,11 +141,12 @@ export default function Task(props: {
                 <span className="text-xs lg:text-sm flex gap-1 capitalize flex-wrap justify-center">
                   <span>{task.comments}</span>{" "}
                   <span className="hidden xxs:block">
+                    {/* TODO: Function for single or plural? */}
                     {task.comments === 1 ? "comment" : "comments"}
                   </span>
                 </span>
               </div>
-              <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-brief flex-wrap justify-center max-w-[75px] sm:max-w-[80px]">
+              <div className="flex flex-col sm:flex-row items-center text-lg gap-1 text-primary-p flex-wrap justify-center max-w-[75px] sm:max-w-[80px]">
                 <Icon
                   icon={"solar:folder-with-files-linear"}
                   className=" text-xl"

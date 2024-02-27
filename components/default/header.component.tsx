@@ -20,7 +20,22 @@ export default function Header() {
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const activeHomeTabStyle = "bg-selected text-selectedText font-bold";
+  // NavLinks Styles
+  const navLinkStyle =
+    "capitalize cursor-pointer p-4 hover:bg-nav-selected-bg hover:text-nav-selected-text";
+  const navLinkStyleActive =
+    "bg-nav-selected-bg text-nav-selected-text font-bold";
+  const navLinkStyleInActive = "bg-primary-purple text-lite-white";
+  const navLinkStyleSmallWindow = isSmallWindow
+    ? "shadow-[0_0_2px_1px_rgba(255,255,255,0.2)] rounded-sm"
+    : "";
+  // NavLinks Styles
+
+  // NavIcons Styles
+  const navIconStyleSmallWindow =
+    "bg-lite-white text-primary-purple flex gap-2 p-2 items-center rounded-sm";
+  const navIconStyle = "text-2xl cursor-pointer box-content p-1";
+  // NavIcons Styles
 
   // Makes sure The Menu is always open in Big Screens
   useEffect(() => {
@@ -38,7 +53,7 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className="bg-main flex px-5 py-3 lg:py-0 relative justify-between">
+    <header className="bg-primary-purple flex px-5 py-3 lg:py-0 relative justify-between">
       <div className="header--left flex gap-4 items-center flex-row-reverse lg:flex-row">
         <Link href={"/home/pm/mytasks"}>
           <Image
@@ -51,25 +66,22 @@ export default function Header() {
         {isSmallWindow && (
           <Icon
             icon="mingcute:menu-line"
-            className="text-white text-2xl lg:hidden"
+            className="text-lite-white text-2xl lg:hidden"
             onClick={() => setIsMenuOpen((prev) => !prev)}
           />
         )}
         <nav
-          className={`bg-[rgba(37,27,55,0.95)] h-[100vh] ${
+          className={`bg-primary-purple/95 h-[100vh] ${
             isMenuOpen ? "absolute" : "hidden"
           } z-[3] top-full left-0 w-full flex flex-col p-2 gap-2 lg:p-0 lg:static lg:h-fit`}
         >
           <ul className="flex flex-col gap-3 lg:flex-row">
             <Link href={"/home/dashboard"}>
               <li
-                className={`bg-main capitalize cursor-pointer p-4 hover:bg-selected hover:text-selectedText ${
+                className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
                   homeCurrentTab === "dashboard"
-                    ? activeHomeTabStyle
-                    : "text-white"
-                } ${
-                  isSmallWindow &&
-                  "shadow-[0_0_2px_1px_rgba(255,255,255,0.2)] rounded-sm"
+                    ? navLinkStyleActive
+                    : navLinkStyleInActive
                 }`}
               >
                 dashboard
@@ -77,11 +89,10 @@ export default function Header() {
             </Link>
             <Link href={"/home/pm/mytasks"}>
               <li
-                className={`bg-main capitalize cursor-pointer p-4 hover:bg-selected hover:text-selectedText ${
-                  homeCurrentTab === "pm" ? activeHomeTabStyle : "text-white"
-                } ${
-                  isSmallWindow &&
-                  "shadow-[0_0_2px_1px_rgba(255,255,255,0.2)] rounded-sm"
+                className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
+                  homeCurrentTab === "pm"
+                    ? navLinkStyleActive
+                    : navLinkStyleInActive
                 }`}
               >
                 project management
@@ -89,14 +100,13 @@ export default function Header() {
             </Link>
             <Link href={"/home/hr"}>
               <li
-                className={`bg-main uppercase cursor-pointer p-4  hover:bg-selected hover:text-selectedText ${
-                  homeCurrentTab === "hr" ? activeHomeTabStyle : "text-white"
-                } ${
-                  isSmallWindow &&
-                  "shadow-[0_0_2px_1px_rgba(255,255,255,0.2)] rounded-sm"
+                className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
+                  homeCurrentTab === "hr"
+                    ? navLinkStyleActive
+                    : navLinkStyleInActive
                 }`}
               >
-                hr
+                HR
               </li>
             </Link>
           </ul>
@@ -105,16 +115,16 @@ export default function Header() {
               <hr />
               <div className="header--right small flex flex-col gap-2 overflow-y-auto">
                 <ErpComm />
-                <div className="bg-white2 text-main flex gap-2 p-2 items-center rounded-sm">
+                <div className={navIconStyleSmallWindow}>
                   <Icon icon="mi:notification" className="text-2xl" />
                   <span>Notifications</span>
                 </div>
-                <div className="bg-white2 text-main flex gap-2 p-2 items-center rounded-sm">
+                <div className={navIconStyleSmallWindow}>
                   <Icon icon="solar:settings-linear" className="text-2xl" />
                   <span>Settings</span>
                 </div>
-                <div className="bg-white2 text-main flex gap-2 p-2 items-center rounded-sm">
-                  <Icon icon={"icons8:todo-list"} className=" text-2xl " />
+                <div className={navIconStyleSmallWindow}>
+                  <Icon icon={"icons8:todo-list"} className="text-2xl " />
                   <span>To Do List</span>
                 </div>
               </div>
@@ -122,26 +132,18 @@ export default function Header() {
           )}
         </nav>
       </div>
-      <div className="header--right flex items-center gap-4 text-white">
-        {!isSmallWindow && <div className="hidden lg:block"><ErpComm /></div>}
-        <Icon
-          icon="teenyicons:search-outline"
-          className="text-2xl cursor-pointer box-content p-1"
-        />
+      <div className="header--right flex items-center gap-4 text-lite-white">
+        {!isSmallWindow && (
+          <div className="hidden lg:block">
+            <ErpComm />
+          </div>
+        )}
+        <Icon icon="teenyicons:search-outline" className={navIconStyle} />
         {!isSmallWindow && (
           <div className="hidden lg:flex gap-3">
-            <Icon
-              icon="mi:notification"
-              className="text-2xl cursor-pointer box-content p-1"
-            />
-            <Icon
-              icon="solar:settings-linear"
-              className="text-2xl cursor-pointer box-content p-1"
-            />
-            <Icon
-              icon={"icons8:todo-list"}
-              className=" text-2xl cursor-pointer box-content p-1"
-            />
+            <Icon icon="mi:notification" className={navIconStyle} />
+            <Icon icon="solar:settings-linear" className={navIconStyle} />
+            <Icon icon={"icons8:todo-list"} className={navIconStyle} />
           </div>
         )}
         <Image

@@ -14,7 +14,7 @@ export default function Left() {
       ></div>
 
       <h1
-        className="self-end mb-[32px] ml-[24px] w-fit items-center text-white2 font-bold xl:text-6xl lg:text-5xl md:text-4xl text-3xl"
+        className="self-end mb-[32px] ml-[24px] w-fit items-center text-lite-white font-bold xl:text-6xl lg:text-5xl md:text-4xl text-3xl"
       >
         Manage Your Business Perfectly!
       </h1>

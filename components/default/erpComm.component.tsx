@@ -10,17 +10,17 @@ export default function ErpComm() {
   const iconStyles = "text-2xl lg:text-xl";
 
   return (
-    <div className=" flex text-white py-2 px-[1px] lg:py-1 lg:px-1 gap-2 rounded-3xl items-center lg:bg-main3">
+    <div className=" flex text-lite-white py-2 px-[1px] lg:py-1 lg:px-1 gap-2 rounded-3xl items-center lg:bg-erp-community-container-bg">
       <button
         onClick={() => setErpCom("erp")}
-        className={`${btnStyles} ${erpCom === "erp" && "bg-light"}`}
+        className={`${btnStyles} ${erpCom === "erp" && "bg-erp-community-selected-bg"}`}
       >
         <Icon icon={"icon-park-outline:system"} className={iconStyles} />
         ERP
       </button>
       <button
         onClick={() => setErpCom("community")}
-        className={`${btnStyles} ${erpCom === "community" && "bg-light"}`}
+        className={`${btnStyles} ${erpCom === "community" && "bg-erp-community-selected-bg"}`}
       >
         <Icon
           icon={"fluent:people-community-48-regular"}

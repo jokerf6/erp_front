@@ -6,7 +6,7 @@ import IndexFooter from "@/components/default/indexfooter.component";
 export default function Right(props: { children: React.ReactNode }) {
   const { children } = props;
   return (
-    <div className="p-2 lg:p-0 flex flex-col flex-1 justify-center items-center">
+    <div className="bg-primary-white p-2 lg:p-0 flex flex-col flex-1 justify-center items-center">
       <Image
         src="/images/logo.png"
         alt="ERP-Logo"
