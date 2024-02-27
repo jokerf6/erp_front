@@ -19,6 +19,7 @@ export default function Task(props: {
   categoryID: string;
   categories: any;
   setCategories: any;
+  getData: any
 }) {
   const { setEditTaskOverlay } = useContext(MyTasksContext);
   const { taskID, task, categoryID, categories, setCategories } = props;
@@ -33,8 +34,14 @@ export default function Task(props: {
 
   const { TaskSHeight, UpdateTaskSHeight } = TasksHeightStore();
 
+  // Function that collect data from each task
+  function handleData() {
+    props.getData(task.status, task.name, task.comments, task.files, task.members)
+    setEditTaskOverlay(true)
+  }
+
   return (
-    <>
+    <div onClick={handleData} className="cursor-pointer">
       {taskID[0] === "-" ? (
         <div
           id={taskID}
@@ -49,9 +56,8 @@ export default function Task(props: {
           onDragStart={handleDragStart}
           onDragEnd={(e) => handleDragEnd(e, categories, setCategories)}
           onDrag={(e: any) => handleDrag(e, taskID, divRef)}
-          className={`  card ${
-            isDragging ? `dragging card  ` : ""
-          } flex flex-col w-full bg-white px-4 py-4 rounded-xl gap-3`}
+          className={`  card ${isDragging ? `dragging card  ` : ""
+            } flex flex-col w-full bg-white px-4 py-4 rounded-xl gap-3`}
         >
           <div className=" w-full justify-between items-center flex">
             <div className="text-tot bg-bot px-5 py-1 rounded h-fit capitalize">
@@ -61,7 +67,6 @@ export default function Task(props: {
             <Icon
               icon={"tabler:dots"}
               className=" text-main text-2xl cursor-pointer"
-              onClick={() => setEditTaskOverlay(true)}
             />
           </div>
 
@@ -102,9 +107,8 @@ export default function Task(props: {
                     key={index}
                     src={member.image}
                     alt={member}
-                    className={`${
-                      index !== 0 ? "-ml-2" : ""
-                    } w-6 h-6 rounded-full border border-white`}
+                    className={`${index !== 0 ? "-ml-2" : ""
+                      } w-6 h-6 rounded-full border border-white`}
                   />
                 );
               })}
@@ -138,6 +142,6 @@ export default function Task(props: {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

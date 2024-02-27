@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Teammates(props: { cardPeople?: any; getData?:any}) {
+export default function Teammates(props: { cardPeople?: any; }) {
     const myImages = props.cardPeople.map((img: any) => {
         return (
             <div className="flex gap-4">

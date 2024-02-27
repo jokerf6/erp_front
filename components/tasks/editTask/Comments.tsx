@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Icon } from "@iconify/react";
 import { BiExport } from "react-icons/bi";
-export default function Comments(props: { setAddComment: any }) {
+export default function Comments(props: { setAddComment: any , taskComments:number}) {
   const { setAddComment } = props;
   const [comments, setComments] = useState([
     {
@@ -17,7 +17,7 @@ export default function Comments(props: { setAddComment: any }) {
         <div className=" flex gap-2  justify-center items-center">
           <p className="text-[#0D062D] font-bold">Comments</p>
           <p className="bg-[#F2EBFE] text-[#251B37] rounded-full flex justify-center items-center w-[20px] h-[20px]">
-            4
+            {props.taskComments}
           </p>
         </div>
         <Icon

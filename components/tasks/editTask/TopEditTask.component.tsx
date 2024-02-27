@@ -3,7 +3,11 @@ import {Icon} from '@iconify/react'
 import { statusList } from "@/static/statusList";
 import CheckBox from "@/components/default/checkBox";
 
-export default function TopEditTask(props:{isOpen:any}) {
+export default function TopEditTask(props:{
+    isOpen:any,
+    taskName:string,
+    taskPriority:string
+}) {
     const [status, setStatus] = React.useState<number>(0);
 
     return (
@@ -20,10 +24,10 @@ export default function TopEditTask(props:{isOpen:any}) {
                 </div>
                 <div className="flex justify-between items-center">
                     <h1 className="font-bold text-[#251B37] text-[1.5rem]">
-                        Create Text Cases - Project Name
+                        {props.taskName}
                     </h1>
-                    <p className="text-[#D58D49] bg-[rgba(223,168,116,0.2)] rounded-lg px-4 py-1">
-                        Low
+                    <p className="text-[#D58D49] bg-[rgba(223,168,116,0.2)] rounded-lg px-4 py-1 capitalize">
+                        {props.taskPriority}
                     </p>
                 </div>
                 <h2 className="text-[#FF375E] font-bold">

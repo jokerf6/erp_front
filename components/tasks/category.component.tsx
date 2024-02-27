@@ -14,6 +14,7 @@ export default function Category(props: {
   category: any;
   categories: any;
   setCategories: any;
+  getData: any;
 }) {
   const { setAddTaskOverlay } = useContext(MyTasksContext);
   const { category, categories, setCategories, id } = props;
@@ -84,6 +85,7 @@ export default function Category(props: {
               categoryID={categoryID}
               categories={categories}
               setCategories={setCategories}
+              getData = {props.getData}
             />
           );
         })}

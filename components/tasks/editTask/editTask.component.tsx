@@ -8,10 +8,14 @@ import Modal from "@/components/default/modal.component";
 import TopEditTask from '@/components/tasks/editTask/TopEditTask.component'
 
 export default function EditTask(props: {
-  setEditTaskOverlay: any;
-  setAddComment: any;
-  addComment: boolean;
-  getData: any
+  setEditTaskOverlay: any,
+  setAddComment: any,
+  addComment: boolean,
+  taskName: string,
+  taskPriority: string,
+  taskComments: number,
+  taskFiles: number,
+  taskImages: any
 }) {
 
   const { setEditTaskOverlay, setAddComment, addComment } = props;
@@ -25,10 +29,21 @@ export default function EditTask(props: {
         {addComment && (
           <div className=" bg-black w-screen h-screen absolute -top-[10px] left-0 z-[100] opacity-70"></div>
         )}
-        <TopEditTask isOpen={setEditTaskOverlay} />
-        <Files />
-        <Comments setAddComment={setAddComment} />
-        <Teammates />
+        <TopEditTask 
+        isOpen={setEditTaskOverlay} 
+        taskName = {props.taskName}
+        taskPriority ={props.taskPriority}
+        />
+        <Files
+        taskFiles = {props.taskFiles}
+        />
+        <Comments 
+        setAddComment={setAddComment}
+        taskComments = {props.taskComments}
+        />
+        <Teammates
+        cardPeople = {props.taskImages}
+        />
       </div>
     </Modal>
   );

@@ -56,7 +56,7 @@ export default function MyTasks() {
     setImageSliderOverlay(true);
   }
   // Function to get task data
-  const [taskData,setTaskData] =React.useState({});
+  const [taskData,setTaskData] =React.useState({priority:"",taskName:"",comments:0,files:0,image:[]});
   function getDate(priority:string,taskName:string,comments:number,files:number,image:any){
     setTaskData({priority,taskName,comments,files,image})
   }
@@ -89,13 +89,14 @@ export default function MyTasks() {
         category={category}
         categories={categories}
         setCategories={setCategories}
+        getData = {getDate}
       />
     );
   });
   const categoryElementsFiltered = categoryElements.filter(
     (element) => element.props.title === categoryFilter
   );
-
+  console.log(taskData)
   return (
     <MyTasksContext.Provider
       value={{
@@ -159,7 +160,11 @@ export default function MyTasks() {
           setEditTaskOverlay={setEditTaskOverlay}
           setAddComment={setAddComment}
           addComment={addComment}
-          getData = {setTaskData}
+          taskName = {taskData.taskName}
+          taskPriority  = {taskData.priority}
+          taskComments = {taskData.comments}
+          taskFiles = {taskData.files}
+          taskImages = {taskData.image}
           // *******************************************************************************************************************************
         />
       )}

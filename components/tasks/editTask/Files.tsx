@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { BiExport } from "react-icons/bi";
-export default function Files() {
+export default function Files(props:{taskFiles:number}) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   function ClickInputFile() {
     fileInputRef.current?.click();
@@ -12,7 +12,7 @@ export default function Files() {
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
           <p className="text-[#0D062D] font-bold">Files</p>
-          <p className="bg-[#F2EBFE] text-[#251B37] rounded-full flex justify-center items-center w-[20px] h-[20px]">{files.length}</p>
+          <p className="bg-[#F2EBFE] text-[#251B37] rounded-full flex justify-center items-center w-[20px] h-[20px]">{props.taskFiles}</p>
         </div>
         <button
           className="rounded-[5px] outline-none w-fit flex justify-between items-center"
