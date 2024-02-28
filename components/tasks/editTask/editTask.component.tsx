@@ -24,7 +24,7 @@ export default function EditTask(props: {
     <Modal setOverlay={setEditTaskOverlay}>
       <div
         onClick={(e) => e.stopPropagation()}
-        className="bg-overlay-bg-white absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[100] p-[20px] flex flex-col gap-5"
+        className="bg-overlay-bg-white absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[100] p-[20px] flex flex-col gap-5 cursor-default"
       >
         {addComment && (
           <div className=" bg-black w-screen h-screen absolute -top-[10px] left-0 z-[100] opacity-70"></div>

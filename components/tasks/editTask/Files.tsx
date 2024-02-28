@@ -49,7 +49,7 @@ export default function Files(props:{taskFiles:number}) {
                 </div>
                 <Icon
                   icon="lucide:import"
-                  className="text-primary-pink w-[21px] h-[21px]"
+                  className="text-primary-pink w-[21px] h-[21px] cursor-pointer"
                 />
               </div>
             );

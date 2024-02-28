@@ -7,13 +7,18 @@ export default function CheckBox(props: {
   setStatus: any;
   id: number;
 }) {
-  const activeColor = (props.text).toLowerCase() === "to do" 
-  ? "mytasks-dotline-todo"
+  const activeBorderColor = 
+  (props.text).toLowerCase() === "to do" 
+  ? "border-mytasks-dotline-todo"
   : (props.text).toLowerCase() === "in progress"
-    ? "mytasks-dotline-inprogress"
-    : "mytasks-dotline-done";
-  const activeBorderColor = `border-${activeColor}`;
-  const activeCheckColor = `text-${activeColor}`;
+    ? "border-mytasks-dotline-inprogress"
+    : "border-mytasks-dotline-done";
+  const activeCheckColor = 
+  (props.text).toLowerCase() === "to do" 
+  ? "text-mytasks-dotline-todo"
+  : (props.text).toLowerCase() === "in progress"
+    ? "text-mytasks-dotline-inprogress"
+    : "text-mytasks-dotline-done";
   return (
     <div
       onClick={() => props.setStatus(props.id)}
