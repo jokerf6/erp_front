@@ -1,13 +1,17 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 
 // Components
 import Images from "./images";
 
 // Context
 import { MyTasksContext } from "@/pages/home/pm/mytasks";
-import Image from "next/image";
+
+// Functions
+import getTaskPriorityColors from "@/functions/getTaskPriorityColors";
+
 import useMousePosition from "@/hooks/DragAndDrop";
 import useDragAndDrop from "@/hooks/DragAndDrop";
 import { on } from "events";
@@ -46,16 +50,6 @@ export default function Task(props: {
     setEditTaskOverlay(true);
   }
 
-  // Task Priority Style
-  const taskPriorityColors = task.status === "low" 
-  ? "bg-priority-low-bg-20 text-priority-low-text"
-  : task.status === "medium"
-    ? "bg-priority-low-bg-20 text-priority-low-text" // TODO: Colors for Medium Priority?
-    : task.status === "high"
-      ? "bg-priority-high-bg-10 text-priority-high-text"
-      : "bg-priority-completed-bg-20 text-priority-completed-text"
-  // Task Priority Style
-
   return (
     <div>
       {taskID[0] === "-" ? (
@@ -77,7 +71,7 @@ export default function Task(props: {
           } flex flex-col w-full bg-primary-white px-4 py-4 rounded-xl gap-3`}
         >
           <div className=" w-full justify-between items-center flex">
-            <div className={`${taskPriorityColors} px-5 py-1 rounded h-fit capitalize`}>
+            <div className={`${getTaskPriorityColors(task.status)} px-5 py-1 rounded h-fit capitalize`}>
               {task.status}
             </div>
             {/* <h1>{mousePosition.x}</h1> */}

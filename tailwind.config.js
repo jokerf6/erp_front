@@ -47,9 +47,9 @@ module.exports = {
         "primary-white": "#FFFFFF",
         "primary-black": "#0B0B0B",
         "primary-purple": "#251B37",
-        "primary-darkblue": "#0D062D",
         "secondary-purple": "#5B4C83",
-        "secondary-pink": "#FF375E",
+        "primary-darkblue": "#0D062D",
+        "primary-pink": "#FF375E",
 
         "lite-white": "#F6F6F6",
         "lite-purple": "#E9E3D5",
@@ -70,6 +70,7 @@ module.exports = {
         "priority-completed-bg-20": "#83C29D33",
         "priority-completed-text": "#68B266",
 
+        "overlay-bg-white": "#FAFAFA",
         "overlay-title-text": "#251B37",
         "overlay-primary-text": "#0D062D",
         "overlay-number-bg": "#E0CEFF",

@@ -59,15 +59,14 @@ export default function Category(props: {
             {category.title}
           </span>
           <div
-            className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-[#E0E0E0] text-[#625F6D] font-medium `}
+            className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-mytasks-number-bg text-mytasks-number-text font-medium `}
           >
             {category.tasks.length}
           </div>
         </div>
         {category.title === "to do" && (
           <div
-            className={`w-6 h-6 rounded-lg bg-cat flex items-center justify-center cursor-pointer`}
-            style={{ backgroundColor: "rgba(37, 27, 55, 0.2)" }}
+            className={`w-6 h-6 rounded-lg bg-add-btn-purple-bg-20 text-add-btn-purple-text flex items-center justify-center cursor-pointer`}
             onClick={() => setAddTaskOverlay(true)}
           >
             <Icon icon={"lets-icons:add-round"} />

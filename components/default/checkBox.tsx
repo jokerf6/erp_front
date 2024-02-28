@@ -7,23 +7,29 @@ export default function CheckBox(props: {
   setStatus: any;
   id: number;
 }) {
+  const activeColor = (props.text).toLowerCase() === "to do" 
+  ? "mytasks-dotline-todo"
+  : (props.text).toLowerCase() === "in progress"
+    ? "mytasks-dotline-inprogress"
+    : "mytasks-dotline-done";
+  const activeBorderColor = `border-${activeColor}`;
+  const activeCheckColor = `text-${activeColor}`;
   return (
-    <div className=" flex gap-2 items-center">
-      {!props.active && (
-        <div
-          onClick={() => props.setStatus(props.id)}
-          className=" cursor-pointer border w-[22px] h-[22px] rounded-full border-gray-500  bg-white flex"
-        ></div>
-      )}
-      {props.active && (
-        <div className=" items-center justify-center border-2 cursor-pointer  w-[22px] h-[22px] rounded-full border-[#5C02FF]  bg-white flex">
-          <FaCheck className=" text-[#5C02FF] text-sm" />
-        </div>
-      )}
+    <div
+      onClick={() => props.setStatus(props.id)}
+      className=" flex gap-2 items-center cursor-pointer"
+    >
+      <div
+        className={`bg-white flex items-center justify-center w-[22px] h-[22px] rounded-full ${
+          props.active ? `border-2 ${activeBorderColor}` : "border border-gray-500"
+        }  `}
+      >
+        {props.active && <FaCheck className={`${activeCheckColor} text-sm`} />}
+      </div>
 
       <span
         className={` ${
-          props.active ? "text-[#251B37]" : " text-gray-500"
+          props.active ? "text-primary-purple" : " text-gray-500"
         } font-semibold text-lg`}
       >
         {props.text}

@@ -11,8 +11,8 @@ export default function Files(props:{taskFiles:number}) {
     <div className="file-content flex flex-col gap-4">
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
-          <p className="text-[#0D062D] font-bold">Files</p>
-          <p className="bg-[#F2EBFE] text-[#251B37] rounded-full flex justify-center items-center w-[20px] h-[20px]">{props.taskFiles}</p>
+          <p className="text-overlay-primary-text font-bold">Files</p>
+          <p className="bg-overlay-number-bg text-overlay-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">{props.taskFiles}</p>
         </div>
         <button
           className="rounded-[5px] outline-none w-fit flex justify-between items-center"
@@ -30,7 +30,7 @@ export default function Files(props:{taskFiles:number}) {
             }}
             placeholder="Upload files"
           />
-          <BiExport className="text-[#FF375E] w-[40px] h-[21px] cursor-pointer" />
+          <BiExport className="text-primary-pink w-[40px] h-[21px] cursor-pointer" />
         </button>
       </div>
       <div className="files-contents flex flex-col gap-4 border-2 border-[#E7E7E7] rounded-[12px] p-5 overflow-auto max-h-[120px] scroll-m-2 bg-[#FFFFFF]">
@@ -49,7 +49,7 @@ export default function Files(props:{taskFiles:number}) {
                 </div>
                 <Icon
                   icon="lucide:import"
-                  className="text-[#FF375E] w-[21px] h-[21px]"
+                  className="text-primary-pink w-[21px] h-[21px]"
                 />
               </div>
             );

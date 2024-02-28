@@ -15,15 +15,15 @@ export default function Comments(props: { setAddComment: any , taskComments:numb
     <div className="file-content flex flex-col gap-4">
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
-          <p className="text-[#0D062D] font-bold">Comments</p>
-          <p className="bg-[#F2EBFE] text-[#251B37] rounded-full flex justify-center items-center w-[20px] h-[20px]">
+          <p className="text-overlay-primary-text font-bold">Comments</p>
+          <p className="bg-overlay-number-bg text-overlay-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">
             {props.taskComments}
           </p>
         </div>
         <Icon
           onClick={() => setAddComment(true)}
           icon="ic:baseline-plus"
-          className="text-[#FF375E] cursor-pointer w-[21px] h-[21px] bg-[rgb(255,55,94,20%)]"
+          className="bg-add-btn-pink-bg-20 text-add-btn-pink-text cursor-pointer w-[21px] h-[21px]"
         />
       </div>
       <div className="files-contents flex flex-col gap-4 border-2 border-[#E7E7E7] rounded-[12px] p-5 overflow-auto max-h-[200px] scroll-m-2 bg-[#FFFFFF]">
@@ -38,12 +38,17 @@ export default function Comments(props: { setAddComment: any , taskComments:numb
                     alt="Photo of commeter"
                     className="w-[45px] h-[45px] rounded-full"
                   />
-                  <div className="comment-content p-5 bg-[#F2EBFE] rounded-xl flex-1">
+                  <div className="comment-content p-5 bg-overlay-comment-bg text-overlay-comment-text rounded-xl flex-1">
                     <div className="first-line flex justify-between">
                       <h1 className="font-bold">{item["name"]}</h1>
                       <h3 className="text-[0.8rem]">{item["date"]}</h3>
                     </div>
                     <p>{item["text"]}</p>
+                    <div className="flex justify-end gap-1">
+                      <span className="text-overlay-comment-edit-text cursor-pointer">Edit</span>
+                      <span>.</span>
+                      <span className="text-overlay-comment-delete-text cursor-pointer">Delete</span>
+                    </div>
                   </div>
                 </div>
               );
