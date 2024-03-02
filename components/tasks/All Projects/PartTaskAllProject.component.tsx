@@ -1,13 +1,13 @@
 import React from 'react'
 import { Icon } from '@iconify/react'
 export default function PartTaskAllProject(props: {
-    id:number
-        priority:string
-        condition :string
-        files :number
-        comments :number
-        title :string
-        images :string[]
+    id: number,
+    priority: string,
+    condition: string,
+    files: number,
+    comments: number,
+    title: string,
+    images: string[]
 }) {
     const myImages = props.images.map((img: any, index: number) => {
         return <img

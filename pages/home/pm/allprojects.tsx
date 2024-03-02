@@ -8,10 +8,10 @@ import Head from "next/head";
 
 export default function AllProjects() {
   const [isOpen, setIsOpen] = React.useState(false)
-  const [projectData, setProjectData] = React.useState({ progress: 0, name: "", people: [] })
+  const [projectData, setProjectData] = React.useState({ progress: 0, name: "", people: [] , files:0})
   // Function to Get progress and name of project
-  function getData(progress: number, name: string, people: any) {
-    setProjectData({ progress, name, people });
+  function getData(progress: number, name: string, people: any , files:number) {
+    setProjectData({ progress, name, people,files });
   }
   const myData = [
     {
@@ -176,7 +176,7 @@ export default function AllProjects() {
       photo={data.photo}
       progress={data.progress}
       closeBig={setIsOpen}
-      getData={() => getData(data.progress, data.project, data.photo)}
+      getData={() => getData(data.progress, data.project, data.photo,data.files)}
     />
   }))
   return (
@@ -186,7 +186,7 @@ export default function AllProjects() {
       </Head>
       {isOpen && <div className=" bg-black h-full absolute -top-[10px] left-0 z-20 opacity-70"></div>}
       {isOpen && <div className="absolute top-0 right-0 bg-white p-10 z-20 overflow-auto h-full ">
-        <EditAllProject cardName={projectData.name} cardProgress={projectData.progress} cardPeople={projectData.people} />
+        <EditAllProject cardName={projectData.name} cardProgress={projectData.progress} cardPeople={projectData.people} cardFiles ={projectData.files} />
       </div>}
       <div className="page-content flex flex-col md:p-[40px] p-[10px] gap-8  bg-[#E9E3D58A] rounded-xl">
         <div className="part-One flex justify-between flex-col xls:flex-row gap-4">

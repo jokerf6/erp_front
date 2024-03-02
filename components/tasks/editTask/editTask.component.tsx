@@ -35,7 +35,7 @@ export default function EditTask(props: {
         taskPriority ={props.taskPriority}
         />
         <Files
-        taskFiles = {props.taskFiles}
+        files = {props.taskFiles}
         />
         <Comments 
         setAddComment={setAddComment}
