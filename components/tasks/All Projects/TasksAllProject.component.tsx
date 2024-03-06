@@ -6,7 +6,7 @@ export default function TasksAllProject() {
             id: 1,
             priority: "Low",
             condition: "in progress",
-            title: "project one",
+            title: "Task one",
             files: 5,
             comments: 10,
             images: ["/images/Kerolos Fayez.jpg", "/images/Matthew Adel.jpg", "/images/Sheta.png"]
@@ -15,7 +15,7 @@ export default function TasksAllProject() {
             id: 2,
             priority: "High",
             condition: "in progress",
-            title: "project two",
+            title: "Task two",
             files: 6,
             comments: 10,
             images: ["/images/Kerolos Fayez.jpg", "/images/Matthew Adel.jpg", "/images/Sheta.png"]
@@ -24,7 +24,7 @@ export default function TasksAllProject() {
             id: 3,
             priority: "Medium",
             condition: "Done",
-            title: "project Three",
+            title: "Task Three",
             files: 5,
             comments: 20,
             images: ["/images/Kerolos Fayez.jpg", "/images/Matthew Adel.jpg", "/images/Sheta.png"]
@@ -33,7 +33,7 @@ export default function TasksAllProject() {
             id: 4,
             priority: "Low",
             condition: "Done",
-            title: "project four",
+            title: "Task four",
             files: 5,
             comments: 10,
             images: ["/images/Kerolos Fayez.jpg", "/images/Matthew Adel.jpg", "/images/Sheta.png"]
@@ -42,7 +42,7 @@ export default function TasksAllProject() {
             id: 6,
             priority: "Low",
             condition: "in progress",
-            title: "project five",
+            title: "Task five",
             files: 15,
             comments: 10,
             images: ["/images/Kerolos Fayez.jpg", "/images/Matthew Adel.jpg", "/images/Sheta.png"]
@@ -69,15 +69,16 @@ export default function TasksAllProject() {
                 </div>
                 <button className='font-bold'>See All</button>
             </div>
-            <div className="taskAllProject overflow-auto h-[300px] bg-white  border-2 border-[#E7E7E7] rounded-2xl">
-                {myData.length === 0 ?
-            <div className="">
-                <img src="/images/no task.png" alt="Photo" />
-                <p>No tasks for this project</p>
-                <button>Add task</button>
-            </div>
-            :  myData}  
-            </div>
+            {myData.length === 0 ?
+                <div className="flex flex-col items-center justify-center gap-2 bg-white  border-2 border-[#E7E7E7] rounded-2xl p-4">
+                    <img src="/images/no task.png" alt="Photo" className=' w-[5rem]' />
+                    <p className='text-[#000000]'>No tasks for this project</p>
+                    <button className='bg-[#251B37] text-white text-[0.9rem] rounded-md cursor-pointer w-[8rem] p-1'>Add task</button>
+                </div>
+                : <div className="taskAllProject overflow-auto h-[300px] bg-white  border-2 border-[#E7E7E7] rounded-2xl">
+                    {myData}
+                </div>
+            }
         </div>
     )
 }
