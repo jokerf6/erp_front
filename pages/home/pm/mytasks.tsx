@@ -173,7 +173,6 @@ export default function MyTasks() {
           taskComments={taskData.comments}
           taskFiles={taskData.files}
           taskImages={taskData.image}
-          // *******************************************************************************************************************************
         />
       )}
 

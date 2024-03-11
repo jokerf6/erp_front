@@ -7,12 +7,13 @@ export default function Files(props: { files: number }) {
     fileInputRef.current?.click();
   }
   const [files, setFiles] = useState([]);
+  // TODO: fix error in line 30
   return (
     <div className="file-content flex flex-col gap-4">
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
           <p className="text-overlay-primary-text font-bold">Files</p>
-          <p className="bg-overlay-number-bg text-overlay-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">{files.length}</p>
+          <p className="bg-overlay-number-bg text-overlay-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">{props.files}</p>
         </div>
         <button
           className="rounded-[5px] outline-none w-fit flex justify-between items-center"

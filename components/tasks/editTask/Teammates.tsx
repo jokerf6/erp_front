@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default function Teammates(props: { cardPeople?: any; }) {
+    // TODO: first task contain 6 teammates and that is not correct
     const myImages = props.cardPeople.map((img: any) => {
         return (
             <div className="flex gap-4">

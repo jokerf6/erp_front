@@ -41,14 +41,14 @@ export default function Card(props:{
                 </div>}
             </div>
             <div className="bg-[#A3908452] rounded-3xl h-3"  >
-                <p className=' h-[inherit] bg-gradient-to-r from-[#5D1CD2FC] to-[#FF375E] rounded-3xl' style={{ width: `${props.progress}%` }}></p>
+                <p className=' h-[inherit] bg-gradient-to-r from-[#5D1CD2FC] to-[#FF375E] rounded-3xl' style={{ width: `${props.progress}` }}></p>
             </div>
             <div className="justify-between flex font-semibold ">
                 <div className="flex  items-center gap-4">
                     {props.progress === 100 ? <p className='text-green-500 font-bold'>Complete</p> :  <p>progress</p>}
                     {props.progress === 100  && <Icon icon="lets-icons:done-ring-round-fill"  className='text-xl text-green-500'/> }
                 </div>
-                <p>{props.progress}</p>
+                <p>{props.progress}%</p>
             </div>
             <div className="flex justify-between items-center">
                 <div className="flex ">
