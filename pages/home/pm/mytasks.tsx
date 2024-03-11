@@ -179,7 +179,7 @@ export default function MyTasks() {
         />
       )}
 
-      {addTaskOverlay && <AddTask setAddTaskOverlay={setAddTaskOverlay} />}
+      {addTaskOverlay && <AddTask setAddTaskOverlay={setAddTaskOverlay} display = {true} />}
     </MyTasksContext.Provider>
   );
 }

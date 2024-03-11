@@ -5,6 +5,7 @@ import EditAllProject from "@/components/tasks/All Projects/EditAllProject.compo
 import InputField from "@/components/tasks/All Projects/InputField.component";
 import PartTaskAllProject from "@/components/tasks/All Projects/PartTaskAllProject.component";
 import useScrollBlockHook from "@/hooks/useScrollBlock";
+import AddTask from "@/components/tasks/addTask.component";
 // Layout
 import PMLayout from "@/layouts/pm";
 import Head from "next/head";
@@ -14,22 +15,18 @@ export default function AllProjects() {
   const [isOpen, setIsOpen] = React.useState(false)
   const [addNewProjectIsOpen, setAddNewProjectIsOpen] = React.useState(false);
   const [seeAllIsOpen, setSeeAllIsOpen] = React.useState(false);
+  const [addNewTask,setAddNewTask] = React.useState(false);
   const [projectData, setProjectData] = React.useState({ progress: 0, name: "", people: [], files: 0, task: [] })
 
   // To prevent scrolling the body 
   useScrollBlockHook(isOpen)
   useScrollBlockHook(addNewProjectIsOpen)
   useScrollBlockHook(seeAllIsOpen)
+  useScrollBlockHook(addNewTask)
 
   // Function to Get progress and name of project
   function getData(progress: number, name: string, people: any, files: number, task: any) {
     setProjectData({ progress, name, people, files, task });
-  }
-  // Function to cols all sidebars that opened 
-  function closeAllSidebars() {
-    setIsOpen(false)
-    setAddNewProjectIsOpen(false)
-    setSeeAllIsOpen(false);
   }
 
   // pass The type of each input
@@ -323,7 +320,6 @@ export default function AllProjects() {
       ]
     }
   ]
-  console.log(projectData.task)
 
   const myTasks = projectData.task.map((data: any) => {
     return <PartTaskAllProject
@@ -357,7 +353,17 @@ export default function AllProjects() {
       <Head>
         <title>ERP | All Projects</title>
       </Head>
-      {isOpen && <EditAllProject cardName={projectData.name} cardProgress={projectData.progress} cardPeople={projectData.people} cardFiles={projectData.files} cardTasks={projectData.task} openSeeAll={setSeeAllIsOpen} closSeeAllParent={setIsOpen} />}
+      {isOpen && <EditAllProject 
+      cardName={projectData.name} 
+      cardProgress={projectData.progress} 
+      cardPeople={projectData.people} 
+      cardFiles={projectData.files} 
+      cardTasks={projectData.task} 
+      openSeeAll={setSeeAllIsOpen} 
+      closSeeAllParent={setIsOpen} 
+      addNewTask ={setAddNewTask} 
+      />}
+
       {addNewProjectIsOpen &&
         <Modal setOverlay={setAddNewProjectIsOpen}>
           <div className="absolute top-0 right-0 min-h-full w-screen max-w-[600px] md:w-[50vw] z-20 flex flex-col">
@@ -406,22 +412,22 @@ export default function AllProjects() {
             </form>
           </div>
         </Modal>}
+
       {seeAllIsOpen &&
         <Modal setOverlay={setSeeAllIsOpen}>
-          <div className="absolute top-0 right-0 min-h-full w-screen max-w-[600px] md:w-[50vw] z-20 flex flex-col">
-            <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]">
+          <div className="absolute top-0 right-0 min-h-full w-screen max-w-[600px] md:w-[50vw] z-20 flex flex-col" onClick={(e)=>e.stopPropagation()}>
+            <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]"onClick={() => setSeeAllIsOpen(false)}>
               <h1 className="font-bold text-[#251B37]  text-[1.5rem] ">
                 Add new task
               </h1>
               <Icon
                 icon="gg:close-r"
                 className="text-[1.5rem] cursor-pointer"
-                onClick={() => setSeeAllIsOpen(false)}
               />
             </div>
             <div className="bg-[#FAFAFA] p-10">
               <div className="flex gap-4 justify-end">
-                <button className="text-[#FF375E] font-semibold">Add new task</button>
+                <button className="text-[#FF375E] font-semibold" onClick={()=> setAddNewTask(true)}>Add new task</button>
                 <Icon icon={"lets-icons:add-round"} className="w-6 h-6  bg-[#FF375E]/20 rounded-lg cursor-pointer text-[#FF375E]" />
               </div>
               <div className="">
@@ -430,6 +436,13 @@ export default function AllProjects() {
             </div>
           </div>
         </Modal>}
+
+        {addNewTask && 
+        <Modal setOverlay={setAddNewTask}>
+        <div>
+          <AddTask display = {false} setAddTaskOverlay = {setAddNewTask} />
+        </div>
+        </Modal> }
       <div className="page-content flex flex-col md:p-[40px] p-[10px] gap-8  bg-[#E9E3D58A] rounded-xl">
         <div className="part-One flex justify-between flex-col xls:flex-row gap-4">
           <div className="flex  items-center gap-4 ">
