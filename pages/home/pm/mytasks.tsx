@@ -33,7 +33,7 @@ export default function MyTasks() {
   const [editTaskOverlay, setEditTaskOverlay] = React.useState(false);
   const [addComment, setAddComment] = React.useState(false);
 
-  const [addTaskOverlay, setAddTaskOverlay] = useState(false);
+  const [addTaskOverlay, setAddTaskOverlay] = useState(true);
   const [imageSliderOverlay, setImageSliderOverlay] = useState(false);
   useScrollBlockHook(editTaskOverlay);
   useScrollBlockHook(addTaskOverlay);
@@ -57,6 +57,7 @@ export default function MyTasks() {
   }
   // Function to get task data
   const [taskData, setTaskData] = React.useState({
+    category: "",
     priority: "",
     taskName: "",
     comments: 0,
@@ -64,13 +65,14 @@ export default function MyTasks() {
     image: [],
   });
   function getDate(
+    category: string,
     priority: string,
     taskName: string,
     comments: number,
     files: number,
     image: any
   ) {
-    setTaskData({ priority, taskName, comments, files, image });
+    setTaskData({ category, priority, taskName, comments, files, image });
   }
   const categoryFilterList = categories.map((category) => {
     return (
@@ -168,6 +170,7 @@ export default function MyTasks() {
           setEditTaskOverlay={setEditTaskOverlay}
           setAddComment={setAddComment}
           addComment={addComment}
+          taskCategory={taskData.category}
           taskName={taskData.taskName}
           taskPriority={taskData.priority}
           taskComments={taskData.comments}

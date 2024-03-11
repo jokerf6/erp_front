@@ -6,10 +6,11 @@ import getTaskPriorityColors from '@/functions/getTaskPriorityColors';
 
 export default function TopEditTask(props:{
     isOpen:any,
+    taskCategory: string,
     taskName:string,
     taskPriority:string
 }) {
-    const [status, setStatus] = React.useState<number>(0);
+    const [status, setStatus] = React.useState<number>(parseInt(props.taskCategory)-1);
 
     return (
         

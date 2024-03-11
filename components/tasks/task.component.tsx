@@ -41,6 +41,7 @@ export default function Task(props: {
   // Function that collect data from each task
   function handleData() {
     props.getData(
+      categoryID,
       task.status,
       task.name,
       task.comments,

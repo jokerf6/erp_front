@@ -37,7 +37,7 @@ export default function ImageSlider(props: {
         className="relative flex flex-col bg-lite-purple pt-8 px-2 rounded-sm mx-2 w-full xs:max-w-[500px] md:max-w-[700px] select-none"
       >
         <button
-          className="p-1 absolute top-0 right-0 z-[100]"
+          className="p-1 absolute top-0 right-0 z-[21]"
           onClick={() => {
             setImageSliderOverlay(false);
           }}
