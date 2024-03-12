@@ -6,14 +6,19 @@ export default function Files(props: { files: number }) {
   function ClickInputFile() {
     fileInputRef.current?.click();
   }
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<any>([]);
   // TODO: fix error in line 30
+  /*
+    Matt: TypeScript Error, just added type "any"
+    changes made in above state (line: 9):
+    - useState([]); ----> useState<any>([]);
+  */
   return (
     <div className="file-content flex flex-col gap-4">
       <div className="part-one flex justify-between">
-        <div className=" flex gap-2  justify-center items-center">
-          <p className="text-sider-primary-text font-bold">Files</p>
-          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">{props.files}</p>
+        <div className=" flex gap-2 justify-center items-center">
+          <p className="text-sider-primary-text font-bold text-[20px]">Files</p>
+          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center min-w-[25px] h-[25px] font-[500] px-2">{props.files}</p>
         </div>
         <button
           className="rounded-[5px] outline-none w-fit flex justify-between items-center"

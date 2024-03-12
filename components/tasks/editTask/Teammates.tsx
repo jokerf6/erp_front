@@ -21,8 +21,8 @@ export default function Teammates(props: { cardPeople?: any; }) {
         <div className="file-content flex flex-col gap-4">
             <div className="part-one flex justify-between">
                 <div className=" flex gap-2  justify-center items-center">
-                    <p className='text-sider-primary-text font-bold'>Teammates</p>
-                    <p className='bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]'>{props.cardPeople.length}</p>
+                    <p className='text-sider-primary-text font-bold text-[20px]'>Teammates</p>
+                    <p className='bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center min-w-[25px] h-[25px] font-[500] px-2'>{props.cardPeople.length}</p>
                 </div>
             </div>
             <div className="files-contents flex flex-col gap-4 border-2 border-[#E7E7E7] rounded-[12px] p-5 overflow-auto max-h-[200px] scroll-m-2 bg-[#FFFFFF]">

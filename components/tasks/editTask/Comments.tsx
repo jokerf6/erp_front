@@ -15,8 +15,8 @@ export default function Comments(props: { setAddComment: any , taskComments:numb
     <div className="file-content flex flex-col gap-4">
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
-          <p className="text-sider-primary-text font-bold">Comments</p>
-          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">
+          <p className="text-sider-primary-text font-bold text-[20px]">Comments</p>
+          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center min-w-[25px] h-[25px] font-[500] px-2">
             {props.taskComments}
           </p>
         </div>
