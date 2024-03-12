@@ -48,7 +48,7 @@ export default function Category(props: {
       : "bg-mytasks-dotline-done";
 
   return (
-    <div className=" flex flex-col bg-lite-purple-54 rounded-xl  h-fit flex-1 lg:min-w-[400px]">
+    <div className=" flex flex-col bg-transparent rounded-xl h-100 flex-1 lg:min-w-[400px]">
       <div
         id={id}
         className={`transition-all  flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
@@ -74,7 +74,7 @@ export default function Category(props: {
         )}
       </div>
       <div ref={categoryLine} className={`h-[2px] ${dotLineStyle}`}></div>
-      <div className="flex flex-col gap-3 py-6 px-3 lg:px-6">
+      <div className="flex flex-col gap-3 py-6 px-3 lg:px-6 rounded-b-xl bg-lite-purple-54">
         {tasksData.map((task, index: number) => {
           return (
             <Task
