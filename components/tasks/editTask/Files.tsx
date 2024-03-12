@@ -12,8 +12,8 @@ export default function Files(props: { files: number }) {
     <div className="file-content flex flex-col gap-4">
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
-          <p className="text-overlay-primary-text font-bold">Files</p>
-          <p className="bg-overlay-number-bg text-overlay-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">{props.files}</p>
+          <p className="text-sider-primary-text font-bold">Files</p>
+          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">{props.files}</p>
         </div>
         <button
           className="rounded-[5px] outline-none w-fit flex justify-between items-center"

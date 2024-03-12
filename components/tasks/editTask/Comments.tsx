@@ -15,8 +15,8 @@ export default function Comments(props: { setAddComment: any , taskComments:numb
     <div className="file-content flex flex-col gap-4">
       <div className="part-one flex justify-between">
         <div className=" flex gap-2  justify-center items-center">
-          <p className="text-overlay-primary-text font-bold">Comments</p>
-          <p className="bg-overlay-number-bg text-overlay-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">
+          <p className="text-sider-primary-text font-bold">Comments</p>
+          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center w-[20px] h-[20px]">
             {props.taskComments}
           </p>
         </div>
@@ -38,16 +38,16 @@ export default function Comments(props: { setAddComment: any , taskComments:numb
                     alt="Photo of commeter"
                     className="w-[45px] h-[45px] rounded-full"
                   />
-                  <div className="comment-content p-5 bg-overlay-comment-bg text-overlay-comment-text rounded-xl flex-1">
+                  <div className="comment-content p-5 bg-sider-comment-bg text-sider-comment-text rounded-xl flex-1">
                     <div className="first-line flex justify-between">
                       <h1 className="font-bold">{item["name"]}</h1>
                       <h3 className="text-[0.8rem]">{item["date"]}</h3>
                     </div>
                     <p>{item["text"]}</p>
                     <div className="flex justify-end gap-1">
-                      <span className="text-overlay-comment-edit-text cursor-pointer">Edit</span>
+                      <span className="text-sider-comment-edit-text cursor-pointer">Edit</span>
                       <span>.</span>
-                      <span className="text-overlay-comment-delete-text cursor-pointer">Delete</span>
+                      <span className="text-sider-comment-delete-text cursor-pointer">Delete</span>
                     </div>
                   </div>
                 </div>

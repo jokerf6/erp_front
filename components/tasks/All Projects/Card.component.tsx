@@ -41,7 +41,7 @@ export default function Card(props:{
                 </div>}
             </div>
             <div className="bg-[#A3908452] rounded-3xl h-3"  >
-                <p className=' h-[inherit] bg-gradient-to-r from-[#5D1CD2FC] to-[#FF375E] rounded-3xl' style={{ width: `${props.progress}` }}></p>
+                <p className=' h-[inherit] bg-gradient-purple-progress rounded-3xl' style={{ width: `${props.progress}%` }}></p>
             </div>
             <div className="justify-between flex font-semibold ">
                 <div className="flex  items-center gap-4">

@@ -21,6 +21,8 @@ module.exports = {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-purple-btn": "linear-gradient(260.02deg, #5A28B3 -16.1%, #E2778C 173.02%)",
+        "gradient-purple-progress": "linear-gradient(to right, #5D1CD2FC 25%, #FF375E 100%)",
       },
       colors: {
         // ---------------------------
@@ -56,6 +58,7 @@ module.exports = {
         "lite-purple": "#E9E3D5",
         "lite-purple-54": "#E9E3D58A",
         "icon-text": "#787486",
+        "progress-container-bg-32": "#A3908452",
         "primary-p": "#787486",
 
         "add-btn-pink-bg-20": "#FF375E33",
@@ -71,22 +74,16 @@ module.exports = {
         "priority-completed-bg-20": "#83C29D33",
         "priority-completed-text": "#68B266",
 
-        "overlay-bg-white": "#FAFAFA",
-        "overlay-title-text": "#251B37",
-        "overlay-primary-text": "#0D062D",
-        "overlay-number-bg": "#E0CEFF",
-        "overlay-number-text": "#251B37",
-        "overlay-comment-bg": "#F2EBFE",
-        "overlay-comment-text": "#414141",
-        "overlay-comment-edit-text": "#251B37",
-        "overlay-comment-delete-text": "#BD0021",
-        "overlay-role-text": "#3F3C3D",
-
-        "gradient-purple-btn-bg":
-        "linear-gradient(260.02deg, #5A28B3 -16.1%, #E2778C 173.02%)",
-        "gradient-purple-progress-fill":
-        "linear-gradient(90deg, rgba(93, 28, 210, 0.99) 0%, #FF375E 201.9%)",
-        "gradient-purple-progress-container-32": "#A3908452",
+        "sider-bg-white": "#FAFAFA",
+        "sider-title-text": "#251B37",
+        "sider-primary-text": "#0D062D",
+        "sider-number-bg": "#E0CEFF",
+        "sider-number-text": "#251B37",
+        "sider-comment-bg": "#F2EBFE",
+        "sider-comment-text": "#414141",
+        "sider-comment-edit-text": "#251B37",
+        "sider-comment-delete-text": "#BD0021",
+        "sider-role-text": "#3F3C3D",
 
         "nav-selected-bg": "#322746",
         "nav-selected-text": "#D7C843",
@@ -99,7 +96,6 @@ module.exports = {
         "mytasks-dotline-inprogress": "#EE681D",
         "mytasks-dotline-done": "#8BC48A",
 
-        "edittask-status-notselected-text-44": "#0D062D70",
       },
       width: {
         half: "50vw",

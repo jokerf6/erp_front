@@ -25,7 +25,7 @@ export default function TopEditTask(props:{
                     />
                 </div>
                 <div className="flex justify-between items-center">
-                    <h1 className="font-bold text-overlay-title-text text-[1.5rem]">
+                    <h1 className="font-bold text-sider-title-text text-[1.5rem]">
                         {props.taskName}
                     </h1>
                     <p className={`${getTaskPriorityColors(props.taskPriority)} rounded-lg px-4 py-1 capitalize`}>

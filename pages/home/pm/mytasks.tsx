@@ -33,7 +33,7 @@ export default function MyTasks() {
   const [editTaskOverlay, setEditTaskOverlay] = React.useState(false);
   const [addComment, setAddComment] = React.useState(false);
 
-  const [addTaskOverlay, setAddTaskOverlay] = useState(true);
+  const [addTaskOverlay, setAddTaskOverlay] = useState(false);
   const [imageSliderOverlay, setImageSliderOverlay] = useState(false);
   useScrollBlockHook(editTaskOverlay);
   useScrollBlockHook(addTaskOverlay);

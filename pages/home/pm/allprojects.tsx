@@ -405,7 +405,7 @@ export default function AllProjects() {
               </div>
 
               <div className="bg-[#FFFFFF] flex  w-full shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)] mt-auto  p-4 absolute z-20 bottom-0 -left-0">
-                <button type="submit" className="bg-gradient-to-r from-[#5A28B3] to-[#E2778C] text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]" onClick={(e) => { e.preventDefault() }}>
+                <button type="submit" className="bg-gradient-purple-progress text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]" onClick={(e) => { e.preventDefault() }}>
                   Add
                 </button>
               </div>

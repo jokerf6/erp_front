@@ -20,7 +20,7 @@ export default function AddTask(props: { setAddTaskOverlay?: any, display?: bool
   function ClickInputFile() {
     fileInputRef.current?.click()
   }
-  const [files, setFiles] = useState([]);
+  const [files, setFiles] = useState<any>([]);
 
   return (
     <Modal setOverlay={setAddTaskOverlay}>
@@ -141,7 +141,7 @@ export default function AddTask(props: { setAddTaskOverlay?: any, display?: bool
 
           </div>
           <div className=" absolute bottom-0 left-0  p-5 shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)] bg-[#FFFFFF] flex justify-center items-center mt-[20px] w-full">
-            <button type="submit" className="bg-gradient-to-r from-[#5A28B3] to-[#E2778C] text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]">
+            <button type="submit" className="bg-gradient-purple-btn text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]">
               Add
             </button>
           </div>

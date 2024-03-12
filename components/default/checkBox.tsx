@@ -26,7 +26,7 @@ export default function CheckBox(props: {
     >
       <div
         className={`bg-white flex items-center justify-center w-[22px] h-[22px] rounded-full ${
-          props.active ? `border-2 ${activeBorderColor}` : "border border-gray-500"
+          props.active ? `border-2 ${activeBorderColor}` : "border border-[#0D062D70]"
         }  `}
       >
         {props.active && <FaCheck className={`${activeCheckColor} text-sm`} />}
@@ -34,7 +34,7 @@ export default function CheckBox(props: {
 
       <span
         className={` ${
-          props.active ? "text-primary-purple" : " text-gray-500"
+          props.active ? "text-primary-purple" : " text-primary-p"
         } font-semibold text-lg`}
       >
         {props.text}
