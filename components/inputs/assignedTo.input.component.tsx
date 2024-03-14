@@ -100,6 +100,7 @@ export default function AssignedToInput() {
           assignedtoInputValue,
         ]);
         setAssignedtoInputValue("");
+        e.key === "Enter" && setIsDisplayAssignedtoInput(false);
       } else {
         setIsDisplayAssignedtoInput(false);
       }
