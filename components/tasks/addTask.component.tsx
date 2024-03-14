@@ -1,19 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
+
 import { Icon } from "@iconify/react";
-import Modal from "../default/modal.component";
-import { PriorityData } from "@/static/parioty";
-import DropDown from "../default/dropDown.component";
-import { Projects_Link, Tasks_Links } from "@/static/links";
-import Input from '@/components/tasks/Slider/input.component'
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-export default function AddTask(props: { setAddTaskOverlay?: any, display?: boolean }) {
+
+import { PriorityData } from "@/static/parioty";
+import { Projects_Link, Tasks_Links } from "@/static/links";
+
+// Components
+import Modal from "../default/modal.component";
+import DropDown from "../default/dropDown.component";
+import Input from "@/components/tasks/Slider/input.component";
+import AssignedToInput from "../inputs/assignedTo.input.component";
+
+export default function AddTask(props: {
+  setAddTaskOverlay?: any;
+  display?: boolean;
+}) {
   const { setAddTaskOverlay } = props;
   const [ProjectsData, setProjectsData] = useState([]);
   const [projectId, setProjectId] = React.useState("eID")
   const [priorityName, setPriorityName] = React.useState("eName");
   useEffect(() => {
-    getTask();
+    // getTask();
   }, []);
   // Function That When Click it Click input Filed With type File
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -67,14 +77,7 @@ export default function AddTask(props: { setAddTaskOverlay?: any, display?: bool
                 </span>{" "}
               </label>
 
-              <input
-                required
-                name="assigned"
-                type="text"
-                className=" rounded-[5px]  border-[#251B37] border-[1px] indent-[10px] h-[40px]"
-                id="assigned"
-                placeholder="Enter The Name of Teammates"
-              />
+              <AssignedToInput />
             </div>
 
             <Input
@@ -202,7 +205,7 @@ export default function AddTask(props: { setAddTaskOverlay?: any, display?: bool
     console.log(data);
     if (priorityName === "" || projectId === "") {
       const notify = async (error: string) => toast.error(error);
-      return notify("Fe Error Ya Cos omk");
+      return notify("Fe Error Ya ro7 omk");
     }
     await fetch(Tasks_Links, {
       method: 'POST',
