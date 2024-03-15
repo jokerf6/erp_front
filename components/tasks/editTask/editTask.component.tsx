@@ -5,7 +5,8 @@ import Files from "./Files";
 import Comments from "./Comments";
 import Teammates from "./Teammates";
 import Modal from "@/components/default/modal.component";
-import TopEditTask from '@/components/tasks/editTask/TopEditTask.component'
+import TopEditTask from "@/components/tasks/editTask/TopEditTask.component";
+import Sider from "@/components/default/sider.component";
 
 export default function EditTask(props: {
   setEditTaskOverlay: any,
@@ -23,10 +24,7 @@ export default function EditTask(props: {
 
   return (
     <Modal setOverlay={setEditTaskOverlay}>
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="bg-sider-bg-white absolute top-0 right-0 min-h-screen max-w-[600px] md:w-[50vw] z-[21] p-[20px] flex flex-col gap-5 cursor-default"
-      >
+      <Sider>
         <TopEditTask 
         isOpen={setEditTaskOverlay} 
         taskCategory={props.taskCategory}
@@ -43,7 +41,7 @@ export default function EditTask(props: {
         <Teammates
         cardPeople = {props.taskImages}
         />
-      </div>
+      </Sider>
     </Modal>
   );
 }

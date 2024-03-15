@@ -15,7 +15,7 @@ export default function TopEditTask(props:{
     return (
         
         <div>
-            <div className="first-part  flex flex-col gap-4">
+            <div className="first-part  flex flex-col gap-4 p-[20px]">
                 <div className="flex justify-between">
                     <h3 className="text-primary-p">Created At 12 jan 2023 10:12 AM</h3>
                     <Icon

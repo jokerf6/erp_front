@@ -13,6 +13,7 @@ import Modal from "../default/modal.component";
 import DropDown from "../default/dropDown.component";
 import Input from "@/components/tasks/Slider/input.component";
 import AssignedToInput from "../inputs/assignedTo.input.component";
+import Sider from "../default/sider.component";
 
 export default function AddTask(props: {
   setAddTaskOverlay?: any;
@@ -35,10 +36,7 @@ export default function AddTask(props: {
   return (
     <Modal setOverlay={setAddTaskOverlay}>
       <ToastContainer />
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="absolute top-0 right-0 min-h-screen w-screen max-w-[600px] md:w-[50vw] z-[21] flex flex-col justify-center"
-      >
+      <Sider>
         <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]">
           <h1 className="font-bold text-[#251B37]  text-[1.5rem] ">
             Add new task
@@ -149,7 +147,7 @@ export default function AddTask(props: {
             </button>
           </div>
         </form>
-      </div>
+      </Sider>
     </Modal>
   );
   // Function That Convert Time to Time fahd 3awzo

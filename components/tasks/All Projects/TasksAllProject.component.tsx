@@ -23,7 +23,7 @@ export default function TasksAllProject(props:{tasks:any, seeAll:any, closSeeAll
     }
 
     return (
-        <div>
+        <div className='p-[20px]'>
             <div className="part-one flex justify-between items-center">
                 <div className="flex gap-3">
                     <h1 className='text-[#0D062D] font-bold'>Tasks</h1>

@@ -2,7 +2,7 @@ import React from 'react'
 import {Icon} from '@iconify/react'
 export default function TopEditAllProject(props:{cardName:string, cardProgress:number}) {
     return (
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-3 p-[20px]'>
             <div className="flex justify-between items-center">
                 <h1 className='text-xl font-bold text-[#251B37]' >{props.cardName}</h1>
                 <Icon icon={"tabler:dots"} className='text-2xl cursor-pointer'/>

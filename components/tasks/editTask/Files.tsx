@@ -14,7 +14,7 @@ export default function Files(props: { files: number }) {
     - useState([]); ----> useState<any>([]);
   */
   return (
-    <div className="file-content flex flex-col gap-4">
+    <div className="file-content flex flex-col gap-4 p-[20px]">
       <div className="part-one flex justify-between">
         <div className=" flex gap-2 justify-center items-center">
           <p className="text-sider-primary-text font-bold text-[20px]">Files</p>

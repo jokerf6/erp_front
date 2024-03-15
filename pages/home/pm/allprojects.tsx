@@ -10,6 +10,7 @@ import AddTask from "@/components/tasks/addTask.component";
 import PMLayout from "@/layouts/pm";
 import Head from "next/head";
 import Modal from "@/components/default/modal.component";
+import Sider from "@/components/default/sider.component";
 
 export default function AllProjects() {
   const [isOpen, setIsOpen] = React.useState(false)
@@ -366,7 +367,7 @@ export default function AllProjects() {
 
       {addNewProjectIsOpen &&
         <Modal setOverlay={setAddNewProjectIsOpen}>
-          <div className="absolute top-0 right-0 min-h-full w-screen max-w-[600px] md:w-[50vw] z-20 flex flex-col">
+          <Sider>
             <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]">
               <h1 className="font-bold text-[#251B37]  text-[1.5rem] ">
                 Add new Project
@@ -377,7 +378,7 @@ export default function AllProjects() {
                 onClick={() => setAddNewProjectIsOpen(false)}
               />
             </div>
-            <form className="bg-[#FAFAFA] flex flex-col px-10 gap-4 flex-1">
+            <form className="bg-[#FAFAFA] flex flex-col p-[20px] gap-4 flex-1">
               <InputField
                 type={myInputs[0]}
                 name={"Project Name"}
@@ -410,12 +411,12 @@ export default function AllProjects() {
                 </button>
               </div>
             </form>
-          </div>
+          </Sider>
         </Modal>}
 
       {seeAllIsOpen &&
         <Modal setOverlay={setSeeAllIsOpen}>
-          <div className="absolute top-0 right-0 min-h-full w-screen max-w-[600px] md:w-[50vw] z-20 flex flex-col" onClick={(e)=>e.stopPropagation()}>
+          <Sider>
             <div className="head p-[20px]  bg-[#FFFFFF] flex justify-between items-center shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)]"onClick={() => setSeeAllIsOpen(false)}>
               <h1 className="font-bold text-[#251B37]  text-[1.5rem] ">
                 Add new task
@@ -434,15 +435,12 @@ export default function AllProjects() {
                 {myTasks}
               </div>
             </div>
-          </div>
+          </Sider>
         </Modal>}
 
         {addNewTask && 
-        <Modal setOverlay={setAddNewTask}>
-        <div>
           <AddTask display = {false} setAddTaskOverlay = {setAddNewTask} />
-        </div>
-        </Modal> }
+        }
       <div className="page-content flex flex-col md:p-[40px] p-[10px] gap-8  bg-[#E9E3D58A] rounded-xl">
         <div className="part-One flex justify-between flex-col xls:flex-row gap-4">
           <div className="flex  items-center gap-4 ">
