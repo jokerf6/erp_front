@@ -10,7 +10,7 @@ import AddTask from "@/components/tasks/addTask.component";
 import PMLayout from "@/layouts/pm";
 import Head from "next/head";
 import Modal from "@/components/default/modal.component";
-import Sider from "@/components/default/sider.component";
+import Sider from "@/components/sider/sider.component";
 
 export default function AllProjects() {
   const [isOpen, setIsOpen] = React.useState(false)

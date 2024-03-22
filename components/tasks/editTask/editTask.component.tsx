@@ -6,7 +6,7 @@ import Comments from "./Comments";
 import Teammates from "./Teammates";
 import Modal from "@/components/default/modal.component";
 import TopEditTask from "@/components/tasks/editTask/TopEditTask.component";
-import Sider from "@/components/default/sider.component";
+import Sider from "@/components/sider/sider.component";
 
 export default function EditTask(props: {
   setEditTaskOverlay: any,

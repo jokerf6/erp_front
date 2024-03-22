@@ -12,8 +12,8 @@ import { Projects_Link, Tasks_Links } from "@/static/links";
 import Modal from "../default/modal.component";
 import DropDown from "../default/dropDown.component";
 import Input from "@/components/tasks/Slider/input.component";
-import AssignedToInput from "../inputs/assignedTo.input.component";
-import Sider from "../default/sider.component";
+import AssignedToInput from "@/components/sider/inputs/assignedTo.input.component";
+import Sider from "@/components/sider/sider.component";
 
 export default function AddTask(props: {
   setAddTaskOverlay?: any;

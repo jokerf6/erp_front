@@ -11,7 +11,7 @@ export default function AssignedToInput() {
   handleClickOutsideAssignedtoInput(assignedtoInputRef);
 
   return (
-    <div className="rounded-[5px] border-primary-purple border  min-h-[40px] flex gap-2 px-2 py-1 flex-wrap">
+    <div className="bg-sider-bg-white rounded-[5px] border-primary-purple border min-h-[40px] flex gap-2 px-2 py-1 flex-wrap">
       {assignedtoMembers.map((member: any, index: number) => {
         return (
           <div
