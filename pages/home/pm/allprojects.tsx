@@ -378,34 +378,36 @@ export default function AllProjects() {
                 onClick={() => setAddNewProjectIsOpen(false)}
               />
             </div>
-            <form className="bg-[#FAFAFA] flex flex-col p-[20px] gap-4 flex-1">
-              <InputField
-                type={myInputs[0]}
-                name={"Project Name"}
-                placeholder="Enter project name"
-              />
-              <div className=" flex flex-col gap-3">
-                <label htmlFor="clientName">Client Name <span>(Required)</span></label>
-                <select name="client name" id="clientName" className=" border-[1px] border-[#251B37] rounded-md h-10 w-full">
-                  <option value="">Choose Project Client</option>
-                </select>
-              </div>
-              <InputField
-                type={myInputs[0]}
-                name={"Project Name"}
-                placeholder="Team members"
-              />
-              <InputField
-                type={myInputs[1]}
-                name={"Due date"}
-                placeholder="Set due date"
-              />
-              <div className="flex flex-col gap-3">
-                <label htmlFor="description">Description <span>(Required)</span></label>
-                <textarea id="description" placeholder="Write task details" className="border-[1px] border-[#251B37] rounded-md max-h-[150px] h-[100px] w-full indent-3" />
+            <form className="bg-[#FAFAFA] flex flex-col flex-1">
+              <div className="inputs-content flex flex-col gap-5 p-[20px]">
+                <InputField
+                  type={myInputs[0]}
+                  name={"Project Name"}
+                  placeholder="Enter project name"
+                />
+                <div className=" flex flex-col gap-3">
+                  <label htmlFor="clientName">Client Name <span>(Required)</span></label>
+                  <select name="client name" id="clientName" className=" border-[1px] border-[#251B37] rounded-md h-10 w-full">
+                    <option value="">Choose Project Client</option>
+                  </select>
+                </div>
+                <InputField
+                  type={myInputs[0]}
+                  name={"Project Name"}
+                  placeholder="Team members"
+                />
+                <InputField
+                  type={myInputs[1]}
+                  name={"Due date"}
+                  placeholder="Set due date"
+                />
+                <div className="flex flex-col gap-3">
+                  <label htmlFor="description">Description <span>(Required)</span></label>
+                  <textarea id="description" placeholder="Write task details" className="border-[1px] border-[#251B37] rounded-md max-h-[150px] h-[100px] w-full indent-3" />
+                </div>
               </div>
 
-              <div className="bg-[#FFFFFF] flex  w-full shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)] mt-auto  p-4 absolute z-20 bottom-0 -left-0">
+              <div className="bg-[#FFFFFF] flex  w-full shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)] p-4 z-20">
                 <button type="submit" className="bg-gradient-purple-progress text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]" onClick={(e) => { e.preventDefault() }}>
                   Add
                 </button>

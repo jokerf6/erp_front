@@ -47,8 +47,8 @@ export default function AddTask(props: {
             onClick={() => setAddTaskOverlay(false)}
           />
         </div>
-        <form onSubmit={postTask} className="inputs-container bg-[#FAFAFA] flex flex-col flex-1 p-[20px]">
-          <div className="inputs-content flex flex-col gap-5 ">
+        <form onSubmit={postTask} className="inputs-container bg-[#FAFAFA] flex flex-col flex-1">
+          <div className="inputs-content flex flex-col gap-5 p-[20px]">
             <Input
               type="text"
               name="taskAsm"
@@ -134,14 +134,14 @@ export default function AddTask(props: {
               </label>
               <textarea
                 name="description"
-                className=" rounded-[5px] py-[10px] outline-none  border-[#251B37] border-[1px] indent-[10px] h-[40px] max-h-[100px] min-h-[100px] mb-20"
+                className=" rounded-[5px] outline-none  border-[#251B37] border-[1px] indent-[10px] h-[40px] max-h-[100px] min-h-[100px]"
                 id="description"
                 placeholder="Write task details"
               />
             </div>
 
           </div>
-          <div className=" absolute bottom-0 left-0  p-5 shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)] bg-[#FFFFFF] flex justify-center items-center mt-[20px] w-full">
+          <div className="p-5 shadow-[0px_1px_10.1px_rgba(0,0,0,0.1)] bg-[#FFFFFF] flex justify-center items-center w-full">
             <button type="submit" className="bg-gradient-purple-btn text-[1.5rem] flex-1 text-[#FFFFFF]  rounded-[5px] py-[5px]">
               Add
             </button>
