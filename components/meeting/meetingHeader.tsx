@@ -41,7 +41,7 @@ export default function MeetingHeader(props: {meetingHeaderRef: any}) {
           </button>
           <div className="user--conatiner bg-[#F6F6F6] flex items-center xxs:gap-2 lg:gap-[16px] w-full max-w-[200px] xl:max-w-[300px] xl:h-[80px] rounded-full xl:px-[15px]">
             <div className="user--image border border-lite-purple rounded-full">
-              <ProfilePicture border={true} size={"50"}/>
+              <ProfilePicture border={true} size={50}/>
             </div>
             <div className="user--details capitalize font-[500]">
               <div className="user--name hidden xxs:block text-[#25293B] text-[16px]">

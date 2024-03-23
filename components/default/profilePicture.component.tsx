@@ -2,7 +2,7 @@ import React from "react";
 
 export default function ProfilePicture(props: {
   border: boolean;
-  size: string;
+  size: number;
 }) {
   return (
     <img
