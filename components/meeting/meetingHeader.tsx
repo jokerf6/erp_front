@@ -3,11 +3,11 @@ import React from "react";
 import { Icon } from "@iconify/react";
 
 // Components
-import GeneralProfilePicture from "@/components/default/generalProfilePicture.component";
+import ProfilePicture from "@/components/default/profilePicture.component";
 
-export default function MeetingHeader() {
+export default function MeetingHeader(props: {meetingHeaderRef: any}) {
   return (
-    <header className="flex bg-white py-[10px] md:py-[20px]">
+    <header ref={props.meetingHeaderRef} className="flex bg-white py-[10px] md:py-[20px]">
       <div className="meeting-logo--container hidden lg:flex items-center px-[20px] xl:px-[40px] border-r-2 border-[#EAE9E994]">
         <Icon
           icon="bxl:zoom"
@@ -35,13 +35,13 @@ export default function MeetingHeader() {
               <Icon icon="fluent:link-24-regular" width="100%" />
             </span>
             <span className="separator hidden md:block bg-primary-purple w-[1px] h-[40%]"></span>
-            <span className="capitalize absolute top-full right-0 xxs:static w-max text-[10px] xxs:text-[14px] xl:text-base text-primary-p xxs:text-primary-purple xxs:font-[500]">
+            <span className="capitalize absolute top-50 right-[110%] xxs:static w-max text-[8px] xxs:text-[14px] xl:text-base text-primary-p xxs:text-primary-purple xxs:font-[500]">
               copy invitaion link
             </span>
           </button>
-          <div className="user--conatiner bg-[#F6F6F6] flex items-center xxs:gap-2 lg:gap-[16px] w-full max-w-[200px] xl:w-[366px] xl:max-w-[366px] xl:h-[80px] rounded-full xl:px-[15px]">
-            <div className="user--image">
-              <GeneralProfilePicture />
+          <div className="user--conatiner bg-[#F6F6F6] flex items-center xxs:gap-2 lg:gap-[16px] w-full max-w-[200px] xl:max-w-[300px] xl:h-[80px] rounded-full xl:px-[15px]">
+            <div className="user--image border border-lite-purple rounded-full">
+              <ProfilePicture border={true} size={"50"}/>
             </div>
             <div className="user--details capitalize font-[500]">
               <div className="user--name hidden xxs:block text-[#25293B] text-[16px]">

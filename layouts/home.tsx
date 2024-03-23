@@ -3,6 +3,7 @@ import React, { createContext, useState, useEffect, useRef } from "react";
 // Components
 import Header from "@/components/default/header.component";
 import Footer from "@/components/default/footer.component";
+import getWindowWidth from "@/functions/getWindowWidth";
 
 // Context
 const HomeContext = createContext({} as any);
@@ -13,27 +14,7 @@ export default function HomeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [windowWidth, setWindowWidth] = useState(Number);
-  const [isSmallWindow, setIsSmallWindow] = useState(Boolean);
-
-  // Update windowWidth
-  useEffect(() => {
-    setWindowWidth(window.innerWidth);
-
-    function windowTrackerWidth() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", windowTrackerWidth);
-
-    return function () {
-      window.removeEventListener("resize", windowTrackerWidth);
-    };
-  }, [windowWidth]);
-
-  // Update isSmallWindow
-  useEffect(() => {
-    setIsSmallWindow(window.innerWidth < 1024 ? true : false);
-  }, [windowWidth]);
+  const { windowWidth, isSmallWindow } = getWindowWidth();
 
   return (
     <HomeContext.Provider
