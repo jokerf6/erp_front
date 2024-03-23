@@ -10,7 +10,7 @@ export default function ProfilePicture(props: {
       alt="profile picture"
       width={props.size}
       height={props.size}
-      className={`rounded-full object-cover ${
+      className={`rounded-full object-cover select-none ${
         props.border ? "border-[3px] border-white" : ""
       }`}
     />
