@@ -77,7 +77,7 @@ export default function Meeting() {
               {/* <button className="record p-2 rounded-full bg-[#F2EBFE] text-primary-purple">
                 <Icon icon="ri:record-circle-line" width={25} />
               </button> */}
-              
+
               <button className="chat p-2 rounded-full bg-[#F2EBFE] text-primary-purple">
                 <Icon icon="lets-icons:chat-alt-3-light" width={25} />
               </button>
@@ -90,7 +90,74 @@ export default function Meeting() {
             </button>
           </div>
         </div>
-        <div className="bg-yellow-500 w-[30%]">Right</div>
+
+        <div className="bg-yellow-500 w-[30%] flex flex-col">
+          <div className="participants flex-1 flex flex-col">
+            <div className="participants--header bg-white flex justify-between items-center pl-[20px] pr-[10px] h-[70px] border-b border-[#FDFBFB]">
+              <div className="title capitalize text-primary-purple text-[18px] font-[600]">
+                participants
+              </div>
+              <div className="flex items-center gap-2">
+                <button className="flex items-center gap-1 text-primary-purple bg-[#F2EBFE] rounded-[61px] px-[20px] py-[12px]">
+                  <span className="capitalize text-[14px] font-[600]">
+                    add participant
+                  </span>
+                  <Icon icon="icons8:add-user" width={20} />
+                </button>
+                <button className="text-primary-purple p-1">
+                  <Icon icon="ep:arrow-up-bold" />
+                </button>
+              </div>
+            </div>
+            <div className="participants--content bg-lite-white flex flex-col items-center px-[24px] py-[35px] gap-[15px] flex-1">
+              <div className="particpant--card bg-white flex justify-between items-center w-[351px] h-[69px] rounded-[31.5px] px-[15px]">
+                <div className="particpant--info flex items-center gap-2">
+                  <ProfilePicture border={true} size={50} />
+                  <span className="name capitalize text-primary-purple text-[16px] font-[500]">
+                    Kerolos Fayez
+                  </span>
+                </div>
+                <div className="participant--media flex gap-2">
+                  <Icon icon="fluent:mic-off-28-regular" width={24} />
+                  <Icon icon="bi:camera-video" width={24} />
+                </div>
+              </div>
+              <div className="particpant--card bg-white flex justify-between items-center w-[351px] h-[69px] rounded-[31.5px] px-[15px]">
+                <div className="particpant--info flex items-center gap-2">
+                  <ProfilePicture border={true} size={50} />
+                  <span className="name capitalize text-primary-purple text-[16px] font-[500]">
+                    Kerolos Fayez
+                  </span>
+                </div>
+                <div className="participant--media flex gap-2">
+                  <Icon icon="fluent:mic-off-28-regular" width={24} />
+                  <Icon icon="bi:camera-video" width={24} />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="chat flex-1 flex flex-col">
+            <div className="chat--header bg-white flex justify-between items-center pl-[20px] pr-[10px] h-[70px] border-b border-[#FDFBFB]">
+              <div className="title capitalize text-primary-purple text-[18px] font-[600]">
+                chat
+              </div>
+              <button className="text-primary-purple p-1">
+                <Icon icon="ep:arrow-up-bold" />
+              </button>
+            </div>
+            <div className="chat--content bg-lite-white flex flex-col items-center flex-1">
+              <div className="chat--messages px-[24px] py-[35px] flex-1">
+                content
+              </div>
+              <div className="chat--input bg-white w-full flex items-center px-[30px] py-[15px] h-[72px] border-t-[1.5px] border-[#EDF0F6]">
+                <div className="bg-lite-white text-[#8D8F98] w-full px-[20px] py-[10px] rounded-[88px]">
+                  chat input here
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </div>
   );
