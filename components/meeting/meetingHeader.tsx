@@ -5,9 +5,9 @@ import { Icon } from "@iconify/react";
 // Components
 import ProfilePicture from "@/components/default/profilePicture.component";
 
-export default function MeetingHeader(props: {meetingHeaderRef: any}) {
+export default function MeetingHeader() {
   return (
-    <header ref={props.meetingHeaderRef} className="flex bg-white py-[10px] md:py-[20px]">
+    <header className="flex bg-white py-[10px] md:py-[20px]">
       <div className="meeting-logo--container hidden lg:flex items-center px-[20px] xl:px-[40px] border-r-2 border-[#EAE9E994]">
         <Icon
           icon="bxl:zoom"

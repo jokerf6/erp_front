@@ -10,6 +10,7 @@ import Category from "@/components/tasks/category.component";
 import EditTask from "@/components/tasks/editTask/editTask.component";
 import AddTask from "@/components/tasks/addTask.component";
 import ImageSlider from "@/components/tasks/imageSlider.component";
+import AddComment from "@/components/tasks/editTask/addComment";
 
 // Hook
 import useScrollBlockHook from "@/hooks/useScrollBlock";
@@ -19,7 +20,6 @@ import PMLayout from "@/layouts/pm";
 
 // Context
 import { HomeContext } from "@/layouts/home";
-import AddComment from "@/components/tasks/editTask/addComment";
 const MyTasksContext = createContext({} as any);
 export { MyTasksContext };
 
