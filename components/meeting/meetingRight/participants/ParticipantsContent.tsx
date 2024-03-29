@@ -13,13 +13,13 @@ export default function ParticipantsContent() {
   return (
     <div
       className={`participants--content overflow-y-auto bg-lite-white flex flex-col items-center py-[30px] gap-[15px] ${
-        showChat ? "max-h-[calc(50vh-70px)]" : "max-h-[calc(100vh-140px)]"
+        showChat ? "max-h-[calc(50vh-100px)]" : "max-h-[calc(100vh-140px)]"
       }`}
     >
-      {new Array(2).fill(undefined).map(() => (
-        <div className="particpant--card bg-white flex justify-between items-center w-[351px] min-h-[69px] rounded-[31.5px] px-[15px]">
+      {new Array(3).fill(undefined).map(() => (
+        <div className="particpant--card bg-white flex justify-between items-center w-[351px] min-h-[69px] rounded-full pr-[15px] pl-[9px]">
           <div className="particpant--info flex items-center gap-2">
-            <ProfilePicture border={true} size={50} />
+            <ProfilePicture border={false} size={55} />
             <span className="name capitalize text-primary-purple text-[16px] font-[500]">
               Kerolos Fayez
             </span>

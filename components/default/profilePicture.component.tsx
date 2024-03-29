@@ -6,7 +6,7 @@ export default function ProfilePicture(props: {
 }) {
   return (
     <img
-      src="/images/Kerolos Fayez.jpg"
+      src="/images/man.png"
       alt="profile picture"
       width={props.size}
       height={props.size}
