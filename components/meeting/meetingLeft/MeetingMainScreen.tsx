@@ -1,6 +1,7 @@
 import React from "react";
 
 import { Icon } from "@iconify/react";
+import { RecordingIcon } from "@/assets/icons";
 
 // Components
 import ProfilePicture from "@/components/default/profilePicture.component";
@@ -8,10 +9,11 @@ import ProfilePicture from "@/components/default/profilePicture.component";
 export default function MeetingMainScreen() {
   return (
     <section className="relative main-screen bg-[#E0E0E0] flex flex-1 items-center justify-center rounded-[15px]">
-      <div className="recording-timer absolute top-3 left-3 bg-[#0F0E0E4D] text-white font-[500] px-4 rounded-full cursor-default text-[20px]">
-        00:01:45
+      <div className="recording-timer absolute top-3 left-3 bg-[#0F0E0E4D] text-white font-[500] px-4 py-1 rounded-full text-[20px] flex gap-2 items-center">
+        <RecordingIcon />
+        <span>00:01:45</span>
       </div>
-      <div className="user-name absolute bottom-3 left-3 bg-[#0F0E0E4D] text-white font-[500] px-4 rounded-full py-1 capitalize cursor-default text-[20px]">
+      <div className="user-name absolute bottom-3 left-3 bg-[#0F0E0E4D] text-white font-[500] px-4 rounded-full py-1 capitalize text-[20px]">
         kerolos fayez
       </div>
       <div className="absolute bottom-3 right-3 text-white bg-black/[30%] p-1 rounded-full">

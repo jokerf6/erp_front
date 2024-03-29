@@ -1,0 +1,14 @@
+export { default as EmptyChatIcon } from "./svgs/EmptyChat.svg";
+export { default as MicOffIcon } from "./svgs/MicOff.svg";
+export { default as MicOnIcon } from "./svgs/MicOn.svg";
+export { default as VideoOffIcon } from "./svgs/VideoOff.svg";
+export { default as VideoOnIcon } from "./svgs/VideoOn.svg";
+export { default as ScreenShareIcon } from "./svgs/ScreenShare.svg"
+export { default as ScreenShareStopIcon } from "./svgs/ScreenShareStop.svg"
+export { default as ChatIcon } from "./svgs/Chat.svg"
+export { default as SettingsIcon } from "./svgs/Settings.svg"
+export { default as FullscreenExitIcon } from "./svgs/FullscreenExit.svg"
+export { default as FullscreenEnterIcon } from "./svgs/FullscreenEnter.svg"
+export { default as EndCallIcon } from "./svgs/EndCall.svg"
+export { default as RecordingIcon } from "./svgs/Recording.svg"
+export { default as RecordButtonIcon } from "./svgs/RecordButton.svg"
