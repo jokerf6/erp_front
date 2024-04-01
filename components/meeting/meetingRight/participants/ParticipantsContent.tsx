@@ -26,7 +26,11 @@ export default function ParticipantsContent() {
             className="particpant--card bg-white flex justify-between items-center w-full max-w-[351px] min-h-[69px] rounded-full pr-[15px] pl-[9px]"
           >
             <div className="particpant--info flex items-center gap-2">
-              <ProfilePicture border={false} size={55} src={"/images/man.png"} />
+              <ProfilePicture
+                border={false}
+                size={55}
+                src={"/images/man.png"}
+              />
               <span className="name capitalize text-primary-purple text-[16px] font-[500]">
                 Kerolos Fayez
               </span>

@@ -11,10 +11,18 @@ export { MeetingContext };
 export default function Meeting() {
   const [showParticipants, setShowParticipants] = useState(false);
   const [showChat, setShowChat] = useState(false);
+  const [showAddParticipants, setShowAddParticipants] = useState(true);
 
   return (
     <MeetingContext.Provider
-      value={{ showParticipants, setShowParticipants, showChat, setShowChat }}
+      value={{
+        showParticipants,
+        setShowParticipants,
+        showChat,
+        setShowChat,
+        showAddParticipants,
+        setShowAddParticipants,
+      }}
     >
       <MeetingHeader />
       <MeetingContent />

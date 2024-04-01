@@ -3,16 +3,23 @@ import React, { useContext } from "react";
 // Components
 import ParticipantsHeader from "./ParticipantsHeader";
 import ParticipantsContent from "./ParticipantsContent";
+import AddParticipants from "./AddParticipants";
 
 // Context
 import { MeetingContext } from "@/pages/meeting";
 
+// Hooks
+import useScrollBlockHook from "@/hooks/useScrollBlock";
+
 export default function Participants() {
-  const { showParticipants } = useContext(MeetingContext);
+  const { showParticipants, showAddParticipants } = useContext(MeetingContext);
+  useScrollBlockHook(showAddParticipants);
+
   return (
-    <section className="participants flex flex-col">
+    <section className="relative participants flex flex-col">
       <ParticipantsHeader />
       {showParticipants && <ParticipantsContent />}
+      {showAddParticipants && <AddParticipants />}
     </section>
   );
 }
