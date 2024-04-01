@@ -20,7 +20,7 @@ export default function MeetingSmallScreens() {
               <MicOffIcon className="text-[20px]" />
               {/* <MicOnIcon className="text-[20px]" /> */}
             </div>
-            <ProfilePicture border={true} size={70} />
+            <ProfilePicture border={true} size={70} src={"/images/man.png"} />
             {/* <Image
               src={"/images/photo 1.jpg"}
               alt="camera-test"
