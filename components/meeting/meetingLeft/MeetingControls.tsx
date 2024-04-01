@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+
+// Icons
 import {
   ChatIcon,
   FullscreenExitIcon,
@@ -12,10 +14,15 @@ import {
   VideoOnIcon,
 } from "@/assets/icons";
 
+// Context
+import { HomeContext } from "@/layouts/home";
+
 export default function MeetingControls() {
+  const { setShowMeeting } = useContext(HomeContext)
+
   return (
     <section className="meeting--controls bg-white w-full flex justify-between items-center px-[30px] py-[15px] border-t-[1.5px] border-[#EDF0F6]">
-      <button className="fullscreen-exit">
+      <button onClick={() => setShowMeeting(false)} className="fullscreen-exit">
         <FullscreenExitIcon className="text-[25px]" />
       </button>
       <div className="media flex gap-2">

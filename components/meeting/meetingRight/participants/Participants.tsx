@@ -6,7 +6,7 @@ import ParticipantsContent from "./ParticipantsContent";
 import AddParticipants from "./AddParticipants";
 
 // Context
-import { MeetingContext } from "@/pages/meeting";
+import { MeetingContext } from "@/components/meeting/Meeting";
 
 // Hooks
 import useScrollBlockHook from "@/hooks/useScrollBlock";

@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import AsideSectionHeader from "../AsideSectionHeader/AsideSectionHeader";
 
 // Context
-import { MeetingContext } from "@/pages/meeting";
+import { MeetingContext } from "@/components/meeting/Meeting";
 
 export default function ParticipantsHeader() {
   const { showParticipants, setShowParticipants, setShowAddParticipants } =

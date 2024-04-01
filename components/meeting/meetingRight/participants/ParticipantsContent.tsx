@@ -6,7 +6,7 @@ import { Icon } from "@iconify/react";
 import ProfilePicture from "@/components/default/profilePicture.component";
 
 // Context
-import { MeetingContext } from "@/pages/meeting";
+import { MeetingContext } from "@/components/meeting/Meeting";
 import { MicOffIcon, VideoOnIcon } from "@/assets/icons";
 
 export default function ParticipantsContent() {

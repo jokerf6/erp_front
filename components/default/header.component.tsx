@@ -10,7 +10,9 @@ import useScrollBlock from "@/functions/useScrollBlock";
 
 // Context
 import { HomeContext } from "@/layouts/home";
-import ErpComm from "./erpComm.component";
+
+// Components
+import MeetNow from "../meeting/MeetNow";
 
 export default function Header() {
   const { isSmallWindow } = useContext(HomeContext);
@@ -19,11 +21,11 @@ export default function Header() {
   const homeCurrentTab = path[2];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const NavLinks = ["dashboard", "pm", "hr", "meeting"];
+  const NavLinks = ["dashboard", "pm", "hr", "meetings"];
 
   // NavLinks Styles
   const navLinkStyle =
-    "capitalize cursor-pointer p-4 hover:bg-nav-selected-bg hover:text-nav-selected-text";
+    "capitalize cursor-pointer p-4 hover:bg-nav-selected-bg hover:text-nav-selected-text transition-all";
   const navLinkStyleActive =
     "bg-nav-selected-bg text-nav-selected-text font-bold";
   const navLinkStyleInActive = "bg-primary-purple text-lite-white";
@@ -106,7 +108,6 @@ export default function Header() {
             <div className="lg:hidden">
               <hr />
               <div className="header--right small flex flex-col gap-2 overflow-y-auto">
-                <ErpComm />
                 <div className={navIconStyleSmallWindow}>
                   <Icon icon="mi:notification" className="text-2xl" />
                   <span>Notifications</span>
@@ -125,11 +126,7 @@ export default function Header() {
         </nav>
       </div>
       <div className="header--right flex items-center gap-4 text-lite-white">
-        {!isSmallWindow && (
-          <div className="hidden lg:block">
-            <ErpComm />
-          </div>
-        )}
+        <MeetNow />
         <Icon icon="teenyicons:search-outline" className={navIconStyle} />
         {!isSmallWindow && (
           <div className="hidden lg:flex gap-3">

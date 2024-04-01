@@ -5,7 +5,7 @@ import ChatHeader from "./ChatHeader";
 import ChatContent from "./ChatContent";
 
 // Context
-import { MeetingContext } from "@/pages/meeting";
+import { MeetingContext } from "@/components/meeting/Meeting";
 
 export default function Chat() {
   const {showChat} = useContext(MeetingContext)
