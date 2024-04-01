@@ -23,9 +23,9 @@ export default function MeetingControls() {
           {/* <MicOnIcon className="text-[25px]" /> */}
           <MicOffIcon className="text-[25px]" />
         </button>
-        <button className="camera p-2 rounded-full bg-primary-pink text-white">
-          {/* <VideoOnIcon className="text-[25px]" /> */}
-          <VideoOffIcon className="text-[25px]" />
+        <button className="camera p-2 rounded-full bg-primary-purple text-white">
+          <VideoOnIcon className="text-[25px]" />
+          {/* <VideoOffIcon className="text-[25px]" /> */}
         </button>
         <button className="sharescreen p-2 rounded-full bg-[#F2EBFE] text-primary-purple">
           <ScreenShareIcon className="text-[25px]" />

@@ -19,6 +19,7 @@ export default function Header() {
   const homeCurrentTab = path[2];
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const NavLinks = ["dashboard", "pm", "hr", "meeting"];
 
   // NavLinks Styles
   const navLinkStyle =
@@ -71,44 +72,35 @@ export default function Header() {
           />
         )}
         <nav
-          className={`bg-primary-purple/95 h-[100vh] ${
-            isMenuOpen ? "absolute" : "hidden"
+          className={`bg-primary-purple/95 ${
+            isMenuOpen
+              ? "absolute h-[calc(100vh-64px)] overflow-y-auto"
+              : "hidden"
           } z-[3] top-full left-0 w-full flex flex-col p-2 gap-2 lg:p-0 lg:static lg:h-fit`}
         >
-          <ul className="flex flex-col gap-3 lg:flex-row">
-            <Link href={"/home/dashboard"}>
-              <li
-                className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
-                  homeCurrentTab === "dashboard"
-                    ? navLinkStyleActive
-                    : navLinkStyleInActive
-                }`}
-              >
-                dashboard
-              </li>
-            </Link>
-            <Link href={"/home/pm/mytasks"}>
-              <li
-                className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
-                  homeCurrentTab === "pm"
-                    ? navLinkStyleActive
-                    : navLinkStyleInActive
-                }`}
-              >
-                project management
-              </li>
-            </Link>
-            <Link href={"/home/hr"}>
-              <li
-                className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
-                  homeCurrentTab === "hr"
-                    ? navLinkStyleActive
-                    : navLinkStyleInActive
-                }`}
-              >
-                HR
-              </li>
-            </Link>
+          <ul className="flex flex-col gap-3 lg:flex-row lg:items-center">
+            {NavLinks.map((NavLink) => {
+              return (
+                <Link
+                  key={NavLink}
+                  href={`/home/${NavLink === "pm" ? "pm/mytasks" : NavLink}`}
+                >
+                  <li
+                    className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
+                      homeCurrentTab === NavLink
+                        ? navLinkStyleActive
+                        : navLinkStyleInActive
+                    }`}
+                  >
+                    {NavLink === "pm"
+                      ? "project management"
+                      : NavLink === "hr"
+                      ? "HR"
+                      : NavLink}
+                  </li>
+                </Link>
+              );
+            })}
           </ul>
           {isSmallWindow && (
             <div className="lg:hidden">

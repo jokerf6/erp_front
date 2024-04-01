@@ -24,27 +24,22 @@
 body {
   background-color: #f9fafc;
 }
+
+/* Scrollbars */
 .cat {
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
-
 /* For Webkit browsers like Chrome and Safari */
 .cat::-webkit-scrollbar {
   width: 12px;
-}
-.dragging {
-  transform: scale(1.05); /* Apply scale transformation when dragging */
-}
-.card2 {
-  cursor: grab;
-  transition: transform 0.3s ease-out;
 }
 .cat::-webkit-scrollbar-thumb {
   background-color: #251b37;
   border-inline: 1px solid #e9e3d58a;
 }
+
 /* Scrollbar PM Files */
 .files-contents::-webkit-scrollbar, .taskAllProject::-webkit-scrollbar {
   width: 10px;
@@ -60,6 +55,30 @@ body {
   background-color: #555;
 }
 /* End PM Scrollbar  */
+
+/* Meeting Scrollbar */
+.meeting-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.meeting-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #251B37;
+  border-radius: 53px;
+}
+.meeting-scrollbar::-webkit-scrollbar-track {
+  background-color: #E0CEFF;
+  border-radius: 53px;
+}
+/* Meeting Scrollbar */
+
+/* Scrollbars */
+.dragging {
+  transform: scale(1.05); /* Apply scale transformation when dragging */
+}
+.card2 {
+  cursor: grab;
+  transition: transform 0.3s ease-out;
+}
 .round {
   position: relative;
 }

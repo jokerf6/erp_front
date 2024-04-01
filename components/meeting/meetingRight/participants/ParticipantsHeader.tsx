@@ -14,12 +14,13 @@ export default function ParticipantsHeader() {
     <AsideSectionHeader>
         <AsideSectionHeader.Title>participants</AsideSectionHeader.Title>
         <div className="flex items-center gap-2">
-          <button className="flex items-center gap-1 text-primary-purple bg-[#F2EBFE] rounded-[61px] px-[20px] py-[12px]">
+          {/* Admin only */}
+          {/* <button className="flex items-center gap-1 text-primary-purple bg-[#F2EBFE] rounded-[61px] px-[20px] py-[12px]">
             <span className="capitalize text-[14px] font-[600]">
               add participant
             </span>
             <Icon icon="icons8:add-user" width={20} />
-          </button>
+          </button> */}
           <button
             onClick={() => setShowParticipants((prev: boolean) => !prev)}
             className="text-primary-purple p-1"

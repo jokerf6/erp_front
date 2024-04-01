@@ -8,7 +8,7 @@ import ProfilePicture from "@/components/default/profilePicture.component";
 
 export default function MeetingMainScreen() {
   return (
-    <section className="relative main-screen bg-[#E0E0E0] flex flex-1 items-center justify-center rounded-[15px]">
+    <div className="relative main-screen bg-[#E0E0E0] flex flex-1 items-center justify-center rounded-[15px]">
       <div className="recording-timer absolute top-3 left-3 bg-[#0F0E0E4D] text-white font-[500] px-4 py-1 rounded-full text-[20px] flex gap-2 items-center">
         <RecordingIcon />
         <span>00:01:45</span>
@@ -22,6 +22,6 @@ export default function MeetingMainScreen() {
       <div className="bg-transparent rounded-full p-2 border-4 border-[#FF375E]/30">
         <ProfilePicture border={false} size={100} />
       </div>
-    </section>
+    </div>
   );
 }

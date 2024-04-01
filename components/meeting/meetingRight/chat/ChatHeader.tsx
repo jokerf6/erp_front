@@ -12,7 +12,7 @@ export default function ChatHeader() {
   const {showChat, setShowChat} = useContext(MeetingContext)
   return (
     <AsideSectionHeader>
-      <AsideSectionHeader.Title>chats</AsideSectionHeader.Title>
+      <AsideSectionHeader.Title>chat</AsideSectionHeader.Title>
       <button
         onClick={() => setShowChat((prev: boolean) => !prev)}
         className="text-primary-purple p-1"

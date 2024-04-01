@@ -7,7 +7,7 @@ import ProfilePicture from "@/components/default/profilePicture.component";
 
 export default function MeetingHeader() {
   return (
-    <header className="flex bg-white py-[10px] md:py-[20px] cursor-default">
+    <header className="flex bg-white py-[10px] md:py-[20px] border-b-[1.5px] border-[#EDF0F6]">
       <div className="meeting-logo--container hidden lg:flex items-center px-[20px] xl:px-[40px] border-r-2 border-[#EAE9E994]">
         <Icon
           icon="bxl:zoom"
