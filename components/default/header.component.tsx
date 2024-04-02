@@ -81,11 +81,16 @@ export default function Header() {
           } z-[3] top-full left-0 w-full flex flex-col p-2 gap-2 lg:p-0 lg:static lg:h-fit`}
         >
           <ul className="flex flex-col gap-3 lg:flex-row lg:items-center">
-            {NavLinks.map((NavLink) => {
+            {NavLinks.map((NavLink: string) => {
+              let altLink = null;
+              if (NavLink === "pm") altLink = "pm/mytasks";
+              else if (NavLink === "meetings")
+                altLink = "meetings/upcomingmeetings";
+
               return (
                 <Link
                   key={NavLink}
-                  href={`/home/${NavLink === "pm" ? "pm/mytasks" : NavLink}`}
+                  href={`/home/${altLink === null ? NavLink : altLink}`}
                 >
                   <li
                     className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${

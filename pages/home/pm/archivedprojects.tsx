@@ -1,7 +1,7 @@
 import React from "react";
 
 // Layout
-import PMLayout from "@/layouts/pm";
+import HomeLayout from "@/layouts/home";
 
 import Head from "next/head";
 
@@ -17,4 +17,4 @@ export default function ArchivedProjects() {
   );
 }
 
-ArchivedProjects.PageLayout = PMLayout
+ArchivedProjects.PageLayout = HomeLayout

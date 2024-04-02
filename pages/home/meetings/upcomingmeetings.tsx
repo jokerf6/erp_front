@@ -3,7 +3,7 @@ import Head from "next/head";
 // Layout
 import HomeLayout from "@/layouts/home";
 
-export default function Meetings() {
+export default function UpcomingMeetings() {
   return (
     <>
       <Head>
@@ -15,4 +15,4 @@ export default function Meetings() {
   );
 }
 
-Meetings.PageLayout = HomeLayout;
+UpcomingMeetings.PageLayout = HomeLayout;

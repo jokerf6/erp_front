@@ -15,11 +15,8 @@ import AddComment from "@/components/tasks/editTask/addComment";
 // Hook
 import useScrollBlockHook from "@/hooks/useScrollBlock";
 
-// Layout
-import PMLayout from "@/layouts/pm";
-
-// Context
-import { HomeContext } from "@/layouts/home";
+// Layout, Context
+import HomeLayout, { HomeContext } from "@/layouts/home";
 const MyTasksContext = createContext({} as any);
 export { MyTasksContext };
 
@@ -179,9 +176,11 @@ export default function MyTasks() {
         />
       )}
 
-      {addTaskOverlay && <AddTask setAddTaskOverlay={setAddTaskOverlay} display = {true} />}
+      {addTaskOverlay && (
+        <AddTask setAddTaskOverlay={setAddTaskOverlay} display={true} />
+      )}
     </MyTasksContext.Provider>
   );
 }
 
-MyTasks.PageLayout = PMLayout;
+MyTasks.PageLayout = HomeLayout;
