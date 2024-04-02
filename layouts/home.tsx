@@ -10,6 +10,7 @@ import getWindowWidth from "@/functions/getWindowWidth";
 
 // Hooks
 import useScrollBlockHook from "@/hooks/useScrollBlock";
+import MinimizedMeeting from "@/components/meeting/MinimizedMeeting";
 
 // Context
 const HomeContext = createContext({} as any);
@@ -21,8 +22,11 @@ export default function HomeLayout({
   children: React.ReactNode;
 }) {
   const { windowWidth, isSmallWindow } = getWindowWidth();
+
   const [showMeeting, setShowMeeting] = useState(false);
-  useScrollBlockHook(showMeeting)
+  useScrollBlockHook(showMeeting);
+
+  const [minimizeMeeting, setMinimizeMeeting] = useState(false);
 
   return (
     <HomeContext.Provider
@@ -31,6 +35,7 @@ export default function HomeLayout({
         isSmallWindow,
         showMeeting,
         setShowMeeting,
+        setMinimizeMeeting,
       }}
     >
       <main className="flex flex-col min-h-screen">
@@ -39,6 +44,7 @@ export default function HomeLayout({
         <Footer />
       </main>
       {showMeeting && <Meeting />}
+      {minimizeMeeting && <MinimizedMeeting />}
     </HomeContext.Provider>
   );
 }

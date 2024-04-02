@@ -3,7 +3,6 @@ import Head from "next/head";
 // Layout
 import HomeLayout from "@/layouts/home";
 
-
 export default function Meetings() {
   return (
     <>
