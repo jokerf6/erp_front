@@ -1,34 +1,32 @@
-import { forget } from "@/static/links";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
+
+import { forget } from "@/static/links";
+
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+
 import LoadingButton from "@/components/default/loadingButton.component";
+
 import { valid } from "@/functions/validations";
 
-export default function ForgetInputs(props: {
-  setPages: any;
-  setId: any;
-  setEmail: any;
-}) {
-  const { setId, setPages, setEmail } = props;
+export default function ForgetForm(props: { setId: any; setEmail: any }) {
+  const { setId, setEmail } = props;
   const notify = (error: string) => toast.error(error);
   const [loading, setLoading] = useState(false);
   return (
-    <form onSubmit={handel} className=" w-full flex flex-col gap-5">
+    <form onSubmit={handle} className=" w-full flex flex-col gap-5">
       <div className=" flex gap-2 flex-col">
-        <span className=" text-main">Email</span>
+        <span className=" text-primary-purple">Email</span>
         <input
           name="email"
-          className="bg-transparent w-full rounded-md  text-main placeholder-input focus:outline-none p-2 px-4"
-          style={{ border: "1px solid #251B37" }}
+          className="bg-transparent w-full rounded-md text-primary-purple placeholder-input focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Your Email"}
         />
       </div>
       {!loading ? (
         <button
           type="submit"
-          className=" w-full bg-primary  bg-main font-b py-4 rounded-md mt-10 text-white font-bold cursor-pointer hover:shadow-lg"
+          className=" w-full bg-primary-purple font-b py-4 rounded-md mt-10 text-white font-bold cursor-pointer hover:shadow-lg"
         >
           Continue
         </button>
@@ -38,7 +36,7 @@ export default function ForgetInputs(props: {
       <ToastContainer />
     </form>
   );
-  async function handel(e: any) {
+  async function handle(e: any) {
     e.preventDefault(); // to prevent page from refreshing after click on submit button
     setLoading(true);
     const email = e.target.email.value;
@@ -71,7 +69,6 @@ export default function ForgetInputs(props: {
     if (json.type == "Success") {
       setId(json["data"]["user"]["id"]);
       setEmail(json["data"]["user"]["email"]);
-      setPages(1);
     } else {
       show_error(json);
     }

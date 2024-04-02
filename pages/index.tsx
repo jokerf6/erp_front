@@ -1,17 +1,23 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import MainBox from "../components/login/mainBox.component";
-import Left from "@/components/login/left.component";
-import Footer from "@/components/default/footer.component";
-import { Icon } from "@iconify/react";
+// Layout
+import IndexLayout from "@/layouts";
 
-const inter = Inter({ subsets: ["latin"] });
+// Components
+import Welcome from "@/components/login/welcome.component";
+import LoginForm from "@/components/login/login.component";
 
-export default function Home() {
+import Head from "next/head";
+
+export default function Index() {
   return (
-    <main className={`flex  min-h-screen flex-row ${inter.className}`}>
-      <Left />
-      <MainBox pages={0} />
-    </main>
+    <>
+      <Head>
+        <title>ERP | Login</title>
+      </Head>
+
+      <Welcome />
+      <LoginForm />
+    </>
   );
 }
+
+Index.PageLayout = IndexLayout;

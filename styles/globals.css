@@ -6,6 +6,12 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --color-main3: #5b4c83;
+}
+
+* {
+  /* To get rid of the blue hightlight when tapping something */
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,19 +24,60 @@
 body {
   background-color: #f9fafc;
 }
+
+/* Scrollbars */
 .cat {
   overflow: auto;
   scrollbar-width: thin;
   scrollbar-color: transparent transparent;
 }
-
 /* For Webkit browsers like Chrome and Safari */
 .cat::-webkit-scrollbar {
   width: 12px;
 }
-
 .cat::-webkit-scrollbar-thumb {
+  background-color: #251b37;
+  border-inline: 1px solid #e9e3d58a;
+}
+
+/* Scrollbar PM Files */
+.files-contents::-webkit-scrollbar, .taskAllProject::-webkit-scrollbar {
+  width: 10px;
+}
+.files-contents::-webkit-scrollbar-thumb, .taskAllProject::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background-color: #251b3778;
+}
+.files-contents::-webkit-scrollbar-track,.taskAllProject::-webkit-scrollbar-track {
   background-color: transparent;
+}
+.files-contents::-webkit-scrollbar-thumb:hover, .taskAllProject::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+/* End PM Scrollbar  */
+
+/* Meeting Scrollbar */
+.meeting-scrollbar::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+.meeting-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #251B37;
+  border-radius: 53px;
+}
+.meeting-scrollbar::-webkit-scrollbar-track {
+  background-color: #E0CEFF;
+  border-radius: 53px;
+}
+/* Meeting Scrollbar */
+
+/* Scrollbars */
+.dragging {
+  transform: scale(1.05); /* Apply scale transformation when dragging */
+}
+.card2 {
+  cursor: grab;
+  transition: transform 0.3s ease-out;
 }
 .round {
   position: relative;
