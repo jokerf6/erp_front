@@ -53,11 +53,13 @@ export default function HomeLayout({
     >
       <main className="flex flex-col min-h-screen">
         <Header />
-        <PageHeader
-          currentPage={currentPage}
-          currentTab={currentTab}
-          currentTabs={currentTabs}
-        />
+        {currentPage !== "home" && (
+          <PageHeader
+            currentPage={currentPage}
+            currentTab={currentTab}
+            currentTabs={currentTabs}
+          />
+        )}
         <div className="flex-1 relative">{children}</div>
         <Footer />
       </main>

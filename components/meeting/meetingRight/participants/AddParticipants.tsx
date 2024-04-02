@@ -44,13 +44,13 @@ export default function AddParticipants() {
                     </span>
                   </div>
                   <label
-                    htmlFor={`${index}`}
+                    htmlFor={`${participant}-${index}`}
                     className="relative flex items-center cursor-pointer"
                   >
                     <input
                       type="checkbox"
-                      name={participant}
-                      id={`${index}`}
+                      name={`${participant}-${index}`}
+                      id={`${participant}-${index}`}
                       className="peer appearance-none w-[30px] h-[30px] border-2 border-primary-purple rounded-md checked:bg-primary-purple"
                     />
                     <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 peer-checked:opacity-100">

@@ -25,7 +25,7 @@ export default function MeetingControls() {
       <button
         onClick={() => {
           setShowMeeting(false);
-          setMinimizeMeeting(true)
+          setMinimizeMeeting(true);
         }}
         className="fullscreen-exit"
       >
@@ -57,7 +57,10 @@ export default function MeetingControls() {
           <SettingsIcon className="text-[25px]" />
         </button>
       </div>
-      <button className="end-meeting bg-primary-pink text-white text-[18px] font-[600] px-[20px] py-[5px] rounded-full">
+      <button
+        onClick={() => setShowMeeting(false)}
+        className="end-meeting bg-primary-pink text-white text-[18px] font-[600] px-[20px] py-[5px] rounded-full"
+      >
         End Call
       </button>
     </section>

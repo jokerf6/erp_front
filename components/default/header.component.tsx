@@ -131,7 +131,7 @@ export default function Header() {
         </nav>
       </div>
       <div className="header--right flex items-center gap-4 text-lite-white">
-        <MeetNow />
+        <MeetNow header={true} />
         <Icon icon="teenyicons:search-outline" className={navIconStyle} />
         {!isSmallWindow && (
           <div className="hidden lg:flex gap-3">
