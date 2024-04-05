@@ -1,18 +1,20 @@
-import React, {useState, createContext} from 'react';
+import React, { useState, createContext } from "react";
 
 // Components
-import Left from '@/components/index/left.component'
-import Right from '@/components/index/right.component'
+import Left from "@/components/index/left.component";
+import Right from "@/components/index/right.component";
 
 // Font
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
 
 // Context
-const IndexContext = createContext({} as any)
-export {IndexContext}
+const IndexContext = createContext({} as any);
+export { IndexContext };
 
-export default function IndexLayout({ children }: { children: React.ReactNode }) {
+export default function IndexLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [loading, setLoading] = useState(false);
   const [id, setId] = useState("-1");
   const [email, setEmail] = useState("test@test.com");
@@ -31,7 +33,7 @@ export default function IndexLayout({ children }: { children: React.ReactNode })
         setChange,
       }}
     >
-      <main className={`flex min-h-[100dvh] ${inter.className}`}>
+      <main className={`flex min-h-[100dvh] `}>
         <Left />
         <Right children={children} />
       </main>

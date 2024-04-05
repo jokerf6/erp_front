@@ -70,6 +70,7 @@ export default function ForgetForm(props: { setId: any; setEmail: any }) {
     setLoading(false);
     if (json.type == "Success") {
       localStorage.setItem("token", json["data"]["token"]);
+      setEmail(json["data"]["user"]["email"]);
       localStorage.setItem("email", json["data"]["user"]["email"]);
       router.push("/verifyEmail");
     } else {

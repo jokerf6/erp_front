@@ -19,7 +19,7 @@ import { valid } from "@/functions/validations";
 // Context
 import { IndexContext } from "@/layouts";
 
-export default function LoginForm() {
+export default function LoginForm(props: { setEmail: any }) {
   const router = useRouter();
   const notify = async (error: string) => toast.error(error);
 
@@ -110,7 +110,7 @@ export default function LoginForm() {
       console.log(json["data"]);
       if (json["data"]["user"]["first"]) {
         localStorage.setItem("token", json["data"]["user"]["token"]);
-        localStorage.setItem("email", json["data"]["user"]["user"]["email"]);
+        props.setEmail(json["data"]["user"]["user"]["email"]);
 
         router.push("/verifyEmail");
       } else {

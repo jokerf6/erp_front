@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
 
 // Components
-import MeetingHeader from "@/components/meeting/MeetingHeader";
 import MeetingContent from "@/components/meeting/MeetingContent";
+import MeetingHeader from "./meetingHeader";
 
 // Context
 const MeetingContext = createContext({} as any);

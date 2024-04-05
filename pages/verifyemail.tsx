@@ -1,4 +1,3 @@
-"use client";
 import React, { useContext } from "react";
 
 // Components
@@ -14,7 +13,8 @@ import IndexLayout from "@/layouts";
 import Head from "next/head";
 
 export default function VerifyEmail() {
-  const email = localStorage.getItem("email");
+  const { email } = useContext(IndexContext);
+
   return (
     <>
       <Head>
