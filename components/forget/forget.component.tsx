@@ -8,11 +8,13 @@ import "react-toastify/dist/ReactToastify.css";
 import LoadingButton from "@/components/default/loadingButton.component";
 
 import { valid } from "@/functions/validations";
+import { useRouter } from "next/router";
 
 export default function ForgetForm(props: { setId: any; setEmail: any }) {
   const { setId, setEmail } = props;
   const notify = (error: string) => toast.error(error);
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   return (
     <form onSubmit={handle} className=" w-full flex flex-col gap-5">
       <div className=" flex gap-2 flex-col">
@@ -67,8 +69,9 @@ export default function ForgetForm(props: { setId: any; setEmail: any }) {
   async function onGetResponse(json: any) {
     setLoading(false);
     if (json.type == "Success") {
-      setId(json["data"]["user"]["id"]);
-      setEmail(json["data"]["user"]["email"]);
+      localStorage.setItem("token", json["data"]["token"]);
+      localStorage.setItem("email", json["data"]["user"]["email"]);
+      router.push("/verifyEmail");
     } else {
       show_error(json);
     }

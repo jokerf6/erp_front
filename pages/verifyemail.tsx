@@ -1,3 +1,4 @@
+"use client";
 import React, { useContext } from "react";
 
 // Components
@@ -13,15 +14,13 @@ import IndexLayout from "@/layouts";
 import Head from "next/head";
 
 export default function VerifyEmail() {
-  const { email } = useContext(IndexContext);
+  const email = localStorage.getItem("email");
   return (
     <>
       <Head>
         <title>ERP | Verfiy Email</title>
       </Head>
-
-      <WelcomeOTP email={email} />
-      <VerifyEmailForm />
+      {email && <WelcomeOTP email={email} />} <VerifyEmailForm />
     </>
   );
 }

@@ -28,6 +28,7 @@ export default function ChangePasswordForm() {
           name="change_password"
           className="bg-transparent w-full rounded-md  text-primary-purple placeholder-input focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Enter your new password"}
+          type="password"
         />
       </div>
       <div className=" flex gap-2 flex-col">
@@ -36,6 +37,7 @@ export default function ChangePasswordForm() {
           name="re_change_password"
           className="bg-transparent w-full rounded-md  text-primary-purple placeholder-input focus:outline-none p-2 px-4 border-[1px] border-primary-purple"
           placeholder={"Re-enter your new password"}
+          type="password"
         />
       </div>
 
@@ -54,8 +56,6 @@ export default function ChangePasswordForm() {
   );
 
   async function handle(e: any) {
-    console.log("hi");
-    console.log(change);
     e.preventDefault(); // to prevent page from refreshing after click on submit button
     setLoading(true);
     // get data from form
@@ -83,22 +83,18 @@ export default function ChangePasswordForm() {
 
       return;
     }
-    if (!change && change !== undefined) {
-      notify("Cannot change your password");
-      setLoading(false);
+    setLoading(false);
 
-      return;
-    }
-    console.log("conti");
     const data = {
       password,
     };
     let requestJson = JSON.stringify(data);
 
-    await fetch(User + `/${id}/change_password`, {
+    await fetch(User + `/change_password`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the authorization header
       },
       body: requestJson,
     })
@@ -107,13 +103,10 @@ export default function ChangePasswordForm() {
   }
   async function onGetResponse(json: any) {
     setLoading(false);
-    if ((json.type = "Success")) {
-      if (json["data"]) {
-        localStorage.setItem("user", json["data"]["user"]);
-        router.push("/home");
-      } else {
-        router.replace("/");
-      }
+    console.log(json.type === "Success");
+    if (json.type === "Success") {
+      localStorage.removeItem("token");
+      router.push("/");
     } else {
       show_error(json);
     }

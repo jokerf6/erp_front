@@ -10,11 +10,13 @@ import LoadingButton from "@/components/default/loadingButton.component";
 
 // Context
 import { IndexContext } from "@/layouts";
+import { useRouter } from "next/router";
 
 export default function VerifyEmailForm() {
   const notify = (error: string) => toast.error(error);
   const { id, setChange, loading, setLoading } = useContext(IndexContext);
 
+  const router = useRouter();
   const codeInputs = new Array(5).fill("").map((digit, index) => {
     return (
       <input
@@ -40,19 +42,28 @@ export default function VerifyEmailForm() {
       onSubmit={handle}
       className="w-fit flex flex-col gap-14 mx-auto items-center mt-14"
     >
-      <div className="flex gap-2 ">
-        {codeInputs}
-      </div>
+      <div className="flex gap-2 ">{codeInputs}</div>
       {!loading ? (
-        <button
-          type="submit"
-          className=" w-full bg-primary  bg-main font-b py-4 rounded-md text-white font-bold cursor-pointer hover:shadow-lg"
-        >
-          Verify
-        </button>
+        <>
+          <button
+            type="submit"
+            className=" w-full bg-primary  bg-main font-b py-4 rounded-md text-white font-bold cursor-pointer hover:shadow-lg"
+          >
+            Verify
+          </button>
+        </>
       ) : (
         <LoadingButton />
       )}
+      <div className=" text-center mt-[-50px] w-full text-[14px] font-[400]">
+        Didn’t receive the email?
+        <span
+          onClick={async () => resend()}
+          className=" font-[600] ml-[5px] hover:cursor-pointer hover:underline"
+        >
+          Click to resend
+        </span>
+      </div>
       <ToastContainer />
     </form>
   );
@@ -69,11 +80,13 @@ export default function VerifyEmailForm() {
     };
     let requestJson = JSON.stringify(data);
 
-    await fetch(User + `/${id}/verify_code`, {
+    await fetch(User + `/verify_code`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the authorization header
       },
+
       body: requestJson,
     })
       .then((response) => response.json())
@@ -82,8 +95,12 @@ export default function VerifyEmailForm() {
   async function onGetResponse(json: any) {
     setLoading(false);
     if (json.type == "Success") {
-      setChange(true);
+      localStorage.removeItem("token");
+      console.log(json["data"]);
+      localStorage.setItem("token", json["data"]["token"]);
+      router.push("/changePassword");
     } else {
+      console.log(json);
       show_error(json);
     }
   }
@@ -94,6 +111,23 @@ export default function VerifyEmailForm() {
       for (let i = 0; i < json["message"].length; i++) {
         notify(json["message"][i]);
       }
+    }
+  }
+
+  async function resend() {
+    await fetch(User + `/resend_otp`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`, // Include the authorization header
+      },
+    })
+      .then((response) => response.json())
+      .then((json) => onGetResponse2(json));
+  }
+  async function onGetResponse2(json: any) {
+    if (json.type !== "Success") {
+      show_error(json);
     }
   }
 }

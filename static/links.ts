@@ -1,7 +1,7 @@
 export const server = "http://erp.egyptsunny.com/api";
 //---------------Auth------------------
 export const auth = `${server}/auth`;
-export const Login = `${auth}/signin`;
+export const Login = `${auth}/login`;
 //---------------User------------------
 export const User = `${server}/user`;
 export const forget = `${User}/forget_password`;
@@ -9,5 +9,3 @@ export const forget = `${User}/forget_password`;
 export const Projects_Link = `${server}/projects`;
 //---------------Tasks------------------
 export const Tasks_Links = `${server}/tasks`;
-
-
