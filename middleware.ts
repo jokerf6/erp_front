@@ -9,8 +9,8 @@ export async function middleware(request: NextRequest) {
     if (
       request.nextUrl.pathname !== "/" &&
       request.nextUrl.pathname !== "/forgetpassword" &&
-      request.nextUrl.pathname !== "/changePassword" &&
-      request.nextUrl.pathname !== "/verifyEmail"
+      request.nextUrl.pathname !== "/changepassword" &&
+      request.nextUrl.pathname !== "/verifyemail"
     ) {
       return NextResponse.redirect(new URL("/", request.url));
     }
@@ -29,16 +29,16 @@ export async function middleware(request: NextRequest) {
         response.status === 401 &&
         request.nextUrl.pathname !== "/" &&
         request.nextUrl.pathname !== "/forgetpassword" &&
-        request.nextUrl.pathname !== "/changePassword" &&
-        request.nextUrl.pathname !== "/verifyEmail"
+        request.nextUrl.pathname !== "/changepassword" &&
+        request.nextUrl.pathname !== "/verifyemail"
       ) {
         return NextResponse.redirect(new URL("/", request.url));
       } else if (
         response.status !== 401 &&
         (request.nextUrl.pathname === "/" ||
           request.nextUrl.pathname === "/forgetpassword" ||
-          request.nextUrl.pathname === "/changePassword" ||
-          request.nextUrl.pathname === "/verifyEmail")
+          request.nextUrl.pathname === "/changepassword" ||
+          request.nextUrl.pathname === "/verifyemail")
       ) {
         return NextResponse.redirect(new URL("/home", request.url));
       }
@@ -48,8 +48,8 @@ export async function middleware(request: NextRequest) {
         response.status !== 401 &&
         (request.nextUrl.pathname === "/" ||
           request.nextUrl.pathname === "/forgetpassword" ||
-          request.nextUrl.pathname === "/changePassword" ||
-          request.nextUrl.pathname === "/verifyEmail")
+          request.nextUrl.pathname === "/changepassword" ||
+          request.nextUrl.pathname === "/verifyemail")
       ) {
         return NextResponse.redirect(new URL("/home", request.url));
       }
@@ -69,5 +69,5 @@ export async function middleware(request: NextRequest) {
   //   }
 }
 export const config = {
-  matcher: ["/", "/home", "/forgetpassword", "/changePassword"],
+  matcher: ["/", "/home", "/forgetpassword", "/changepassword"],
 };

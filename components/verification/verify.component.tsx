@@ -98,7 +98,7 @@ export default function VerifyEmailForm() {
       localStorage.removeItem("token");
       console.log(json["data"]);
       localStorage.setItem("token", json["data"]["token"]);
-      router.push("/changePassword");
+      router.push("/changepassword");
     } else {
       console.log(json);
       show_error(json);

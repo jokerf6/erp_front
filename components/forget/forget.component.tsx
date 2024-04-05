@@ -72,7 +72,7 @@ export default function ForgetForm(props: { setId: any; setEmail: any }) {
       localStorage.setItem("token", json["data"]["token"]);
       setEmail(json["data"]["user"]["email"]);
       localStorage.setItem("email", json["data"]["user"]["email"]);
-      router.push("/verifyEmail");
+      router.push("/verifyemail");
     } else {
       show_error(json);
     }

@@ -112,7 +112,7 @@ export default function LoginForm(props: { setEmail: any }) {
         localStorage.setItem("token", json["data"]["user"]["token"]);
         props.setEmail(json["data"]["user"]["user"]["email"]);
 
-        router.push("/verifyEmail");
+        router.push("/verifyemail");
       } else {
         const farFutureDate = new Date(2030, 11, 31); // Month is 0-based, so 11 represents December
         // console.log(farFutureDate);
