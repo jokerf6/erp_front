@@ -1,25 +1,22 @@
-import React, { useContext, useEffect, useRef } from "react";
+import React, { useContext, useEffect, useMemo, useRef, useState } from "react";
 
 import { Icon } from "@iconify/react";
 
 // Components
 import Task from "./task.component";
+import { CSS } from "@dnd-kit/utilities";
 
 // Context
 import { MyTasksContext } from "@/pages/home/pm/mytasks";
+import { SortableContext, useSortable } from "@dnd-kit/sortable";
 
 export default function Category(props: {
-  id: string;
-  title: any;
   category: any;
-  categories: any;
-  setCategories: any;
-  getData: any;
+  setTask: any;
+  tasks: any;
 }) {
   const { setAddTaskOverlay } = useContext(MyTasksContext);
-  const { category, categories, setCategories, id } = props;
-  const categoryID = category.id;
-  const tasksData: any[] = category.tasks;
+  const { category, tasks } = props;
 
   const categoryLine = React.useRef(null);
   const [isCategoryTopVisible, setIsCategoryTopVisible] = React.useState(true);
@@ -47,13 +44,49 @@ export default function Category(props: {
       ? "bg-mytasks-dotline-inprogress"
       : "bg-mytasks-dotline-done";
 
+  // Drag
+
+  const [editMode, setEditMode] = useState(false);
+  const {
+    setNodeRef,
+    attributes,
+    listeners,
+    transform,
+    transition,
+    isDragging,
+  } = useSortable({
+    id: category.id,
+    data: {
+      type: "Column",
+      category,
+    },
+    disabled: editMode,
+  });
+  const tasksIds = useMemo(() => {
+    return tasks.map((task: any) => task.id);
+  }, [tasks]);
+
+  const style = {
+    transition,
+    transform: CSS.Transform.toString(transform),
+  };
+
+  //
   return (
-    <div className=" flex flex-col bg-transparent rounded-xl h-100 flex-1 lg:min-w-[400px]">
+    <div
+      ref={setNodeRef}
+      style={style}
+      className=" flex flex-col rounded-xl      overflow-y-auto flex-1 lg:min-w-[400px]"
+    >
       <div
-        id={id}
-        className={`transition-all  flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
+        {...attributes}
+        {...listeners}
+        onClick={() => {
+          setEditMode(true);
+        }}
+        className={`transition-all  flex justify-between     py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
       >
-        <div className=" flex text-mytasks-primary-text items-center gap-2 cursor-default">
+        <div className=" flex text-mytasks-primary-text items-center gap-2   cursor-default">
           <div className={` w-2 h-2 rounded-full ${dotLineStyle}`}></div>
           <span className={`text-lg font-semibold capitalize`}>
             {category.title}
@@ -61,7 +94,7 @@ export default function Category(props: {
           <div
             className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-mytasks-number-bg text-mytasks-number-text font-medium `}
           >
-            {category.tasks.length}
+            {tasks.length}
           </div>
         </div>
         {category.title === "to do" && (
@@ -74,20 +107,19 @@ export default function Category(props: {
         )}
       </div>
       <div ref={categoryLine} className={`h-[2px] ${dotLineStyle}`}></div>
-      <div className="flex flex-col gap-3 py-6 px-3 lg:px-6 rounded-b-xl bg-lite-purple-54">
-        {tasksData.map((task, index: number) => {
-          return (
-            <Task
-              key={index}
-              taskID={task.id}
-              task={task}
-              categoryID={categoryID}
-              categories={categories}
-              setCategories={setCategories}
-              getData={props.getData}
-            />
-          );
-        })}
+      <div className="flex flex-col gap-3 py-6  px-3 lg:px-6 rounded-b-xl bg-lite-purple-54">
+        <SortableContext items={tasksIds}>
+          {tasks.map((task: any, index: number) => {
+            return (
+              <Task
+                key={index}
+                taskID={task.id}
+                task={task}
+                categoryID={category.id}
+              />
+            );
+          })}
+        </SortableContext>
       </div>
     </div>
   );

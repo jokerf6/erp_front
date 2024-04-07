@@ -6,42 +6,29 @@ import Comments from "./Comments";
 import Teammates from "./Teammates";
 import Modal from "@/components/default/modal.component";
 import TopEditTask from "@/components/tasks/editTask/TopEditTask.component";
-import Sider from "@/components/sider/sider.component";
+import Slider from "@/components/sider/sider.component";
 
 export default function EditTask(props: {
-  setEditTaskOverlay: any,
-  setAddComment: any,
-  addComment: boolean,
-  taskCategory: string,
-  taskName: string,
-  taskPriority: string,
-  taskComments: number,
-  taskFiles: number,
-  taskImages: any
+  setEditTaskOverlay: any;
+  setAddComment: any;
+  addComment: boolean;
+  task: any;
 }) {
-
-  const { setEditTaskOverlay, setAddComment, addComment } = props;
+  const { setEditTaskOverlay, task, setAddComment, addComment } = props;
 
   return (
     <Modal setOverlay={setEditTaskOverlay}>
-      <Sider>
-        <TopEditTask 
-        isOpen={setEditTaskOverlay} 
-        taskCategory={props.taskCategory}
-        taskName = {props.taskName}
-        taskPriority ={props.taskPriority}
+      <Slider>
+        <TopEditTask
+          isOpen={setEditTaskOverlay}
+          taskCategory={task.category}
+          taskName={task.name}
+          taskPriority={task.priority}
         />
-        <Files
-        files = {props.taskFiles}
-        />
-        <Comments 
-        setAddComment={setAddComment}
-        taskComments = {props.taskComments}
-        />
-        <Teammates
-        cardPeople = {props.taskImages}
-        />
-      </Sider>
+        <Files files={task.files} />
+        <Comments setAddComment={setAddComment} taskComments={task.comments} />
+        <Teammates cardPeople={task.images} />
+      </Slider>
     </Modal>
   );
 }

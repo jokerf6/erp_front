@@ -2,6 +2,9 @@
 
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ["erp.egyptsunny.com"],
+  },
 
   webpack(config) {
     // Grab the existing rule that handles SVG imports

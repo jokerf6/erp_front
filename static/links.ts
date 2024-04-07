@@ -8,4 +8,4 @@ export const forget = `${User}/forget_password`;
 //---------------Project------------------
 export const Projects_Link = `${server}/projects`;
 //---------------Tasks------------------
-export const Tasks_Links = `${server}/tasks`;
+export const TASKS = `${server}/tasks`;

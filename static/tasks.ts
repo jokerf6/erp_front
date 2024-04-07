@@ -1,8 +1,9 @@
 export const Tasks = [
   {
-    id: "1-1",
+    id: "1",
     name: "Task 1",
     status: "low",
+    category: "todo",
     members: [
       {
         name: "person 1",
@@ -39,9 +40,11 @@ export const Tasks = [
     ],
   },
   {
-    id: "1-2",
+    id: "2",
     name: "Task 2",
     status: "medium",
+    category: "todo",
+
     members: [
       {
         name: "person 1",
@@ -66,9 +69,11 @@ export const Tasks = [
     ],
   },
   {
-    id: "1-3",
+    id: "3",
     name: "Task 3",
     status: "low",
+    category: "todo",
+
     members: [
       {
         name: "person 1",
@@ -87,8 +92,10 @@ export const Tasks = [
     files: 1,
   },
   {
-    id: "1-4",
+    id: "4",
     name: "Task 4",
+    category: "todo",
+
     status: "high",
     members: [
       {
@@ -109,18 +116,83 @@ export const Tasks = [
     images: ["/images/photo 1.jpg"],
   },
   {
-    id: "-1-1",
-    name: "",
-    status: "",
-    members: [],
-    comments: 0,
-    files: 0,
+    id: "-1",
+    name: "Task 4",
+    category: "todo",
+
+    status: "high",
+    members: [
+      {
+        name: "person 1",
+        image: "/images/Sheta.png",
+      },
+      {
+        name: "person 2",
+        image: "/images/Kerolos Fayez.jpg",
+      },
+      {
+        name: "person 3",
+        image: "/images/man.png",
+      },
+    ],
+    comments: 19,
+    files: 12,
     images: [],
   },
   {
-    id: "2-1",
+    id: "-2",
+    name: "Task 4",
+    category: "inprogress",
+
+    status: "high",
+    members: [
+      {
+        name: "person 1",
+        image: "/images/Sheta.png",
+      },
+      {
+        name: "person 2",
+        image: "/images/Kerolos Fayez.jpg",
+      },
+      {
+        name: "person 3",
+        image: "/images/man.png",
+      },
+    ],
+    comments: 19,
+    files: 12,
+    images: [],
+  },
+  {
+    id: "-3",
+    name: "Task 4",
+    category: "done",
+
+    status: "high",
+    members: [
+      {
+        name: "person 1",
+        image: "/images/Sheta.png",
+      },
+      {
+        name: "person 2",
+        image: "/images/Kerolos Fayez.jpg",
+      },
+      {
+        name: "person 3",
+        image: "/images/man.png",
+      },
+    ],
+    comments: 19,
+    files: 12,
+    images: [],
+  },
+  {
+    id: "52",
     name: "Task 1",
     status: "low",
+    category: "inprogress",
+
     members: [
       {
         name: "person 1",
@@ -139,7 +211,9 @@ export const Tasks = [
     files: 0,
   },
   {
-    id: "2-2",
+    id: "6",
+    category: "inprogress",
+
     name: "Task 2",
     status: "high",
     members: [
@@ -166,7 +240,9 @@ export const Tasks = [
     ],
   },
   {
-    id: "2-3",
+    id: "7",
+    category: "inprogress",
+
     name: "Task 3",
     status: "medium",
     members: [
@@ -192,77 +268,62 @@ export const Tasks = [
     ],
   },
 
-  {
-    id: "-1-2",
-    name: "",
-    status: "",
-    members: [],
-    comments: 0,
-    files: 0,
-    images: [],
-  },
-  {
-    id: "3-1",
-    name: "Task 1",
-    status: "done",
-    members: [
-      {
-        name: "person 1",
-        image: "/images/Kerolos Fayez.jpg",
-      },
-      {
-        name: "person 2",
-        image: "/images/Sheta.png",
-      },
-      {
-        name: "person 3",
-        image: "/images/woman.png",
-      },
-    ],
-    comments: 20,
-    files: 1,
-    images: [
-      "/images/photo 1.jpg",
-      "/images/photo 1.jpg",
-      "/images/loginPage.jpg",
-      "/images/photo 3.jpg",
-    ],
-  },
-  {
-    id: "3-2",
-    name: "Task 2",
-    status: "done",
-    members: [
-      {
-        name: "person 1",
-        image: "/images/Kerolos Fayez.jpg",
-      },
-      {
-        name: "person 2",
-        image: "/images/Sheta.png",
-      },
-      {
-        name: "person 3",
-        image: "/images/woman.png",
-      },
-    ],
-    comments: 75,
-    files: 5,
-    images: [
-      "/images/photo 2.jpg",
-      "/images/photo 1.jpg",
-      "/images/photo 3.jpg",
-      "/images/loginPage.jpg",
-    ],
-  },
+  // {
+  //   id: "8",
+  //   category: "done",
 
-  {
-    id: "-1-3",
-    name: "",
-    status: "",
-    members: [],
-    comments: 0,
-    files: 0,
-    images: [],
-  },
+  //   name: "Task 1",
+  //   status: "done",
+  //   members: [
+  //     {
+  //       name: "person 1",
+  //       image: "/images/Kerolos Fayez.jpg",
+  //     },
+  //     {
+  //       name: "person 2",
+  //       image: "/images/Sheta.png",
+  //     },
+  //     {
+  //       name: "person 3",
+  //       image: "/images/woman.png",
+  //     },
+  //   ],
+  //   comments: 20,
+  //   files: 1,
+  //   images: [
+  //     "/images/photo 1.jpg",
+  //     "/images/photo 1.jpg",
+  //     "/images/loginPage.jpg",
+  //     "/images/photo 3.jpg",
+  //   ],
+  // },
+  // {
+  //   id: "9",
+  //   name: "Task 2",
+  //   status: "done",
+  //   category: "done",
+
+  //   members: [
+  //     {
+  //       name: "person 1",
+  //       image: "/images/Kerolos Fayez.jpg",
+  //     },
+  //     {
+  //       name: "person 2",
+  //       image: "/images/Sheta.png",
+  //     },
+  //     {
+  //       name: "person 3",
+  //       image: "/images/woman.png",
+  //     },
+  //   ],
+  //   comments: 75,
+  //   files: 5,
+  //   images: [
+  //     "/images/photo 2.jpg",
+  //     "/images/photo 1.jpg",
+  //     "/images/photo 3.jpg",
+  //     "/images/loginPage.jpg",
+  //   ],
+  // },
 ];
