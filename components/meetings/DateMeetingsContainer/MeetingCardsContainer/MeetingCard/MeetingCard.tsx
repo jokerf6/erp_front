@@ -5,6 +5,7 @@ import MeetingCardTitle from "./MeetingCardTitle";
 import MeetingCardOwner from "./MeetingCardOwner";
 import MeetingCardDuration from "./MeetingCardDuration";
 import MeetingCardButton from "./MeetingCardButton";
+import MeetingCardAttendance from "./MeetingCardAttendance";
 
 export default function MeetingCard(props: { children: any }) {
   return (
@@ -20,3 +21,4 @@ MeetingCard.Title = MeetingCardTitle
 MeetingCard.Owner = MeetingCardOwner
 MeetingCard.Duration = MeetingCardDuration
 MeetingCard.Button = MeetingCardButton
+MeetingCard.Attendance = MeetingCardAttendance

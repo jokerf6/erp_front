@@ -48,6 +48,7 @@ export default function HomeLayout({
         isSmallWindow,
         showMeeting,
         setShowMeeting,
+        minimizeMeeting,
         setMinimizeMeeting,
       }}
     >
