@@ -38,11 +38,11 @@ export default function History() {
                 </MeetingCard.TitleOwnerContainer>
               </MeetingCard.Info>
 
-              <MeetingCard.Duration>
-                Duration: 1h 13m
-              </MeetingCard.Duration>
+              <MeetingCard.Duration>Duration: 1h 13m</MeetingCard.Duration>
 
-              <MeetingCard.Button>Start meeting</MeetingCard.Button>
+              <MeetingCard.Attendance>attended</MeetingCard.Attendance>
+
+              <MeetingCard.Button>Start again</MeetingCard.Button>
             </MeetingCard>
           </MeetingCardsContainer>
         </DateMeetingsContainer>

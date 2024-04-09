@@ -24,7 +24,7 @@ export default function Meeting() {
         setShowAddParticipants,
       }}
     >
-      <div className="bg-white absolute top-0 left-0 w-full h-screen z-[3] overflow-y-auto transition-all">
+      <div className="bg-white fixed top-0 left-0 w-full h-screen z-[3] overflow-y-auto transition-all">
         <MeetingHeader />
         <MeetingContent />
       </div>
