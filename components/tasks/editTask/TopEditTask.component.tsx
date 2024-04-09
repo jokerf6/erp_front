@@ -3,52 +3,60 @@ import { Icon } from "@iconify/react";
 import { statusList } from "@/static/statusList";
 import CheckBox from "@/components/default/checkBox";
 import getTaskPriorityColors from "@/functions/getTaskPriorityColors";
+import { FormatDate } from "@/utils/formatDate";
+import { kMaxLength } from "buffer";
 
 export default function TopEditTask(props: {
   isOpen: any;
-  taskCategory: string;
-  taskName: string;
-  taskPriority: string;
+  task: any;
+  loading: boolean;
 }) {
-  const [status, setStatus] = React.useState<string>(props.taskCategory);
-
+  const [status, setStatus] = React.useState<string>(
+    !props.loading ? props.task.status : "ToDo"
+  );
+  const { loading } = props;
+  console.log(props.task);
   return (
     <div>
       <div className="first-part  flex flex-col gap-4 p-[20px]">
         <div className="flex justify-between">
-          <h3 className="text-primary-p">Created At 12 jan 2023 10:12 AM</h3>
+          <h3 className="text-primary-p">
+            Created At {!loading && FormatDate(props.task.createdAt, true)}
+          </h3>
           <Icon
             icon="gg:close-r"
             className="text-[1.5rem] cursor-pointer"
-            onClick={() => props.isOpen(false)}
+            onClick={() => {
+              props.isOpen(false);
+              setStatus("");
+            }}
           />
         </div>
         <div className="flex justify-between items-center">
           <h1 className="font-bold text-sider-title-text text-[1.5rem]">
-            {props.taskName}
+            {!loading && props.task.name}
           </h1>
           <p
-            className={`${getTaskPriorityColors(
-              props.taskPriority
-            )} rounded-lg px-4 py-1 capitalize`}
+            className={`${
+              !loading && getTaskPriorityColors(props.task.status)
+            } rounded-lg px-4 py-1 capitalize`}
           >
-            {props.taskPriority}
+            {!loading && props.task.priority}
           </p>
         </div>
         <h2 className="text-primary-pink font-bold">
-          To be Done in 12 jan 2023
+          To be Done in {!loading && FormatDate(props.task.dueDate, false)}
         </h2>
-        <p className="text-primary-p">
-          Create test cases for old APIs in tasks module in pages 1,2,3 and 4
-        </p>
+        <p className="text-primary-p">{!loading && props.task.brief}</p>
         <div className="flex justify-between items-center">
           {statusList.map((item: string, idx: number) => {
+            console.log(status);
             return (
               <CheckBox
                 active={
-                  (status === "todo" && idx === 0) ||
-                  (status === "inprogress" && idx === 1) ||
-                  (status === "done" && idx === 2)
+                  (status === "ToDo" && idx === 0) ||
+                  (status === "InProgress" && idx === 1) ||
+                  (status === "Done" && idx === 2)
                 }
                 key={idx}
                 text={item}

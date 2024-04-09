@@ -19,15 +19,17 @@ export default function Task(props: {
   taskID: any;
   task: any;
   categoryID: string;
+  setTask: any;
 }) {
   const { setEditTaskOverlay } = useContext(MyTasksContext);
-  const { taskID, task, categoryID } = props;
+  const { taskID, task, categoryID, setTask } = props;
 
   const divRef = useRef<HTMLDivElement>(null);
 
   // Function that collect data from each task
   function handleData() {
     setEditTaskOverlay(true);
+    setTask(task);
   }
   // drag
 

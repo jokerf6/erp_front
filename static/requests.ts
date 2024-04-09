@@ -71,6 +71,7 @@ class RequestService {
         "Content-Type": `${form ? "multipart/form-data" : "application/json"}`,
       };
     }
+    console.log(headers);
     try {
       const axiosResponse = await this.axiosInstance.post<T>(url, data, {
         ...config,

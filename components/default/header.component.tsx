@@ -13,16 +13,20 @@ import { HomeContext } from "@/layouts/home";
 
 // Components
 import MeetNow from "../meeting/MeetNow";
+import { MEDIA } from "@/secrets";
+import { IndexContext } from "@/layouts";
+import UserStore from "@/store/userStore";
+import { useQuery } from "@tanstack/react-query";
+import { GetProfile } from "@/services/profile";
+import { getCookie } from "cookies-next";
 
 export default function Header() {
   const { isSmallWindow } = useContext(HomeContext);
   const router = useRouter();
   const path = router.pathname.split("/");
   const homeCurrentTab = path[2];
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const NavLinks = ["dashboard", "pm", "hr", "meetings"];
-
   // NavLinks Styles
   const navLinkStyle =
     "capitalize cursor-pointer p-4 hover:bg-nav-selected-bg hover:text-nav-selected-text transition-all";
@@ -35,6 +39,8 @@ export default function Header() {
   // NavLinks Styles
 
   // NavIcons Styles
+  const { user, updateUser } = UserStore();
+  console.log(user);
   const navIconStyleSmallWindow =
     "bg-lite-white text-primary-purple flex gap-2 p-2 items-center rounded-sm";
   const navIconStyle = "text-2xl cursor-pointer box-content p-1";
@@ -55,6 +61,11 @@ export default function Header() {
     }
   }, [isMenuOpen]);
 
+  const { isLoading } = useQuery({
+    queryKey: ["getProfile"],
+    queryFn: () => GetProfile(getCookie("AccessToken")!, updateUser),
+    enabled: true,
+  });
   return (
     <header className="bg-primary-purple flex px-5 py-3 lg:py-0 relative justify-between">
       <div className="header--left flex gap-4 items-center flex-row-reverse lg:flex-row">
@@ -140,13 +151,15 @@ export default function Header() {
             <Icon icon={"icons8:todo-list"} className={navIconStyle} />
           </div>
         )}
-        <Image
-          src="/images/Kerolos Fayez.jpg"
-          alt="user--profile-image"
-          width={40}
-          height={40}
-          className="rounded-full cursor-pointer"
-        />
+        {!isLoading && (
+          <Image
+            src={MEDIA + user.idImage}
+            alt="user--profile-image"
+            width={34}
+            height={34}
+            className=" w-[34px] h-[34px] rounded-full cursor-pointer"
+          />
+        )}
       </div>
     </header>
   );

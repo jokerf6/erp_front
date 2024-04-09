@@ -1,3 +1,4 @@
+"use client";
 // Layout
 import IndexLayout, { IndexContext } from "@/layouts";
 

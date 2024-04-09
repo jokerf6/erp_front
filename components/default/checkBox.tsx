@@ -23,11 +23,11 @@ export default function CheckBox(props: {
     <div
       onClick={() => {
         if (props.id === 1) {
-          props.setStatus("todo");
+          props.setStatus("ToDo");
         } else if (props.id === 2) {
-          props.setStatus("inprogress");
+          props.setStatus("InProgress");
         } else {
-          props.setStatus("done");
+          props.setStatus("Done");
         }
       }}
       className=" flex gap-2 items-center cursor-pointer"

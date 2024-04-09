@@ -192,6 +192,7 @@ export default function MyTasks() {
                 )}
                 {activeTask && (
                   <Task
+                    setTask={setTask}
                     taskID={activeTask.id}
                     categoryID={activeTask.category}
                     task={activeTask}
@@ -212,7 +213,9 @@ export default function MyTasks() {
         />
       )}
 
-      {addComment && <AddComment setAddComment={setAddComment} />}
+      {addComment && (
+        <AddComment setAddComment={setAddComment} taskId={task.id} />
+      )}
       {editTaskOverlay && (
         <EditTask
           setEditTaskOverlay={setEditTaskOverlay}

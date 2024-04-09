@@ -114,6 +114,7 @@ export default function Category(props: {
               <Task
                 key={index}
                 taskID={task.id}
+                setTask={props.setTask}
                 task={task}
                 categoryID={category.id}
               />

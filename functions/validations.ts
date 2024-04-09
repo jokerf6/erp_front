@@ -22,7 +22,7 @@ function checkEmail(type: string, text: string) {
   }
 }
 function checkPassword(type: string, text: string) {
-  const reg = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{6,})\S$/;
+  const reg = /(?=.*[a-z])(?=.*[A-Z]).{8,}/;
   if (text.length === 0) {
     return `${type} field cannot be empty`;
   }

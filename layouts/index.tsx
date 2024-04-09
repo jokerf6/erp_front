@@ -19,6 +19,7 @@ export default function IndexLayout({
   const [id, setId] = useState("-1");
   const [email, setEmail] = useState("test@test.com");
   const [change, setChange] = useState(false);
+  const [user, setUser] = useState({});
 
   return (
     <IndexContext.Provider
@@ -31,6 +32,8 @@ export default function IndexLayout({
         setEmail,
         change,
         setChange,
+        user,
+        setUser,
       }}
     >
       <main className={`flex min-h-[100dvh] `}>
