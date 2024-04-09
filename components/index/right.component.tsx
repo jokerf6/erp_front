@@ -8,7 +8,7 @@ export default function Right(props: { children: React.ReactNode }) {
   return (
     <div className="bg-primary-white p-2 lg:p-0 flex flex-col flex-1 justify-center items-center">
       <Image
-        src="/images/logo.png"
+        src="/images/Logo.png"
         alt="ERP-Logo"
         className="self-stretch pb-4 lg:p-4 box-content w-[60px] md:w-[100px]"
         width={60}
