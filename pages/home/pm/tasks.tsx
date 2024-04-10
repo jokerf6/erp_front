@@ -1,24 +1,30 @@
 "use client";
 import React, { useState, useContext, createContext, useMemo } from "react";
+import { createPortal } from "react-dom";
 
-import { Icon } from "@iconify/react";
-
-import categoriesData from "@/utils/category.json";
-
+// Next
 import Head from "next/head";
+import { getCookie } from "cookies-next";
+
 // Components
 import Category from "@/components/tasks/category.component";
 import EditTask from "@/components/tasks/editTask/editTask.component";
 import AddTask from "@/components/tasks/addTask.component";
 import ImageSlider from "@/components/tasks/imageSlider.component";
 import AddComment from "@/components/tasks/editTask/addComment";
+import Task from "@/components/tasks/task.component";
+import AddTeammates from "@/components/tasks/editTask/addTeamMeates";
+import DeleteComment from "@/components/tasks/editTask/DeleteComment";
+import Teammates from "@/components/tasks/editTask/Teammates";
 
 // Hook
 import useScrollBlockHook from "@/hooks/useScrollBlock";
 
 // Layout, Context
 import HomeLayout, { HomeContext } from "@/layouts/home";
-import { Tasks } from "@/static/tasks";
+const MyTasksContext = createContext({} as any);
+export { MyTasksContext };
+
 import {
   DndContext,
   DragEndEvent,
@@ -30,17 +36,13 @@ import {
   useSensors,
 } from "@dnd-kit/core";
 import { arrayMove, SortableContext } from "@dnd-kit/sortable";
-import { createPortal } from "react-dom";
-import Task from "@/components/tasks/task.component";
-const MyTasksContext = createContext({} as any);
-export { MyTasksContext };
+
+import { Icon } from "@iconify/react";
+import categoriesData from "@/utils/category.json";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { Tasks } from "@/static/tasks";
 import { GetTasks } from "@/services/getTasks";
-import { getCookie } from "cookies-next";
-import Teammates from "@/components/tasks/editTask/Teammates";
-import AddTeammates from "@/components/tasks/editTask/addTeamMeates";
 import ProjectStore from "@/store/projects";
-import DeleteComment from "@/components/tasks/editTask/DeleteComment";
 
 export default function MyTasks() {
   const queryClient = useQueryClient();
@@ -152,15 +154,15 @@ export default function MyTasks() {
       <Head>
         <title>ERP | Project Management</title>
       </Head>
-      <div className=" ">
+      <div className="pt-10 lg:min-h-screen">
         <DndContext
           sensors={sensors}
           onDragStart={onDragStart}
           onDragEnd={onDragEnd}
           onDragOver={onDragOver}
         >
-          <div className="flex justify-center mt-10">
-            {isSmallWindow && (
+          {isSmallWindow && (
+            <div className="flex justify-center">
               <div className="flex flex-col justify-center items-center w-11/12 rounded relative">
                 <button
                   className="bg-secondary-purple text-lite-white shadow-sm shadow-secondary-purple font-semibold w-full rounded-t relative py-1"
@@ -182,8 +184,8 @@ export default function MyTasks() {
                   </div>
                 )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
 
           <div className="flex gap-4 p-6 lg:px-10 lg:py-6  flex-col lg:flex-row flex-wrap">
             <SortableContext items={columnsId}>

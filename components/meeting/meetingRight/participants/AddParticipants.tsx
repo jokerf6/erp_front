@@ -29,15 +29,17 @@ export default function AddParticipants() {
           <div className="participants pr-4 mx-[14px] py-2 flex flex-col h-full gap-[24px] overflow-auto meeting-scrollbar">
             {new Array(7).fill(undefined).map((participant, index) => {
               return (
-                <div
+                <label
                   key={index}
-                  className="paricipant--container flex items-center justify-between bg-[#F5F5F5] rounded-full pl-[8px] py-[8px] pr-[24px] border-[2px]"
+                  htmlFor={`${participant}-${index}`}
+                  className="paricipant--container flex items-center justify-between bg-[#F5F5F5] rounded-full pl-[8px] py-[8px] pr-[24px] border-[2px] cursor-pointer"
                 >
                   <div className="participant-info flex items-center gap-[17px]">
                     <ProfilePicture
                       border={false}
                       size={55}
                       src={"/images/man.png"}
+                      alt="username"
                     />
                     <span className="text-primary-purple text-[18px] font-[500] capitalize">
                       Guy Hawkins
@@ -57,7 +59,7 @@ export default function AddParticipants() {
                       <CheckIcon className="text-2xl text-white" />
                     </span>
                   </label>
-                </div>
+                </label>
               );
             })}
           </div>

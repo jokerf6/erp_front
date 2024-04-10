@@ -30,6 +30,7 @@ export default function ParticipantsContent() {
                 border={false}
                 size={55}
                 src={"/images/man.png"}
+                alt="username"
               />
               <span className="name capitalize text-primary-purple text-[16px] font-[500]">
                 Kerolos Fayez

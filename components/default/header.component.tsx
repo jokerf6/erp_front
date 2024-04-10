@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 
+// Next
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { getCookie } from "cookies-next";
 
 import { Icon } from "@iconify/react";
 
@@ -13,12 +15,12 @@ import { HomeContext } from "@/layouts/home";
 
 // Components
 import MeetNow from "../meeting/MeetNow";
+
 import { MEDIA } from "@/secrets";
-import { IndexContext } from "@/layouts";
 import UserStore from "@/store/userStore";
 import { useQuery } from "@tanstack/react-query";
 import { GetProfile } from "@/services/profile";
-import { getCookie } from "cookies-next";
+import ProfilePicture from "./profilePicture.component";
 
 export default function Header() {
   const { isSmallWindow } = useContext(HomeContext);
@@ -68,7 +70,7 @@ export default function Header() {
   return (
     <header className="bg-primary-purple flex px-5 py-3 lg:py-0 relative justify-between">
       <div className="header--left flex gap-4 items-center flex-row-reverse lg:flex-row">
-        <Link href={"/home/pm/mytasks"}>
+        <Link href={"/home/pm/tasks"}>
           <Image
             src={"/images/lightlogo.png"}
             alt={"ERP-Logo"}
@@ -101,6 +103,7 @@ export default function Header() {
                 <Link
                   key={NavLink}
                   href={`/home/${altLink === null ? NavLink : altLink}`}
+                  onClick={() => isSmallWindow && setIsMenuOpen(false)}
                 >
                   <li
                     className={`${navLinkStyle} ${navLinkStyleSmallWindow} ${
@@ -151,13 +154,14 @@ export default function Header() {
           </div>
         )}
         {!isLoading && (
-          <Image
-            src={MEDIA + user.idImage}
-            alt="user--profile-image"
-            width={34}
-            height={34}
-            className=" w-[34px] h-[34px] rounded-full cursor-pointer"
-          />
+          <div className="rounded-full cursor-pointer">
+            <ProfilePicture
+              border={false}
+              size={34}
+              src={MEDIA + user.idImage}
+              alt="user--profile-image"
+            />
+          </div>
         )}
       </div>
     </header>

@@ -11,18 +11,9 @@ import { MeetingContext } from "@/components/meeting/Meeting";
 export default function ChatHeader() {
   const {showChat, setShowChat} = useContext(MeetingContext)
   return (
-    <AsideSectionHeader>
+    <AsideSectionHeader setShow={setShowChat}>
       <AsideSectionHeader.Title>chat</AsideSectionHeader.Title>
-      <button
-        onClick={() => setShowChat((prev: boolean) => !prev)}
-        className="text-primary-purple p-1"
-      >
-        {showChat ? (
-          <Icon icon="ep:arrow-up-bold" />
-        ) : (
-          <Icon icon="ep:arrow-down-bold" />
-        )}
-      </button>
+      <AsideSectionHeader.Arrow show={showChat} setShow={setShowChat} />
     </AsideSectionHeader>
   );
 }

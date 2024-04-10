@@ -14,6 +14,7 @@ import { MyTasksContext } from "@/pages/home/pm/tasks";
 import getTaskPriorityColors from "@/functions/getTaskPriorityColors";
 import { useSortable } from "@dnd-kit/sortable";
 import { MEDIA } from "@/secrets";
+import ProfilePicture from "../default/profilePicture.component";
 
 export default function Task(props: {
   taskID: any;
@@ -97,7 +98,7 @@ export default function Task(props: {
           task.id[0] === "-" ? "   hidden" : "bg-primary-white"
         }   px-4 py-4 rounded-xl gap-3`}
       >
-        <div className=" w-full justify-between items-center flex">
+        <div className=" w-full justify-between flex">
           <div
             className={`${getTaskPriorityColors(
               task.status
@@ -106,11 +107,12 @@ export default function Task(props: {
             {task.priority}
           </div>
 
-          <Icon
-            icon={"tabler:dots"}
-            className=" text-primary-darkblue text-2xl cursor-pointer"
-            onClick={handleData}
-          />
+          <div onClick={handleData} className="cursor-pointer flex items-center px-2">
+            <Icon
+              icon={"tabler:dots"}
+              className="text-primary-darkblue text-2xl"
+            />
+          </div>
         </div>
 
         <div className="flex flex-col gap-2">
@@ -134,14 +136,17 @@ export default function Task(props: {
               .slice(0, 3)
               .map((member: any, index: number) => {
                 return (
-                  <img
+                  <div
                     key={index}
-                    src={MEDIA + member.user.image}
-                    alt={member}
-                    className={`${
-                      index !== 0 ? "-ml-2" : ""
-                    } w-6 h-6 rounded-full border border-white`}
-                  />
+                    className={`${index !== 0 ? "-ml-2" : ""} rounded-full`}
+                  >
+                    <ProfilePicture
+                      border={true}
+                      size={24}
+                      src={MEDIA + member.user.image}
+                      alt={member}
+                    />
+                  </div>
                 );
               })}
           </div>

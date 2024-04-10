@@ -12,12 +12,15 @@ export default function ParticipantsHeader() {
   const { showParticipants, setShowParticipants, setShowAddParticipants } =
     useContext(MeetingContext);
   return (
-    <AsideSectionHeader>
+    <AsideSectionHeader setShow={setShowParticipants}>
       <AsideSectionHeader.Title>participants</AsideSectionHeader.Title>
       <div className="flex items-center gap-2">
         {/* Admin only */}
         <button
-          onClick={() => setShowAddParticipants(true)}
+          onClick={(e) => {
+            e.stopPropagation();
+            setShowAddParticipants(true);
+          }}
           className="flex items-center gap-1 text-primary-purple bg-[#F2EBFE] rounded-[61px] px-[20px] py-[12px]"
         >
           <span className="capitalize text-[14px] font-[600]">
@@ -25,16 +28,10 @@ export default function ParticipantsHeader() {
           </span>
           <Icon icon="icons8:add-user" width={20} />
         </button>
-        <button
-          onClick={() => setShowParticipants((prev: boolean) => !prev)}
-          className="text-primary-purple p-1"
-        >
-          {showParticipants ? (
-            <Icon icon="ep:arrow-up-bold" />
-          ) : (
-            <Icon icon="ep:arrow-down-bold" />
-          )}
-        </button>
+        <AsideSectionHeader.Arrow
+          show={showParticipants}
+          setShow={setShowParticipants}
+        />
       </div>
     </AsideSectionHeader>
   );

@@ -76,7 +76,7 @@ export default function Category(props: {
     <div
       ref={setNodeRef}
       style={style}
-      className=" flex flex-col rounded-xl      overflow-y-auto flex-1 lg:min-w-[400px]"
+      className="flex flex-col rounded-xl overflow-y-auto flex-1 lg:min-w-[400px]"
     >
       <div
         {...attributes}
@@ -84,15 +84,15 @@ export default function Category(props: {
         onClick={() => {
           setEditMode(true);
         }}
-        className={`transition-all  flex justify-between     py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
+        className={`transition-all flex justify-between py-4 z-[1] px-3 lg:px-6 ${stickyCategoryTopStyle}`}
       >
-        <div className=" flex text-mytasks-primary-text items-center gap-2   cursor-default">
+        <div className=" flex text-mytasks-primary-text items-center gap-2 cursor-default">
           <div className={` w-2 h-2 rounded-full ${dotLineStyle}`}></div>
           <span className={`text-lg font-semibold capitalize`}>
             {category.title}
           </span>
           <div
-            className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-mytasks-number-bg text-mytasks-number-text font-medium `}
+            className={`w-6 h-6 rounded-full flex text-sm items-center justify-center bg-mytasks-number-bg text-mytasks-number-text font-medium`}
           >
             {tasks.length}
           </div>

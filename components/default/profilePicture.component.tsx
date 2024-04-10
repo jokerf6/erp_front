@@ -4,12 +4,13 @@ import React from "react";
 export default function ProfilePicture(props: {
   border: boolean;
   size: number;
-  src: string
+  src: string;
+  alt: string;
 }) {
   return (
     <Image
       src={props.src}
-      alt="profile picture"
+      alt={props.alt}
       width={props.size}
       height={props.size}
       sizes="100vw"

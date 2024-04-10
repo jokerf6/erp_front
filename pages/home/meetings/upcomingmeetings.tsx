@@ -34,6 +34,7 @@ export default function UpcomingMeetings() {
                   border={true}
                   size={88}
                   src={"/images/man.png"}
+                  alt={"username"}
                 />
                 <MeetingCard.TitleOwnerContainer>
                   <MeetingCard.Title>Stand Up meeting</MeetingCard.Title>
@@ -60,6 +61,7 @@ export default function UpcomingMeetings() {
                   border={true}
                   size={88}
                   src={"/images/woman.png"}
+                  alt={"username"}
                 />
                 <MeetingCard.TitleOwnerContainer>
                   <MeetingCard.Title>ERP Requirements</MeetingCard.Title>
@@ -79,6 +81,7 @@ export default function UpcomingMeetings() {
                   border={true}
                   size={88}
                   src={"/images/woman.png"}
+                  alt={"username"}
                 />
                 <MeetingCard.TitleOwnerContainer>
                   <MeetingCard.Title>ERP Requirements</MeetingCard.Title>

@@ -58,34 +58,34 @@ export default function PageHeader(props: {
         >
           {props.currentPage}
         </span>
-        {props.currentPage !== "pm" && props.currentTab !== "tasks" && (
-          <div className=" flex gap-2 items-center">
-            <span
-              className={`text-text ${
-                props.currentPage.length === 2 ? "uppercase" : "capitalize"
-              }`}
-            >
-              {props.currentPage}
-            </span>
-            <Icon icon={"ep:arrow-right"} className=" text-text" />
-            <span className=" text-main font-bold capitalize">
-              {props.currentTabs.filter(
-                (tab) => tab.replace(/ /g, "") === props.currentTab && tab
-              )}
-            </span>
-          </div>
-        )}
+        <div className=" flex gap-2 items-center">
+          <span
+            className={`text-text ${
+              props.currentPage.length === 2 ? "uppercase" : "capitalize"
+            }`}
+          >
+            {props.currentPage}
+          </span>
+          <Icon icon={"ep:arrow-right"} className=" text-text" />
+          <span className=" text-main font-bold capitalize">
+            {props.currentTabs.filter(
+              (tab) => tab.replace(/ /g, "") === props.currentTab && tab
+            )}
+          </span>
+        </div>
+      </div>
+      {props.currentTab === "tasks" && (
         <Select
           onChange={handleSelectChange}
           options={options || []}
           closeMenuOnSelect={true}
-          className=" border  outline-none z-20 w-[200px]  focus:outline-none cursor-text border-[#251B37] rounded-[5px] placeholder:text-[#3F3C3D] text-[#3F3C3D]"
+          className=" border  outline-none w-[200px]  focus:outline-none cursor-text border-[#251B37] rounded-[5px] placeholder:text-[#3F3C3D] text-[#3F3C3D] ml-auto mr-5"
           placeholder="Filter by project"
           classNamePrefix="select"
           isClearable
           noOptionsMessage={() => "No options available"} // Show message when options array is empty
         />
-      </div>
+      )}
 
       <div className="w-full px-1 lg:px-10 flex gap-2 lg:gap-6 flex-row capitalize select-none border-b-[6px] border-[#E9E3D5]">
         {tabElements}

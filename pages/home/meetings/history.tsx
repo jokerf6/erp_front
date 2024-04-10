@@ -31,6 +31,7 @@ export default function History() {
                   border={true}
                   size={88}
                   src={"/images/man.png"}
+                  alt="username"
                 />
                 <MeetingCard.TitleOwnerContainer>
                   <MeetingCard.Title>Stand Up meeting</MeetingCard.Title>
@@ -40,7 +41,7 @@ export default function History() {
 
               <MeetingCard.Duration>Duration: 1h 13m</MeetingCard.Duration>
 
-              <MeetingCard.Attendance>attended</MeetingCard.Attendance>
+              <MeetingCard.Attendance>Attended</MeetingCard.Attendance>
 
               <MeetingCard.Button>Start again</MeetingCard.Button>
             </MeetingCard>

@@ -20,7 +20,7 @@ export default function MeetingMainScreen() {
         <Icon icon="solar:soundwave-linear" width={35} />
       </div>
       <div className="bg-transparent rounded-full p-2 border-4 border-[#FF375E]/30">
-        <ProfilePicture border={false} size={100} src={"/images/man.png"} />
+        <ProfilePicture border={false} size={100} src={"/images/man.png"} alt="username" />
       </div>
     </div>
   );

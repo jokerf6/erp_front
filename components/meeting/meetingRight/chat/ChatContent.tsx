@@ -30,7 +30,7 @@ export default function ChatContent() {
         <section className="full-chat flex flex-col gap-[34px] h-full overflow-y-auto meeting-scrollbar pr-2">
           <div className="member-message grid grid-cols-[55px_minmax(200px,1fr)_minmax(30px,50px)] gap-x-[20px] gap-y-[12px] font-[500]">
             <div className="col-span-3 grid grid-cols-[55px_minmax(200px,1fr)_minmax(30px,50px)] gap-x-[20px]">
-              <ProfilePicture border={true} size={55} src={"/images/man.png"} />
+              <ProfilePicture border={true} size={55} src={"/images/man.png"} alt="username" />
               <div className="message-content bg-white px-[13.5px] pb-[9px] rounded-[10px]">
                 <span className="member-name text-[10px] text-[#AFAFAF] capitalize">
                   John Doe
@@ -57,6 +57,7 @@ export default function ChatContent() {
                 border={true}
                 size={55}
                 src={"/images/woman.png"}
+                alt="username"
               />
               <div className="message-content bg-white px-[13.5px] pb-[9px] rounded-[10px]">
                 <span className="member-name text-[10px] text-[#AFAFAF] capitalize">
@@ -74,7 +75,7 @@ export default function ChatContent() {
 
           <div className="member-message grid grid-cols-[55px_minmax(200px,1fr)_minmax(30px,50px)] gap-x-[20px] gap-y-[12px] font-[500]">
             <div className="col-span-3 grid grid-cols-[55px_minmax(200px,1fr)_minmax(30px,50px)] gap-x-[20px]">
-              <ProfilePicture border={true} size={55} src={"/images/man.png"} />
+              <ProfilePicture border={true} size={55} src={"/images/man.png"} alt="username" />
               <div className="message-content bg-white px-[13.5px] pb-[9px] rounded-[10px]">
                 <span className="member-name text-[10px] text-[#AFAFAF] capitalize">
                   John Doe
@@ -91,7 +92,7 @@ export default function ChatContent() {
 
           <div className="member-message grid grid-cols-[55px_minmax(200px,1fr)_minmax(30px,50px)] gap-x-[20px] gap-y-[12px] font-[500]">
             <div className="col-span-3 grid grid-cols-[55px_minmax(200px,1fr)_minmax(30px,50px)] gap-x-[20px]">
-              <ProfilePicture border={true} size={55} src={"/images/man.png"} />
+              <ProfilePicture border={true} size={55} src={"/images/man.png"} alt="username" />
               <div className="message-content bg-white px-[13.5px] pb-[9px] rounded-[10px]">
                 <span className="member-name text-[10px] text-[#AFAFAF] capitalize">
                   John Doe
