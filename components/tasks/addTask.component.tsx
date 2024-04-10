@@ -6,7 +6,6 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import { PriorityData } from "@/static/parioty";
-import { Projects_Link } from "@/static/links";
 
 // Components
 import Modal from "../default/modal.component";
