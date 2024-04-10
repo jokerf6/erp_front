@@ -1,4 +1,3 @@
-import React from "react";
 import SiderHeader from "./SiderHeader.component";
 import SiderButton from "./SiderButton.component";
 
@@ -13,5 +12,5 @@ export default function Sider(props: { children: React.ReactNode }) {
     </div>
   );
 }
-Sider.Header= SiderHeader
-Sider.Button= SiderButton
+Sider.Header = SiderHeader
+Sider.Button = SiderButton

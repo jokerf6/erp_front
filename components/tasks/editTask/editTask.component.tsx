@@ -6,7 +6,7 @@ import Comments from "./Comments";
 import Teammates from "./Teammates";
 import Modal from "@/components/default/modal.component";
 import TopEditTask from "@/components/tasks/editTask/TopEditTask.component";
-import Slider from "@/components/sider/sider.component";
+import Sider from "@/components/sider/Sider.component";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { GetTaskId } from "@/services/getTaskId";
 import { getCookie } from "cookies-next";
@@ -42,7 +42,7 @@ export default function EditTask(props: {
   if (isLoading || !data || task["id"] !== data["id"]) {
     return (
       <Modal setOverlay={setEditTaskOverlay}>
-        <Slider>
+        <Sider>
           <div className=" flex items-center justify-center  w-full h-screen flex-col">
             <Image
               width={150}
@@ -52,13 +52,13 @@ export default function EditTask(props: {
             />
             <h1>Loading ...</h1>
           </div>
-        </Slider>
+        </Sider>
       </Modal>
     );
   }
   return (
     <Modal setOverlay={setEditTaskOverlay}>
-      <Slider>
+      <Sider>
         {!isLoading && data && data["id"] === task["id"] && (
           <TopEditTask
             isOpen={setEditTaskOverlay}
@@ -84,7 +84,7 @@ export default function EditTask(props: {
             setAddTeammates={setAddTeammates}
           />
         )}
-      </Slider>
+      </Sider>
     </Modal>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import SiderFormContainer from "./SiderFormContainer.component"
 
 export default function SiderForm({ children }: any) {
     return (
@@ -7,3 +7,5 @@ export default function SiderForm({ children }: any) {
         </form>
     )
 }
+
+SiderForm.Container = SiderFormContainer
