@@ -8,7 +8,7 @@ import { CSS } from "@dnd-kit/utilities";
 import Images from "./images";
 
 // Context
-import { MyTasksContext } from "@/pages/home/pm/mytasks";
+import { MyTasksContext } from "@/pages/home/pm/tasks";
 
 // Functions
 import getTaskPriorityColors from "@/functions/getTaskPriorityColors";

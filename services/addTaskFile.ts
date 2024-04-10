@@ -14,11 +14,8 @@ export async function AddTaskFileRequest(
   const files = [];
   files.push(file);
   files.forEach((file, index) => {
-    console.log(file);
     formData.append(`files`, file);
   });
-  console.log(")))))");
-  console.log(formData);
   // **************Send Request******************
   await request(formData, notify, id, token);
 }
@@ -34,8 +31,6 @@ async function request(
     true,
     requestJson
   );
-  console.log("jkjkj");
-  console.log(response);
   if (response.status !== 200) {
     return notify("Something went wrong!");
   }

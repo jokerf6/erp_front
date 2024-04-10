@@ -2,7 +2,7 @@ import Modal from "@/components/default/modal.component";
 import { MEDIA } from "@/secrets";
 import { AddCommentRequest } from "@/services/addComment";
 import UserStore from "@/store/userStore";
-import { Mutation, useMutation } from "@tanstack/react-query";
+import { Mutation, useMutation, useQueryClient } from "@tanstack/react-query";
 import { getCookie } from "cookies-next";
 import { cookies } from "next/headers";
 import Image from "next/image";
@@ -12,22 +12,33 @@ import { toast } from "react-toastify";
 export default function AddComment(props: {
   setAddComment: any;
   taskId: string;
+  edit: boolean;
+  commentData: any;
 }) {
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState(
+    props.edit ? props.commentData.text : ""
+  );
   const [height, setHeight] = useState(50);
   const notify = async (error: string) => toast.error(error);
 
-  const { setAddComment, taskId } = props;
+  const { setAddComment, taskId, edit, commentData } = props;
   const { user } = UserStore();
+  const queryClient = useQueryClient();
+
   const mutation = useMutation({
     mutationFn: () => {
       return AddCommentRequest(
         comment,
         notify,
-        taskId,
+        !edit ? taskId : commentData.id,
         getCookie("AccessToken")!,
-        setAddComment
+        setAddComment,
+        edit
       );
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["getTasks"] });
+      queryClient.invalidateQueries({ queryKey: ["getTaskId"] });
     },
   });
   return (
@@ -91,7 +102,7 @@ export default function AddComment(props: {
                   onClick={() => mutation.mutate()}
                   className="py-[3px]  w-full text-white rounded-md bg-[#251B37]"
                 >
-                  Done
+                  {mutation.isPending ? "Loading..." : "Done"}
                 </button>
               </div>
             </div>

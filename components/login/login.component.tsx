@@ -21,8 +21,6 @@ export default function LoginForm(props: { setEmail: any }) {
       return LoginRequest(e, notify, router, props.setEmail, updateUser);
     },
   });
-  console.log("/*/*/*/*/");
-  console.log(user);
   return (
     <form
       className="w-full flex flex-col gap-5"

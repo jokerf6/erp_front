@@ -32,7 +32,7 @@ export default function HomeLayout({
   const currentTab = path[path.length - 1];
   let currentTabs = [""];
   if (currentPage === "pm")
-    currentTabs = ["my tasks", "all projects", "archived projects"];
+    currentTabs = ["tasks", "all projects", "archived projects"];
   else if (currentPage === "meetings")
     currentTabs = ["upcoming meetings", "history"];
 

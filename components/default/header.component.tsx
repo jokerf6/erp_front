@@ -40,7 +40,6 @@ export default function Header() {
 
   // NavIcons Styles
   const { user, updateUser } = UserStore();
-  console.log(user);
   const navIconStyleSmallWindow =
     "bg-lite-white text-primary-purple flex gap-2 p-2 items-center rounded-sm";
   const navIconStyle = "text-2xl cursor-pointer box-content p-1";
@@ -94,7 +93,7 @@ export default function Header() {
           <ul className="flex flex-col gap-3 lg:flex-row lg:items-center">
             {NavLinks.map((NavLink: string) => {
               let altLink = null;
-              if (NavLink === "pm") altLink = "pm/mytasks";
+              if (NavLink === "pm") altLink = "pm/tasks";
               else if (NavLink === "meetings")
                 altLink = "meetings/upcomingmeetings";
 

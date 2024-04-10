@@ -4,6 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     domains: ["erp.egyptsunny.com"],
+    // domains: ["127.0.0.1"],
   },
 
   webpack(config) {

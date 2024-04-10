@@ -37,12 +37,17 @@ export { MyTasksContext };
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { GetTasks } from "@/services/getTasks";
 import { getCookie } from "cookies-next";
+import Teammates from "@/components/tasks/editTask/Teammates";
+import AddTeammates from "@/components/tasks/editTask/addTeamMeates";
+import ProjectStore from "@/store/projects";
+import DeleteComment from "@/components/tasks/editTask/DeleteComment";
 
 export default function MyTasks() {
   const queryClient = useQueryClient();
+  const { id } = ProjectStore();
   const { isLoading } = useQuery({
     queryKey: ["getTasks"],
-    queryFn: () => GetTasks(getCookie("AccessToken")!, setTasks),
+    queryFn: () => GetTasks(getCookie("AccessToken")!, setTasks, id),
     enabled: true,
   });
 
@@ -51,6 +56,8 @@ export default function MyTasks() {
   const [categories, setCategories] = React.useState(categoriesData.data);
   const [editTaskOverlay, setEditTaskOverlay] = React.useState(false);
   const [addComment, setAddComment] = React.useState(false);
+  const [addTeammates, setAddTeammates] = React.useState(false);
+
   const [addTaskOverlay, setAddTaskOverlay] = useState(false);
   const [imageSliderOverlay, setImageSliderOverlay] = useState(false);
   const [imageSlider, setImageSlider] = useState([] as any);
@@ -59,11 +66,16 @@ export default function MyTasks() {
   const [isCategoryFilterOpen, setIsCategoryFilterOpen] = React.useState(false);
   const [task, setTask] = React.useState<any>();
 
+  const [editComment, setEditComment] = React.useState(false);
+
   // Drag
 
   const [tasks, setTasks] = useState<any>(Tasks);
   const [activeColumn, setActiveColumn] = useState<any>(null);
   const [activeTask, setActiveTask] = useState<any>(null);
+  const [comment, setComment] = useState<any>();
+  const [deleteComment, setDeleteComment] = useState<any>(false);
+
   const [columns, setColumns] = useState<any>(categories);
   const columnsId = useMemo(() => columns.map((col: any) => col.id), [columns]);
 
@@ -214,14 +226,44 @@ export default function MyTasks() {
       )}
 
       {addComment && (
-        <AddComment setAddComment={setAddComment} taskId={task.id} />
+        <AddComment
+          setAddComment={setAddComment}
+          taskId={task.id}
+          edit={false}
+          commentData={comment}
+        />
+      )}
+      {deleteComment && (
+        <DeleteComment setAddComment={setDeleteComment} commentId={comment} />
+      )}
+      {editComment && (
+        <AddComment
+          setAddComment={setEditComment}
+          taskId={task.id}
+          edit={true}
+          commentData={comment}
+        />
+      )}
+      {addTeammates && (
+        <AddTeammates
+          setAddTeammates={setAddTeammates}
+          taskId={task.id}
+          projectId={task.projectId}
+          assignments={
+            tasks.filter((item: any) => item.id === task.id)[0].taskAssignees
+          }
+        />
       )}
       {editTaskOverlay && (
         <EditTask
           setEditTaskOverlay={setEditTaskOverlay}
           setAddComment={setAddComment}
+          setAddTeammates={setAddTeammates}
           addComment={addComment}
           task={task}
+          setCommentId={setComment}
+          setDeleteComment={setDeleteComment}
+          setEditComment={setEditComment}
         />
       )}
 
@@ -232,11 +274,6 @@ export default function MyTasks() {
   );
 
   function onDragStart(event: DragStartEvent) {
-    console.log("Drag start Event Triggered"); // Debugging statement
-    console.log("---------------------");
-    console.log(event.active.data.current?.type);
-    console.log(event.active.data.current?.category);
-
     if (event.active.data.current?.type === "Column") {
       setActiveColumn(event.active.data.current.category);
       return;
@@ -259,22 +296,18 @@ export default function MyTasks() {
     const overId = over.id;
 
     if (activeId === overId) return;
-    console.log("Drag End Event Triggered"); // Debugging statement
-    console.log(active.data.current);
+
     const isActiveAColumn = active.data.current?.type === "Column";
     if (!isActiveAColumn) return;
 
-    console.log("DRAG END");
-    console.log(overId);
     setColumns((columns: any) => {
       const activeColumnIndex = columns.findIndex(
         (col: any) => col.id === activeId
       );
-      console.log(activeColumnIndex);
+
       const overColumnIndex = columns.findIndex(
         (col: any) => col.id === overId
       );
-      console.log(overColumnIndex);
 
       return arrayMove(columns, activeColumnIndex, overColumnIndex);
     });
@@ -288,9 +321,6 @@ export default function MyTasks() {
     const overId = over.id;
 
     if (activeId === overId) return;
-    console.log("------------------------------");
-    console.log(activeId);
-    console.log(overId);
 
     const isActiveATask = active.data.current?.type === "Task";
     const isOverATask = over.data.current?.type === "Task";
@@ -314,14 +344,12 @@ export default function MyTasks() {
     }
 
     const isOverAColumn = over.data.current?.type === "Column";
-    console.log(isOverAColumn);
     // Im dropping a Task over a column
     if (isActiveATask && isOverAColumn) {
       setTasks((tasks: any) => {
         const activeIndex = tasks.findIndex((t: any) => t.id === activeId);
 
         tasks[activeIndex].status = overId;
-        console.log("DROPPING TASK OVER COLUMN", { activeIndex });
         return arrayMove(tasks, activeIndex, activeIndex);
       });
     }

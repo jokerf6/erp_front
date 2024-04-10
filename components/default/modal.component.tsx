@@ -13,7 +13,9 @@ export default function Modal(props: {
 
   return createPortal(
     <div
-      onClick={() => setOverlay(false)}
+      onClick={() => {
+        setOverlay(false);
+      }}
       className="fixed top-0 right-0 bottom-0 left-0 z-[20] bg-black/[0.5] overflow-y-auto flex items-center justify-center"
     >
       {children}

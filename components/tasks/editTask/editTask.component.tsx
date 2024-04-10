@@ -16,9 +16,22 @@ export default function EditTask(props: {
   setEditTaskOverlay: any;
   setAddComment: any;
   addComment: boolean;
+  setAddTeammates: any;
   task: any;
+  setCommentId: any;
+  setDeleteComment: any;
+  setEditComment: any;
 }) {
-  const { setEditTaskOverlay, task, setAddComment, addComment } = props;
+  const {
+    setEditTaskOverlay,
+    task,
+    setAddComment,
+    addComment,
+    setAddTeammates,
+    setCommentId,
+    setDeleteComment,
+    setEditComment,
+  } = props;
   const queryClient = useQueryClient();
   const { data, isLoading, refetch } = useQuery({
     queryKey: ["getTaskId"],
@@ -60,10 +73,16 @@ export default function EditTask(props: {
           <Comments
             setAddComment={setAddComment}
             taskComments={data.TaskComments}
+            setCommentId={setCommentId}
+            setDeleteComment={setDeleteComment}
+            setEditComment={setEditComment}
           />
         )}
         {!isLoading && data && data["id"] === task["id"] && (
-          <Teammates cardPeople={data.taskAssignees} />
+          <Teammates
+            cardPeople={data.taskAssignees}
+            setAddTeammates={setAddTeammates}
+          />
         )}
       </Slider>
     </Modal>

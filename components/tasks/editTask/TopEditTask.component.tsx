@@ -15,7 +15,6 @@ export default function TopEditTask(props: {
     !props.loading ? props.task.status : "ToDo"
   );
   const { loading } = props;
-  console.log(props.task);
   return (
     <div>
       <div className="first-part  flex flex-col gap-4 p-[20px]">
@@ -50,7 +49,6 @@ export default function TopEditTask(props: {
         <p className="text-primary-p">{!loading && props.task.brief}</p>
         <div className="flex justify-between items-center">
           {statusList.map((item: string, idx: number) => {
-            console.log(status);
             return (
               <CheckBox
                 active={

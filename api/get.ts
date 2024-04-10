@@ -12,6 +12,5 @@ async function sendRequest(link: string, requestJson: any) {
 
 export async function getApi(link: string, requestJson: any) {
   const response = await sendRequest(link, requestJson);
-  console.log(response);
   return response;
 }

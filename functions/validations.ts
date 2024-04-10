@@ -10,7 +10,6 @@ export function valid(type: string, text: string): any {
 function checkEmail(type: string, text: string) {
   const reg = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,}$/gm;
   const test = reg.test(text);
-  console.log(test);
   if (text.length === 0) {
     return `${type} field cannot be empty`;
   }

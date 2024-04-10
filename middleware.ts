@@ -77,6 +77,6 @@ export const config = {
     "/forgetpassword",
     "/changepassword",
     "/home/pm",
-    "/home/pm/mytasks",
+    "/home/pm/tasks",
   ],
 };

@@ -3,7 +3,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // Context
-import { MyTasksContext } from "@/pages/home/pm/mytasks";
+import { MyTasksContext } from "@/pages/home/pm/tasks";
 import { DefaultFile, DefaultVideo, MEDIA } from "@/secrets";
 
 export default function Images(props: {

@@ -1,11 +1,15 @@
 import { MEDIA } from "@/secrets";
 import React from "react";
+import { MdModeEditOutline } from "react-icons/md";
 
-export default function Teammates(props: { cardPeople?: any }) {
+export default function Teammates(props: {
+  cardPeople?: any;
+  setAddTeammates: any;
+}) {
   // TODO: first task contain 6 teammates and that is not correct
   const myImages = props.cardPeople.map((user: any, idx: number) => {
     return (
-      <div className="flex gap-4">
+      <div className="flex gap-4" key={idx}>
         <img
           src={MEDIA + user["user"].image}
           alt="Photo"
@@ -34,6 +38,10 @@ export default function Teammates(props: { cardPeople?: any }) {
             {props.cardPeople.length}
           </p>
         </div>
+        <MdModeEditOutline
+          className=" text-add-btn-pink-text cursor-pointer w-[21px] h-[21px]"
+          onClick={() => props.setAddTeammates(true)}
+        />
       </div>
       <div className="files-contents flex flex-col gap-4 border-2 border-[#E7E7E7] rounded-[12px] p-5 overflow-auto max-h-[200px] scroll-m-2 bg-[#FFFFFF]">
         <div className="teammates-content flex flex-col gap-4 ">{myImages}</div>

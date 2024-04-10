@@ -8,7 +8,8 @@ export async function AddCommentRequest(
   notify: any,
   id: string,
   token: string,
-  setAddComment: any
+  setAddComment: any,
+  edit: boolean
 ) {
   // **************Test******************
   if (text.length === 0) {
@@ -20,21 +21,29 @@ export async function AddCommentRequest(
     text,
   });
   // **************Send Request******************
-  await request(requestJson, notify, id, token, setAddComment);
+  await request(requestJson, notify, id, token, setAddComment, edit);
 }
 async function request(
   requestJson: string,
   notify: any,
   id: string,
   token: string,
-  setAddComment: any
+  setAddComment: any,
+  edit: boolean
 ) {
-  const response = await requestService.post(
-    TASKS + "/" + id + "/comment",
-    token,
-    false,
-    requestJson
-  );
+  const response = edit
+    ? await requestService.patch(
+        TASKS + "/" + id + "/comment",
+        token,
+        false,
+        requestJson
+      )
+    : await requestService.post(
+        TASKS + "/" + id + "/comment",
+        token,
+        false,
+        requestJson
+      );
   if (response.status === 200) {
     setAddComment(false);
   } else {

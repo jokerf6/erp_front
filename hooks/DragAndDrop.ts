@@ -110,7 +110,6 @@ function useDragAndDrop() {
         ) {
           //
           if (window) {
-            console.log(currentId, taskId, Tasks[i].id);
             if (taskId !== Tasks[i].id) {
               setCurrentId(Tasks[i].id);
 

@@ -71,9 +71,43 @@ class RequestService {
         "Content-Type": `${form ? "multipart/form-data" : "application/json"}`,
       };
     }
-    console.log(headers);
+    headers;
     try {
       const axiosResponse = await this.axiosInstance.post<T>(url, data, {
+        ...config,
+        headers,
+      });
+      if (axiosResponse.status === 401) {
+        document.location.href = "/";
+      }
+      return axiosResponse;
+    } catch (err: any) {
+      return err.response as RESPONSE;
+    }
+  }
+
+  async patch<T>(
+    url: string,
+    token?: string,
+    form?: boolean,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<RESPONSE> {
+    let headers;
+    if (token) {
+      headers = {
+        ...config?.headers,
+        Authorization: `Bearer ${token}`,
+        "Content-Type": `${form ? "multipart/form-data" : "application/json"} `,
+      };
+    } else {
+      headers = {
+        ...config?.headers,
+        "Content-Type": `${form ? "multipart/form-data" : "application/json"}`,
+      };
+    }
+    try {
+      const axiosResponse = await this.axiosInstance.patch<T>(url, data, {
         ...config,
         headers,
       });

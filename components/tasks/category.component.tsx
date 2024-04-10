@@ -7,7 +7,7 @@ import Task from "./task.component";
 import { CSS } from "@dnd-kit/utilities";
 
 // Context
-import { MyTasksContext } from "@/pages/home/pm/mytasks";
+import { MyTasksContext } from "@/pages/home/pm/tasks";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 
 export default function Category(props: {

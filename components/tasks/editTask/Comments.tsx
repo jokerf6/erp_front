@@ -6,8 +6,17 @@ import { MEDIA } from "@/secrets";
 export default function Comments(props: {
   setAddComment: any;
   taskComments: any;
+  setCommentId: any;
+  setDeleteComment: any;
+  setEditComment: any;
 }) {
-  const { setAddComment, taskComments } = props;
+  const {
+    setEditComment,
+    setDeleteComment,
+    setCommentId,
+    setAddComment,
+    taskComments,
+  } = props;
 
   return (
     <div className="file-content flex flex-col gap-4 p-[20px]">
@@ -23,7 +32,7 @@ export default function Comments(props: {
         <Icon
           onClick={() => setAddComment(true)}
           icon="ic:baseline-plus"
-          className="bg-add-btn-pink-bg-20 text-add-btn-pink-text cursor-pointer w-[21px] h-[21px]"
+          className="bg-add-btn-pink-bg-20 text-[#FF375E] cursor-pointer w-[21px] h-[21px]"
         />
       </div>
       <div className="files-contents flex flex-col gap-4 border-2 border-[#E7E7E7] rounded-[12px] p-5 overflow-auto max-h-[200px] scroll-m-2 bg-[#FFFFFF]">
@@ -49,11 +58,23 @@ export default function Comments(props: {
                     </div>
                     <p>{item["text"]}</p>
                     <div className="flex justify-end gap-1">
-                      <span className="text-sider-comment-edit-text cursor-pointer hover:underline">
+                      <span
+                        onClick={() => {
+                          setEditComment(true);
+                          setCommentId(item);
+                        }}
+                        className="text-sider-comment-edit-text cursor-pointer hover:underline"
+                      >
                         Edit
                       </span>
                       <span>.</span>
-                      <span className="text-sider-comment-delete-text cursor-pointer hover:underline">
+                      <span
+                        onClick={() => {
+                          setDeleteComment(true);
+                          setCommentId(item);
+                        }}
+                        className="text-sider-comment-delete-text cursor-pointer hover:underline"
+                      >
                         Delete
                       </span>
                     </div>
