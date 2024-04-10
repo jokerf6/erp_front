@@ -29,7 +29,7 @@ export default function EditAllProject(props: {
           closSeeAllParent={props.closSeeAllParent}
           openAddNewTask={props.addNewTask}
         />
-        <Teammates cardPeople={props.cardPeople} />
+        {/* <Teammates cardPeople={props.cardPeople} /> */}
       </Sider>
     </Modal>
   );
