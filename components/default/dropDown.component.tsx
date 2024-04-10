@@ -3,8 +3,6 @@ import { HiOutlineChevronDown } from "react-icons/hi"; // Assuming you're using 
 
 export default function DropDown(props: {
   data: any;
-  title: string;
-  default: string;
   name: string;
   click: any;
 }) {
@@ -16,14 +14,6 @@ export default function DropDown(props: {
     }
   }, [value]);
   return (
-    <div className="input-6 flex flex-col gap-1">
-      <label
-        className="text-[#251B37] text-[14px] font-[500]"
-        htmlFor={props.title}
-      >
-        {props.title}
-        <span className="text-[14px] font-[400] text-[red]"> (Required)</span>
-      </label>
       <div className=" w-full flex items-center justify-center">
         <select
           required
@@ -48,6 +38,5 @@ export default function DropDown(props: {
         </select>
         <HiOutlineChevronDown className=" absolute right-[30px]" />
       </div>
-    </div>
   );
 }
