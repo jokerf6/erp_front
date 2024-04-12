@@ -3,6 +3,10 @@ import { Icon } from "@iconify/react";
 import { BiExport } from "react-icons/bi";
 import { FormatDate } from "@/utils/formatDate";
 import { MEDIA } from "@/secrets";
+import EditItemTitle from "@/components/sider/SiderEdit/EditItem/EditItemTitle";
+import EditItemNum from "@/components/sider/SiderEdit/EditItem/EditItemNum";
+import EditItemTitleNum from "@/components/sider/SiderEdit/EditItem/EditItemTitleNum";
+
 export default function Comments(props: {
   setAddComment: any;
   taskComments: any;
@@ -21,14 +25,10 @@ export default function Comments(props: {
   return (
     <div className="file-content flex flex-col gap-4 p-[20px]">
       <div className="part-one flex justify-between">
-        <div className=" flex gap-2  justify-center items-center">
-          <p className="text-sider-primary-text font-bold text-[20px]">
-            Comments
-          </p>
-          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center min-w-[25px] h-[25px] font-[500] px-2">
-            {taskComments.length}
-          </p>
-        </div>
+        <EditItemTitleNum>
+          <EditItemTitle>comments</EditItemTitle>
+          <EditItemNum>{taskComments.length}</EditItemNum>
+        </EditItemTitleNum>
         <Icon
           onClick={() => setAddComment(true)}
           icon="ic:baseline-plus"

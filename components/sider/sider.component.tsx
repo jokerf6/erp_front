@@ -1,5 +1,8 @@
-import SiderHeader from "./SiderHeader.component";
 import SiderButton from "./SiderButton.component";
+import SiderHeaderAdd from "./SiderHeader/SiderHeaderAdd";
+import SiderHeaderEdit from "./SiderHeader/SiderHeaderEdit";
+import SiderForm from "./SiderForm/SiderForm.component";
+import SiderFormContainer from "./SiderForm/SiderFormContainer.component";
 
 export default function Sider(props: { children: React.ReactNode }) {
   const { children } = props;
@@ -12,5 +15,12 @@ export default function Sider(props: { children: React.ReactNode }) {
     </div>
   );
 }
-Sider.Header = SiderHeader
-Sider.Button = SiderButton
+
+Sider.Button = SiderButton 
+Sider.Header = {
+  Add: SiderHeaderAdd,
+  Edit: SiderHeaderEdit,
+}
+
+Sider.Form = SiderForm
+Sider.Form.Container = SiderFormContainer

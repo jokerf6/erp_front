@@ -2,16 +2,15 @@ import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { PriorityData } from "@/static/parioty";
-import FormItem from "../sider/SiderForm/FormItem/FormItem.component";
 
 // Components
 import Modal from "../default/modal.component";
 import Sider from "@/components/sider/Sider.component";
+import FormItem from "../sider/SiderForm/FormItem/FormItem.component";
 import DropDown from "../sider/inputs/dropDown.input.component";
 import AssignedToInput from "@/components/sider/inputs/assignedTo.input.component";
-import SiderForm from "../sider/SiderForm/SiderForm.component";
 import UploadFiles from "../sider/inputs/uploadFiles.input.component";
-
+import Description from "../sider/inputs/Description";
 
 export default function AddTask(props: {
   setAddTaskOverlay?: any;
@@ -30,60 +29,69 @@ export default function AddTask(props: {
     <Modal setOverlay={setAddTaskOverlay}>
       <ToastContainer />
       <Sider>
-        <Sider.Header setOverlay={setAddTaskOverlay}>Add New Task</Sider.Header>
-        <SiderForm>
-          <SiderForm.Container>
+        <Sider.Header.Add setOverlay={setAddTaskOverlay}>
+          Add New Task
+        </Sider.Header.Add>
+        <Sider.Form>
+          <Sider.Form.Container>
             <FormItem>
-              <div className="flex gap-2">
+              <FormItem.LabelPriority>
                 <FormItem.Label>Task Name</FormItem.Label>
                 <FormItem.Priority>Required</FormItem.Priority>
-              </div>
-              <FormItem.Input type="text" title="Task Name" placeholder="Enter Task Name" />
+              </FormItem.LabelPriority>
+              <FormItem.Input
+                type="text"
+                name="Task Name"
+                placeholder="Enter Task Name"
+              />
             </FormItem>
 
             <FormItem>
-              <div className="flex gap-2">
+              <FormItem.LabelPriority>
                 <FormItem.Label>Project Name</FormItem.Label>
                 <FormItem.Priority>Required</FormItem.Priority>
-              </div>
+              </FormItem.LabelPriority>
               {props.display && (
                 <DropDown
                   data={ProjectsData}
-                  name="project"
+                  name="Project Name"
                   click={setProjectId}
                 />
               )}
             </FormItem>
 
             <FormItem>
-              <div className="flex gap-2">
+              <FormItem.LabelPriority>
                 <FormItem.Label>Assigned To </FormItem.Label>
                 <FormItem.Priority>Required</FormItem.Priority>
-              </div>
+              </FormItem.LabelPriority>
               <AssignedToInput />
             </FormItem>
 
             <FormItem>
-              <div className="flex gap-2">
+              <FormItem.LabelPriority>
                 <FormItem.Label>Due Date</FormItem.Label>
                 <FormItem.Priority>Required</FormItem.Priority>
-              </div>
-              <FormItem.Input type="datetime-local" placeholder="Set due date" />
+              </FormItem.LabelPriority>
+              <FormItem.Input
+                type="datetime-local"
+                placeholder="Set due date"
+              />
             </FormItem>
 
             <FormItem>
-              <div className="flex gap-2">
+              <FormItem.LabelPriority>
                 <FormItem.Label>Files</FormItem.Label>
                 <FormItem.Priority>Optional</FormItem.Priority>
-              </div>
+              </FormItem.LabelPriority>
               <UploadFiles files={files} setFiles={setFiles} />
             </FormItem>
 
             <FormItem>
-              <div className="flex gap-2">
+              <FormItem.LabelPriority>
                 <FormItem.Label>Priority</FormItem.Label>
                 <FormItem.Priority>Required</FormItem.Priority>
-              </div>
+              </FormItem.LabelPriority>
               <DropDown
                 data={PriorityData}
                 name="priority"
@@ -92,20 +100,15 @@ export default function AddTask(props: {
             </FormItem>
 
             <FormItem>
-              <div className="flex gap-2">
+              <FormItem.LabelPriority>
                 <FormItem.Label>Description</FormItem.Label>
                 <FormItem.Priority>Optional</FormItem.Priority>
-              </div>
-              <textarea
-                name="description"
-                className="block text-[14px] pr-[32px] appearance-none w-full placeholder:text-[14px] placeholder:text-[#3F3C3D] bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2  rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-                id="description"
-                placeholder="Write task details"
-              />
+              </FormItem.LabelPriority>
+              <Description>write task details</Description>
             </FormItem>
-          </SiderForm.Container>
+          </Sider.Form.Container>
           <Sider.Button>Add</Sider.Button>
-        </SiderForm>
+        </Sider.Form>
       </Sider>
     </Modal>
   );

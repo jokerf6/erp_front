@@ -1,3 +1,6 @@
+import EditItemNum from "@/components/sider/SiderEdit/EditItem/EditItemNum";
+import EditItemTitle from "@/components/sider/SiderEdit/EditItem/EditItemTitle";
+import EditItemTitleNum from "@/components/sider/SiderEdit/EditItem/EditItemTitleNum";
 import { MEDIA } from "@/secrets";
 import React from "react";
 import { MdModeEditOutline } from "react-icons/md";
@@ -6,7 +9,6 @@ export default function Teammates(props: {
   cardPeople?: any;
   setAddTeammates: any;
 }) {
-  // TODO: first task contain 6 teammates and that is not correct
   const myImages = props.cardPeople.map((user: any, idx: number) => {
     return (
       <div className="flex gap-4" key={idx}>
@@ -30,14 +32,10 @@ export default function Teammates(props: {
   return (
     <div className="file-content flex flex-col gap-4 p-[20px]">
       <div className="part-one flex justify-between">
-        <div className=" flex gap-2  justify-center items-center">
-          <p className="text-sider-primary-text font-bold text-[20px]">
-            Teammates
-          </p>
-          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center min-w-[25px] h-[25px] font-[500] px-2">
-            {props.cardPeople.length}
-          </p>
-        </div>
+        <EditItemTitleNum>
+          <EditItemTitle>Teammates</EditItemTitle>
+          <EditItemNum>{props.cardPeople.length}</EditItemNum>
+        </EditItemTitleNum>
         <MdModeEditOutline
           className=" text-add-btn-pink-text cursor-pointer w-[21px] h-[21px]"
           onClick={() => props.setAddTeammates(true)}

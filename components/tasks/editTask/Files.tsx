@@ -8,17 +8,14 @@ import { Mutation, useMutation, useQueryClient } from "@tanstack/react-query";
 import { AddTaskFileRequest } from "@/services/addTaskFile";
 import { toast } from "react-toastify";
 import { getCookie } from "cookies-next";
+import EditItem from "@/components/sider/SiderEdit/EditItem/EditItem";
+
 export default function Files(props: { files: any; id: string }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
   function ClickInputFile() {
     fileInputRef.current?.click();
   }
-  // TODO: fix error in line 30
-  /*
-    Matt: TypeScript Error, just added type "any"
-    changes made in above state (line: 9):
-    - useState([]); ----> useState<any>([]);
-  */
+
   const notify = async (error: string) => toast.error(error);
   const queryClient = useQueryClient();
 
@@ -32,14 +29,12 @@ export default function Files(props: { files: any; id: string }) {
     },
   });
   return (
-    <div className="file-content flex flex-col gap-4 p-[20px]">
+    <EditItem>
       <div className="part-one flex justify-between">
-        <div className=" flex gap-2 justify-center items-center">
-          <p className="text-sider-primary-text font-bold text-[20px]">Files</p>
-          <p className="bg-sider-number-bg text-sider-number-text rounded-full flex justify-center items-center min-w-[25px] h-[25px] font-[500] px-2">
-            {props.files.length}
-          </p>
-        </div>
+        <EditItem.TitleNum>
+          <EditItem.Title>files</EditItem.Title>
+          <EditItem.Num>{props.files.length}</EditItem.Num>
+        </EditItem.TitleNum>
         <button
           className="rounded-[5px] outline-none w-fit flex justify-between items-center"
           onClick={ClickInputFile}
@@ -104,6 +99,6 @@ export default function Files(props: { files: any; id: string }) {
             );
           })}
       </div>
-    </div>
+    </EditItem>
   );
 }

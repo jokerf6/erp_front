@@ -1,5 +1,6 @@
 import React from 'react'
 import PartTaskAllProject from './PartTaskAllProject.component'
+import EditItem from '@/components/sider/SiderEdit/EditItem/EditItem';
 export default function TasksAllProject(props:{tasks:any, seeAll:any, closSeeAllParent:any, openAddNewTask:any}) {
     const myData = props.tasks.map((data:any) => {
         return <PartTaskAllProject
@@ -23,12 +24,12 @@ export default function TasksAllProject(props:{tasks:any, seeAll:any, closSeeAll
     }
 
     return (
-        <div className='p-[20px]'>
+        <EditItem>
             <div className="part-one flex justify-between items-center">
-                <div className="flex gap-3">
-                    <h1 className='text-[#0D062D] font-bold'>Tasks</h1>
-                    <p className='bg-[#F2EBFE] rounded-full w-5 h-5 flex justify-center items-center'>{myData.length}</p>
-                </div>
+                <EditItem.TitleNum>
+                    <EditItem.Title>Tasks</EditItem.Title>
+                    <EditItem.Num>{myData.length}</EditItem.Num>
+                </EditItem.TitleNum>
                 <button className='font-bold' onClick={handleChanges}>See All</button>
             </div>
             {myData.length === 0 ?
@@ -41,6 +42,6 @@ export default function TasksAllProject(props:{tasks:any, seeAll:any, closSeeAll
                     {myData}
                 </div>
             }
-        </div>
+        </EditItem>
     )
 }
