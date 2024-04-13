@@ -5,12 +5,12 @@ import { PriorityData } from "@/static/parioty";
 
 // Components
 import Modal from "../default/modal.component";
-import Sider from "@/components/sider/Sider.component";
 import FormItem from "../sider/SiderForm/FormItem/FormItem.component";
 import DropDown from "../sider/inputs/dropDown.input.component";
 import AssignedToInput from "@/components/sider/inputs/assignedTo.input.component";
 import UploadFiles from "../sider/inputs/uploadFiles.input.component";
 import Description from "../sider/inputs/Description";
+import Sider from "../sider/sider.component";
 
 export default function AddTask(props: {
   setAddTaskOverlay?: any;
