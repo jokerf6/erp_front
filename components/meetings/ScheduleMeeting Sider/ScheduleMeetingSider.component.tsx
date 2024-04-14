@@ -1,11 +1,13 @@
 import React from 'react'
-import Sider from '@/components/sider/sider.component'
-import Modal from '@/components/default/modal.component'
-import AssignedToInput from '@/components/sider/inputs/assignedTo.input.component';
 import { Icon } from '@iconify/react';
+
+// Components
+import Modal from '@/components/default/modal.component'
+import Sider from '@/components/sider/Sider.component';
+import AssignedToInput from '@/components/sider/inputs/assignedTo.input.component';
 import FormItem from '@/components/sider/SiderForm/FormItem/FormItem.component';
 
-export default function ScheduleMeetingSider(props: { setScheduleOverLay?: any; }) {
+export default function ScheduleMeetingSider(props: { setScheduleOverlay: any; }) {
 
     const [files, setFiles] = React.useState<any>([]);
     // Function That When Click it Click input Filed With type File
@@ -15,23 +17,23 @@ export default function ScheduleMeetingSider(props: { setScheduleOverLay?: any; 
     }
 
     return (
-        <Modal setOverlay={props.setScheduleOverLay}>
+        <Modal setOverlay={props.setScheduleOverlay}>
                 <Sider>
-                    <Sider.Header.Add setOverlay={props.setScheduleOverLay}>Schedule Meeting</Sider.Header.Add>
+                    <Sider.Header.Add setOverlay={props.setScheduleOverlay}>Schedule Meeting</Sider.Header.Add>
                     <Sider.Form.Container>
                         <FormItem>
-                            <div className="flex gap-2">
+                            <FormItem.LabelPriority>
                                 <FormItem.Label>Title</FormItem.Label>
                                 <FormItem.Priority>Required</FormItem.Priority>
-                            </div>
+                            </FormItem.LabelPriority>
                             <FormItem.Input type="text" placeholder='Enter Meeting Name' />
                         </FormItem>
 
                         <FormItem>
-                            <div className="flex gap-2">
+                            <FormItem.LabelPriority>
                                 <FormItem.Label>Data & Time</FormItem.Label>
                                 <FormItem.Priority>Required</FormItem.Priority>
-                            </div>
+                            </FormItem.LabelPriority>
                             <div className="flex gap-4">
                                 <FormItem.Input type="date" placeholder='Enter Meeting Name' />
                                 <p className='self-center'>To</p>
@@ -43,18 +45,18 @@ export default function ScheduleMeetingSider(props: { setScheduleOverLay?: any; 
                         */}
 
                         <FormItem>
-                            <div className="flex gap-2">
+                            <FormItem.LabelPriority>
                                 <FormItem.Label>Assigned To</FormItem.Label>
                                 <FormItem.Priority>Required</FormItem.Priority>
-                            </div>
+                            </FormItem.LabelPriority>
                             <AssignedToInput />
                         </FormItem>
 
                         <FormItem>
-                            <div className="flex gap-2">
+                            <FormItem.LabelPriority>
                                 <FormItem.Label>Files</FormItem.Label>
                                 <FormItem.Priority>Optional</FormItem.Priority>
-                            </div>
+                            </FormItem.LabelPriority>
                             <div className="input-5 flex flex-col gap-1">
                                 <button
                                     type="button"
@@ -102,10 +104,10 @@ export default function ScheduleMeetingSider(props: { setScheduleOverLay?: any; 
 
 
                         <FormItem>
-                            <div className="flex gap-2">
+                            <FormItem.LabelPriority>
                                 <FormItem.Label>Description</FormItem.Label>
                                 <FormItem.Priority>Optional</FormItem.Priority>
-                            </div>
+                            </FormItem.LabelPriority>
                             <textarea
                                 className="block text-[14px] pr-[32px] appearance-none w-full placeholder:text-[14px] placeholder:text-[#3F3C3D] bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2  rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                                 id="description"

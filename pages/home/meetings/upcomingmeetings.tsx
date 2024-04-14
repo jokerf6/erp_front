@@ -4,29 +4,22 @@ import Head from "next/head";
 import HomeLayout from "@/layouts/home";
 
 // Components
-import React from 'react'
+import React from "react";
 import ProfilePicture from "@/components/default/profilePicture.component";
-import TopRightButtons from "@/components/meetings/TopRightButtons/TopRightButtons";
 import AllMeetingsContainer from "@/components/meetings/AllMeetingsContainer";
 import DateMeetingsContainer from "@/components/meetings/DateMeetingsContainer/DateMeetingsContainer";
 import MeetingDate from "@/components/meetings/DateMeetingsContainer/MeetingDate";
 import MeetingCardsContainer from "@/components/meetings/DateMeetingsContainer/MeetingCardsContainer/MeetingCardsContainer";
 import MeetingCard from "@/components/meetings/DateMeetingsContainer/MeetingCardsContainer/MeetingCard/MeetingCard";
-import ScheduleMeetingSider from "@/components/meetings/Meeting Sider/ScheduleMeetingSider.component";
 
 // Components
 
 export default function UpcomingMeetings() {
-  const [scheduleIsOpen,setScheduleIsOpen] = React.useState(false)
   return (
     <>
       <Head>
         <title>ERP | Upcoming Meetings</title>
-      </Head>
-
-      <TopRightButtons setScheduleIsOpen ={setScheduleIsOpen} />
-
-    {scheduleIsOpen && <ScheduleMeetingSider setScheduleOverLay = {setScheduleIsOpen} />}
+      </Head>      
 
       <AllMeetingsContainer>
         <DateMeetingsContainer>
@@ -55,7 +48,7 @@ export default function UpcomingMeetings() {
             </MeetingCard>
           </MeetingCardsContainer>
         </DateMeetingsContainer>
-        
+
         <DateMeetingsContainer>
           <MeetingDate>3 Jun. 2024</MeetingDate>
 
