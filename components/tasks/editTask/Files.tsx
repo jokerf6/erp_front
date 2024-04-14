@@ -9,6 +9,7 @@ import { AddTaskFileRequest } from "@/services/addTaskFile";
 import { toast } from "react-toastify";
 import { getCookie } from "cookies-next";
 import EditItem from "@/components/sider/SiderEdit/EditItem/EditItem";
+import { RiDeleteBin6Line } from "react-icons/ri";
 
 export default function Files(props: { files: any; id: string }) {
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -75,7 +76,10 @@ export default function Files(props: { files: any; id: string }) {
           props.files.map((item: any, idx: number) => {
             return (
               <div className="part-two flex justify-between items-center ">
-                <div className="part-one flex items-center gap-4">
+                {/* <MdDelete  /> */}
+                <RiDeleteBin6Line className=" text-[20px] text-[#BD0021] cursor-pointer" />
+
+                <div className="part-one w-full ml-[10px] flex items-center gap-4">
                   <Image
                     src={
                       CheckFileType(item.name) === "image"
