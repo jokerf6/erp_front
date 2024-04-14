@@ -7,6 +7,8 @@ import Header from "@/components/default/header.component";
 import Footer from "@/components/default/footer.component";
 import Meeting from "@/components/meeting/Meeting";
 import MinimizedMeeting from "@/components/meeting/MinimizedMeeting";
+import ScheduleMeetingSider from "@/components/meetings/ScheduleMeeting Sider/ScheduleMeetingSider.component";
+import TopRightButtons from "@/components/meetings/TopRightButtons/TopRightButtons";
 
 // Functions
 import getWindowWidth from "@/functions/getWindowWidth";
@@ -38,8 +40,9 @@ export default function HomeLayout({
 
   const [showMeeting, setShowMeeting] = useState(false);
   useScrollBlockHook(showMeeting);
-
   const [minimizeMeeting, setMinimizeMeeting] = useState(false);
+  const [scheduleOverlay, setScheduleOverlay] = React.useState(false);
+  useScrollBlockHook(scheduleOverlay);
 
   return (
     <HomeContext.Provider
@@ -54,6 +57,7 @@ export default function HomeLayout({
     >
       <main className="flex flex-col min-h-screen">
         <Header />
+
         {currentPage !== "home" && (
           <PageHeader
             currentPage={currentPage}
@@ -61,11 +65,19 @@ export default function HomeLayout({
             currentTabs={currentTabs}
           />
         )}
+
+        {currentPage === "meetings" && (
+          <TopRightButtons setScheduleOverlay={setScheduleOverlay} />
+        )}
+
         <div className="flex-1 relative">{children}</div>
         <Footer />
       </main>
       {showMeeting && <Meeting />}
       {minimizeMeeting && <MinimizedMeeting />}
+      {scheduleOverlay && (
+        <ScheduleMeetingSider setScheduleOverlay={setScheduleOverlay} />
+      )}
     </HomeContext.Provider>
   );
 }

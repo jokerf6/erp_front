@@ -5,7 +5,6 @@ import HomeLayout from "@/layouts/home";
 
 // Components
 import ProfilePicture from "@/components/default/profilePicture.component";
-import TopRightButtons from "@/components/meetings/TopRightButtons/TopRightButtons";
 import AllMeetingsContainer from "@/components/meetings/AllMeetingsContainer";
 import DateMeetingsContainer from "@/components/meetings/DateMeetingsContainer/DateMeetingsContainer";
 import MeetingDate from "@/components/meetings/DateMeetingsContainer/MeetingDate";
@@ -19,7 +18,6 @@ export default function History() {
         <title>ERP | Meetings - History</title>
       </Head>
 
-      <TopRightButtons />
       <AllMeetingsContainer>
         <DateMeetingsContainer>
           <MeetingDate>today</MeetingDate>
