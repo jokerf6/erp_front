@@ -5,10 +5,10 @@ import { Icon } from "@iconify/react";
 import Head from "next/head";
 
 // Components
-import Card from "@/components/tasks/All Projects/Card.component";
-import EditAllProject from "@/components/tasks/All Projects/EditAllProject.component";
-import InputField from "@/components/tasks/All Projects/InputField.component";
-import PartTaskAllProject from "@/components/tasks/All Projects/PartTaskAllProject.component";
+import Card from "@/components/projects/AllProjects/Card.component";
+import EditAllProject from "@/components/projects/AllProjects/EditAllProject.component";
+import InputField from "@/components/projects/AllProjects/InputField.component";
+import PartTaskAllProject from "@/components/projects/AllProjects/PartTaskAllProject.component";
 import useScrollBlockHook from "@/hooks/useScrollBlock";
 import AddTask from "@/components/tasks/addTask.component";
 import Modal from "@/components/default/modal.component";

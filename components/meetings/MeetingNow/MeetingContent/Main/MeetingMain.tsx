@@ -6,7 +6,7 @@ import MeetingSmallScreens from "./MeetingSmallScreens";
 import MeetingControls from "./MeetingControls";
 
 
-export default function MeetingLeft() {
+export default function MeetingMain() {
   return (
     <section className="flex flex-1 flex-col items-center max-w-[70%]">
       <div className="bg-[#F1F0F0] w-full flex flex-col flex-1 p-[10px]">

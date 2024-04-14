@@ -1,8 +1,8 @@
 // Components
-import Participants from "./participants/Participants";
-import Chat from "./chat/Chat";
+import Participants from "./Participants/Participants";
+import Chat from "./Chat/Chat";
 
-export default function MeetingRight() {
+export default function MeetingAside() {
   return (
     <aside className="max-w-[30%] flex flex-col flex-1">
       <Participants />

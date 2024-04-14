@@ -14,7 +14,7 @@ import useScrollBlock from "@/functions/useScrollBlock";
 import { HomeContext } from "@/layouts/home";
 
 // Components
-import MeetNow from "../meeting/MeetNow";
+import MeetNowButton from "../meetings/TopRightButtons/MeetNowButton";
 
 import { MEDIA } from "@/secrets";
 import UserStore from "@/store/userStore";
@@ -144,7 +144,7 @@ export default function Header() {
         </nav>
       </div>
       <div className="header--right flex items-center gap-4 text-lite-white">
-        <MeetNow header={true} />
+        <MeetNowButton header={true} />
         <Icon icon="teenyicons:search-outline" className={navIconStyle} />
         {!isSmallWindow && (
           <div className="hidden lg:flex gap-3">

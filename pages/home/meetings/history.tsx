@@ -5,11 +5,11 @@ import HomeLayout from "@/layouts/home";
 
 // Components
 import ProfilePicture from "@/components/default/profilePicture.component";
-import AllMeetingsContainer from "@/components/meetings/AllMeetingsContainer";
-import DateMeetingsContainer from "@/components/meetings/DateMeetingsContainer/DateMeetingsContainer";
-import MeetingDate from "@/components/meetings/DateMeetingsContainer/MeetingDate";
-import MeetingCardsContainer from "@/components/meetings/DateMeetingsContainer/MeetingCardsContainer/MeetingCardsContainer";
-import MeetingCard from "@/components/meetings/DateMeetingsContainer/MeetingCardsContainer/MeetingCard/MeetingCard";
+import AllMeetingsCardsContainer from "@/components/meetings/AllMeetingsCardsContainer/AllMeetingsCardsContainer";
+import DateMeetingsContainer from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/DateMeetingsContainer";
+import MeetingDate from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/MeetingDate";
+import MeetingCardsContainer from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/MeetingCardsContainer/MeetingCardsContainer";
+import MeetingCard from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/MeetingCardsContainer/MeetingCard/MeetingCard";
 
 export default function History() {
   return (
@@ -18,7 +18,7 @@ export default function History() {
         <title>ERP | Meetings - History</title>
       </Head>
 
-      <AllMeetingsContainer>
+      <AllMeetingsCardsContainer>
         <DateMeetingsContainer>
           <MeetingDate>today</MeetingDate>
 
@@ -45,7 +45,7 @@ export default function History() {
             </MeetingCard>
           </MeetingCardsContainer>
         </DateMeetingsContainer>
-      </AllMeetingsContainer>
+      </AllMeetingsCardsContainer>
     </>
   );
 }

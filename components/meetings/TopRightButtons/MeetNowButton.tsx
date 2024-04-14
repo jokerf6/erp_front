@@ -6,7 +6,7 @@ import { CallStartIcon } from "@/assets/icons";
 // Context
 import { HomeContext } from "@/layouts/home";
 
-export default function MeetNow(props: { header: boolean }) {
+export default function MeetNowButton(props: { header: boolean }) {
   const { setShowMeeting, minimizeMeeting } = useContext(HomeContext);
 
   const styles = props.header

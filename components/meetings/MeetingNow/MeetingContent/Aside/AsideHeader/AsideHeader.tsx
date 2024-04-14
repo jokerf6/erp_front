@@ -1,7 +1,7 @@
-import Title from "./Title";
-import Arrow from "./Arrow";
+import AsideHeaderArrow from "./AsideHeaderArrow";
+import AsideHeaderTitle from "./AsideHeaderTitle";
 
-export default function AsideSectionHeader(props: {
+export default function AsideHeader(props: {
   children: any;
   setShow: any;
 }) {
@@ -15,5 +15,5 @@ export default function AsideSectionHeader(props: {
   );
 }
 
-AsideSectionHeader.Title = Title;
-AsideSectionHeader.Arrow = Arrow;
+AsideHeader.Title = AsideHeaderTitle;
+AsideHeader.Arrow = AsideHeaderArrow;

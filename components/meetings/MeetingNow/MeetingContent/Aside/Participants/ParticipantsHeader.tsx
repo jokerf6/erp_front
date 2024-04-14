@@ -3,17 +3,17 @@ import React, { useContext } from "react";
 import { Icon } from "@iconify/react";
 
 // Components
-import AsideSectionHeader from "../AsideSectionHeader/AsideSectionHeader";
+import AsideHeader from "../AsideHeader/AsideHeader";
 
 // Context
-import { MeetingContext } from "@/components/meeting/Meeting";
+import { MeetingContext } from "@/components/meetings/MeetingNow/Meeting";
 
 export default function ParticipantsHeader() {
   const { showParticipants, setShowParticipants, setShowAddParticipants } =
     useContext(MeetingContext);
   return (
-    <AsideSectionHeader setShow={setShowParticipants}>
-      <AsideSectionHeader.Title>participants</AsideSectionHeader.Title>
+    <AsideHeader setShow={setShowParticipants}>
+      <AsideHeader.Title>participants</AsideHeader.Title>
       <div className="flex items-center gap-2">
         {/* Admin only */}
         <button
@@ -28,11 +28,11 @@ export default function ParticipantsHeader() {
           </span>
           <Icon icon="icons8:add-user" width={20} />
         </button>
-        <AsideSectionHeader.Arrow
+        <AsideHeader.Arrow
           show={showParticipants}
           setShow={setShowParticipants}
         />
       </div>
-    </AsideSectionHeader>
+    </AsideHeader>
   );
 }

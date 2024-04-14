@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 
-export default function Arrow(props: { show: boolean; setShow: any }) {
+export default function AsideHeaderArrow(props: { show: boolean; setShow: any }) {
   return (
     <button
       onClick={(e) => {

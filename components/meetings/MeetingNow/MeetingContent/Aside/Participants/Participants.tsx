@@ -6,7 +6,7 @@ import ParticipantsContent from "./ParticipantsContent";
 import AddParticipants from "./AddParticipants";
 
 // Context
-import { MeetingContext } from "@/components/meeting/Meeting";
+import { MeetingContext } from "@/components/meetings/MeetingNow/Meeting";
 
 export default function Participants() {
   const { showParticipants, showAddParticipants } = useContext(MeetingContext);

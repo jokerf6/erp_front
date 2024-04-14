@@ -4,7 +4,7 @@ import React, { useContext } from "react";
 import { AttachmentIcon, EmptyChatIcon, SendIcon } from "@/assets/icons";
 
 // Context
-import { MeetingContext } from "@/components/meeting/Meeting";
+import { MeetingContext } from "@/components/meetings/MeetingNow/Meeting";
 
 // Components
 import ProfilePicture from "@/components/default/profilePicture.component";

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 
 // Context
-import { MeetingContext } from "@/components/meeting/Meeting";
+import { MeetingContext } from "@/components/meetings/MeetingNow/Meeting";
 
 // Components
 import Modal from "@/components/default/modal.component";

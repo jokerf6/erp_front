@@ -5,9 +5,9 @@ import { useRouter } from "next/router";
 // Components
 import Header from "@/components/default/header.component";
 import Footer from "@/components/default/footer.component";
-import Meeting from "@/components/meeting/Meeting";
-import MinimizedMeeting from "@/components/meeting/MinimizedMeeting";
-import ScheduleMeetingSider from "@/components/meetings/ScheduleMeeting Sider/ScheduleMeetingSider.component";
+import Meeting from "@/components/meetings/MeetingNow/Meeting";
+import MinimizedMeeting from "@/components/meetings/MeetingNow/MinimizedMeeting";
+import ScheduleMeetingSider from "@/components/meetings/ScheduleMeetingSider/ScheduleMeetingSider.component";
 import TopRightButtons from "@/components/meetings/TopRightButtons/TopRightButtons";
 
 // Functions

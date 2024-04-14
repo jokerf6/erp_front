@@ -6,11 +6,11 @@ import HomeLayout from "@/layouts/home";
 // Components
 import React from "react";
 import ProfilePicture from "@/components/default/profilePicture.component";
-import AllMeetingsContainer from "@/components/meetings/AllMeetingsContainer";
-import DateMeetingsContainer from "@/components/meetings/DateMeetingsContainer/DateMeetingsContainer";
-import MeetingDate from "@/components/meetings/DateMeetingsContainer/MeetingDate";
-import MeetingCardsContainer from "@/components/meetings/DateMeetingsContainer/MeetingCardsContainer/MeetingCardsContainer";
-import MeetingCard from "@/components/meetings/DateMeetingsContainer/MeetingCardsContainer/MeetingCard/MeetingCard";
+import AllMeetingsCardsContainer from "@/components/meetings/AllMeetingsCardsContainer/AllMeetingsCardsContainer";
+import DateMeetingsContainer from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/DateMeetingsContainer";
+import MeetingDate from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/MeetingDate";
+import MeetingCardsContainer from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/MeetingCardsContainer/MeetingCardsContainer";
+import MeetingCard from "@/components/meetings/AllMeetingsCardsContainer/DateMeetingsContainer/MeetingCardsContainer/MeetingCard/MeetingCard";
 
 // Components
 
@@ -21,7 +21,7 @@ export default function UpcomingMeetings() {
         <title>ERP | Upcoming Meetings</title>
       </Head>      
 
-      <AllMeetingsContainer>
+      <AllMeetingsCardsContainer>
         <DateMeetingsContainer>
           <MeetingDate>today</MeetingDate>
 
@@ -95,7 +95,7 @@ export default function UpcomingMeetings() {
             </MeetingCard>
           </MeetingCardsContainer>
         </DateMeetingsContainer>
-      </AllMeetingsContainer>
+      </AllMeetingsCardsContainer>
     </>
   );
 }
