@@ -10,7 +10,7 @@ import Files from "./Files";
 import Comments from "./Comments";
 import Teammates from "./Teammates";
 import Modal from "@/components/default/modal.component";
-import Sider from "@/components/sider/sider.component";
+import Sider from "@/components/sider/Sider.component";
 import CreatedAt from "@/components/sider/SiderEdit/CreatedAt";
 import Title from "@/components/sider/SiderEdit/Title";
 import TaskPriority from "./TaskPriority";
@@ -70,52 +70,47 @@ export default function EditTask(props: {
   return (
     <Modal setOverlay={setEditTaskOverlay}>
       <Sider>
-        {!isLoading && data && data["id"] === task["id"] && (
-          <Sider.Header.Edit>
-            <div className="flex justify-between items-center">
-              <CreatedAt>{data.createdAt}</CreatedAt>
-              <button>
-                <Icon
-                  icon="gg:close-r"
-                  className="text-[1.5rem] cursor-pointer"
-                  onClick={() => {
-                    setEditTaskOverlay(false);
-                    setStatus("");
-                  }}
-                />
-              </button>
-            </div>
+        <Sider.Header.Edit>
+          <div className="flex justify-between items-center">
+            <CreatedAt>{data.createdAt}</CreatedAt>
+            <button>
+              <Icon
+                icon="gg:close-r"
+                className="text-[1.5rem] cursor-pointer"
+                onClick={() => {
+                  setEditTaskOverlay(false);
+                  setStatus("");
+                }}
+              />
+            </button>
+          </div>
 
-            <div className="flex justify-between items-center">
-              <Title>{data.name}</Title>
-              <TaskPriority priority={data.priority} />
-            </div>
+          <div className="flex justify-between items-center">
+            <Title>{data.name}</Title>
+            <TaskPriority priority={data.priority} />
+          </div>
 
-            <DueDate>{data.dueDate}</DueDate>
+          <DueDate>{data.dueDate}</DueDate>
 
-            <Brief>{data.brief}</Brief>
+          <Brief>{data.brief}</Brief>
 
-            <Status status={status} setStatus={setStatus} />
-          </Sider.Header.Edit>
-        )}
-        {!isLoading && data && data["id"] === task["id"] && (
-          <Files files={data.TaskFiles} id={task.id} />
-        )}
-        {!isLoading && data && data["id"] === task["id"] && (
-          <Comments
-            setAddComment={setAddComment}
-            taskComments={data.TaskComments}
-            setCommentId={setCommentId}
-            setDeleteComment={setDeleteComment}
-            setEditComment={setEditComment}
-          />
-        )}
-        {!isLoading && data && data["id"] === task["id"] && (
-          <Teammates
-            cardPeople={data.taskAssignees}
-            setAddTeammates={setAddTeammates}
-          />
-        )}
+          <Status status={status} setStatus={setStatus} />
+        </Sider.Header.Edit>
+
+        <Files files={data.TaskFiles} id={task.id} />
+
+        <Comments
+          setAddComment={setAddComment}
+          taskComments={data.TaskComments}
+          setCommentId={setCommentId}
+          setDeleteComment={setDeleteComment}
+          setEditComment={setEditComment}
+        />
+
+        <Teammates
+          cardPeople={data.taskAssignees}
+          setAddTeammates={setAddTeammates}
+        />
       </Sider>
     </Modal>
   );
