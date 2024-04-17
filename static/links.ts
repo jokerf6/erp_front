@@ -19,4 +19,4 @@ export const MEETINGS = `${server}/meetings`;
 export const CALL_NOW_MEETINGS = `${server}/meetings/add`;
 
 //---------------Socket------------------
-export const SOCKET = `ws://localhost:5002`;
+export const SOCKET = `ws://api-erp.egyptsunny.com`;
