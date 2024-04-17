@@ -6,7 +6,7 @@ export default function AudioMeeting() {
   const [users, setUsers] = useState<any>([]);
 
   useEffect(() => {
-    const socket = io("ws://api-erp.egyptsunny.com", {
+    const socket = io("ws://localhost:5002", {
       auth: {
         Authorization: "Bearer " + getCookie("AccessToken"),
       },
