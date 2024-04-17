@@ -2,7 +2,7 @@ import React from "react";
 import Files from "@/components/tasks/editTask/Files";
 import TasksAllProject from "./TasksAllProject.component";
 import Modal from "@/components/default/modal.component";
-import Sider from "@/components/sider/sider.component";
+import Sider from "@/components/sider/Sider.component";
 import CreatedAt from "@/components/sider/SiderEdit/CreatedAt";
 import { Icon } from "@iconify/react";
 import Title from "@/components/sider/SiderEdit/Title";

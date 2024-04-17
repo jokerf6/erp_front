@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import Modal from "@/components/default/modal.component";
 import AssignedToInput from "@/components/sider/inputs/assignedTo.input.component";
 import FormItem from "@/components/sider/SiderForm/FormItem/FormItem.component";
-import Sider from "@/components/sider/sider.component";
+import Sider from "@/components/sider/Sider.component";
 
 export default function ScheduleMeetingSider(props: {
   setScheduleOverlay: any;
