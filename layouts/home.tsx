@@ -7,7 +7,6 @@ import Header from "@/components/default/header.component";
 import Footer from "@/components/default/footer.component";
 import Meeting from "@/components/meetings/MeetingNow/Meeting";
 import MinimizedMeeting from "@/components/meetings/MeetingNow/MinimizedMeeting";
-import ScheduleMeetingSider from "@/components/meetings/ScheduleMeetingSider/ScheduleMeetingSider.component";
 import TopRightButtons from "@/components/meetings/TopRightButtons/TopRightButtons";
 
 // Functions
@@ -16,6 +15,7 @@ import getWindowWidth from "@/functions/getWindowWidth";
 // Hooks
 import useScrollBlockHook from "@/hooks/useScrollBlock";
 import PageHeader from "@/components/default/PageHeader";
+import ScheduleMeetingSider from "@/components/meetings/ScheduleMeetingSider/ScheduleMeetingSider.component";
 
 // Context
 const HomeContext = createContext({} as any);

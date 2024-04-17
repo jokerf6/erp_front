@@ -1,10 +1,8 @@
 import React from "react";
-import TopEditAllProject from "@/components/tasks/All Projects/TopEditAllProject.component";
 import Files from "@/components/tasks/editTask/Files";
 import TasksAllProject from "./TasksAllProject.component";
-import Teammates from "../editTask/Teammates";
 import Modal from "@/components/default/modal.component";
-import Sider from "@/components/sider/Sider.component";
+import Sider from "@/components/sider/sider.component";
 import CreatedAt from "@/components/sider/SiderEdit/CreatedAt";
 import { Icon } from "@iconify/react";
 import Title from "@/components/sider/SiderEdit/Title";

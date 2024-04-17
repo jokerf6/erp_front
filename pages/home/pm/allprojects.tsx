@@ -12,7 +12,7 @@ import PartTaskAllProject from "@/components/projects/AllProjects/PartTaskAllPro
 import useScrollBlockHook from "@/hooks/useScrollBlock";
 import AddTask from "@/components/tasks/addTask.component";
 import Modal from "@/components/default/modal.component";
-import Sider from "@/components/sider/Sider.component";
+import Sider from "@/components/sider/sider.component";
 
 // Layout
 import HomeLayout from "@/layouts/home";
