@@ -6,6 +6,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AddTaskRequest } from "@/services/addTask";
 import { getCookie } from "cookies-next";
 import { GetProjects } from "@/services/getProjects";
+import { format } from 'date-fns';
+import { DayPicker } from 'react-day-picker';
 
 // Components
 import Modal from "../default/modal.component";
@@ -38,7 +40,7 @@ export default function AddTask(props: {
     name: "", // done
     projectId: "", // done
     AssigneesId: [],
-    dueData: "2024-04-17T16:32:57.215Z",
+    dueData: "2024-04-19T10:08:31.695Z",
     priority: "", // done
     description: "", //done
     files: [], // half done?
@@ -117,6 +119,14 @@ export default function AddTask(props: {
                 placeholder="Set due date"
               />
             </FormItem>
+
+            {/* <FormItem>
+              <FormItem.LabelPriority>
+                <FormItem.Label>Due Date</FormItem.Label>
+                <FormItem.Priority>Required</FormItem.Priority>
+              </FormItem.LabelPriority>
+              <DayPicker selected={addTaskForm.dueData} />
+            </FormItem> */}
 
             <FormItem>
               <FormItem.LabelPriority>

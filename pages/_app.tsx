@@ -1,4 +1,5 @@
 import "@/styles/globals.css";
+import 'react-day-picker/dist/style.css';
 import type { AppProps } from "next/app";
 import { appWithTranslation } from "next-i18next";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

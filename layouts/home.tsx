@@ -73,7 +73,7 @@ export default function HomeLayout({
         <div className="flex-1 relative">{children}</div>
         <Footer />
       </main>
-      {showMeeting && <Meeting />}
+      {/* {showMeeting && <Meeting />} */}
       {minimizeMeeting && <MinimizedMeeting />}
       {scheduleOverlay && (
         <ScheduleMeetingSider setScheduleOverlay={setScheduleOverlay} />
