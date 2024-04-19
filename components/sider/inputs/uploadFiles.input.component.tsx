@@ -1,14 +1,23 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 
-export default function UploadFiles(props: { files: any; setFiles: any }) {
-  const { files, setFiles } = props;
+export default function UploadFiles(props: { setAddTaskForm?: any }) {
+  const [files, setFiles] = useState<any>([]);
 
   // Function That When Click it Click input Filed With type File
   const fileInputRef = useRef<HTMLInputElement>(null);
   function ClickInputFile() {
     fileInputRef.current?.click();
   }
+
+  useEffect(() => {
+    props.setAddTaskForm((prevForm: any) => {
+      return {
+        ...prevForm,
+        files: files,
+      };
+    });
+  }, [files]);
 
   return (
     <>
@@ -25,7 +34,7 @@ export default function UploadFiles(props: { files: any; setFiles: any }) {
           className=" w-[0px] h-[0px] hidden"
           id="file"
           onChange={(e) => {
-            setFiles([...files, e.target.files![0].name]);
+            setFiles([...files, e.target.files![0]]);
           }}
           placeholder="Upload files"
         />
@@ -36,13 +45,16 @@ export default function UploadFiles(props: { files: any; setFiles: any }) {
         {files.length > 0 &&
           files.map((item: any, idx: number) => {
             return (
-              <div key={idx} className="part-two flex justify-between items-center">
+              <div
+                key={idx}
+                className="part-two flex justify-between items-center"
+              >
                 <div className="part-one flex items-center gap-4">
                   <Icon
                     icon={"solar:folder-with-files-linear"}
                     className=" text-4xl"
                   />
-                  <p>{item}</p>
+                  <p>{item?.name}</p>
                 </div>
                 <Icon
                   icon="lucide:import"

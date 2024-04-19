@@ -27,7 +27,7 @@ export default function MeetNowButton(props: { header: boolean }) {
   return (
     <button
       onClick={() => !minimizeMeeting && mutation.mutate()}
-      className={`${styles} text-white flex justify-center items-center w-[36px] h-[36px] rounded-full lg:gap-[8px] lg:w-[148px] lg:h-[36px] lg:rounded-[26px] transition-all`}
+      className={`${styles} text-white flex justify-center items-center w-[36px] h-[36px] rounded-full lg:gap-[8px] lg:w-[120px] lg:h-[36px] lg:rounded-[26px] transition-all`}
     >
       <CallStartIcon className="text-[20px]" />
       <p className="capitalize text-[14px] font-[500] hidden lg:block">Meet</p>

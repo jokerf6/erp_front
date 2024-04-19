@@ -30,28 +30,31 @@ export default function AddTask(props: {
     enabled: true,
   });
 
-  const [priorityName, setPriorityName] = React.useState("eName");
-  const [files, setFiles] = useState<any>([]);
   useEffect(() => {
     // getTask();
   }, []);
 
   const [addTaskForm, setAddTaskForm] = useState({
-    name: "",
-    projectId: "",
+    name: "", // done
+    projectId: "", // done
     AssigneesId: [],
     dueData: "2024-04-17T16:32:57.215Z",
-    priority: "",
-    description: "test",
-    files: "",
-  })
-  console.log("addTaskForm: ", addTaskForm)
+    priority: "", // done
+    description: "", //done
+    files: [], // half done?
+  });
+  // console.log("addTaskForm: ", addTaskForm);
 
   const notify = async (error: string) => toast.error(error);
 
   const mutation = useMutation({
-    mutationFn: (e: any) => {
-      return AddTaskRequest(e, notify, getCookie("AccessToken")!, setAddTaskOverlay);
+    mutationFn: (addTaskForm: any) => {
+      return AddTaskRequest(
+        addTaskForm,
+        notify,
+        getCookie("AccessToken")!,
+        setAddTaskOverlay
+      );
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["getTasks"] });
@@ -76,7 +79,7 @@ export default function AddTask(props: {
                 type="text"
                 name="name"
                 placeholder="Enter Task Name"
-                formKey={addTaskForm.name}
+                formEntry={addTaskForm.name}
                 handleChange={handleFormChange}
               />
             </FormItem>
@@ -120,7 +123,7 @@ export default function AddTask(props: {
                 <FormItem.Label>Files</FormItem.Label>
                 <FormItem.Priority>Optional</FormItem.Priority>
               </FormItem.LabelPriority>
-              <UploadFiles files={files} setFiles={setFiles} />
+              <UploadFiles setAddTaskForm={setAddTaskForm} />
             </FormItem>
 
             <FormItem>
@@ -140,7 +143,12 @@ export default function AddTask(props: {
                 <FormItem.Label>Description</FormItem.Label>
                 <FormItem.Priority>Optional</FormItem.Priority>
               </FormItem.LabelPriority>
-              <Description>write task details</Description>
+              <Description
+                formEntry={addTaskForm.description}
+                handleChange={handleFormChange}
+              >
+                write task details
+              </Description>
             </FormItem>
           </Sider.Form.Container>
           <Sider.Button handleSubmit={handleFormSubmit}>Add</Sider.Button>
@@ -150,19 +158,17 @@ export default function AddTask(props: {
   );
 
   function handleFormChange(e: any) {
-    const { name, value } = e.target
+    const { name, value } = e.target;
     setAddTaskForm((prevForm) => {
       return {
         ...prevForm,
-        [name]: value
-      }
-    })
+        [name]: value,
+      };
+    });
   }
 
   function handleFormSubmit(e: any) {
     e.preventDefault();
-    console.log(addTaskForm)
     mutation.mutate(addTaskForm);
   }
-
 }

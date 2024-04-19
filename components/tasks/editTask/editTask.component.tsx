@@ -45,8 +45,10 @@ export default function EditTask(props: {
     enabled: true,
   });
 
+  
   const [status, setStatus] = useState<string>(data?.status);
   useEffect(() => {
+    console.log("editTask: ", data?.TaskFiles)
     setStatus(data?.status);
   }, [data]);
 

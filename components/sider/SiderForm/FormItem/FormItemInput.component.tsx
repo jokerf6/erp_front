@@ -4,7 +4,7 @@ export default function FormItemInput(props: {
   type: string;
   name?: string;
   placeholder?: string;
-  formKey?: any;
+  formEntry?: any;
   handleChange?: any;
 }) {
   return (
@@ -14,7 +14,7 @@ export default function FormItemInput(props: {
       name={props.name}
       id={props.name}
       placeholder={props.placeholder}
-      value={props.formKey}
+      value={props.formEntry}
       onChange={props.handleChange}
       className={`${
         props.name !== "datetime-local" ? "" : "pr-[32px]"
