@@ -6,8 +6,8 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { AddTaskRequest } from "@/services/addTask";
 import { getCookie } from "cookies-next";
 import { GetProjects } from "@/services/getProjects";
-import { format } from 'date-fns';
-import { DayPicker } from 'react-day-picker';
+// import { format } from 'date-fns';
+// import { DayPicker } from 'react-day-picker';
 
 // Components
 import Modal from "../default/modal.component";
