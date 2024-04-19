@@ -76,7 +76,7 @@ export default function Category(props: {
     <div
       ref={setNodeRef}
       style={style}
-      className="flex flex-col rounded-xl overflow-y-auto flex-1 lg:min-w-[400px]"
+      className="flex flex-col rounded-xl flex-1 lg:min-w-[400px]"
     >
       <div
         {...attributes}

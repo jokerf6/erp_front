@@ -101,7 +101,7 @@ export default function Task(props: {
         <div className=" w-full justify-between flex">
           <div
             className={`${getTaskPriorityColors(
-              task.status
+              task.priority
             )} px-5 py-1 rounded h-fit capitalize`}
           >
             {task.priority}

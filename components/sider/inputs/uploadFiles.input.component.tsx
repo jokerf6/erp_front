@@ -36,7 +36,7 @@ export default function UploadFiles(props: { files: any; setFiles: any }) {
         {files.length > 0 &&
           files.map((item: any, idx: number) => {
             return (
-              <div className="part-two flex justify-between items-center">
+              <div key={idx} className="part-two flex justify-between items-center">
                 <div className="part-one flex items-center gap-4">
                   <Icon
                     icon={"solar:folder-with-files-linear"}

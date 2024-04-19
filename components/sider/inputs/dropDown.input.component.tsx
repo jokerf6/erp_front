@@ -4,15 +4,8 @@ import { HiOutlineChevronDown } from "react-icons/hi"; // Assuming you're using 
 export default function DropDown(props: {
   data: any;
   name: string;
-  click: any;
+  handleChange?: any;
 }) {
-  // Function to get value of option
-  const [value, setValue] = React.useState("");
-  React.useEffect(() => {
-    {
-      props.click(value);
-    }
-  }, [value]);
   return (
       <div className="relative w-full flex items-center justify-center">
         <select
@@ -20,18 +13,15 @@ export default function DropDown(props: {
           name={props.name}
           className="block cursor-pointer text-[14px] pr-[32px] appearance-none w-full placeholder:text-[8px] placeholder:text-[#3F3C3D] bg-transparent border border-gray-400 hover:border-gray-500 px-4 py-2  rounded shadow leading-tight focus:outline-none focus:shadow-outline"
           placeholder="choose task priority"
-          onChange={(event) => {
-            setValue(event.target.value);
-          }}
+          onChange={props.handleChange}
         >
-          <option value="free">
+          <option key="default" value="free">
             {props.name === "priority" ? "Task Priority" : "Choose The Project"}
           </option>
           {props.data.map((item: any) => {
             return (
-              <option key={item.id} value={item.id}>
-                {" "}
-                {item.name}{" "}
+              <option key={item.value} value={item.value}>
+                {item.label}
               </option>
             );
           })}

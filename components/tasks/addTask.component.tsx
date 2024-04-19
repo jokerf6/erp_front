@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { PriorityData } from "@/static/parioty";
+import { PriorityData } from "@/static/priority";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { AddTaskRequest } from "@/services/addTask";
+import { getCookie } from "cookies-next";
+import { GetProjects } from "@/services/getProjects";
 
 // Components
 import Modal from "../default/modal.component";
@@ -17,13 +21,42 @@ export default function AddTask(props: {
   display?: boolean;
 }) {
   const { setAddTaskOverlay } = props;
-  const [ProjectsData, setProjectsData] = useState([]);
-  const [projectId, setProjectId] = React.useState("eID");
+
+  const [projectsData, setProjectsData] = useState<any>([]);
+  const queryClient = useQueryClient();
+  const { isLoading } = useQuery({
+    queryKey: ["getProjects"],
+    queryFn: () => GetProjects(getCookie("AccessToken")!, setProjectsData),
+    enabled: true,
+  });
+
   const [priorityName, setPriorityName] = React.useState("eName");
   const [files, setFiles] = useState<any>([]);
   useEffect(() => {
     // getTask();
   }, []);
+
+  const [addTaskForm, setAddTaskForm] = useState({
+    name: "",
+    projectId: "",
+    AssigneesId: [],
+    dueData: "2024-04-17T16:32:57.215Z",
+    priority: "",
+    description: "test",
+    files: "",
+  })
+  console.log("addTaskForm: ", addTaskForm)
+
+  const notify = async (error: string) => toast.error(error);
+
+  const mutation = useMutation({
+    mutationFn: (e: any) => {
+      return AddTaskRequest(e, notify, getCookie("AccessToken")!, setAddTaskOverlay);
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["getTasks"] });
+    },
+  });
 
   return (
     <Modal setOverlay={setAddTaskOverlay}>
@@ -41,8 +74,10 @@ export default function AddTask(props: {
               </FormItem.LabelPriority>
               <FormItem.Input
                 type="text"
-                name="Task Name"
+                name="name"
                 placeholder="Enter Task Name"
+                formKey={addTaskForm.name}
+                handleChange={handleFormChange}
               />
             </FormItem>
 
@@ -53,9 +88,9 @@ export default function AddTask(props: {
               </FormItem.LabelPriority>
               {props.display && (
                 <DropDown
-                  data={ProjectsData}
-                  name="Project Name"
-                  click={setProjectId}
+                  data={projectsData}
+                  name="projectId"
+                  handleChange={handleFormChange}
                 />
               )}
             </FormItem>
@@ -75,6 +110,7 @@ export default function AddTask(props: {
               </FormItem.LabelPriority>
               <FormItem.Input
                 type="datetime-local"
+                name="dueData"
                 placeholder="Set due date"
               />
             </FormItem>
@@ -95,7 +131,7 @@ export default function AddTask(props: {
               <DropDown
                 data={PriorityData}
                 name="priority"
-                click={setPriorityName}
+                handleChange={handleFormChange}
               />
             </FormItem>
 
@@ -107,9 +143,26 @@ export default function AddTask(props: {
               <Description>write task details</Description>
             </FormItem>
           </Sider.Form.Container>
-          <Sider.Button>Add</Sider.Button>
+          <Sider.Button handleSubmit={handleFormSubmit}>Add</Sider.Button>
         </Sider.Form>
       </Sider>
     </Modal>
   );
+
+  function handleFormChange(e: any) {
+    const { name, value } = e.target
+    setAddTaskForm((prevForm) => {
+      return {
+        ...prevForm,
+        [name]: value
+      }
+    })
+  }
+
+  function handleFormSubmit(e: any) {
+    e.preventDefault();
+    console.log(addTaskForm)
+    mutation.mutate(addTaskForm);
+  }
+
 }

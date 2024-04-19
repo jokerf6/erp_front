@@ -75,7 +75,7 @@ export default function Files(props: { files: any; id: string }) {
         {props.files.length > 0 &&
           props.files.map((item: any, idx: number) => {
             return (
-              <div className="part-two flex justify-between items-center ">
+              <div key={idx} className="part-two flex justify-between items-center ">
                 {/* <MdDelete  /> */}
                 <RiDeleteBin6Line className=" text-[20px] text-[#BD0021] cursor-pointer" />
 
