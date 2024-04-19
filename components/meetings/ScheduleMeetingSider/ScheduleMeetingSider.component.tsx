@@ -5,7 +5,7 @@ import { Icon } from "@iconify/react";
 import Modal from "@/components/default/modal.component";
 import AssignedToInput from "@/components/sider/inputs/assignedTo.input.component";
 import FormItem from "@/components/sider/SiderForm/FormItem/FormItem.component";
-// import Sider from "@/components/sider/Sider.component";
+import Sider from "@/components/sider/sider.component";
 
 export default function ScheduleMeetingSider(props: {
   setScheduleOverlay: any;
@@ -19,8 +19,7 @@ export default function ScheduleMeetingSider(props: {
 
   return (
     <Modal setOverlay={props.setScheduleOverlay}>
-      <h1>temp</h1>
-      {/* <Sider>
+      <Sider>
         <Sider.Header.Add setOverlay={props.setScheduleOverlay}>
           Schedule Meeting
         </Sider.Header.Add>
@@ -44,6 +43,9 @@ export default function ScheduleMeetingSider(props: {
               <FormItem.Input type="date" placeholder="Enter Meeting Name" />
             </div>
           </FormItem>
+          {/* TODO:check box
+           ************************* Check Box Here *****************
+           */}
 
           <FormItem>
             <FormItem.LabelPriority>
@@ -116,7 +118,7 @@ export default function ScheduleMeetingSider(props: {
           </FormItem>
         </Sider.Form.Container>
         <Sider.Button>Create</Sider.Button>
-      </Sider> */}
+      </Sider>
     </Modal>
   );
 }
